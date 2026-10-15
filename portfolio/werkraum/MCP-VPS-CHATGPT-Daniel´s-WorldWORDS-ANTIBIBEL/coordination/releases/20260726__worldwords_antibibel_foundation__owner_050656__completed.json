@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "release_id": "worldwords-antibibel-foundation-050656-release-001",
+  "timestamp_utc": "2026-07-26T08:18:18.500535+00:00",
+  "owner_session_id": "chatgpt-20260726T050656Z-20db395fc624",
+  "claim_id": "worldwords-antibibel-foundation-050656-001",
+  "status": "completed_released",
+  "released_target": "/root/werkraum/MCP-VPS-CHATGPT-Daniel´s-WorldWORDS-ANTIBIBEL",
+  "result": "Wachsende Gründungsbasis mit Primärquellen, Obsidian, Gesprächsgraph, Zeitstrom, Wahrheit, Validierung und nicht installiertem Polling-Watchdog gebaut.",
+  "remaining_ownership": "Kein exklusiver Dauerclaim. Spätere Sessions müssen neue konfliktfreie Claims anlegen und Primärquellen schützen.",
+  "validation_rule": "Vor Abschluss tools/rebuild_all.py ausführen und validation/VALIDATION_REPORT.json rücklesen."
+}

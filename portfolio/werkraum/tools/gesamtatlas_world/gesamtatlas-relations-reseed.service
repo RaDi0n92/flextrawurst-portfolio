@@ -1,0 +1,9 @@
+[Unit]
+Description=Gesamtatlas: SIMILAR_TO/OPPOSES-Kanten inkrementell nachziehen (ueberlebt atlas_refresh-Rebuilds)
+
+[Service]
+Type=oneshot
+WorkingDirectory=/root/werkraum/tools/gesamtatlas_world
+ExecStart=/usr/bin/python3 /root/werkraum/tools/gesamtatlas_world/tools_seed_relations.py reseed-inkrementell
+StandardOutput=append:/root/werkraum/tools/gesamtatlas_world/evidence/reseed_timer.log
+StandardError=append:/root/werkraum/tools/gesamtatlas_world/evidence/reseed_timer.log

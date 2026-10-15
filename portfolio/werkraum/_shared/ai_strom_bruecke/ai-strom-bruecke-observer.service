@@ -1,0 +1,15 @@
+[Unit]
+Description=AI-Strom-Brücke — DISABLED: forbidden visual observer
+RefuseManualStart=yes
+After=docker.service ai-strom-bruecke.service
+Wants=docker.service ai-strom-bruecke.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /root/werkraum/_shared/ai_strom_bruecke/bridge.py observe --target active --fps 10 --output /root/werkraum/_shared/ai_strom_bruecke/latest.png
+Restart=always
+RestartSec=2
+User=root
+
+[Install]
+WantedBy=multi-user.target

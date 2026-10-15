@@ -1,0 +1,8 @@
+{
+  "_hinweis": "Wo ein Ort läuft. kind=host startet direkt auf dem VPS, kind=docker per docker exec im Desktop-Container. Sieht ein Ort einen Hostordner unter anderem Namen (die Desktops sehen Host-/root als /vps_root), steht das als mount_from -> mount_to, damit der Agent den Laufzeitordner der Bridge unter dem Pfad bekommt, den er selbst sieht.",
+  "orte": {
+    "Host": {"kind": "host"},
+    "vd1": {"kind": "docker", "container": "virtuellerdesktop1", "mount_from": "/root", "mount_to": "/vps_root"},
+    "vd2": {"kind": "docker", "container": "virtuellerdesktop2", "mount_from": "/root", "mount_to": "/vps_root"}
+  }
+}

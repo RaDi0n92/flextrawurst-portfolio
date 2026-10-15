@@ -1,0 +1,33 @@
+# Secrets and local configuration
+.env
+secrets/
+*.pem
+*.key
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Django runtime
+logs/
+media/
+staticfiles/
+exports/
+backups/
+
+# Node / Playwright runtime
+node_modules/
+tests/artifacts/
+playwright-report/
+test-results/
+
+# Local/editor noise
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/

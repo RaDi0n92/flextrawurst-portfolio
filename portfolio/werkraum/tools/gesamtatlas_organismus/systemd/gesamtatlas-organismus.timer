@@ -1,0 +1,12 @@
+[Unit]
+Description=Gesamtatlas Organismus regelmäßig auf Änderungen prüfen
+
+[Timer]
+OnActiveSec=30min
+OnUnitInactiveSec=30min
+RandomizedDelaySec=3min
+AccuracySec=1min
+Unit=gesamtatlas-organismus.service
+
+[Install]
+WantedBy=timers.target

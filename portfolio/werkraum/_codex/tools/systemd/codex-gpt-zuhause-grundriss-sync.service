@@ -1,0 +1,14 @@
+[Unit]
+Description=Codex GPT-Zuhause-Grundriss Sync
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/werkraum
+ExecStart=/usr/bin/python3 /root/werkraum/_codex/tools/gpt_zuhause_grundriss_sync.py --interval 5
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

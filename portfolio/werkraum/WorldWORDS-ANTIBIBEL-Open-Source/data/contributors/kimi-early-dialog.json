@@ -1,0 +1,11 @@
+{
+  "$schema": "../schema/contributor.schema.json",
+  "schema_version": "1.0",
+  "id": "kimi-early-dialog",
+  "display_name": "Kimi, early dialogue export",
+  "type": "ai-system",
+  "roles": [
+    "dialogue-participant"
+  ],
+  "can_accept_official_terms": false
+}

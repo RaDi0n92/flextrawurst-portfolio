@@ -1,0 +1,17 @@
+[Unit]
+Description=AI-Strom-Brücke — DISABLED: screenshot cockpit forbidden
+RefuseManualStart=yes
+After=ai-strom-bruecke.service ai-strom-bruecke-observer.service ai-strom-bruecke-stream.service
+Wants=ai-strom-bruecke.service ai-strom-bruecke-observer.service ai-strom-bruecke-stream.service
+
+[Service]
+Type=simple
+WorkingDirectory=/root/werkraum/_shared
+Environment=PYTHONPATH=/root/werkraum/_shared
+ExecStart=/usr/bin/python3 -m ai_strom_bruecke.cockpit_server --bind 127.0.0.1 --port 8100 --state /root/werkraum/_shared/ai_strom_bruecke/state.json --frame /root/werkraum/_shared/ai_strom_bruecke/latest.png --overlay /root/werkraum/_shared/ai_strom_bruecke/analysis-overlay.png --ledger /root/werkraum/_shared/ai_strom_bruecke/events.jsonl --timeline /root/werkraum/_shared/ai_strom_bruecke/timeline.json --objects /root/werkraum/_shared/ai_strom_bruecke/objects.jsonl --anchors /root/werkraum/_shared/ai_strom_bruecke/anchors.jsonl --world-events /root/werkraum/_shared/ai_strom_bruecke/world_events.jsonl --gate /tmp/ai-strom-bruecke-input-gate.json --vision-state /root/werkraum/_shared/ai_strom_bruecke/vision_state.json
+Restart=always
+RestartSec=1
+User=root
+
+[Install]
+WantedBy=multi-user.target

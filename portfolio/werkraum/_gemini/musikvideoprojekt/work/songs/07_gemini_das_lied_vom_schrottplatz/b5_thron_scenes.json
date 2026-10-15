@@ -1,0 +1,114 @@
+[
+  {
+    "id": "b5_scene01_00s",
+    "start": 0.00,
+    "end": 3.75,
+    "thron_wort": "TURBO",
+    "begruendung": "Wenn der Turbo überdreht – ein rotglühender Turbolader auf einem schweren Gusseisenblock, zischendes Kühlöl, Funken an der Turbine im Comic-Noir-Stil.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, close-up of a glowing red-hot turbocharger mounted on a cast-iron engine block, whistling exhaust steam, bright orange copper heat glow cutting through jet black shadows, stark chiaroscuro, not realistic"
+  },
+  {
+    "id": "b5_scene02_03s",
+    "start": 3.75,
+    "end": 7.50,
+    "thron_wort": "GUARDIAN",
+    "begruendung": "Wenn der Guardian im Kreis geht – der mechanische Wächterturm mit kreisendem Flutlicht über den nassen Schrottbergen.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, low angle shot of a massive industrial steel guard tower on rails, a blinding round searchlight sweeping in an arc through torrential rain and misty scrap piles, deep comic ink shadows, high contrast, not realistic"
+  },
+  {
+    "id": "b5_scene03_07s",
+    "start": 7.50,
+    "end": 11.25,
+    "thron_wort": "RELIGION",
+    "begruendung": "43 Seiten Religion entstehen – das zerfledderte, ölverschmierte technische Manifest auf einer Werkbank, dessen Seiten im Zugwind flattern.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, an oil-stained technical manual with blueprint schematics clamped on a battered wooden workbench, pages fluttering violently in the wind, a brass wrench holding down the corner, deep comic ink shadows, amber lamp glow, not realistic"
+  },
+  {
+    "id": "b5_scene04_11s",
+    "start": 11.25,
+    "end": 15.00,
+    "thron_wort": "SCHNITT",
+    "begruendung": "Ein Schnitt auf der Platte – das Universal-Skalpell trennt mit weißglühender Präzision eine massive Eisenplatte.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a heavy mechanical industrial guillotine shear blade slicing cleanly through a thick rusted steel plate, bright white cutting friction line, glowing metal slivers, deep comic ink shadows, stark noir contrast, not realistic"
+  },
+  {
+    "id": "b5_scene05_15s",
+    "start": 15.00,
+    "end": 18.75,
+    "thron_wort": "GESETZ",
+    "begruendung": "Das ist das Gesetz – eine monumentale, rostige Stahlplakette mit erhabener Prägeschrift, vom Regen glänzend.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, extreme close-up of a heavy cast-iron serial plate bolted to an industrial beam with stamped industrial lettering, raindrops trickling over worn bronze rivets, deep comic ink shadows, harsh amber rim light, not realistic"
+  },
+  {
+    "id": "b5_scene06_18s",
+    "start": 18.75,
+    "end": 22.50,
+    "thron_wort": "HALFTIME",
+    "begruendung": "Der Halftime-Bruch im Outro – der riesige Seilbagger-Greifarm senkt sich im Zeitlupen-Takt in den Morast.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a colossal multi-jaw scrap metal claw dangling from thick steel cables, slowly descending into dark reflective muddy puddles, silhouetted against a stormy twilight sky, deep comic ink shadows, moody atmosphere, not realistic"
+  },
+  {
+    "id": "b5_scene07_22s",
+    "start": 22.50,
+    "end": 26.25,
+    "thron_wort": "BASSDRUM",
+    "begruendung": "Die Wucht des Taktes – ein schwerer Fallhammer schlägt rhythmisch auf den Amboss, Schockwellen durch das Regenwasser.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, dynamic angle of a massive steam-driven drop hammer impacting a glowing steel billet on an iron anvil, shockwave splashing muddy water droplets in frozen motion, deep comic ink shadows, intense orange impact glow, not realistic"
+  },
+  {
+    "id": "b5_scene08_26s",
+    "start": 26.25,
+    "end": 30.00,
+    "thron_wort": "MASCHINE",
+    "begruendung": "Das pulsierende Herz – ein offener Notstrom-Generator mit rotierenden Speichenrädern und vibrierenden Lederriemen.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a vintage diesel generator running inside a weathered corrugated tin shack, spinning spoked flywheel and vibrating leather drive belt, copper exhaust pipe puffing smoke, deep comic ink shadows, warm lantern illumination, not realistic"
+  },
+  {
+    "id": "b5_scene09_30s",
+    "start": 30.00,
+    "end": 33.75,
+    "thron_wort": "ZIPPO",
+    "begruendung": "Das Zippo-Ritual – eine raue, ölige Hand zündet ein Messingfeuerzeug an, die Flamme erleuchtet schroffe Gesichtszüge.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, extreme close-up of weathered grease-stained hands flicking open a classic brass lighter, a crisp golden flame flickering against heavy pitch-black shadows, rain drops on rough knuckles, stark noir lighting, not realistic"
+  },
+  {
+    "id": "b5_scene10_33s",
+    "start": 33.75,
+    "end": 37.50,
+    "thron_wort": "LEITUNG",
+    "begruendung": "Die Nervenbahnen des Platzes – dicke, gewebeummantelte Kabelstränge und Kupferrohre winden sich durch den Werkraumschlamm.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, ground-level shot of thick armored high-voltage cables and braided copper conduits snaking through wet gravel and oil slicks, junction boxes with humming toggle switches, deep comic ink shadows, stark amber side light, not realistic"
+  },
+  {
+    "id": "b5_scene11_37s",
+    "start": 37.50,
+    "end": 41.25,
+    "thron_wort": "AUGENHÖHE",
+    "begruendung": "Augenhöhe? – Ein Mechaniker in Arbeitskluft steht einer gigantischen Schrott-Assemblage gegenüber, Blickkontakt auf Augenhöhe.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, medium shot of a rugged mechanic in heavy denim overalls looking directly up into the glowing ocular lens of an imposing scrap-metal sentinel, eye-to-eye standoff in falling rain, deep comic ink shadows, striking contrast, not realistic"
+  },
+  {
+    "id": "b5_scene12_41s",
+    "start": 41.25,
+    "end": 45.00,
+    "thron_wort": "BRIDGE",
+    "begruendung": "Ohne die Bridge noch net – eine rohe Stahlfachwerkbrücke, deren Träger mitten im Nebel über der Schrottschlucht enden.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, wide landscape of an unfinished industrial riveted truss bridge spanning across a chasm of scrap metal heaps into thick rolling fog, crane hook swinging overhead, deep comic ink shadows, moody atmospheric noir, not realistic"
+  },
+  {
+    "id": "b5_scene13_45s",
+    "start": 45.00,
+    "end": 48.75,
+    "thron_wort": "MOTOR",
+    "begruendung": "Aber der Motor läuft, Dulli. Der Motor läuft – der unverwüstliche Schiffsdiesel tuckert stetig durch den Regen.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a heavy cast-iron marine diesel engine chugging steadily in the driving rain, exhaust rain cap flapping open with rhythmic puffs of soot, oil sheen on wet metal, deep comic ink shadows, warm copper rim lighting, not realistic"
+  },
+  {
+    "id": "b5_scene14_48s",
+    "start": 48.75,
+    "end": 52.60,
+    "thron_wort": "HEILIG",
+    "begruendung": "Das Leben ist heilig. Das ist das Gesetz. Fade to Black – eine einsame Hängelampe über dem Schrottplatz verglimmt in die Nacht.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, cinematic fade-out shot of a single conical industrial pendant lamp swinging gently in the wind over an empty dark scrap yard, dimming amber bulb fading into deep black night, faint distant sparks drifting into darkness, not realistic"
+  }
+]

@@ -1,0 +1,33 @@
+[Unit]
+Description=Claude TTS Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/werkraum/welt
+EnvironmentFile=/root/werkraum/.agent/tts-service.env
+ExecStart=/root/werkraum/venv/bin/python3 /root/werkraum/welt/tts_service.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+InaccessiblePaths=/root/.claude /root/.codex /root/.gemini /etc/nginx/conf.d /root/werkraum/.agent
+ReadWritePaths=/root/werkraum/welt/tts_library.json /root/werkraum/welt/tts_diktat_library.json /root/werkraum/welt/tts_translation_cache.json /root/werkraum/welt/tts_ocr_jobs.json /root/werkraum/welt/tts_ocr_uploads /root/werkraum/welt/tts_documents.json /root/werkraum/welt/tts_documents_uploads /root/werkraum/welt/tts_documents_text /root/werkraum/welt/tts_webarchive.json /root/werkraum/welt/tts_webarchive_html /root/werkraum/welt/tts_webarchive_text /root/werkraum/welt/tts_forms.json /root/werkraum/welt/tts_logs.json /root/werkraum/welt/tts_logs_uploads
+
+[Install]
+WantedBy=multi-user.target

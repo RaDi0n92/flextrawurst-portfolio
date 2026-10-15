@@ -1,0 +1,536 @@
+{
+  "bauplan_version": 1,
+  "objekt": "Schrottplatz-Autoscooter",
+  "referenz": "/root/werkraum/refferenzen/Schrottplatz/autoscooter.png",
+  "erstellt": "2026-09-06",
+  "prinzip": "Knoten = Bauteil mit Soll-Attributen. Kante = pruefbare raeumliche Beziehung zwischen zwei Knoten. Der Auditor prueft beides gegen die echte Blender-Szene.",
+  "materialien": {
+    "M_MetallDunkel": {
+      "typ": "prozedural",
+      "muss_nodes_haben": true,
+      "beschreibung": "dunkles Rahmenmetall, leicht rau"
+    },
+    "M_Gummi": {
+      "typ": "einfach",
+      "muss_nodes_haben": false,
+      "beschreibung": "schwarzer Stossring, matt"
+    },
+    "M_Leder": {
+      "typ": "prozedural",
+      "muss_nodes_haben": true,
+      "beschreibung": "schwarzes Leder mit Bump-Struktur"
+    },
+    "M_LichtWarm": {
+      "typ": "emission",
+      "muss_nodes_haben": true,
+      "beschreibung": "warme Scheinwerfer, Emission>0"
+    },
+    "M_LichtRot": {
+      "typ": "emission",
+      "muss_nodes_haben": true,
+      "beschreibung": "rote Ruecklichter, Emission>0"
+    },
+    "M_Stoff": {
+      "typ": "einfach",
+      "muss_nodes_haben": false,
+      "beschreibung": "schwarze Flagge"
+    },
+    "M_Stahl": {
+      "typ": "prozedural",
+      "muss_nodes_haben": true,
+      "beschreibung": "Nieten/Lenkrad, metallisch glaenzend"
+    },
+    "M_SchriftWeiss": {
+      "typ": "einfach",
+      "muss_nodes_haben": false,
+      "beschreibung": "weisser Schriftzug wie in der Referenz, kein Metall"
+    },
+    "M_PerlLila": {
+      "typ": "prozedural",
+      "muss_nodes_haben": true,
+      "beschreibung": "Hochglanz-Perllack: Layer-Weight steuert den Farbumschlag von tiefem Violett (steiler Blickwinkel) zu hellem Flieder (flacher Winkel), feiner Metallic-Flake-Schimmer, Klarlackschicht (Coat) und Thin-Film-Interferenz. Ersetzt das frueherer Rost-Design auf Nutzerwunsch."
+    }
+  },
+  "knoten": [
+    {
+      "id": "Bodenplatte",
+      "material": "M_MetallDunkel",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 20,
+      "detail": "flache dunkle Basis unter dem Stossring"
+    },
+    {
+      "id": "Stossring",
+      "material": "M_Gummi",
+      "bevel": false,
+      "subsurf": false,
+      "min_polys": 200,
+      "detail": "dicker Torus rundum, Referenz zeigt ihn als dominantes Element"
+    },
+    {
+      "id": "Karosserie",
+      "material": "M_PerlLila",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 700,
+      "detail": "EIN gelofteter Guss: geschwungenes Seitenprofil (Haube vorne ansteigend, Cockpit-Mulde mittig offen, Heckaufbau hinten), ovale Draufsicht, Wandstaerke per Solidify. Ersetzt die frueheren Einzelknoten Wanne+Fronthaube -- die Referenz zeigt keine aufgesetzte Haube, sondern eine durchgehende Karosserie. -- Perllack, glatt schattiert (Auto-Smooth) fuer echten Hochglanz -- Cockpit-Mulde nach vorne (Fussraum) und hinten (Lehnenraum) geoeffnet, Innenraum durchgehend frei von x=-0.4 bis +0.2 -- Bereich ueber der Sitzflaeche freigeschnitten (Boolean-Rest der Muldenwand entfernt)"
+    },
+    {
+      "id": "Seitenpanel_L",
+      "material": "M_PerlLila",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 20,
+      "detail": "Blechpaneel auf der Flanke (Schriftzug auf Nutzerwunsch verworfen) -- Perllack, glatt schattiert (Auto-Smooth) fuer echten Hochglanz"
+    },
+    {
+      "id": "Seitenpanel_R",
+      "material": "M_PerlLila",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 20,
+      "detail": "Blechpaneel auf der Flanke (Schriftzug auf Nutzerwunsch verworfen) -- Perllack, glatt schattiert (Auto-Smooth) fuer echten Hochglanz"
+    },
+    {
+      "id": "Frontgrill",
+      "material": [
+        "M_MetallDunkel",
+        "M_Stahl"
+      ],
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 300,
+      "detail": "FRONT: eckiger Rahmen mit diagonalem Rautengeflecht und markantem X-Kreuz (auf Nutzerwunsch mit dem Heck getauscht -- dieses Gesicht wirkt praegnanter als Front)"
+    },
+    {
+      "id": "Scheinwerfer_LA",
+      "material": "M_LichtWarm",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 30,
+      "detail": "an der Front, warm/weiss leuchtend"
+    },
+    {
+      "id": "Ruecklicht_LI",
+      "material": "M_LichtRot",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 30,
+      "detail": "am Heck, rot leuchtend"
+    },
+    {
+      "id": "Ruecklicht_RI",
+      "material": "M_LichtRot",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 30,
+      "detail": "am Heck, rot leuchtend"
+    },
+    {
+      "id": "Scheinwerfer_RA",
+      "material": "M_LichtWarm",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 30,
+      "detail": "an der Front, warm/weiss leuchtend"
+    },
+    {
+      "id": "Ruecklicht_L",
+      "material": "M_LichtRot",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 30,
+      "detail": "am Heck, rot leuchtend"
+    },
+    {
+      "id": "Ruecklicht_R",
+      "material": "M_LichtRot",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 30,
+      "detail": "am Heck, rot leuchtend"
+    },
+    {
+      "id": "Heckgitter",
+      "material": [
+        "M_MetallDunkel",
+        "M_Stahl"
+      ],
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 500,
+      "detail": "HECK: breiter Lamellengrill mit senkrechten Stahlstreben und zwei Rammschutz-Buegeln (vormals Front)"
+    },
+    {
+      "id": "Tankkasten",
+      "material": "M_PerlLila",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 20,
+      "detail": "Kasten am Heck, seitlich neben der Sitzlehne (nach aussen versetzt, steckte vorher in der Lehne)"
+    },
+    {
+      "id": "Auspuffrohr",
+      "material": "M_Stahl",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 40,
+      "detail": "seitliches Rohr"
+    },
+    {
+      "id": "Sitz",
+      "material": "M_Leder",
+      "bevel": true,
+      "subsurf": true,
+      "min_polys": 2000,
+      "detail": "echte Sitzschale mit dickem Polster und aufgewoelbten Seitenwangen, Sitztiefe 0.42 (Ergonomie-Fix: vorher flache Platte mit 0.28 Tiefe)"
+    },
+    {
+      "id": "Sitzlehne",
+      "material": "M_Leder",
+      "bevel": true,
+      "subsurf": true,
+      "min_polys": 300,
+      "detail": "drei gestaffelte Lederwuelste, ragt 0.19 ueber die Sitzflaeche, bleibt unter der Karosserie-Oberkante"
+    },
+    {
+      "id": "Lenkrad",
+      "material": "M_Stahl",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 200,
+      "detail": "Kranz plus Speichen, nicht nur Torus"
+    },
+    {
+      "id": "Lenksaeule",
+      "material": "M_MetallDunkel",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 30,
+      "detail": "geneigt zum Fahrer"
+    },
+    {
+      "id": "Fahnenmast",
+      "material": "M_Stahl",
+      "bevel": false,
+      "subsurf": false,
+      "min_polys": 30,
+      "detail": "duenner hoher Mast"
+    },
+    {
+      "id": "Flagge",
+      "material": "M_Stoff",
+      "bevel": false,
+      "subsurf": false,
+      "min_polys": 300,
+      "detail": "weht nach HINTEN vom Mast weg, gewellt, mit ausgefranster Aussenkante"
+    },
+    {
+      "id": "Nieten",
+      "material": "M_Stahl",
+      "bevel": false,
+      "subsurf": false,
+      "min_polys": 300,
+      "detail": "viele kleine Nieten entlang der Kanten, per Array/Instanzen"
+    },
+    {
+      "id": "Schlauch_L",
+      "material": "M_MetallDunkel",
+      "bevel": false,
+      "subsurf": false,
+      "min_polys": 400,
+      "detail": "dicker geriffelter Schlauch aussen an der Flanke -- laeuft bewusst NICHT ueber das Cockpit (lag vorher im Sitzbereich)"
+    },
+    {
+      "id": "Lampengehaeuse",
+      "material": "M_MetallDunkel",
+      "bevel": true,
+      "subsurf": false,
+      "min_polys": 300,
+      "detail": "Metallfassungen um alle 6 Lampen -- dunkel, nicht leuchtend (Nachtrag: der Auditor deckte auf, dass der Plan Leuchtmittel und Fassung nicht unterschied)"
+    },
+    {
+      "id": "Totenkopf",
+      "material": "M_SchriftWeiss",
+      "bevel": false,
+      "subsurf": false,
+      "min_polys": 1200,
+      "detail": "Schaedel mit durchbrochenen Augenhoehlen, Nase und Zahnluecken -- BEIDSEITIG auf der Flagge (Vorder- und Rueckseite an der Flaggenflaeche gespiegelt)"
+    },
+    {
+      "id": "Knochen",
+      "material": "M_SchriftWeiss",
+      "bevel": false,
+      "subsurf": false,
+      "min_polys": 1000,
+      "detail": "zwei gekreuzte Knochen mit Gelenkkugeln, beidseitig auf der Flagge"
+    }
+  ],
+  "kanten": [
+    {
+      "von": "Stossring",
+      "typ": "sitzt_auf",
+      "auf": "Bodenplatte",
+      "toleranz": 0.05
+    },
+    {
+      "von": "Karosserie",
+      "typ": "sitzt_auf",
+      "auf": "Stossring",
+      "toleranz": 0.08
+    },
+    {
+      "von": "Seitenpanel_L",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.05
+    },
+    {
+      "von": "Seitenpanel_R",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.05
+    },
+    {
+      "von": "Frontgrill",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.05
+    },
+    {
+      "von": "Scheinwerfer_LA",
+      "typ": "beruehrt",
+      "auf": "Frontgrill",
+      "toleranz": 0.08
+    },
+    {
+      "von": "Ruecklicht_LI",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.06,
+      "grund": "Referenz zeigt die kleinen Zusatzlichter seitlich an der Karosserie, nicht am Grill"
+    },
+    {
+      "von": "Ruecklicht_RI",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.06,
+      "grund": "Referenz zeigt die kleinen Zusatzlichter seitlich an der Karosserie, nicht am Grill"
+    },
+    {
+      "von": "Scheinwerfer_RA",
+      "typ": "beruehrt",
+      "auf": "Frontgrill",
+      "toleranz": 0.08
+    },
+    {
+      "von": "Ruecklicht_L",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.08
+    },
+    {
+      "von": "Ruecklicht_R",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.08
+    },
+    {
+      "von": "Heckgitter",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.05
+    },
+    {
+      "von": "Tankkasten",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.05
+    },
+    {
+      "von": "Auspuffrohr",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.08
+    },
+    {
+      "von": "Sitzlehne",
+      "typ": "beruehrt",
+      "auf": "Sitz",
+      "toleranz": 0.05
+    },
+    {
+      "von": "Lenksaeule",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.08
+    },
+    {
+      "von": "Lenkrad",
+      "typ": "beruehrt",
+      "auf": "Lenksaeule",
+      "toleranz": 0.05
+    },
+    {
+      "von": "Fahnenmast",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.1
+    },
+    {
+      "von": "Flagge",
+      "typ": "beruehrt",
+      "auf": "Fahnenmast",
+      "toleranz": 0.05
+    },
+    {
+      "von": "Schlauch_L",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.08
+    },
+    {
+      "von": "Scheinwerfer_LA",
+      "typ": "symmetrisch_zu",
+      "auf": "Scheinwerfer_RA",
+      "achse": "y",
+      "toleranz": 0.02
+    },
+    {
+      "von": "Ruecklicht_LI",
+      "typ": "symmetrisch_zu",
+      "auf": "Ruecklicht_RI",
+      "achse": "y",
+      "toleranz": 0.02
+    },
+    {
+      "von": "Ruecklicht_L",
+      "typ": "symmetrisch_zu",
+      "auf": "Ruecklicht_R",
+      "achse": "y",
+      "toleranz": 0.02
+    },
+    {
+      "von": "Seitenpanel_L",
+      "typ": "symmetrisch_zu",
+      "auf": "Seitenpanel_R",
+      "achse": "y",
+      "toleranz": 0.02
+    },
+    {
+      "von": "Lampengehaeuse",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.1
+    },
+    {
+      "von": "Lenkrad",
+      "typ": "hoehe_unter",
+      "auf": 1.0,
+      "toleranz": 0.0,
+      "grund": "Lenkrad darf nicht ueber dem Fahrerkopf schweben -- Referenz zeigt es dicht ueber dem Cockpit"
+    },
+    {
+      "von": "Sitz",
+      "typ": "beruehrt",
+      "auf": "Karosserie",
+      "toleranz": 0.08
+    },
+    {
+      "von": "Totenkopf",
+      "typ": "beruehrt",
+      "auf": "Flagge",
+      "toleranz": 0.06
+    },
+    {
+      "von": "Knochen",
+      "typ": "beruehrt",
+      "auf": "Flagge",
+      "toleranz": 0.06
+    },
+    {
+      "von": "Lenkrad",
+      "typ": "hoehe_unter",
+      "auf": 1.05,
+      "toleranz": 0.0,
+      "grund": "Lenkrad muss greifbar bleiben, nicht ueber Kopfhoehe"
+    },
+    {
+      "von": "Sitz",
+      "typ": "mindestmass",
+      "achse": "x",
+      "minimum": 0.38,
+      "grund": "Sitztiefe -- war 0.28, darauf konnte niemand sitzen"
+    },
+    {
+      "von": "Lenkrad",
+      "typ": "mindestabstand",
+      "auf": "Sitz",
+      "achse": "x",
+      "minimum": 0.28,
+      "grund": "Beinraum -- Lenkrad lag mit 0.22 im Schoss"
+    },
+    {
+      "von": "Schlauch_L",
+      "typ": "kollidiert_nicht",
+      "auf": "Sitz",
+      "toleranz": 0.0,
+      "grund": "Schlauch verlief quer durchs Cockpit, durch den Fahrer hindurch"
+    },
+    {
+      "von": "Flagge",
+      "typ": "erstreckt_sich_nach",
+      "auf": "Fahnenmast",
+      "richtung": "-x",
+      "grund": "Flagge wehte nach vorne ueber das Fahrzeug statt nach hinten"
+    },
+    {
+      "von": "Totenkopf",
+      "typ": "beidseitig_an",
+      "auf": "Flagge",
+      "achse": "y"
+    },
+    {
+      "von": "Knochen",
+      "typ": "beidseitig_an",
+      "auf": "Flagge",
+      "achse": "y"
+    },
+    {
+      "von": "Cockpit",
+      "typ": "freiraum",
+      "box": [
+        -0.4,
+        -0.24,
+        0.36,
+        0.02,
+        0.24,
+        0.72
+      ],
+      "erlaubte_vertices": 15,
+      "ausser": [
+        "Sitz",
+        "Sitzlehne",
+        "Lenksaeule",
+        "Lenkrad"
+      ],
+      "grund": "Sitzbereich muss frei bleiben -- hier hing ein Rest der Muldenwand"
+    },
+    {
+      "von": "Tankkasten",
+      "typ": "kollidiert_nicht",
+      "auf": "Sitzlehne",
+      "toleranz": 0.0,
+      "grund": "Tankkasten steckte in der Schulter des Fahrers -- vom neuen Freiraum-Check gefunden"
+    }
+  ],
+  "sichtpruefung": [
+    "Sehen Front und Heck unterschiedlich genug aus? (Auditor kennt nur Positionen, nicht Wirkung)",
+    "Wirkt die Karosserie wie EIN Guss oder wie gestapelte Primitive?",
+    "Ist Text/Symbolik aus normaler Betrachtungsdistanz lesbar?",
+    "Passt der Gesamteindruck zur Referenz -- oder stimmen nur die Einzelteile?",
+    "Koennte ein Mensch realistisch einsteigen, sitzen und lenken?",
+    "Sind Teile aus den ueblichen Blickwinkeln sichtbar oder von anderer Geometrie verdeckt?"
+  ]
+}

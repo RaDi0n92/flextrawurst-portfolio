@@ -1,0 +1,7 @@
+# Mobil-Durchgang, Teil 3: Schnellerfassung-Fix, Netz-Fund
+
+Weiter im Mobil-Auftrag, Netz/Canvas bei 375px geprueft.
+
+Echter Bug behoben: die eigene Schnellerfassung-Leiste (#hs-bar aus human_start.js) wurde im eingeklappten Zustand (nur ein Umschalt-Knopf sichtbar) auf 341px Hoehe gestreckt statt kompakt zu bleiben. Gleiche Ursache wie beim Header vorhin: #hs-bar ist Grid-Item von main.app-shell, CSS-Grid streckt Items per Default auf die Zeilenhoehe (align-items:stretch). Fix: align-self:start, jetzt 49px. Live verifiziert und committet.
+
+Fund, nicht behoben: nach dem hs-bar-Fix blieb in der Netz-Ansicht bei 375px trotzdem eine grosse leere Flaeche (~300px) zwischen Toolbar und den Bestand/Buehne/Werkstatt-Kacheln. elementFromPoint zeigt dort direkt main.app-shell selbst, kein eigenes Element - der native Graph/Canvas der Netz-Werkstatt rendert dort schlicht nichts sichtbares. Canvas-Ansicht (SVG-basiert, kein WebGL) zeigt am selben Ort echten Inhalt ohne Luecke - das grenzt den Fund klar auf Netz ein. Passt zur bereits fruehen dokumentierten Infrastruktur-Luecke (kein /dev/dri im virtuellerdesktop1-Container, Netz laeuft nur im WebGL-Kompatibilitaetsmodus). Liegt im nativen, minifizierten Bundle - nicht risikofrei ueber unsere additive CSS/JS-Schicht behebbar, und die eigentliche Ursache ist wahrscheinlich Infrastruktur, nicht Code. Nicht angefasst, an Daniel zur Entscheidung.

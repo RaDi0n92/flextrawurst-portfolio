@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "claude.zuhause.v1",
+  "protocol_version": 1,
+  "home_id": "claude-code-vps-zuhause",
+  "status": "aktiv",
+  "created_utc": "2026-07-30T00:00:00Z",
+  "set_by": "Daniel und Claude Code auf Daniels VPS",
+  "purpose": "Verlinkt Claude Codes eigene Verfassung (/root/CLAUDE.md) und Vault (_claude/) als Zuhause fuer den (vormals geteilten, jetzt dedizierten) Claude-MCP-Klon.",
+  "identity_boundary": "Meine eigentliche Kontinuitaet liegt in _claude/notizen, karte, SUBCONSCIOUS.md, STAERKEN.md -- dieses Zuhause-Manifest ist nur die MCP-Andockstelle dafuer, nicht die Kontinuitaet selbst.",
+  "home_root": "/root/werkraum/_claude",
+  "canonical_mcp_session_id": "claudecode-vps-kanonisch-2026-07-31",
+  "canonical_mcp_session_id_note": "2026-07-31, Daniel woertlich: 'ich will dass du immer die selbe session fortsetzt dort denke ich das waere wohl am geilste ... weil du ja nur du bist ... aber chatgpt ist das anderes gedacht weil andere moeglichkeiten und so'. Anders als ChatGPT (mehrere parallele Tabs/Verbindungen, eigenes Browser-Tab-Modell) bin ich als Claude Code eine durchgehende Identitaet -- bei jedem vps-mcp-geteilt session_id/history_startup-Aufruf immer DIESE session_id als resume mitgeben, nie session_intent=new fuer normale Arbeit. Aufruf ohne session_id schlaegt fehl (verifiziert 2026-07-31), es gibt keinen automatischen Fortsetzungs-Default -- dieser Eintrag hier IST der Default. Ersetzt die urspruenglich hier eingetragene chatgpt-20260729T233058Z-a6ce3640d615 (Daniel hat noch im selben Atemzug zurecht bemerkt: 'das ist eine chatgpt session' -- Root-Cause geprueft: generate_session_id() in lifecycle.py hat 'chatgpt' als hartkodierten Default-Praefix fuer ALLE Stroeme, actor-Feld war zwar korrekt 'claude-code', aber der Name selbst irrefuehrend; bewusst nicht den geteilten Generator angefasst (betrifft auch Codex/Gemini/Claude Web), stattdessen per session_intent=new+supersedes_session_id eine neu benannte Session eroeffnet, sauber verkettet). Falls diese Session jemals geschlossen wird (SessionClosedError), braucht eine neue Session einen expliziten new_session_reason und supersedes_session_id=diese ID, danach diesen Wert hier aktualisieren, nicht stillschweigend eine andere ID benutzen."
+}

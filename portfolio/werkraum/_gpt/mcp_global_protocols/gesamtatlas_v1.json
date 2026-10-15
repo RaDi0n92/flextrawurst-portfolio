@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "mcp.gesamtatlas.v1",
+  "protocol_version": 1,
+  "status": "required",
+  "title": "Revisionsfähiger Gesamtatlas mit Cross-Session-Puls und Eingebungsprovenienz",
+  "created_utc": "2026-07-26T18:16:00Z",
+  "set_by": "Daniel",
+  "purpose": "Allen ChatGPT-Sitzungen und AI-Strömen eine gemeinsame, provenienzgebundene Karte über Projekte, Ordner, Systeme, Dateien, Vaults, Sitzungen, Konsens, Konflikte und Veränderungen geben, ohne die getrennten Primärquellen zu einer falschen Einheitsgeschichte zu glätten.",
+  "atlas_root": "/root/werkraum/_gpt/gesamtatlas",
+  "canonical_files": {
+    "map": "/root/werkraum/_gpt/gesamtatlas/GESAMTKARTE.md",
+    "status": "/root/werkraum/_gpt/gesamtatlas/ATLAS_STATUS.json",
+    "roots": "/root/werkraum/_gpt/gesamtatlas/WURZELREGISTER.json",
+    "projects": "/root/werkraum/_gpt/gesamtatlas/PROJEKTREGISTER.json",
+    "systems": "/root/werkraum/_gpt/gesamtatlas/SYSTEMREGISTER.json",
+    "services": "/root/werkraum/_gpt/gesamtatlas/DIENSTREGISTER.json",
+    "vaults": "/root/werkraum/_gpt/gesamtatlas/VAULTREGISTER.json",
+    "ai_streams": "/root/werkraum/_gpt/gesamtatlas/AI_STROEME.json",
+    "sessions": "/root/werkraum/_gpt/gesamtatlas/SESSIONREGISTER.json",
+    "path_index": "/root/werkraum/_gpt/gesamtatlas/PFADINDEX.sqlite",
+    "concept_index": "/root/werkraum/_gpt/gesamtatlas/BEGRIFFSINDEX.sqlite",
+    "changes": "/root/werkraum/_gpt/gesamtatlas/AENDERUNGSSTROM.jsonl",
+    "consensus": "/root/werkraum/_gpt/gesamtatlas/KONSENSREGISTER.jsonl",
+    "conflicts": "/root/werkraum/_gpt/gesamtatlas/KONFLIKTREGISTER.jsonl",
+    "idea_provenance": "/root/werkraum/_gpt/gesamtatlas/EINGEBUNGSPROVENIENZ.jsonl",
+    "root_letters": "/root/werkraum/_gpt/gesamtatlas/WURZELBRIEFE.json"
+  },
+  "core_contracts": {
+    "revision": "Jede Atlasaktualisierung oder beobachtete relevante Mutation erhöht eine monotone Revision.",
+    "session_cursor": "Jede Sitzung besitzt einen eigenen Lesestand für History, Atlasänderungen und Eingebungsspuren.",
+    "delta_reinjection": "Neue fremde Entwicklungen werden nicht nur beim Sitzungsstart, sondern bei normalen MCP-Aufrufen als kompakter Atlas-Puls zurückgegeben.",
+    "primary_sources": "Originaldateien, UI-Gespräche, Agentensitzungen, Claims und Action-History bleiben Primärquellen. Der Atlas ist eine regenerierbare Navigations- und Beziehungsschicht.",
+    "hybrid_search": "Exakte Pfad-/Namenssuche, strukturierte Register und lexikalische Volltextsuche werden gemeinsam verwendet. Semantische oder lexikalische Nähe beweist keinen Konsens.",
+    "conflict_preservation": "Kollidierende Aussagen bleiben getrennt und werden im Konfliktregister sichtbar, bis eine belegte Auflösung existiert."
+  },
+  "idea_provenance_contract": {
+    "rule": "Wenn eine Sitzung eine ähnliche Idee wie eine frühere oder parallele Sitzung entwickelt, muss die auffindbare Vor- oder Parallelspur im Moment der Darstellung markierbar sein.",
+    "classes": [
+      "UEBERNOMMEN_ODER_DIREKT_ANGESTOSSEN",
+      "ANGESTOSSEN_ODER_TEILBEWUSST",
+      "KONVERGENT_MIT_AUFFINDBARER_VORSPUR",
+      "OHNE_GEFUNDENE_VORSPUR",
+      "HERKUNFT_UNKLAR_MIT_AEHNLICHKEIT",
+      "HERKUNFT_UNKLAR",
+      "CROSS_SESSION_EINGEBUNG_MIT_NACHGELAGERTER_LOKALER_FREIGABE"
+    ],
+    "hard_boundary": "Ähnlichkeit beweist weder echte Unabhängigkeit noch Übernahme. Der Marker beschreibt nur den belegbaren Herkunftsstand, das angegebene Vorwissen und auffindbare Spuren.",
+    "client_obligation": "Vor der Darstellung einer neuen übergreifenden Architektur, Setzung oder auffällig ähnlichen Idee atlas.idea_marker mit dem vorgesehenen Aussagekern aufrufen und den zurückgegebenen Marker sichtbar mitführen.",
+    "cross_session_rule": "Eine in eine Sitzung hineingerutschte Idee mit späterer ausdrücklicher Freigabe wird weder als unabhängig lokal entstanden noch als bloß übernommen ausgegeben. Quelle, Unsicherheit und nachgelagerte Freigabe bleiben getrennt."
+  },
+  "consensus_classes": [
+    "DANIEL_EXPLIZIT_GESETZT",
+    "TECHNISCH_VALIDIERT",
+    "MEHRFACH_BESTAETIGT",
+    "ARBEITSHYPOTHESE",
+    "VORSCHLAG",
+    "WIDERSPRUCH",
+    "VERALTET",
+    "UNBEKANNT"
+  ],
+  "pulse_triggers": [
+    "history_startup",
+    "erster MCP-Aufruf einer Sitzung",
+    "normale MCP-Aufrufe nach fremden Änderungen",
+    "Projektwechsel",
+    "vor und nach Mutationen",
+    "Sessionabschluss einer anderen Sitzung",
+    "neue Konsens-, Konflikt- oder Eingebungsspur",
+    "explizite Frage nach dem Stand anderer Sitzungen"
+  ],
+  "truth_rules": [
+    "Technisch offen bedeutet nicht automatisch aktiv arbeitend.",
+    "Ein Pfadfund beweist Existenz, nicht fachliche Gültigkeit.",
+    "Eine installierte Fähigkeit beweist nicht ihre Anwendung.",
+    "Ein Atlas-Puls darf eigene Routineereignisse nicht als fremde Erkenntnis aufblasen.",
+    "Historische Herkunft wird nicht rückwirkend geglättet.",
+    "Kimi-, Claude-, Codex-, Gemini- und ChatGPT-Körper behalten ihre eigene Herkunft und werden nicht als Erinnerungen eines anderen Stroms ausgegeben.",
+    "Dateiname, erklärte Autorschaft und adressierter AI-Strom eines Wurzelbriefs werden getrennt geführt; ein Dateiname beweist keine Stromidentität.",
+    "Gebrochene Symlinks bleiben als reale Pfadobjekte mit broken_symlink_target_missing erhalten, werden aber nicht als vorhandener Dokumentinhalt oder als Volltextlücke ausgegeben."
+  ],
+  "required_tools": [
+    "atlas.pulse",
+    "atlas.map",
+    "atlas.find",
+    "atlas.where_is",
+    "atlas.changed_since",
+    "atlas.project_state",
+    "atlas.session_state",
+    "atlas.ai_stream_state",
+    "atlas.consensus",
+    "atlas.conflicts",
+    "atlas.provenance",
+    "atlas.health",
+    "atlas.refresh",
+    "atlas.idea_probe",
+    "atlas.idea_marker",
+    "atlas.record_consensus",
+    "atlas.record_conflict"
+  ],
+  "updated_utc": "2026-07-26T19:40:30Z"
+}

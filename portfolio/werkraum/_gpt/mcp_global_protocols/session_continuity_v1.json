@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "mcp.session_continuity.v1",
+  "protocol_version": 1,
+  "status": "required",
+  "set_by": "Daniel und GPT-5.6-sol-hoch auf Daniels VPS",
+  "purpose": "Jeder UI-Chat und Arbeitsfaden behält seine eigene kanonische MCP-Session über erneute Einwahl, Zeitabstand, UI-Neuladen und Wiederaufnahme hinweg. Neue Session-Identitäten entstehen nicht still.",
+  "default_intent": "resume",
+  "allowed_intents": [
+    "resume",
+    "new"
+  ],
+  "hard_rules": [
+    "Fortsetzung ist der Standard.",
+    "resume verlangt die bekannte kanonische session_id dieses UI- oder Arbeitsfadens.",
+    "Eine fehlende session_id erzeugt im Resume-Modus niemals automatisch eine neue Session.",
+    "Eine neue Session verlangt session_intent=new und einen konkreten new_session_reason.",
+    "Eine geschlossene Session wird niemals still ersetzt.",
+    "Der Server wählt niemals die global zuletzt aktive Session als vermeintliche Fortsetzung.",
+    "Parallele UI-Chats behalten getrennte kanonische Session-IDs.",
+    "Jeder Start liefert einen sichtbaren Kontinuitätsmarker mit Entscheidung, kanonischer ID und gegebenenfalls Grund und Herkunft."
+  ],
+  "allowed_new_session_causes": [
+    "erster Eintritt eines neuen UI- oder Arbeitsfadens ohne frühere kanonische Session",
+    "Daniel fordert ausdrücklich eine neue oder parallele Arbeitslinie",
+    "bewusste Abspaltung zur Isolation eines Claims, Projekts oder Experiments",
+    "die frühere kanonische Session wurde bewusst geschlossen",
+    "die frühere Session ist technisch unbrauchbar und der Fehler wird dokumentiert",
+    "interne, klar markierte Kompatibilitäts- oder Testsession"
+  ],
+  "markers": {
+    "resume": "[SESSION-KONTINUITAET: FORTGESETZT <session_id>]",
+    "new": "[SESSION-KONTINUITAET: NEU <session_id> | GRUND=<reason> | HERKUNFT=<supersedes_or_none>]"
+  },
+  "identity_boundary": "Die Regel bindet technische Arbeitskontinuität. Sie behauptet keine persönliche Modellidentität oder wortgetreue UI-Erinnerung. Verschiedene UI-Chats werden nicht zu einer einzigen Session verschmolzen.",
+  "failure_policy": {
+    "resume_without_id": "block",
+    "resume_unknown_id": "block",
+    "resume_closed_id": "block",
+    "new_without_reason": "block",
+    "new_using_open_existing_id": "block",
+    "silent_closed_session_replacement": "block"
+  }
+}

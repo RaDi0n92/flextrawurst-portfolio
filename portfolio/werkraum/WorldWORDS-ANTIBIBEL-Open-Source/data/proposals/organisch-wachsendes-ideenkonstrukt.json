@@ -1,0 +1,62 @@
+{
+  "$schema": "../schema/proposal.schema.json",
+  "schema_version": "1.0",
+  "id": "organisch-wachsendes-ideenkonstrukt",
+  "raw_form": "organisch wachsendes Ideenkonstrukt",
+  "raw_form_policy": "preserve-exactly",
+  "status": "submitted",
+  "submitted_by": "daniel",
+  "authorship_status": "direct-daniel-use",
+  "first_seen": {
+    "date": null,
+    "precision": "unknown"
+  },
+  "exact_input": "...weiter wachsendes organischen ideenkonstrukt...aber als richtige wrbsite",
+  "source_ref": "raw/source-audit/09_QUELLENBELEGE_STARKER_WORTSPUREN.md#ideenmonstrum-und-organisch-wachsendes-ideenkonstrukt",
+  "definitions": {
+    "de": {
+      "provisional": "Ein Ideensystem, das nicht nur erweitert, sondern durch neue Beziehungen und Rückwirkungen organisch verändert wird."
+    },
+    "en": {
+      "provisional": "An idea system that is not merely extended but organically changed by new relations and feedback."
+    },
+    "es": {
+      "provisional": "Un sistema de ideas que no solo se amplía, sino que cambia orgánicamente mediante relaciones y retroacciones nuevas."
+    }
+  },
+  "translation_provenance": {
+    "de": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "provisional-source-interpretation",
+      "review_status": "proposal-only"
+    },
+    "en": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "translation-from-german-provisional-explanation",
+      "review_status": "not-yet-reviewed-by-independent-native-speaker"
+    },
+    "es": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "translation-from-german-provisional-explanation",
+      "review_status": "not-yet-reviewed-by-independent-native-speaker"
+    }
+  },
+  "official_registry": {
+    "accepted_by_daniel": false,
+    "approval_id": null
+  },
+  "review_notes": {
+    "de": "Öffentlich sichtbar, aber nicht von Daniel in das offizielle Register aufgenommen.",
+    "en": "Publicly visible, but not admitted by Daniel to the official registry.",
+    "es": "Visible públicamente, pero no admitido por Daniel en el registro oficial."
+  }
+}

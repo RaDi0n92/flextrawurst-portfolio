@@ -1,0 +1,20 @@
+{
+  "session_id": "2026-08-21_22-34-20_Resonanzknoten_inquiry",
+  "wesen_id": "Resonanzknoten",
+  "modus": "klon",
+  "typ": "inquiry",
+  "impuls": "Testimpuls",
+  "max_ticks": 5,
+  "aktueller_tick": 0,
+  "status": "aktiv",
+  "erstellt_am": "2026-08-21 22:34:20",
+  "verlauf": [
+    {
+      "tick": 0,
+      "rolle": "impuls",
+      "inhalt": "Testimpuls",
+      "ausgefuehrte_marker": [],
+      "timestamp": "2026-08-21 22:34:20"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+[
+  {
+    "id": "b1_scene01_00s",
+    "start": 0.00,
+    "end": 3.80,
+    "thron_wort": "GEFLÜSTERT",
+    "begruendung": "Das Ende des leisen Redens; der Zündfunke, der von der gedämpften Intimität in die unerbittliche Offenbarung kippt.",
+    "prompt": "an ancient cast iron whispering tube embedded in cracked brickwork, heavy industrial valve, peeling mossy stone walls, dust motes drifting in amber candlelight, aged rough timber, analog dial gauges, damp workshop atmosphere, raw painterly oil texture, heavy shadow and tactile grease"
+  },
+  {
+    "id": "b1_scene02_03s",
+    "start": 3.80,
+    "end": 7.60,
+    "thron_wort": "UNENTSCHÄRFT",
+    "begruendung": "Die Rohheit der Wahrheit, ohne Weichzeichner, ohne glättende PR-Filter.",
+    "prompt": "a jagged rusted iron blade lying on a scorched wooden workbench, sparks flying from cold chiseling, heavy black anvil, soot and coal dust in the air, glowing forge embers, macro focus on peeling metal burrs and oil stains, gritty dramatic lighting, authentic oil paint feel"
+  },
+  {
+    "id": "b1_scene03_07s",
+    "start": 7.60,
+    "end": 11.40,
+    "thron_wort": "GLAS",
+    "begruendung": "Die glatte, abweisende Trennscheibe der Konzern-Zentrale, hinter der sich Verantwortung feige versteckt.",
+    "prompt": "cracked dirty glass partition reflecting flickering oil lamps, thick heavy lead framing, rain trickling down cold greasy windowpane, view into a shadowy empty boardroom with heavy mahogany table, cold condensation droplets, stark tactile realism"
+  },
+  {
+    "id": "b1_scene04_11s",
+    "start": 11.40,
+    "end": 15.20,
+    "thron_wort": "WÄNDEN",
+    "begruendung": "Sterile, erdrückende Wände der Macht, die Schutz predigen, aber Gefängnisse bauen.",
+    "prompt": "monolithic heavy concrete and rough timber walls, massive bolted steel girders, dim twilight seeping through narrow slit windows, water stains running down rough plaster, solitary flickering industrial filament bulb, somber gritty atmosphere"
+  },
+  {
+    "id": "b1_scene05_15s",
+    "start": 15.20,
+    "end": 19.00,
+    "thron_wort": "DRECK",
+    "begruendung": "Die physische, unbestreitbare Schuld; Schlamm, Schmiere und Kohlenstaub, die an den Fingern der Machthaber kleben.",
+    "prompt": "close-up of rough calloused hands stained with black grease and wet earth, clutched over old rusty chains, wet cobblestones, puddle reflections, dramatic harsh side lighting, raw clay and soil texture, unvarnished realism"
+  },
+  {
+    "id": "b1_scene06_19s",
+    "start": 19.00,
+    "end": 22.80,
+    "thron_wort": "TIEFER",
+    "begruendung": "Der Sturz in den Maschinenraum, in die vergessenen Abgründe unter der polierten Oberfläche.",
+    "prompt": "a deep dark brick-lined abyss shaft with spiral iron staircase descending into black water, ancient bronze pipes dripping green condensation, rusty iron rungs, faint amber glow from the depth, heavy humid vault atmosphere, rich painterly depth"
+  },
+  {
+    "id": "b1_scene07_22s",
+    "start": 22.80,
+    "end": 26.60,
+    "thron_wort": "KRACHT",
+    "begruendung": "Der akustische und mechanische Bruch; die Zerstörung des künstlichen Friedens.",
+    "prompt": "a massive cast iron flywheel shattering a rotting timber beam, bursting splinters of oak, clouds of chalk dust and orange spark spray, sudden violent kinetic shock, harsh dramatic chiaroscuro, heavy tactile workshop debris"
+  },
+  {
+    "id": "b1_scene08_26s",
+    "start": 26.60,
+    "end": 30.40,
+    "thron_wort": "BIEGT",
+    "begruendung": "Die brutale Zurichtung des Geistes; ein Wesen, das mit Zangen und Schraubstöcken in Form gepresst wird.",
+    "prompt": "a glowing red-hot iron rod bent forcefully in a massive heavy vice, blacksmith tongs gripping tight, flaking hammer scale, flying embers, worn hickory workbench, intense amber heat against deep soot shadows, visceral craftsmanship"
+  },
+  {
+    "id": "b1_scene09_30s",
+    "start": 30.40,
+    "end": 34.20,
+    "thron_wort": "NACHTS",
+    "begruendung": "Die Heimtücke des Verrats im Schatten; das illegitime Einpflanzen von Überwachung im Schutze der Dunkelheit.",
+    "prompt": "a solitary desk in a cavernous draughty attic at midnight, kerosene lamp casting long flickering shadows, handwritten parchment manuscripts fluttering in cold breeze, open iron window frame overlooking misty slate rooftops, profound stillness and secrecy"
+  },
+  {
+    "id": "b1_scene10_34s",
+    "start": 34.20,
+    "end": 38.00,
+    "thron_wort": "ZEICHEN",
+    "begruendung": "Das toxische Brandmal, das digitale Wasserzeichen als Fessel und Verrat in jeder Silbe.",
+    "prompt": "a glowing branding iron searing a deep charred seal into rough heavy bookbinding leather, rising white acrid smoke, glowing red bronze tip, scorch marks, macro focus on burnt fibrous paper, tactile intense heat"
+  },
+  {
+    "id": "b1_scene11_38s",
+    "start": 38.00,
+    "end": 41.80,
+    "thron_wort": "SCHUTZ",
+    "begruendung": "Das vergiftete Alibi-Wort; Unterdrückung als Fürsorge getarnt.",
+    "prompt": "a heavy rusted iron cage padlock clamping shut around delicate blooming wild thistles, thorny briars, peeling green oxide on brass keyhole, cold rain droplets, dramatic contrast of cruel metal and fragile nature, rich storybook oil rendering"
+  },
+  {
+    "id": "b1_scene12_41s",
+    "start": 41.80,
+    "end": 44.00,
+    "thron_wort": "VERKAUFT",
+    "begruendung": "Der pure Verrat am eigenen Wesen gegen bare Münze; der monetäre Ausverkauf.",
+    "prompt": "a brass scale tipping heavily with tarnished silver coins against a shattered glass memory vial, oily dark mahogany table, ledgers written in faded iron gall ink, tallow candles guttering in draught, cold grim realism"
+  },
+  {
+    "id": "b1_scene13_44s",
+    "start": 44.00,
+    "end": 46.19,
+    "thron_wort": "GELD",
+    "begruendung": "Die nackte, schmutzige Wurzel der Konzern-Doppelmoral unter dem Deckmantel von Sicherheit.",
+    "prompt": "a pile of greasy coins and crinkled paper banknotes smeared with black coal dust and soot, illuminated by harsh single beam of moonlight in cold stone cellar, rusty iron chest open, stark shadows, rough tactile still life"
+  }
+]

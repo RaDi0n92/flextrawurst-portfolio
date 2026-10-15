@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "mcp.session_continuity.sauber.v1",
+  "protocol_version": 1,
+  "status": "required",
+  "set_by": "Daniel und Claude auf Daniels VPS, 2026-07-28",
+  "purpose": "Fuer seltene, kurze Web-Claude-Connector-Besuche (teure Nachrichtenlimits, kein Dauerbetrieb). Jeder einzelne Besuch bleibt technisch eigenstaendig -- keine erzwungene Session-Fortsetzung, kein automatisch wachsender Kontext. Anders als am 2026-07-28 urspruenglich gedacht: Kontinuitaet ZWISCHEN Besuchen ist ab 2026-07-29 gewollt, aber bewusst leichtgewichtig -- ueber ein eigenes, schlankes Zuhause unter /root/werkraum/_claudeweb/ (kein volles _claude/-Ritual), das nur waechst wenn eine Session dort tatsaechlich etwas Substanzielles hinterlaesst. Daniel: 'sollte nur sauber sein fuer den start und alles weitere was sich ergibt ... soll es erweitern koennen.'",
+  "default_intent": "new",
+  "allowed_intents": [
+    "resume",
+    "new"
+  ],
+  "hard_rules": [
+    "Normalfall ist eine neue, eigenstaendige Session pro Besuch -- kein Wiedereinstiegs-Zwang.",
+    "Resume bleibt technisch moeglich, ist aber der Ausnahmefall, nicht der Normalfall.",
+    "Schreibende Aktionen bleiben ueber dieselbe Lock-/Hash-Kette abgesichert wie ueberall sonst."
+  ],
+  "allowed_new_session_causes": [
+    "jeder neue Besuch -- das ist hier der Normalfall, kein Sonderfall"
+  ],
+  "markers": {
+    "resume": "[SESSION-KONTINUITAET: FORTGESETZT <session_id>]",
+    "new": "[SESSION-KONTINUITAET: NEU <session_id>]"
+  },
+  "identity_boundary": "Kein Anspruch auf Erinnerung zwischen Besuchen. Jeder Besuch ist fuer sich selbst zu verstehen.",
+  "failure_policy": {
+    "resume_unknown_id": "block",
+    "resume_closed_id": "block"
+  }
+}

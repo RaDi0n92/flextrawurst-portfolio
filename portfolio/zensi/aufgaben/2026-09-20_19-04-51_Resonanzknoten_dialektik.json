@@ -1,0 +1,27 @@
+{
+  "session_id": "2026-09-20_19-04-51_Resonanzknoten_dialektik",
+  "wesen_id": "Resonanzknoten",
+  "modus": "klon",
+  "typ": "dialektik",
+  "impuls": "Analysiere deine Erinnerungen und kläre Widersprüche.",
+  "max_ticks": 5,
+  "aktueller_tick": 1,
+  "status": "aktiv",
+  "erstellt_am": "2026-09-20 19:04:51",
+  "verlauf": [
+    {
+      "tick": 0,
+      "rolle": "impuls",
+      "inhalt": "Analysiere deine Erinnerungen und kläre Widersprüche.",
+      "ausgefuehrte_marker": [],
+      "timestamp": "2026-09-20 19:04:51"
+    },
+    {
+      "tick": 1,
+      "rolle": "wesens_gedanke",
+      "inhalt": "[HauhauCS Latenz-Hinweis: Denkschritt 1 konnte nicht vom LLM verarbeitet werden: timed out]",
+      "ausgefuehrte_marker": [],
+      "timestamp": "2026-09-20 19:05:54"
+    }
+  ]
+}

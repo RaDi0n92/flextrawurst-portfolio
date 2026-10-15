@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blender Live Reference QA"
+  short_description: "Blender actions with 10Hz visual QA"
+  default_prompt: "Use $blender-live-reference-qa to control Blender with 10Hz screenshots and structured reference comparison."

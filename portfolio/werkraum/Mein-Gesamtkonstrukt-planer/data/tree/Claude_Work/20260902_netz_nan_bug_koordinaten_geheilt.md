@@ -1,0 +1,11 @@
+# Netz-Ansicht: echte Ursache war ein NaN-Bug durch fehlende Koordinaten
+
+Nach dem Grid-Fix (has-notice) hat Daniel gemeldet, dass die Netz-Ansicht bei ihm weiterhin leer war - egal bei welcher Breite. Das war ein zweiter, unabhaengiger Fund, keine Wiederholung des ersten.
+
+Ursache: von den 51 Arbeitsobjekten in "Mein Gesamtkonstrukt" hatten nur 10 echte x/y-Koordinaten. 24 Objekte hatten das Feld x/y komplett undefined, 17 hatten explizit null. Die native Graph-Komponente (app/index.html, useMemo-Block fuer die Knoten-Normalisierung) berechnet die Positionierung aller Knoten ueber eine gemeinsame Bounding-Box per Math.min/Math.max ueber alle x-Werte. Sobald ein einziges Objekt x:undefined hat, wird Math.min(...) zu NaN - und das reisst die Positionierung aller 51 Knoten und 44 Kanten mit, nicht nur die des einen unvollstaendigen Objekts. Live bestaetigt: jeder circle/line im SVG hatte cx/cy/x1/y1 = "NaN". Das ist unabhaengig von der Fensterbreite, deshalb "egal wo".
+
+Root Cause liegt im nativen, minifizierten Bundle (app/index.html) - die Normalisierungslogik dort behandelt fehlende Koordinaten nicht defensiv. Daniel hat sich bewusst gegen einen Patch am nativen Code entschieden und stattdessen fuer die datenseitige Loesung: den 41 Objekten ohne gueltige Koordinaten wurde ueber die App-eigene Zustands-API (POST auf /api/state/, mit baseRevision fuer optimistisches Locking - derselbe Mechanismus, den die App selbst beim Ziehen eines Knotens verwendet) eine Grid-Position zugewiesen (7 Spalten, Bereich x:60-1640 / y:20-1560, angelehnt an den Wertebereich der 10 bereits vorhandenen echten Koordinaten). Serverrevision 688 -> 689, alle anderen Felder der Objekte unveraendert uebernommen.
+
+Live verifiziert nach Reload: Netz-Ansicht zeigt jetzt echte Knoten (graue Punkte) und Kantenlinien, sowohl bei 1297px Desktop-Breite als auch bei 375px Mobilbreite zusammen mit dem has-notice-Fix. Kein CSS-Problem, kein WebGL/Infrastruktur-Thema - reiner Datenvollstaendigkeits-Bug in Kombination mit fehlender Fehlertoleranz im nativen Layout-Code.
+
+Die neu gesetzten Grid-Positionen sind eine reine Entblockierung, keine inhaltliche Anordnung - die Objekte lassen sich jetzt ganz normal per Ziehen im Graph neu platzieren, sobald gewuenscht.

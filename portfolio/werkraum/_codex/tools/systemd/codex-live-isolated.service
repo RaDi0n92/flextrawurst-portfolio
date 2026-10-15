@@ -1,0 +1,29 @@
+[Unit]
+Description=Codex Live Viewer (isolated)
+After=network.target flextrawurst-crawlkey-helper.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /root/.claude/codex_live.py
+Restart=always
+RestartSec=3
+User=root
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+InaccessiblePaths=/root/werkraum/.agent /etc/nginx/conf.d
+
+[Install]
+WantedBy=multi-user.target

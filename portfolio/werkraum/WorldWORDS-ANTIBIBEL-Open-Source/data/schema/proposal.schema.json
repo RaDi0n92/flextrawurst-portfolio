@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorldWORDS proposal",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "id",
+    "raw_form",
+    "status",
+    "submitted_by",
+    "authorship_status",
+    "first_seen",
+    "exact_input",
+    "source_ref",
+    "definitions"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "raw_form": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "submitted",
+        "evidence-check",
+        "daniel-review",
+        "deferred",
+        "declined",
+        "withdrawn"
+      ]
+    }
+  }
+}

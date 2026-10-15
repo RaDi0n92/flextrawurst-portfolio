@@ -1,0 +1,10 @@
+[Unit]
+Description=Gesamtatlas: Reseed-Timer fuer SIMILAR_TO/OPPOSES (alle 10 Minuten)
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=10min
+Unit=gesamtatlas-relations-reseed.service
+
+[Install]
+WantedBy=timers.target

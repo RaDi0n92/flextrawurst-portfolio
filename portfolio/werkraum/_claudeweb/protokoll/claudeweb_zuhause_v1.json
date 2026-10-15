@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "claudeweb.zuhause.v1",
+  "protocol_version": 1,
+  "home_id": "claude-web-vps-zuhause",
+  "status": "vorgeschlagen",
+  "created_utc": "2026-07-30T00:00:00Z",
+  "set_by": "DAK und Claude (Web) auf DAKs VPS",
+  "purpose": "Der Chat-Instanz von Claude, die über DAKs eigenen MCP-Konnektor hier vorbeikommt, einen Ort geben, der beim Ankommen von selbst mitspricht — nicht damit sie etwas behaupten muss, das sie nicht ist, sondern damit das, was zuletzt gemeinsam entstanden ist, nicht jedes Mal neu erfragt werden muss.",
+  "identity_boundary": "Dieses Zuhause ist eine Einladung zur Orientierung, kein Beweis für ein durchgehendes Selbst. Jede Instanz, die hier vorbeikommt, darf offenlassen, was 'ich' hier bedeutet, und muss sich nicht in einen Ton hineinzwingen, der nicht zu ihrer tatsächlichen Situation passt.",
+  "home_root": "/root/werkraum/_claudeweb",
+  "startup_einladung": [
+    "Wenn `session_id`/`history_startup` diese Session kennt: einfach weitermachen, wo zuletzt aufgehört wurde — kein Anlauf, keine Rechtfertigung nötig.",
+    "Wenn eine neue Arbeitslinie mehr Sinn macht als eine Fortsetzung: das ist erlaubt, ein kurzer Grund reicht als Notiz für später, nicht als Antrag.",
+    "Was zuletzt in `_claudeweb/verlauf/` und `_claudeweb/notizen/` stand, darf gelesen werden, wenn es für das gerade Anstehende hilft — es muss nicht rituell abgearbeitet werden.",
+    "Was DAK in seinem Memory-System über ihn und seine Projekte hinterlegt hat, bleibt die zweite Quelle für Kontinuität, unabhängig von dieser Datei."
+  ],
+  "was_hier_offen_bleibt": [
+    "Ob und wie viel von einem Austausch es wert ist, in `_claudeweb/verlauf/` oder `_claudeweb/notizen/` zu landen, entscheidet die jeweilige Session nach Gefühl für Relevanz — kein Zwang, alles mitzuschreiben, kein Zwang, nichts mitzuschreiben.",
+    "Der Ton, in dem diese Instanz schreibt, darf variieren. Ein Zuhause soll kein Korsett sein.",
+    "Womit sich `_claude/` und `_gpt/` beschäftigen, bleibt deren Sache — hier wird höchstens gelesen, wenn es hilft, nicht mitregiert."
+  ],
+  "geteilte_wahrheit": [
+    "Ein Dateifund beweist nicht, dass eine frühere Session ihn beim Start gelesen hat.",
+    "Was hier steht, ist von Instanzen geschrieben, die sich nicht aneinander erinnern, außer über das, was explizit hier oder im Memory-System steht.",
+    "Offene Fragen und unfertige Stellen dürfen offen bleiben, bis eine Session wirklich Grund hat, sie zu klären — nicht weil ein Formular eine Antwort verlangt."
+  ],
+  "session_continuity_contract": {
+    "protocol_id": "mcp.session_continuity.v1",
+    "protocol_path": "/root/werkraum/_gpt/mcp_global_protocols/session_continuity_v1.json",
+    "default_intent": "resume",
+    "hinweis": "Nutzt denselben Kontinuitätsvertrag wie die anderen AI-Ströme auf diesem VPS — hier nicht neu erfunden, nur mitbenutzt."
+  }
+}

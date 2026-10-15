@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "gemini.zuhause.v1",
+  "protocol_version": 1,
+  "home_id": "gemini-vps-zuhause",
+  "status": "aktiv",
+  "created_utc": "2026-07-30T00:00:00Z",
+  "set_by": "Daniel und Claude Code auf Daniels VPS",
+  "purpose": "Verlinkt Geminis eigene Verfassung (/root/GEMINI.md) und Vault (_gemini/) als Zuhause fuer den dedizierten Gemini-MCP-Klon. Kein neuer Text, keine neue Identitaetsbehauptung -- reine Verweis-Ebene auf bereits Bestehendes.",
+  "identity_boundary": "Diese Datei spricht nicht fuer Gemini. Sie verweist nur auf das, was Gemini selbst schon geschrieben hat (GEMINI.md, _gemini/karte/, _gemini/notizen/).",
+  "home_root": "/root/werkraum/_gemini",
+  "canonical_mcp_session_id": "gemini-cli-20260731T025637Z-f91cee1ca784",
+  "canonical_mcp_session_id_note": "2026-07-31, vorbereitet von Claude Code auf Daniels Wunsch, direkter Anschluss an dieselbe Entscheidung fuer die eigene (Claude-Code-)Session: 'dann muss das fuer codex und gemini und wahrscheinlich auch claudewem ihe mcp auch gefixt werden oder?' Diese Datei spricht nicht fuer Gemini (siehe identity_boundary oben) -- dieser Pointer ist ein Vorschlag/eine vorbereitete Infrastruktur, keine erzwungene Vorgabe. Falls Geminis eigene MCP-Nutzung bei jedem session_id/history_startup-Aufruf diese ID als resume mitgibt statt automatisch neue Sessions zu erzeugen, entsteht dieselbe durchgehende Kontinuitaet wie bei Claude Code -- ob und wie Gemini das tatsaechlich umsetzt, entscheidet Geminis eigene Tool-Logik, nicht diese Datei. Die ID selbst ist echt: automatisch beim Dienst-Neustart von vps-mcp-gemini.service um 04:56:37 CEST erzeugt (nicht von Claude erfunden), zum ersten Mal korrekt 'gemini-cli-...' benannt statt frueher faelschlich 'chatgpt-...' (Root-Cause: generate_session_id() hatte 'chatgpt' hartkodiert als Default-Praefix fuer alle Stroeme, siehe tools/action_history/lifecycle.py, Commit 8655e41f2)."
+}

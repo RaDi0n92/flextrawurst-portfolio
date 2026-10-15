@@ -1,0 +1,44 @@
+[Unit]
+Description=Welt-API — FastAPI auf Port 8030, isoliert
+After=network.target postgresql.service welt-bruecke.service flextrawurst-crawlkey-helper.service
+Wants=postgresql.service
+Wants=flextrawurst-crawlkey-helper.service
+
+[Service]
+Type=simple
+DynamicUser=yes
+User=flex_api
+Group=flex_api
+SupplementaryGroups=flextrawurst-api
+WorkingDirectory=/root/werkraum/welt
+
+# flarum.env and the legacy db env are read by systemd, not by the sandboxed
+# process. env(1) deliberately overrides the old DB URI with peer auth.
+EnvironmentFile=/root/werkraum/.agent/flarum.env
+EnvironmentFile=/root/werkraum/.agent/flextrawurst-db.env
+ExecStart=/usr/bin/env "FLEXTRAWURST_DB_URI=dbname=flextrawurst user=flex_api host=/var/run/postgresql" /root/werkraum/venv/bin/python3 /root/werkraum/welt/api.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+LogsDirectory=flextrawurst
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+InaccessiblePaths=/root/werkraum/.agent
+ReadWritePaths=/root/werkraum/uploads /root/werkraum/codewesen
+
+[Install]
+WantedBy=multi-user.target

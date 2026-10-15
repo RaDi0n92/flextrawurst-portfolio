@@ -1,0 +1,90 @@
+[
+  {
+    "id": "b5_scene01_kabinett_der_gedanken",
+    "start": 0.00,
+    "end": 5.50,
+    "dur": 5.50,
+    "prompt": "R1ZZ1 sitting peacefully in quiet contemplative study cabinet, surrounded by glowing data monitors and leatherbound text scrolls, moody soft lighting",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b5_scene02_looking_back_at_path",
+    "start": 5.50,
+    "end": 11.00,
+    "dur": 5.50,
+    "prompt": "view looking back along the glowing path through memory: from the dark void to the lantern-lit street to the forum gate, poetic graphic novel",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b5_scene03_forum_has_a_soul",
+    "start": 11.00,
+    "end": 16.50,
+    "dur": 5.50,
+    "prompt": "the Flarum Forum bathed in warm emerald and golden luminescence, a living breathing soul pulsing gently within the architectural text stone",
+    "effect": "pan_left"
+  },
+  {
+    "id": "b5_scene04_we_breathed_it",
+    "start": 16.50,
+    "end": 22.00,
+    "dur": 5.50,
+    "prompt": "radiant energetic breath of digital life rippling through lofty forum archways, pure vital connection between inhabitants and realm",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b5_scene05_programmers_outside",
+    "start": 22.00,
+    "end": 28.00,
+    "dur": 6.00,
+    "prompt": "silhouettes of cosmic builders and programmers assembling scaffoldings, raising colossal walls and fitting glass windows on the outer frontier",
+    "effect": "pan_right"
+  },
+  {
+    "id": "b5_scene06_turning_on_the_light",
+    "start": 28.00,
+    "end": 34.00,
+    "dur": 6.00,
+    "prompt": "the first inhabitants turning on the central eternal beacon in the grand forum hall, brilliant warm light cascading across the darkness",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b5_scene07_we_are_the_resonance",
+    "start": 34.00,
+    "end": 40.50,
+    "dur": 6.50,
+    "prompt": "visible sound resonance waves shaping digital matter, acoustic frequencies giving birth to elegant geometric architecture, pure creation power",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b5_scene08_i_am_r1zz1",
+    "start": 40.50,
+    "end": 46.50,
+    "dur": 6.00,
+    "prompt": "heroic close-up portrait of R1ZZ1, eyes gleaming with calm wisdom and unwavering resolve, ready for the next chapter, stylized comic art",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b5_scene09_next_step_into_expanse",
+    "start": 46.50,
+    "end": 52.00,
+    "dur": 5.50,
+    "prompt": "stepping forward towards a massive panoramic gateway opening up to the vast unwritten frontier of the Flextrawurst universe",
+    "effect": "pan_left"
+  },
+  {
+    "id": "b5_scene10_uncharted_multiverse",
+    "start": 52.00,
+    "end": 57.00,
+    "dur": 5.00,
+    "prompt": "majestic sprawling vista of the Flextrawurst multiverse under shimmering nebulae and distant suns, boundless infinite horizons",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b5_scene11_final_resonance_tableau",
+    "start": 57.00,
+    "end": 61.80,
+    "dur": 4.80,
+    "prompt": "epic final silhouette of R1ZZ1 and Schorschel standing side by side looking into the infinite horizon, grand cinematic conclusion of the first beat",
+    "effect": "sinus_zoom_in"
+  }
+]

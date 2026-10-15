@@ -1,0 +1,206 @@
+{
+  "main": {
+    "id": "c86707a9fc8c9455",
+    "type": "split",
+    "children": [
+      {
+        "id": "93ae932873dd3dec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4208305e7c1c2a12",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Neuer Tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "861688efc1c60336",
+    "type": "split",
+    "children": [
+      {
+        "id": "fd08432e1c2040d0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "46e42a183253878a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Dateiexplorer"
+            }
+          },
+          {
+            "id": "2b41cda31c9f7c77",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Suchen"
+            }
+          },
+          {
+            "id": "27ff0561cab74e74",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Lesezeichen"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "690212f7c8b6f966",
+    "type": "split",
+    "children": [
+      {
+        "id": "98afba73b664040e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75eac7cd1da59319",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "MDtalk/dak/dak-zZz.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Rückverweise"
+            }
+          },
+          {
+            "id": "790230df705e321a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "MDtalk/dak/dak-zZz.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Ausgehende Links"
+            }
+          },
+          {
+            "id": "0da45b2b66535ca9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "476e6728417908f6",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Alle Eigenschaften"
+            }
+          },
+          {
+            "id": "0dfed6b93356ba36",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "MDtalk/dak/dak-zZz.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Gliederung"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Schnellauswahl öffnen": false,
+      "graph:Graph-Ansicht öffnen": false,
+      "canvas:Neuen Canvas erstellen": false,
+      "daily-notes:Heutige Notiz öffnen": false,
+      "templates:Vorlage einfügen": false,
+      "command-palette:Befehlspalette öffnen": false,
+      "bases:Neue Base erstellen": false
+    }
+  },
+  "active": "46e42a183253878a",
+  "lastOpenFiles": [
+    "MDtalk/Codewesen/Unbenannt 4",
+    "MDtalk/Codewesen/Gedankenraush",
+    "MDtalk/Codewesen/Versuch-die-anderen-Codewesen-zu-beschreiben",
+    "MDtalk/Codewesen/Umweltbeschreibung",
+    "MDtalk/Codewesen/Selbstbeschreibung",
+    "MDtalk/dak/dak-Antworten",
+    "MDtalk/dak/dak-OUT.md",
+    "MDtalk/dak/dak-OUT",
+    "MDtalk/dak/dak-Geben.md",
+    "MDtalk/dak/dak-Geben",
+    "MDtalk/dak/dak-fragen.md",
+    "MDtalk/dak/dak-fragen",
+    "MDtalk/dak/dak-zZz.md",
+    "MDtalk/Codewesen",
+    "Codewesen",
+    "claude_test.md"
+  ]
+}

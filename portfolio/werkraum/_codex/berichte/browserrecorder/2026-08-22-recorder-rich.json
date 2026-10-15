@@ -1,0 +1,165 @@
+{
+  "metadata": {
+    "schema_version": "flextrawurst.projection-1",
+    "exporter_ui": "recorder-parity",
+    "provider_target": "chatgpt",
+    "provider_role_source": "explicit_dom_only",
+    "format": "json",
+    "selected_count": 2,
+    "total_count": 2,
+    "collection_id": "rich-demo",
+    "projection_job_id": "projection-mt3pocn4",
+    "exported_utc": "2026-08-22T01:40:22.912Z"
+  },
+  "messages": [
+    {
+      "id": "c1::message-1",
+      "crawl_id": "c1",
+      "ordinal": "1.1",
+      "title": "Rich demo",
+      "url": "https://example.test/chat",
+      "status": "captured",
+      "role": "user",
+      "say": "Frage",
+      "reasoning": null,
+      "rich_content": null,
+      "links": [],
+      "media": [],
+      "time": "2026-08-22T03:15:00Z",
+      "message_id": null,
+      "source_kind": "provider_message",
+      "provenance": {
+        "capture_id": "c1",
+        "evidence": {
+          "kind": "explicit_dom_role",
+          "selector": "[data-message-author-role], [data-testid^=\"conversation-turn-\"]",
+          "reasoning": null,
+          "rich_content": false
+        }
+      }
+    },
+    {
+      "id": "c1::message-a1",
+      "crawl_id": "c1",
+      "ordinal": "1.2",
+      "title": "Rich demo",
+      "url": "https://example.test/chat",
+      "status": "captured",
+      "role": "assistant",
+      "say": "AntwortHallo Welt Linkeinszweisichtbarer Beleg-Reasoning",
+      "reasoning": "sichtbarer Beleg-Reasoning",
+      "rich_content": {
+        "schema_version": "flextrawurst.rich-content-1",
+        "blocks": [
+          {
+            "type": "heading",
+            "level": 2,
+            "children": [
+              {
+                "type": "text",
+                "text": "Antwort"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Hallo "
+              },
+              {
+                "type": "strong",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Welt"
+                  }
+                ]
+              },
+              {
+                "type": "link",
+                "href": "https://example.test/link",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Link"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              {
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "eins"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "zwei"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "sichtbarer Beleg-Reasoning"
+              }
+            ]
+          }
+        ]
+      },
+      "links": [
+        {
+          "href": "https://example.test/link",
+          "text": "Link"
+        }
+      ],
+      "media": [
+        {
+          "type": "img",
+          "src": "https://example.test/a.png",
+          "alt": "Bild"
+        }
+      ],
+      "time": "2026-08-22T03:15:00Z",
+      "message_id": "a1",
+      "source_kind": "provider_message",
+      "provenance": {
+        "capture_id": "c1",
+        "evidence": {
+          "kind": "explicit_dom_role",
+          "selector": "[data-message-author-role], [data-testid^=\"conversation-turn-\"]",
+          "reasoning": {
+            "kind": "explicit_reasoning_dom",
+            "selector": "[data-reasoning|data-testid|aria-label]"
+          },
+          "rich_content": true
+        }
+      }
+    }
+  ]
+}

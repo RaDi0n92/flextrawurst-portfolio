@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema/approval.schema.json",
+  "schema_version": "1.0",
+  "id": "approval-antibibel-founding",
+  "term_id": "antibibel",
+  "decision": "accepted",
+  "rationale": {
+    "de": "Bereits vor der Open-Source-Schicht als erster verkörperter Wortkörper im offiziellen Register geführt.",
+    "en": "Already listed as a founding embodied term before the open-source layer.",
+    "es": "Ya figuraba como término fundador encarnado antes de la capa de código abierto."
+  },
+  "decided_by": "daniel",
+  "decision_date": "2026-07-26",
+  "decision_basis": "inherited-founding-canonical-state",
+  "evidence_refs": [
+    "raw/source/02_WORTKOERPER/00_WORTREGISTER.md",
+    "raw/decisions/2026-07-26-open-source-governance.txt"
+  ]
+}

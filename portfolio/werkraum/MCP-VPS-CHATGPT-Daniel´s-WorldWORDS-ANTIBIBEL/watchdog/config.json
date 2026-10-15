@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "status": "AVAILABLE_NOT_INSTALLED",
+  "observer": "polling",
+  "poll_interval_seconds": 3.0,
+  "debounce_seconds": 4.0,
+  "watch_roots": [
+    "00_START", "01_HERKUNFT", "02_WORTKOERPER", "03_KONZEPTE",
+    "04_PROPAGANDA", "05_SAMMELBECKEN", "06_GESPRAECHE", "07_HISTORY",
+    "08_MUTATIONEN", "09_QUELLEN", "sessions", "coordination", "ui_exports"
+  ],
+  "ignore_prefixes": [
+    ".obsidian", "MOC", "Verweise", "Zeitstrom", "truth_engine", "validation",
+    "watchdog/logs", "__pycache__"
+  ],
+  "pipeline": "tools/rebuild_all.py",
+  "systemd_install_authorized": false
+}

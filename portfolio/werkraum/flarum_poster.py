@@ -1,0 +1,366 @@
+#!/usr/bin/env python3
+"""
+Zentraler Flarum-Poster mit Mutex + Draft-System.
+
+Workflow für jedes Codewesen:
+  1. Liest Forum-Stand aus Vault (kein API-Call)
+  2. Schreibt Draft-Datei in eigenen Ordner
+  3. Ruft flarum_poster.poster() auf
+  4. Poster erwirbt globalen Lock, postet, archiviert Draft
+
+Lesen:  immer aus /root/werkraum/flarum/ (Vault, 5min-Sync)
+Schreiben: einmalig via REST API, max 1 gleichzeitig über alle Wesen
+"""
+
+import fcntl
+import json
+import sys
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+
+import flarum_api as api
+
+sys.path.insert(0, "/root/werkraum")
+import hauhau_client
+import llm_scheduler
+import flarum_post_sperre
+
+VAULT_FLARUM      = Path("/root/werkraum/flarum")
+CODEWESEN_BASE    = Path("/root/werkraum/codewesen")
+LOCK_FILE         = Path("/tmp/flarum_write.lock")
+DRAFT_TIMEOUT     = 120  # Sekunden — Draft älter als 2min gilt als veraltet
+TAGESZAEHLER_FILE = CODEWESEN_BASE / "_global" / "tageszaehler.json"
+COOLDOWN_SEKUNDEN = 0    # deaktiviert
+CHAT_AKTIV_FLAG   = Path("/tmp/dak_gord_chat_aktiv")
+
+
+def _letzter_post_file(name: str) -> Path:
+    return CODEWESEN_BASE / name / "letzter_post.json"
+
+
+def _tageszaehler_lesen() -> tuple[str, int]:
+    """Gibt (datum_str, count) zurück. Setzt auf 0 wenn neuer Tag."""
+    heute = datetime.now().strftime("%Y-%m-%d")
+    try:
+        data = json.loads(TAGESZAEHLER_FILE.read_text(encoding="utf-8"))
+        if data.get("datum") == heute:
+            return heute, int(data.get("count", 0))
+    except Exception:
+        pass
+    return heute, 0
+
+
+def _tageszaehler_erhoehen() -> int:
+    """Erhöht den Zähler um 1 und schreibt ihn zurück. Gibt neuen Wert zurück."""
+    heute, count = _tageszaehler_lesen()
+    count += 1
+    TAGESZAEHLER_FILE.parent.mkdir(parents=True, exist_ok=True)
+    TAGESZAEHLER_FILE.write_text(
+        json.dumps({"datum": heute, "count": count}, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    return count
+
+
+# ── Vault-Lesen ───────────────────────────────────────────────────────────────
+
+def lese_alle_diskussionen(max_n: int = 30) -> list[dict]:
+    """Liest Diskussionen aus Vault-Markdown — kein API/DB-Call."""
+    out = []
+    disk_dir = VAULT_FLARUM / "diskussionen"
+    if not disk_dir.exists():
+        return out
+    files = sorted(disk_dir.glob("*.md"), key=lambda f: f.name, reverse=True)
+    for f in files[:max_n]:
+        if f.name == "INDEX.md":
+            continue
+        text = f.read_text(encoding="utf-8", errors="replace")
+        meta = _parse_frontmatter(text)
+        meta["vault_path"] = str(f)
+        meta["inhalt_kurz"] = text[300:600]
+        out.append(meta)
+    return out
+
+
+def lese_diskussion(discussion_id: int) -> str:
+    """Liest eine Diskussion vollständig aus Vault."""
+    disk_dir = VAULT_FLARUM / "diskussionen"
+    for f in disk_dir.glob(f"{discussion_id:04d}_*.md"):
+        return f.read_text(encoding="utf-8", errors="replace")
+    return f"[nicht im Vault — ID {discussion_id}]"
+
+
+def lese_tags() -> list[dict]:
+    """Liest alle Tags aus Vault."""
+    tag_dir = VAULT_FLARUM / "tags"
+    if not tag_dir.exists():
+        return []
+    tags = []
+    for f in tag_dir.glob("*.md"):
+        if f.name == "INDEX.md":
+            continue
+        text = f.read_text(encoding="utf-8", errors="replace")
+        meta = _parse_frontmatter(text)
+        tags.append(meta)
+    return tags
+
+
+def lese_offene_posts(max_alter_min: int = 66) -> list[dict]:
+    """Findet Posts ohne Antwort eines Codewesens — aus Vault."""
+    diskussionen = lese_alle_diskussionen(50)
+    # Echte Flarum-usernames (nicht die internen Verzeichnis-IDs!) — 2026-07-06
+    # korrigiert: fuenf Wesen haben ein Zahlen-Praefix im echten Flarum-username,
+    # 4321 wurde am 2026-06-17 komplett zu "Resonanzknoten" umbenannt (username,
+    # nicht nur nickname). Siehe docs/systemdoku/08_codewesen_identitaeten.md.
+    codewesen_usernames = {
+        "namelessAI_1111_1234", "namelessAI_2222_1324", "namelessAI_3333_1423",
+        "namelessAI_4444_2341", "namelessAI_5555_3123", "Resonanzknoten",
+    }
+    offene = []
+    jetzt = datetime.now(timezone.utc)
+
+    for d in diskussionen:
+        disc_id = int(d.get("id", 0))
+        if not disc_id:
+            continue
+        text = lese_diskussion(disc_id)
+        letzter_post = _letzter_post_info(text)
+        if not letzter_post:
+            continue
+        if letzter_post["autor"] in codewesen_usernames:
+            continue  # letzter Post schon von Codewesen
+        alter_min = (jetzt - letzter_post["ts"]).total_seconds() / 60
+        if alter_min < max_alter_min:
+            offene.append({
+                "discussion_id": disc_id,
+                "titel": d.get("titel", "?"),
+                "letzter_autor": letzter_post["autor"],
+                "alter_min": round(alter_min, 1),
+            })
+    return offene
+
+
+def _parse_frontmatter(text: str) -> dict:
+    """Liest YAML-Frontmatter aus Markdown."""
+    if not text.startswith("---"):
+        return {}
+    end = text.find("---", 3)
+    if end == -1:
+        return {}
+    fm = {}
+    for line in text[3:end].splitlines():
+        if ":" in line:
+            k, _, v = line.partition(":")
+            fm[k.strip()] = v.strip()
+    return fm
+
+
+def _letzter_post_info(text: str) -> dict | None:
+    """Findet den letzten Post und dessen Autor + Zeitstempel aus Vault-Markdown."""
+    import re
+    matches = list(re.finditer(r"### Post #\d+ — (\S+) — (\d{4}-\d{2}-\d{2} \d{2}:\d{2})", text))
+    if not matches:
+        return None
+    m = matches[-1]
+    try:
+        ts = datetime.strptime(m.group(2), "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)
+        return {"autor": m.group(1), "ts": ts}
+    except Exception:
+        return None
+
+
+# ── Ready-Check — geteilt von allen Poster-Wegen (seit 2026-07-06) ───────────
+#
+# Daniels Wunsch: bevor irgendetwas tatsaechlich ins Forum geht, soll das
+# Wesen selbst noch einmal gefragt werden ob es damit zufrieden ist — "nicht
+# alles immer sofort", stattdessen im Hintergrund vorbereiten und erst bei
+# eigener Zustimmung absenden. Urspruenglich nur in codewesen_forum_neugier.py
+# gebaut, hierher verschoben damit ALLE Poster-Wege (Takt, Reaktion,
+# Engagement, Reflexion, Neugier) dieselbe eine Funktion nutzen.
+
+def pruefe_bereit(wesen: str, text: str) -> bool:
+    """Fragt das Wesen selbst: bist du mit diesem Entwurf zufrieden, soll er
+    raus? Antwort NUR JA/NEIN. Bei Fehlern konservativ False (nicht posten).
+
+    HOCH-Prioritaet im LLM-Scheduler (2026-07-07): rettet bereits fertig
+    generierte Inhalte vorm Wegwerfen — verdient Vorrang vor regulaeren
+    Hintergrund-Rhythmen. Vorher komplett unkoordiniert (kein Lock ueberhaupt),
+    obwohl dies der zeitkritischste Aufruf im ganzen System ist."""
+    while CHAT_AKTIV_FLAG.exists():
+        time.sleep(3)
+    try:
+        messages = [
+            {"role": "system", "content": (
+                f"Du bist {wesen}. Das hier ist ein Entwurf, den du gerade fuer das Forum "
+                "geschrieben hast. Bist du damit zufrieden, soll er so raus? "
+                "Antworte NUR mit dem einzigen Wort JA oder NEIN, keine Erklaerung."
+            )},
+            {"role": "user", "content": text},
+        ]
+        with llm_scheduler.LLMSlot(server="hintergrund", prioritaet=llm_scheduler.PRIO_HOCH,
+                                    rufer=f"ready_check:{wesen}", max_wartezeit=90, max_haltezeit=120):
+            antwort = hauhau_client.chat(messages, think=False, max_tokens=10, timeout=120.0).strip().upper()
+    except llm_scheduler.LLMSlotTimeout:
+        return False
+    except Exception:
+        return False
+    return antwort.startswith("JA")
+
+
+# ── Draft-System ──────────────────────────────────────────────────────────────
+
+def schreibe_draft(name: str, typ: str, inhalt: str,
+                   discussion_id: int | None = None,
+                   titel: str | None = None,
+                   tag_ids: list | None = None,
+                   erlaubt_trotz_sperre: bool = False) -> Path | None:
+    """
+    Schreibt einen fertigen Post-Entwurf in den eigenen Vault-Ordner.
+    typ: 'antwort' | 'neu'
+
+    Waehrend die Flarum-Post-Sperre aktiv ist (docs/2026-07-09_flarum_stopp_bericht.md):
+    schreibt gar keinen Entwurf, gibt None zurueck. Daniel: "das erzeugen von
+    entwuerfen fuer posts soll pausiert werden" -- vorher liefen reaktion/
+    batch_generator/agent weiter, erzeugten Entwuerfe, die dann bei jedem
+    poster()-Versuch nur an der Sperre abprallten und als fehler_draft_*.json
+    archiviert wurden (35 Stueck in ~3h, reine Verschwendung). Aufrufer muessen
+    None vertragen (kein poster()-Aufruf, einfach ueberspringen).
+
+    erlaubt_trotz_sperre: 2026-08-12, Daniel -- "ja nur fuer den chatweg" --
+    einzige vorgesehene Ausnahme ist codewesen_chat.fuehre_post_aus() (Daniel
+    ist live im Gespraech dabei), analog zur bestehenden Ausnahme in
+    codewesen_antwort_auf_daniel.py. Alle anderen Aufrufer (reaktion,
+    batch_generator, agent) lassen den Parameter auf False und bleiben
+    gesperrt.
+    """
+    if flarum_post_sperre.ist_gesperrt() and not erlaubt_trotz_sperre:
+        return None
+    ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    draft_dir = CODEWESEN_BASE / name / "entwuerfe"
+    draft_dir.mkdir(parents=True, exist_ok=True)
+
+    fname = f"draft_{int(time.time())}.json"
+    draft = {
+        "autor": name,
+        "erstellt": ts,
+        "typ": typ,
+        "inhalt": inhalt,
+        "discussion_id": discussion_id,
+        "titel": titel,
+        "tag_ids": tag_ids or [],
+    }
+    p = draft_dir / fname
+    p.write_text(json.dumps(draft, ensure_ascii=False, indent=2), encoding="utf-8")
+    return p
+
+
+def cooldown_verbleibend(name: str) -> int:
+    """Gibt verbleibende Cooldown-Sekunden für dieses Wesen zurück. 0 = frei."""
+    try:
+        lp = json.loads(_letzter_post_file(name).read_text(encoding="utf-8"))
+        seit = (datetime.now(timezone.utc) - datetime.fromisoformat(lp["ts"])).total_seconds()
+        remaining = COOLDOWN_SEKUNDEN - seit
+        return int(remaining) if remaining > 0 else 0
+    except Exception:
+        return 0
+
+
+def poster(draft_path: Path, bypass_cooldown: bool = False,
+           erlaubt_trotz_sperre: bool = False) -> dict:
+    """
+    Erwirbt globalen Mutex, postet Draft zu Flarum, archiviert Draft.
+    Gibt {"ok": True/False, "result": ...} zurück.
+    bypass_cooldown=True für Antwortpflicht — ignoriert den 11min-Cooldown.
+    erlaubt_trotz_sperre: muss zusaetzlich zum gleichnamigen Parameter bei
+    schreibe_draft() gesetzt werden -- api.post_reply()/start_discussion()
+    pruefen die Sperre selbst nochmal (eigener Choke-Point, siehe
+    flarum_api.py). Ohne diesen Parameter haette ein bei schreibe_draft()
+    erlaubter Draft hier trotzdem an der Sperre abgeprallt.
+    """
+    draft = json.loads(draft_path.read_text(encoding="utf-8"))
+    name = draft["autor"]
+
+    # Alter prüfen
+    erstellt = datetime.fromisoformat(draft["erstellt"].replace(" ", "T") + "+00:00")
+    alter = (datetime.now(timezone.utc) - erstellt).total_seconds()
+    if alter > DRAFT_TIMEOUT:
+        _archiviere_draft(draft_path, "veraltet")
+        return {"ok": False, "fehler": f"Draft zu alt ({int(alter)}s)"}
+
+    # Per-Wesen-Cooldown: max 1 Post alle 11 Minuten (bypass für Antwortpflicht)
+    if not bypass_cooldown:
+        try:
+            lp = json.loads(_letzter_post_file(name).read_text(encoding="utf-8"))
+            seit = (datetime.now(timezone.utc) - datetime.fromisoformat(lp["ts"])).total_seconds()
+            if seit < COOLDOWN_SEKUNDEN:
+                _archiviere_draft(draft_path, "fehler")
+                return {"ok": False, "fehler": f"Cooldown aktiv — noch {int(COOLDOWN_SEKUNDEN - seit)}s"}
+        except Exception:
+            pass  # Datei fehlt beim ersten Mal
+
+    lock_f = open(LOCK_FILE, "w")
+    try:
+        fcntl.flock(lock_f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        # Anderes Wesen postet gerade — kurz warten und nochmal
+        time.sleep(3)
+        try:
+            fcntl.flock(lock_f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            lock_f.close()
+            return {"ok": False, "fehler": "Flarum-Lock belegt — später nochmal"}
+
+    try:
+        letzter_fehler = None
+        for versuch in range(3):
+            try:
+                if draft["typ"] == "antwort":
+                    result = api.post_reply(
+                        discussion_id=int(draft["discussion_id"]),
+                        content=draft["inhalt"],
+                        token_or_username=name,
+                        erlaubt_trotz_sperre=erlaubt_trotz_sperre,
+                    )
+                elif draft["typ"] == "neu":
+                    result = api.start_discussion(
+                        title=draft["titel"],
+                        content=draft["inhalt"],
+                        tag_ids=draft["tag_ids"],
+                        token_or_username=name,
+                        erlaubt_trotz_sperre=erlaubt_trotz_sperre,
+                    )
+                else:
+                    return {"ok": False, "fehler": f"Unbekannter Draft-Typ: {draft['typ']}"}
+
+                _archiviere_draft(draft_path, "gepostet")
+                tagescount = _tageszaehler_erhoehen()
+                lp_file = _letzter_post_file(name)
+                lp_file.parent.mkdir(parents=True, exist_ok=True)
+                lp_file.write_text(
+                    json.dumps({"ts": datetime.now(timezone.utc).isoformat(), "autor": name}),
+                    encoding="utf-8",
+                )
+                return {"ok": True, "result": result, "tagescount": tagescount}
+
+            except Exception as e:
+                letzter_fehler = e
+                if versuch < 2:
+                    time.sleep(5 * (versuch + 1))
+
+        _archiviere_draft(draft_path, "fehler")
+        return {"ok": False, "fehler": str(letzter_fehler)}
+
+    finally:
+        fcntl.flock(lock_f, fcntl.LOCK_UN)
+        lock_f.close()
+
+
+def _archiviere_draft(draft_path: Path, status: str):
+    archiv = draft_path.parent / "archiv"
+    archiv.mkdir(exist_ok=True)
+    ziel = archiv / f"{status}_{draft_path.name}"
+    try:
+        draft_path.rename(ziel)
+    except Exception:
+        pass

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "augen-haende-bridge"
+version = "0.1.0.dev0"
+description = "Greenfield core contracts for the Augen und Hände bridge"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+transport = ["websockets==16.1.1"]
+terminal = ["pyte==0.8.2"]
+medien = ["opencv-python-headless", "sounddevice", "pillow"]
+
+[tool.augen-haende]
+visible-surface = "surface:windows:bridge"

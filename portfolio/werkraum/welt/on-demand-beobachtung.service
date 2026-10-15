@@ -1,0 +1,18 @@
+[Unit]
+Description=On-Demand-Beobachtung — startet/stoppt Chromium fuer alle 7 Wesen nur bei aktiver Beobachtungs-Sitzung (Task 8, 2026-07-31)
+After=network.target postgresql.service welt-api.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/werkraum/welt
+EnvironmentFile=/root/werkraum/.agent/flextrawurst-db.env
+ExecStart=/root/werkraum/venv/bin/python3 /root/werkraum/welt/on_demand_beobachtung.py
+Restart=always
+RestartSec=5
+StandardOutput=append:/root/werkraum/logs/on-demand-beobachtung.log
+StandardError=append:/root/werkraum/logs/on-demand-beobachtung.log
+
+[Install]
+WantedBy=multi-user.target

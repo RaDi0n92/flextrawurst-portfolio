@@ -1,0 +1,158 @@
+{
+  "url": "chrome-extension://molhhdlenmhokfibmbojpapccaidfepi/collection_workspace.html?collection_id=collection-2026-08-22T133137133Z-c3d6a185",
+  "layout": {
+    "header_position": "relative",
+    "header_height": 269.375,
+    "scroll_height": 3068,
+    "viewport": 450
+  },
+  "results": [
+    {
+      "id": "parityAll",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · 2 vollständig · 4 Transferplane · Rohdaten unverändert",
+      "page_count": 0
+    },
+    {
+      "id": "parityQuestions",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · 2 vollständig · 4 Transferplane · Rohdaten unverändert",
+      "page_count": 0
+    },
+    {
+      "id": "parityAnswers",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · 2 vollständig · 4 Transferplane · Rohdaten unverändert",
+      "page_count": 0
+    },
+    {
+      "id": "parityInvert",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · 2 vollständig · 4 Transferplane · Rohdaten unverändert",
+      "page_count": 0
+    },
+    {
+      "id": "parityNone",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · 2 vollständig · 4 Transferplane · Rohdaten unverändert",
+      "page_count": 0
+    },
+    {
+      "id": "parityServerRead",
+      "result": "clicked",
+      "live": "Servermanifest-Readback abgeschlossen · 2 Manifest(e) vom VPS gelesen · lokale IndexedDB ergänzt.",
+      "page_count": 0
+    },
+    {
+      "id": "parityExport",
+      "result": "disabled",
+      "text": "MARKDOWN exportieren"
+    },
+    {
+      "id": "downloadCollectionSource",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · 2 vollständig · 4 Transferplane · Rohdaten unverändert",
+      "page_count": 0
+    },
+    {
+      "id": "downloadCollectionMarkdown",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · 2 vollständig · 4 Transferplane · Rohdaten unverändert",
+      "page_count": 0
+    },
+    {
+      "id": "downloadReplica",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "exportWorkspace",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "downloadMarkdown",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "saveTabDraft",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "markReadBack",
+      "result": "disabled",
+      "text": "Rücklese bestätigen"
+    },
+    {
+      "id": "verifyRaw",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "recordVisualReview",
+      "result": "disabled",
+      "text": ""
+    },
+    {
+      "id": "createTab",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "renameTab",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "assignSnapshot",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "createPlan",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "createPdf",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "openPrintView",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "createCollectionPdf",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    },
+    {
+      "id": "downloadCollectionPdf",
+      "result": "clicked",
+      "live": "Live · 2 Snapshots · Replica zuletzt rückgelesen",
+      "page_count": 0
+    }
+  ],
+  "dialogs": [],
+  "bottom": {
+    "y": 2296,
+    "max": 2622,
+    "bottom_visible": false
+  }
+}

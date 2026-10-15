@@ -1,0 +1,29 @@
+manifest_version: 1
+task: "Daniels Bitte: den gelben Mobilbagger aus der Referenz sehr groß in den Schrottplatz bringen"
+created_at: "2026-09-05T14:10:31Z"
+reference_revision: "ref-20260905-mobilbagger-01"
+references:
+  - id: ref-01
+    source: "/config/Desktop/VPS_ROOT/werkraum/refferenzen/Schrottplatz/file_00000000e7e08243b75be7fd407a390c.png"
+    provenance: "Von Daniel im Chat als nächste Quest bereitgestellt"
+    priority: 1
+    controls:
+      composition: "Mehransicht eines gelben Mobilbaggers: Front, Rückseite, beide Seiten, Draufsicht und Kabinendrehung"
+      silhouette: "Kompakter Radbagger mit großer gelber Kabine, Baggerarm links, Gabel vorne und Magnetkran rechts"
+      proportions: "Fahrwerk breit und schwer; Kabine mittig; Arbeitsarme deutlich länger als der Fahrzeugkörper"
+      camera: "Studioartige Produktansichten; die Einzelsilhouetten sind klar lesbar"
+      palette: "Gelb/ocker als Hauptfarbe, dunkles Graphit und rostiges Metall, grauer Hintergrund"
+      materials: "Metallische, gebrauchte Baumaschinen-Oberflächen; Reifen schwarz und grob profiliert"
+      lighting: "Weiches Studio-Licht mit klaren Kontaktschatten"
+      negative_space: "Arbeitsarme und Anbaugeräte brauchen sichtbaren Raum um das Fahrzeug"
+      motion: "Kabinendrehung 360 Grad ist ausdrücklich beschriftet; konkrete Animationskurve unknown"
+      non_negotiable:
+        - "Der Mobilbagger soll im Schrottplatz sehr groß und als Hauptobjekt lesbar sein"
+        - "Gelbe Baumaschinen-Silhouette mit Radfahrwerk"
+        - "Gabelstapler-Anmutung vorne"
+        - "Baggerarm und Magnetkran als erkennbare Anbauarme"
+    tolerance:
+      framing: "Hauptobjekt nimmt im Schrottplatz-Hauptbild sichtbar den Vordergrund ein; genaue Prozentzahl unknown"
+      placement: "Sehr groß gegenüber bestehenden Schrottplatz-Requisiten; genaue Blender-Einheiten unknown"
+      color: "Gelb/ocker, Graphit und rostiges Metall müssen visuell erhalten bleiben"
+      detail: "Gabel, Kabine, Räder, Baggerarm, Magnetkran und mindestens eine klare Arbeitsrichtung"

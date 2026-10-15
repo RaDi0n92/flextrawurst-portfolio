@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema/approval.schema.json",
+  "schema_version": "1.0",
+  "id": "approval-worldwords-founding",
+  "term_id": "worldwords",
+  "decision": "accepted",
+  "rationale": {
+    "de": "Bereits als verkörperter Projektbegriff im Gründungsregister geführt.",
+    "en": "Already present as an embodied project term in the founding registry.",
+    "es": "Ya presente como término de proyecto encarnado en el registro fundador."
+  },
+  "decided_by": "daniel",
+  "decision_date": "2026-07-26",
+  "decision_basis": "inherited-founding-canonical-state",
+  "evidence_refs": [
+    "raw/source/02_WORTKOERPER/00_WORTREGISTER.md",
+    "raw/decisions/2026-07-26-open-source-governance.txt"
+  ]
+}

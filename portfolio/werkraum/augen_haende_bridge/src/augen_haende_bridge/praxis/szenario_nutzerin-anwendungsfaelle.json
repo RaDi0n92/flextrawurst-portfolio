@@ -1,0 +1,435 @@
+{
+  "id": "nutzerin-anwendungsfaelle-1",
+  "titel": "Eine echte Nutzerin erledigt Anwendungsfälle mit der Bridge, ohne Skripte und ohne Abkürzungen",
+  "rollen": "a",
+  "contract_version": 2,
+  "schritte": [
+    {
+      "nr": 1,
+      "teil": "1 Notiz schreiben und speichern",
+      "ziel": "Texteditor (Kate), leeres Dokument",
+      "titel": "Notiz schreiben",
+      "pruefe": "Ein Nutzer kann in den leeren Editor eine kurze Notiz schreiben",
+      "mache": "ins Textfeld klicken, zwei bis drei Sätze tippen",
+      "erwarte": "Die Notiz steht im Editor",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "Schreib so, wie du an einem normalen Tag eine Notiz schreiben würdest.",
+      "belege": [
+        {
+          "id": "s1-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s1-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "tippen",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 2,
+      "teil": "1 Notiz schreiben und speichern",
+      "ziel": "Texteditor (Kate)",
+      "titel": "Notiz speichern",
+      "pruefe": "Ein Nutzer speichert die Notiz unter einem Namen",
+      "mache": "Strg+S drücken, im Dialog den Namen notiz.txt tippen (Ordner Nutzerin-Test im Home), Enter",
+      "erwarte": "Der Titel zeigt den Dateinamen, kein Stern für ungespeichert",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s2-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "kombi": "strg+s",
+            "ok": true
+          }
+        },
+        {
+          "id": "s2-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "tippen",
+            "ok": true
+          }
+        },
+        {
+          "id": "s2-3",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "kombi": [
+              "enter",
+              "return"
+            ],
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 3,
+      "teil": "1 Notiz schreiben und speichern",
+      "ziel": "Texteditor (Kate)",
+      "titel": "Abnahme der Notiz",
+      "pruefe": "Würde ein Nutzer die Notiz als gespeichert und fertig ansehen?",
+      "mache": "hinsehen und mit eigenen Worten beschreiben, was zu sehen ist",
+      "erwarte": "Text und Dateiname stimmen mit dem überein, was getippt wurde",
+      "evidenz": [
+        "sehen"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s3-1",
+          "role": "handelnder",
+          "match": {
+            "command": "see",
+            "ok": true,
+            "capture_fresh": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 4,
+      "teil": "2 Im Browser nachschlagen",
+      "ziel": "Browser (Chromium), Startseite",
+      "titel": "Adresse eingeben",
+      "pruefe": "Ein Nutzer ruft eine Seite über die Adressleiste auf",
+      "mache": "in die Adressleiste klicken, file:///config/Nutzerin-Test/start.html tippen, Enter",
+      "erwarte": "Die Seite lädt und ist lesbar",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s4-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s4-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "tippen",
+            "ok": true
+          }
+        },
+        {
+          "id": "s4-3",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "kombi": [
+              "enter",
+              "return"
+            ],
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 5,
+      "teil": "2 Im Browser nachschlagen",
+      "ziel": "Browser (Chromium)",
+      "titel": "Einem Link folgen",
+      "pruefe": "Ein Nutzer sucht den Link zu den Bergen der Alpen und folgt ihm, um die Höhe des Mont Blanc zu erfahren",
+      "mache": "den passenden Link suchen (bei Bedarf scrollen) und anklicken",
+      "erwarte": "Die Seite „Berge der Alpen“ öffnet sich",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "Scroll mit dem Mausrad, wenn der Link nicht sofort zu sehen ist.",
+      "belege": [
+        {
+          "id": "s5-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 6,
+      "teil": "2 Im Browser nachschlagen",
+      "ziel": "Browser (Chromium)",
+      "titel": "Abnahme des Nachschlagens",
+      "pruefe": "Hat der Nutzer die gesuchte Information gefunden?",
+      "mache": "hinsehen und die gefundene Information in eigenen Worten wiedergeben",
+      "erwarte": "Die Information ist sichtbar und stimmt",
+      "evidenz": [
+        "sehen"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s6-1",
+          "role": "handelnder",
+          "match": {
+            "command": "see",
+            "ok": true,
+            "capture_fresh": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 7,
+      "teil": "3 Datei finden und öffnen",
+      "ziel": "Dateimanager (Dolphin)",
+      "titel": "Zum Ordner navigieren",
+      "pruefe": "Ein Nutzer findet einen Ordner und öffnet ihn",
+      "mache": "den Ordner Nutzerin-Test suchen und per Doppelklick öffnen",
+      "erwarte": "Der Ordnerinhalt ist sichtbar",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s7-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "doppelklick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 8,
+      "teil": "3 Datei finden und öffnen",
+      "ziel": "Dateimanager (Dolphin)",
+      "titel": "Datei öffnen",
+      "pruefe": "Ein Nutzer öffnet eine Datei aus der Liste",
+      "mache": "die Datei notiz.txt per Doppelklick öffnen",
+      "erwarte": "Die Datei öffnet sich in einem Editor",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s8-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "doppelklick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 9,
+      "teil": "3 Datei finden und öffnen",
+      "ziel": "Dateimanager (Dolphin)",
+      "titel": "Abnahme des Öffnens",
+      "pruefe": "Hat sich die richtige Datei geöffnet?",
+      "mache": "hinsehen und beschreiben, was die Datei enthält",
+      "erwarte": "Der Inhalt passt zur gespeicherten Notiz",
+      "evidenz": [
+        "sehen"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s9-1",
+          "role": "handelnder",
+          "match": {
+            "command": "see",
+            "ok": true,
+            "capture_fresh": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 10,
+      "teil": "4 Mit der Bridge zusammenarbeiten",
+      "ziel": "Chat der Bridge",
+      "titel": "Empfänger wählen",
+      "pruefe": "Ein Nutzer wählt im Chat, wer die Nachricht bekommt",
+      "mache": "auf „An: …“ klicken, bis der Empfänger Claude-Host heißt",
+      "erwarte": "Im Chat steht der gewählte Empfänger",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s10-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 11,
+      "teil": "4 Mit der Bridge zusammenarbeiten",
+      "ziel": "Chat der Bridge",
+      "titel": "Nachricht senden",
+      "pruefe": "Ein Nutzer schreibt eine Nachricht und schickt sie ab",
+      "mache": "ins Eingabefeld klicken, Text tippen, Enter",
+      "erwarte": "Die Nachricht steht im Chat und im Terminal des Empfängers",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s11-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s11-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "tippen",
+            "ok": true
+          }
+        },
+        {
+          "id": "s11-3",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "kombi": [
+              "enter",
+              "return"
+            ],
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 12,
+      "teil": "4 Mit der Bridge zusammenarbeiten",
+      "ziel": "Chat der Bridge",
+      "titel": "Antwort lesen",
+      "pruefe": "Ein Nutzer wartet auf die Antwort und liest sie",
+      "mache": "hinsehen, bis Claude-Host geantwortet hat",
+      "erwarte": "Eine Antwort steht im Chat",
+      "evidenz": [
+        "sehen"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s12-1",
+          "role": "handelnder",
+          "match": {
+            "command": "see",
+            "ok": true,
+            "capture_fresh": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 13,
+      "teil": "4 Mit der Bridge zusammenarbeiten",
+      "ziel": "Raute des Agenten (Menü)",
+      "titel": "Raute einrichten",
+      "pruefe": "Ein Nutzer ändert die Farbe seiner Raute über das Menü",
+      "mache": "Rechtsklick auf die Raute, „Farbe wählen …“",
+      "erwarte": "Die Raute hat eine andere Farbe",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s13-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht.",
+      "braucht": "menue_freigabe"
+    },
+    {
+      "nr": 14,
+      "teil": "5 Etwas zeigen",
+      "ziel": "beliebiges gebundenes Fenster",
+      "titel": "Auf etwas zeigen",
+      "pruefe": "Ein Nutzer zeigt einem anderen auf eine Stelle im Bild",
+      "mache": "mit der Zeigegeste auf eine Stelle zeigen und dem Partner sagen, wohin",
+      "erwarte": "Der Partner nennt die gezeigte Stelle richtig",
+      "evidenz": [
+        "weltdom"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s14-1",
+          "role": "handelnder",
+          "match": {
+            "command": "weltdom",
+            "befehl": "zeige",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnde und Zuschauer prüfen am jeweils frischen Bild, ob ein Nutzer das als erledigt ansehen würde; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    }
+  ]
+}

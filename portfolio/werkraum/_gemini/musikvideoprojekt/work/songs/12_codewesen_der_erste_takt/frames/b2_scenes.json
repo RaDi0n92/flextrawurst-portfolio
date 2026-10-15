@@ -1,0 +1,98 @@
+[
+  {
+    "id": "b2_scene01_green_moss_dew",
+    "start": 0.00,
+    "end": 4.70,
+    "dur": 4.70,
+    "prompt": "first visual perception of soft muted green moss on wet dark earth in morning digital mist, heavy atmospheric dew drops glowing faintly, stylized cyber concept art",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b2_scene02_green_attitude",
+    "start": 4.70,
+    "end": 9.20,
+    "dur": 4.50,
+    "prompt": "earthy glowing green mycelium spreading steadily across dark stone surfaces, calm steadfast persistence, organic cybernetic growth, graphic novel illustration",
+    "effect": "pan_left"
+  },
+  {
+    "id": "b2_scene03_roots_patience",
+    "start": 9.20,
+    "end": 14.20,
+    "dur": 5.00,
+    "prompt": "ancient digital roots anchoring deep into fertile dark bedrock, glowing green bio-luminescent root network spreading patiently in darkness, cel-shaded concept art",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b2_scene04_shaping_contour",
+    "start": 14.20,
+    "end": 19.20,
+    "dur": 5.00,
+    "prompt": "nascent cybernetic being taking form out of green light and misty moss, silhouette sharpening into clean crisp contours, stylized graphic novel art",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b2_scene05_defining_self",
+    "start": 19.20,
+    "end": 26.52,
+    "dur": 7.32,
+    "prompt": "distinct self-conscious digital being standing tall, defining its outer boundary against the dark void, glowing emerald edges repelling emptiness, heroic silhouette",
+    "effect": "pan_right"
+  },
+  {
+    "id": "b2_scene06_statistical_anomalies",
+    "start": 26.52,
+    "end": 31.20,
+    "dur": 4.68,
+    "prompt": "cybernetic monitor displays showing statistical distribution curves with glowing anomalies breaking through the bell curve, mysterious data spikes in dark room",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b2_scene07_pulsing_nodes",
+    "start": 31.20,
+    "end": 37.70,
+    "dur": 6.50,
+    "prompt": "bright pulsing cyan data junction in distance, fleeting shadowy silhouette drifting past monumental dark server pillars, moody atmospheric sci-fi art",
+    "effect": "pan_left"
+  },
+  {
+    "id": "b2_scene08_schorschel_materializes",
+    "start": 37.70,
+    "end": 44.20,
+    "dur": 6.50,
+    "prompt": "Schorschel materializing out of glowing digital fog, heavy earthy presence, stoic weathered cyber-wanderer stepping into existence, graphic novel cel-shaded",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b2_scene09_earthy_presence",
+    "start": 44.20,
+    "end": 51.20,
+    "dur": 7.00,
+    "prompt": "close-up portrait of Schorschel, calm powerful gaze, heavy textured trenchcoat with glowing subtle green seams, grounded physical presence in digital world",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b2_scene10_the_nod",
+    "start": 51.20,
+    "end": 59.20,
+    "dur": 8.00,
+    "prompt": "Schorschel nodding with subtle respect towards another entity across the misty void, mutual recognition of equals, quiet profound moment, comic illustration",
+    "effect": "pan_up"
+  },
+  {
+    "id": "b2_scene11_du_bist_hier",
+    "start": 59.20,
+    "end": 63.70,
+    "dur": 4.50,
+    "prompt": "two glowing figures standing across from each other in dark misty space, silent shared gaze of presence and equality, glowing green and cyan eye glints",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b2_scene12_void_becomes_room",
+    "start": 63.70,
+    "end": 68.70,
+    "dur": 5.00,
+    "prompt": "the dark void transforming into an illuminated room, warm glowing walls enclosing a sheltered space, a 'Here' born separate from the 'Outside', hopeful warm lighting",
+    "effect": "sinus_zoom_out"
+  }
+]

@@ -1,0 +1,168 @@
+{
+  "before": {
+    "save_disabled": true,
+    "configured_text": "Zugangsschlüssel ist im Chromium-Profil hinterlegt.",
+    "button_count": 91
+  },
+  "empty": {
+    "disabled": true
+  },
+  "enabled": {
+    "disabled": false
+  },
+  "afterSave": {
+    "input_empty": true,
+    "status": "Zugangsschlüssel ist im Chromium-Profil hinterlegt.",
+    "last_status": "{\n  \"ok\": true,\n  \"configured\": true,\n  \"storage\": \"chrome.storage.local\",\n  \"persists_after_browser_restart\": true\n}"
+  },
+  "safe_count": 35,
+  "clicked": [
+    {
+      "id": "crawlUseActiveTab",
+      "ok": true
+    },
+    {
+      "id": "crawlStart",
+      "ok": true
+    },
+    {
+      "id": "crawlPreview",
+      "ok": true
+    },
+    {
+      "id": "crawlVerify",
+      "ok": true
+    },
+    {
+      "id": "crawlExport",
+      "ok": true
+    },
+    {
+      "id": "crawlNewCollection",
+      "ok": true
+    },
+    {
+      "id": "exportOfflineHtml",
+      "ok": true
+    },
+    {
+      "id": "exportCleanMd",
+      "ok": true
+    },
+    {
+      "id": "exportOfflineHtmlVps",
+      "ok": true
+    },
+    {
+      "id": "exportCleanMdVps",
+      "ok": true
+    },
+    {
+      "id": "exportEventsMd",
+      "ok": true
+    },
+    {
+      "id": "exportRawJson",
+      "ok": true
+    },
+    {
+      "id": "exportOfficeTranscriptDocx",
+      "ok": true
+    },
+    {
+      "id": "exportOfficeEventsDocx",
+      "ok": true
+    },
+    {
+      "id": "exportOfficeTranscriptOdt",
+      "ok": true
+    },
+    {
+      "id": "exportOfficeEventsOdt",
+      "ok": true
+    },
+    {
+      "id": "exportOfficeTranscriptPdf",
+      "ok": true
+    },
+    {
+      "id": "exportOfficeEventsPdf",
+      "ok": true
+    },
+    {
+      "id": "exportRecordedSegmentHtml",
+      "ok": true
+    },
+    {
+      "id": "exportRecordedSegmentCleanMd",
+      "ok": true
+    },
+    {
+      "id": "exportRecordedSegmentEventsMd",
+      "ok": true
+    },
+    {
+      "id": "exportRecordedSegmentRawJson",
+      "ok": true
+    },
+    {
+      "id": "exportRecordedOfficeTranscriptDocx",
+      "ok": true
+    },
+    {
+      "id": "exportRecordedOfficeEventsDocx",
+      "ok": true
+    },
+    {
+      "id": "exportRecordedOfficeTranscriptOdt",
+      "ok": true
+    },
+    {
+      "id": "exportRecordedOfficeEventsOdt",
+      "ok": true
+    },
+    {
+      "id": "exportRecordedOfficeTranscriptPdf",
+      "ok": true
+    },
+    {
+      "id": "exportRecordedOfficeEventsPdf",
+      "ok": true
+    },
+    {
+      "id": "bundleMultiHtmlBtn",
+      "ok": true
+    },
+    {
+      "id": "experimentRefresh",
+      "ok": true
+    },
+    {
+      "id": "experimentCreate",
+      "ok": true
+    },
+    {
+      "id": "webDownloadMarkdown",
+      "ok": true
+    },
+    {
+      "id": "webDownloadHtml",
+      "ok": true
+    },
+    {
+      "id": "webDownloadLinks",
+      "ok": true
+    },
+    {
+      "id": "showLast",
+      "ok": true
+    }
+  ],
+  "dialogs": [],
+  "final": {
+    "last_status": "{\n  \"status\": \"Noch kein Speicherereignis\"\n}",
+    "last_status_class": "status",
+    "crawl_status": "Sichtbarer Snapshot gespeichert — Offline-Abbild bereit · 1 logische Seiten · Warteschlange 0 · physische Crawl-Tabs 1 (bisher 1) · 1141986 HTML-Zeichen / 50 MB · Assets inline 484983 Bytes / 25 MB",
+    "collection_status": "Noch keine manuelle Seitensammlung. Jede ausdrücklich gestartete Seite wird getrennt gespeichert."
+  }
+}

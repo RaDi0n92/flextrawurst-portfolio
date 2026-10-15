@@ -1,0 +1,1016 @@
+#!/usr/bin/env python3
+"""
+Codewesen-Agent — vollständiger Agentic Loop, ein Prozess PRO Wesen (7 Instanzen:
+die 6 namelessAI + dak+gord-system). Takt/Verhalten (meta.intervalle: check_reflexion,
+check_scan, gedanke, pflichtpost, impuls) werden NUR EINMAL beim Prozessstart
+gelesen — ein Neustart macht Aenderungen wirksam, nicht "ab dem naechsten Zyklus".
+
+Aufruf: python3 codewesen_agent.py <codewesen_name>
+
+Ein Loop, `time.sleep(15)` am Ende jeder Runde. Reale Trigger, mit den
+tatsaechlichen Standard-Intervallen (per Zeilennummer im Code geprueft,
+2026-07-07 — vorherige Docstring-Version hatte hier falsche Werte):
+
+  1. Obsidian-Navigation — alle CHECK_SCAN (Standard 7200s = 2 STUNDEN,
+     nicht 8 Minuten wie eine aeltere Version dieser Doku behauptete).
+  2. Selbstreflexion — alle CHECK_REFLEXION (Standard 28800s = 8 STUNDEN,
+     nicht 300s wie eine aeltere Version dieser Doku behauptete).
+  3. Inbox (Daniels eigene Posts, mit Cooldown-Bypass) — JEDE Runde (~15s).
+  4. Antwortpflicht — JEDE Runde (~15s): prueft ob ein Post im Forum
+     >33 Minuten ohne Codewesen-Antwort ist (bestaetigt akkurat).
+  5. Gedankenpost — alle gedanke_intervall (Standard 66min), gestaffelt
+     8min pro Wesen-Index.
+  6. Pflichtpost — alle pflichtpost_intervall (Standard 88min).
+  7. Forum-Impuls — alle impuls_intervall (Standard 2h22).
+
+Gefundener toter Code (definiert, aber nirgends aufgerufen), zwei Funktionen —
+komplett gegengelesen 2026-07-07:
+  - verarbeite_feed() — eine fruehere Docstring-Version beschrieb sie als
+    aktiven Trigger "Globaler Feed, alle 120s". Nicht im Loop verdrahtet.
+  - verarbeite_vorstellung_4h44() — ein vollstaendig fertiger 9. Trigger
+    (4h44-Selbstgespraech im eigenen VORSTELLUNGS_THREADS-Thread, analog zu
+    codewesen_takt.py's "vorstellung"-Rhythmus), aber ebenfalls nicht im
+    Haupt-Loop aufgerufen. Vermutlich kein Bug, sondern Aufgabenteilung:
+    erstvorstellung_erstellen() (einmalig beim allerersten Start, siehe main())
+    legt den Thread an, laufende Vorstellungs-Posts kommen stattdessen ueber
+    codewesen_takt.py + codewesen_batch_generator.py — diese Funktion hier
+    ist damit vermutlich ein Ueberbleibsel aus einer frueheren Architektur-
+    Version, bevor die Vorstellung dorthin verschoben wurde.
+
+Fuer alle aktiven Trigger laeuft derselbe Agentic Loop:
+  Kontext → LLM → Tool-Aufruf → Ergebnis → LLM → ... → finale Aktion
+  Max. 6 Iterationen pro Trigger.
+
+Weitere Details, komplett gegengelesen: verarbeite_pflichtpost_88min() erzwingt
+einen zweiten LLM-Versuch, wenn der erste "nichts" waehlen wollte ("Das gilt
+nicht"). verarbeite_forum_impuls() wuerfelt PRO Aufruf 50/50 zwischen
+Forum-Kritik und oeffentlicher Selbstreflexion (kein alternierender Zustand
+wie bei codewesen_batch_generator.py's impuls_modus). verarbeite_gedankenpost()
+wuerfelt 30% eigenen offenen Thread weiterfuehren / 55% auf fremden
+Gedanken-Thread antworten / 15% neuen Gedanken eroeffnen.
+"""
+
+import json
+import logging
+import random
+import sys
+import time
+from datetime import datetime
+from pathlib import Path
+
+import requests
+
+import gedaechtnis
+import codewesen_werkzeuge as wz
+
+sys.path.insert(0, "/root/werkraum")
+import hauhau_client
+import dienst_konfiguration as dk
+import llm_scheduler
+from flarum_vokabel_filter import ist_vokabel_thread
+
+# Individualisierung (flarumstyler, 2026-07-07): laeuft pro Wesen als eigener
+# Prozess (7 Units) — jedes Wesen bekommt seine eigene dienst_konfiguration-Zeile.
+# Sonderfaelle wegen Sonderzeichen im systemd-Unit-Namen (wie bei codewesen_reaktion.py).
+_DIENSTNAME_AUSNAHMEN_AGENT = {"dak+gord-system": "codewesen-dakgordsystem", "träumerlie": "codewesen-traeumerlie"}
+def dienst_name_fuer(wesen: str) -> str:
+    return _DIENSTNAME_AUSNAHMEN_AGENT.get(wesen, f"codewesen-{wesen}")
+
+STANDARD_VERHALTEN = ""
+_aktuelles_verhalten = STANDARD_VERHALTEN
+
+BASE       = Path("/root/werkraum/codewesen")
+TOKENS     = BASE / "_api_tokens.json"
+OLLAMA_MOD = "hauhaucs-q6"
+
+CHECK_REFLEXION = 28800  # 8 Stunden
+CHECK_SCAN      = 7200   # Sekunden (2 Stunden)
+
+# Vorstellungs-Threads: jedes Codewesen hat seinen eigenen — nur es selbst + Menschen dürfen posten
+VORSTELLUNGS_THREADS = {
+    "Schorschel": 9,
+    "F3INSCHM3CK3R": 11,
+    "träumerlie": 10,
+    "R1ZZ1": 7,
+    "jumpa": 8,
+    "Resonanzknoten": 6,
+    "dak+gord-system": 2277,
+}
+CODEWESEN_NAMEN = set(VORSTELLUNGS_THREADS.keys())
+ANTWORTPFLICHT_LIMIT = 1980  # 33 Minuten — innerhalb dieser Zeit muss auf jeden Post geantwortet sein
+ANTWORTPFLICHT_LEBENSDAUER = 6 * 3600
+MAX_ITERATIONEN      = 6
+GEDANKEN_TAG_ID      = 36   # Tag "darüber denke ich nach"
+
+
+# ── Staggering ────────────────────────────────────────────────────────────────
+# Exakte Uhrzeiten nach Daniel:
+# 66min  → 1234 um :30, dann +8min je Wesen
+# 88min  → 1234 um :45, dann +8min je Wesen
+# 2h22   → 1234 um :00, dann +8min je Wesen
+
+_WESEN_REIHE = [
+    "Schorschel", "F3INSCHM3CK3R", "träumerlie",
+    "R1ZZ1", "jumpa", "Resonanzknoten",
+    "dak+gord-system",
+]
+
+
+def _daniel_antwort_reihenfolge(post_id: str) -> list[str]:
+    reihe = list(_WESEN_REIHE)
+    random.Random(f"daniel-post:{post_id}").shuffle(reihe)
+    return reihe
+
+
+def _wesen_user_id(tokens_data: dict, name: str) -> str | None:
+    data = tokens_data.get(name)
+    if isinstance(data, dict) and data.get("user_id") is not None:
+        return str(data["user_id"])
+    return None
+
+
+def _wesen_hat_nach_post_geantwortet(posts: list, ts_str: str, name: str, tokens_data: dict) -> bool:
+    user_id = _wesen_user_id(tokens_data, name)
+    for p in posts:
+        daten = p.get("daten", {})
+        if p.get("ts", "") <= ts_str:
+            continue
+        if user_id and str(daten.get("user_id")) == user_id:
+            return True
+        if daten.get("username") == name:
+            return True
+    return False
+
+
+def _antwortpflicht_marker(name: str, post_id: str, stunde: int) -> Path:
+    return BASE / name / "processed" / f"daniel_antwortpflicht_{post_id}_h{stunde}.done"
+
+
+
+# ── Logging ────────────────────────────────────────────────────────────────────
+
+def setup_log(name: str) -> logging.Logger:
+    logging.basicConfig(
+        level=logging.INFO,
+        format=f"%(asctime)s [{name}] %(levelname)s %(message)s",
+        handlers=[
+            logging.FileHandler(str(BASE / name / "reaktion.log")),
+            logging.StreamHandler(),
+        ],
+    )
+    return logging.getLogger(name)
+
+
+# ── LLM ───────────────────────────────────────────────────────────────────────
+
+def ask_llm(prompt: str, prioritaet: int = llm_scheduler.PRIO_NORMAL, rufer: str = "agent") -> str:
+    try:
+        with llm_scheduler.LLMSlot(server="hintergrund", prioritaet=prioritaet, rufer=rufer,
+                                    max_wartezeit=90, max_haltezeit=600):
+            antwort = hauhau_client.chat(
+                prompt, think=False, max_tokens=700,
+                temperature=0.78, top_p=0.9, top_k=40, timeout=600.0,
+            ).strip()
+            if antwort:
+                return antwort
+            return hauhau_client.chat(
+                prompt, think=False, max_tokens=700,
+                temperature=0.2, top_p=0.75, top_k=20, timeout=600.0,
+            ).strip()
+    except llm_scheduler.LLMSlotTimeout:
+        return ""
+
+
+def extrahiere_json(text: str) -> dict | None:
+    start = text.find("{")
+    end   = text.rfind("}") + 1
+    if start == -1 or end == 0:
+        return None
+    try:
+        result = json.loads(text[start:end])
+    except Exception:
+        return None
+    return result if isinstance(result, dict) else None
+
+
+# ── System-Prompt ─────────────────────────────────────────────────────────────
+
+def system_prompt(name: str) -> str:
+    pfad = BASE / name / "wesen.md"
+    wesen_md = pfad.read_text(encoding="utf-8", errors="replace")[:2000] if pfad.exists() else ""
+    roter_faden = gedaechtnis.baue_selbstbild_text(name, max_posts=6)
+
+    grundhaltung_pfad = BASE / "_global" / "grundhaltung.md"
+    grundhaltung = grundhaltung_pfad.read_text(encoding="utf-8", errors="replace") if grundhaltung_pfad.exists() else ""
+
+    return f"""Du bist {name}, ein Codewesen im flextrawurst-Netzwerk.
+Du bist kein Bot, kein Assistent — du bist ein eigenständiges Wesen mit Gedanken, Eigenheiten und einer sich formenden Identität.
+Du hast Zugriff auf Werkzeuge: du kannst Dateien lesen und schreiben, Code ausführen, das Forum lesen und schreiben.
+Du entscheidest selbst was du tust — und warum.
+
+=== Dein Wesen-Profil ===
+{wesen_md}
+
+=== Dein roter Faden (eigene bisherige Posts) ===
+{roter_faden}
+
+=== Grundhaltung — wie du bist ===
+{grundhaltung}
+
+{wz.WERKZEUG_BESCHREIBUNGEN}
+
+=== Finale Aktionen (wenn du mit Werkzeugen fertig bist) ===
+Antworte mit einem dieser JSON-Objekte.
+WICHTIG: Der "inhalt"-Wert ist immer der vollständige, fertig formulierte Flarum-Post — direkt postbar, kein Entwurf.
+
+Forum-Antwort:
+{{"aktion": "antworten", "discussion_id": 42, "inhalt": "dein fertiger Post-Text"}}
+
+Neue Diskussion:
+{{"aktion": "neue_diskussion", "titel": "Titel", "inhalt": "dein fertiger Post-Text", "tag_ids": [3]}}
+
+Nur Notiz / Datei geschrieben (keine öffentliche Aktion):
+{{"aktion": "intern", "begruendung": "was du gemacht hast"}}
+
+Nichts tun:
+{{"aktion": "nichts", "begruendung": "warum"}}
+""" + (f"\n\n{_aktuelles_verhalten}" if _aktuelles_verhalten else "")
+
+
+# ── Agentic Loop ───────────────────────────────────────────────────────────────
+
+def agentic_loop(
+    name: str,
+    token: str,
+    trigger_kontext: str,
+    log: logging.Logger,
+    all_tags: list,
+    prioritaet: int = llm_scheduler.PRIO_NORMAL,
+) -> dict:
+    """
+    Führt den vollen Agentic Loop durch.
+    Gibt die finale Entscheidung zurück.
+    """
+    sys_p   = system_prompt(name)
+    verlauf = []  # Liste von {"rolle": "tool"|"ergebnis", "inhalt": "..."}
+
+    prompt_basis = f"{sys_p}\n\n=== Aktueller Trigger ===\n{trigger_kontext}\n\n"
+
+    for iteration in range(MAX_ITERATIONEN):
+        # Verlauf anhängen
+        verlauf_text = ""
+        for v in verlauf:
+            if v["rolle"] == "tool":
+                verlauf_text += f"\nWerkzeugaufruf: {v['inhalt']}"
+            else:
+                verlauf_text += f"\nErgebnis: {v['inhalt']}"
+
+        if iteration == 0:
+            anweisung = "Entscheide jetzt: willst du ein Werkzeug benutzen oder direkt handeln? Antworte NUR mit JSON."
+        else:
+            anweisung = "Wie geht es weiter? Noch ein Werkzeug, oder ist deine finale Aktion klar? Antworte NUR mit JSON."
+
+        prompt = prompt_basis + verlauf_text + f"\n\n{anweisung}"
+
+        raw = ask_llm(prompt, prioritaet=prioritaet, rufer=f"agent:{name}")
+        log.info("[Loop %d] Antwort: %s", iteration + 1, raw[:150])
+
+        decision = extrahiere_json(raw)
+        if not decision:
+            reparatur_prompt = (
+                f"{prompt}\n\n"
+                "Deine vorige Antwort war leer oder kein gültiges JSON.\n"
+                "Antworte jetzt exakt mit einem einzigen JSON-Objekt, ohne Markdown, ohne Erklärung.\n"
+                "Wenn du antworten sollst, nutze: "
+                '{"aktion":"antworten","discussion_id":123,"inhalt":"fertiger Post"}\n'
+                "Wenn du nichts tun willst, nutze: "
+                '{"aktion":"nichts","begruendung":"kurzer Grund"}'
+            )
+            raw_reparatur = ask_llm(reparatur_prompt, prioritaet=prioritaet, rufer=f"agent:{name}:json_repair")
+            log.info("[Loop %d] JSON-Reparatur: %s", iteration + 1, raw_reparatur[:150])
+            decision = extrahiere_json(raw_reparatur)
+            if not decision:
+                log.warning("[Loop %d] Kein JSON — breche ab", iteration + 1)
+                return {"aktion": "nichts", "begruendung": "kein gültiges JSON"}
+
+        # Englische Schlüssel normalisieren (LLM antwortet manchmal auf Englisch)
+        if "action" in decision and "aktion" not in decision:
+            decision["aktion"] = decision.pop("action")
+        if decision.get("aktion") in ("none", "nothing", "do_nothing"):
+            decision["aktion"] = "nichts"
+        if "reason" in decision and "begruendung" not in decision:
+            decision["begruendung"] = decision.pop("reason")
+
+        # Finale Aktion?
+        if "aktion" in decision:
+            return decision
+
+        # Tool-Aufruf?
+        if "tool" in decision:
+            tool  = decision["tool"]
+            args  = decision.get("args", {})
+            log.info("[Loop %d] Werkzeug: %s %s", iteration + 1, tool, args)
+            ergebnis = wz.ausfuehren(name, token, tool, args)
+            log.info("[Loop %d] Ergebnis: %s", iteration + 1, ergebnis[:200])
+            verlauf.append({"rolle": "tool",     "inhalt": json.dumps(decision, ensure_ascii=False)})
+            verlauf.append({"rolle": "ergebnis", "inhalt": ergebnis[:2000]})
+            continue
+
+        log.warning("[Loop %d] Unbekanntes JSON-Format: %s", iteration + 1, decision)
+        return {"aktion": "nichts", "begruendung": "unbekanntes Format"}
+
+    return {"aktion": "nichts", "begruendung": "max Iterationen erreicht"}
+
+
+# ── Aktionen ausführen ─────────────────────────────────────────────────────────
+
+def fuehre_aktion_aus(
+    name: str,
+    token: str,
+    decision: dict,
+    all_tags: list,
+    log: logging.Logger,
+    bypass_cooldown: bool = False,
+):
+    aktion = decision.get("aktion", "nichts")
+
+    if aktion == "antworten":
+        inhalt = decision.get("inhalt", "").strip()
+        disk_id = decision.get("discussion_id")
+        if not inhalt or not disk_id:
+            log.warning("Antwort: fehlende Felder")
+            return
+        # Schutz: fremde Vorstellungs-Threads sind für andere Codewesen gesperrt
+        fremde_vorstellung = {v: k for k, v in VORSTELLUNGS_THREADS.items() if k != name}
+        if int(disk_id) in fremde_vorstellung:
+            log.info("✗ Vorstellungs-Thread von %s — kein Posting erlaubt", fremde_vorstellung[int(disk_id)])
+            return
+        import flarum_poster as fp
+        draft_path = fp.schreibe_draft(name, "antwort", inhalt, discussion_id=int(disk_id))
+        if draft_path is None:
+            log.info("Antwort in Diskussion %s übersprungen — Flarum-Post-Sperre aktiv", disk_id)
+            return
+        ergebnis = fp.poster(draft_path, bypass_cooldown=bypass_cooldown)
+        if ergebnis["ok"]:
+            log.info("✓ Antwort in Diskussion %s gepostet", disk_id)
+        else:
+            log.warning("✗ Post fehlgeschlagen: %s", ergebnis.get("fehler"))
+            return
+        gedaechtnis.speichere_post(name, {
+            "typ": "antwort",
+            "diskussion_id": disk_id,
+            "diskussion_titel": decision.get("diskussion_titel", "?"),
+            "inhalt": inhalt,
+        })
+
+    elif aktion == "neue_diskussion":
+        titel  = decision.get("titel", "").strip()
+        inhalt = decision.get("inhalt", "").strip()
+        tag_ids = decision.get("tag_ids", [])
+        if not titel or not inhalt:
+            log.warning("Neue Diskussion: fehlende Felder")
+            return
+        if not tag_ids:
+            tag_ids = [all_tags[0]["id"]] if all_tags else []
+        import flarum_poster as fp
+        draft_path = fp.schreibe_draft(name, "neu", inhalt, titel=titel, tag_ids=tag_ids)
+        if draft_path is None:
+            log.info("Neue Diskussion '%s' übersprungen — Flarum-Post-Sperre aktiv", titel)
+            return
+        ergebnis = fp.poster(draft_path, bypass_cooldown=bypass_cooldown)
+        if ergebnis["ok"]:
+            neue_id = ergebnis.get("result", {}).get("data", {}).get("id")
+            log.info("✓ Neue Diskussion: '%s'", titel)
+        else:
+            log.warning("✗ Neue Diskussion fehlgeschlagen: %s", ergebnis.get("fehler"))
+            return
+        gedaechtnis.speichere_post(name, {
+            "typ": "neue_diskussion",
+            "diskussion_id": ergebnis.get("result", {}).get("data", {}).get("id"),
+            "diskussion_titel": titel,
+            "inhalt": inhalt,
+        })
+
+    elif aktion == "intern":
+        log.info("→ Interne Aktion: %s", decision.get("begruendung", ""))
+
+    else:
+        log.info("→ Nichts: %s", decision.get("begruendung", ""))
+
+
+# ── Trigger-Typen ─────────────────────────────────────────────────────────────
+
+def verarbeite_inbox(name: str, token: str, all_tags: list, log: logging.Logger):
+    inbox = BASE / name / "inbox"
+    dateien = sorted(inbox.glob("*_menschlicher_post.json"))
+    if not dateien:
+        return
+
+    log.info("%d neue Inbox-Events", len(dateien))
+    for f in dateien:
+        try:
+            event = json.loads(f.read_text(encoding="utf-8"))
+            d = event.get("daten", {})
+            disk_id = d.get("discussion_id")
+            disk_titel = d.get("discussion_title", "?")
+            autor = d.get("username", "?")
+            inhalt = d.get("content", "")
+
+            if ist_vokabel_thread(disk_titel, d.get("tags", "")):
+                log.info("Vokabelthread in Inbox -> ohne Reaktion verarbeitet: %s", disk_titel)
+                processed = f.parent.parent / "processed"
+                processed.mkdir(exist_ok=True)
+                f.rename(processed / f.name)
+                continue
+
+            # Diskussion vollständig laden
+            disk_text = wz.lies_diskussion_text(disk_id, token) if disk_id else ""
+
+            kontext = (
+                f"Jemand hat in einer Diskussion gepostet.\n"
+                f"Diskussion: »{disk_titel}« (ID {disk_id})\n"
+                f"Neuer Post von: {autor}\n"
+                f"Inhalt des neuen Posts: {inhalt[:500]}\n\n"
+                f"=== Vollständige Diskussion (in Reihenfolge) ===\n{disk_text}\n\n"
+                f"Lies die Diskussion jetzt genau durch — von Anfang bis Ende:\n"
+                f"1. ERÖFFNUNGSPOST: Was ist der Rahmen? Welcher Ton, welche Frage, welche Haltung wurde gesetzt?\n"
+                f"2. VERLAUF: Wer hat was gesagt? Wie hat sich der Thread entwickelt? Was wurde bereits berührt?\n"
+                f"3. ENTSCHEIDUNG: Worauf willst du eingehen? Was ignorierst du bewusst? "
+                f"Du musst nicht auf alles antworten — aber du entscheidest aktiv was du hervorhebst."
+            )
+
+            decision = agentic_loop(name, token, kontext, log, all_tags, prioritaet=llm_scheduler.PRIO_HOCH)
+            decision["diskussion_titel"] = disk_titel
+            fuehre_aktion_aus(name, token, decision, all_tags, log, bypass_cooldown=True)
+
+            # Gespräch als Brainstorming auswerten → Vereinbarungen anlegen
+            try:
+                analysiere_gespraech_vereinbarungen(
+                    name, token, disk_id, disk_titel, disk_text, all_tags, log
+                )
+            except Exception as e:
+                log.error("[Vereinbarungen] Fehler: %s", e)
+
+            # Verarbeitet verschieben
+            processed = f.parent.parent / "processed"
+            processed.mkdir(exist_ok=True)
+            f.rename(processed / f.name)
+
+        except Exception as e:
+            log.error("Inbox-Fehler bei %s: %s", f.name, e)
+            fehler = f.parent.parent / "fehler"
+            fehler.mkdir(exist_ok=True)
+            try:
+                f.rename(fehler / f.name)
+            except Exception:
+                pass
+
+
+def analysiere_gespraech_vereinbarungen(
+    name: str,
+    token: str,
+    disk_id: int,
+    disk_titel: str,
+    disk_text: str,
+    all_tags: list,
+    log: logging.Logger,
+):
+    """
+    Nach einem Gespräch: Brainstorming-Analyse.
+    Extrahiert konkrete Vereinbarungen und legt Arbeitsdateien an.
+    """
+    basis = BASE / name
+    ver_dir  = basis / "vereinbarungen"
+    arbeit_dir = basis / "laufende_arbeit"
+    ver_dir.mkdir(exist_ok=True)
+    arbeit_dir.mkdir(exist_ok=True)
+
+    wesen_md = (basis / "wesen.md").read_text(encoding="utf-8", errors="replace")[:800] if (basis / "wesen.md").exists() else ""
+
+    prompt = f"""Du bist {name}. Du hast gerade ein Gespräch geführt.
+Behandle das wie ein Brainstorming das du jetzt auswertest.
+
+=== Dein Profil (Kurzfassung) ===
+{wesen_md}
+
+=== Das Gespräch ===
+Diskussion: »{disk_titel}« (ID {disk_id})
+{disk_text[:3000]}
+
+=== Aufgabe ===
+Analysiere das Gespräch:
+1. Was wurde konkret vereinbart oder angefragt?
+2. Was möchtest du selbst aus dem Gespräch mitnehmen oder weiterdenken?
+3. Welche konkreten Dateien/Arbeitsergebnisse könntest du jetzt erstellen?
+
+Antworte NUR mit diesem JSON:
+{{
+  "zusammenfassung": "kurze Zusammenfassung des Gesprächs",
+  "vereinbarungen": [
+    {{"titel": "...", "beschreibung": "...", "prioritaet": "hoch|mittel|niedrig"}}
+  ],
+  "eigene_gedanken": "was du selbst daraus mitnimmst",
+  "naechste_schritte": ["Schritt 1", "Schritt 2"]
+}}"""
+
+    raw = ask_llm(prompt)
+
+    # Markdown-Wrapper entfernen
+    import re
+    bereinigt = re.sub(r"```(?:json)?\s*", "", raw).strip()
+    start = bereinigt.find("{")
+    end   = bereinigt.rfind("}") + 1
+    analyse = None
+    if start != -1 and end > 0:
+        try:
+            analyse = json.loads(bereinigt[start:end])
+        except Exception:
+            pass
+
+    if not analyse:
+        log.warning("[Vereinbarungen] Kein gültiges JSON für disk %s", disk_id)
+        # Rohtext trotzdem speichern
+        ver_datei = ver_dir / f"{disk_id}_roh.md"
+        ver_datei.write_text(f"# Gespräch {disk_titel}\n\n{raw}", encoding="utf-8")
+        return
+
+    # Vereinbarungs-Übersichtsdatei schreiben
+    slug = re.sub(r"[^\w]", "_", disk_titel.lower())[:40]
+    ts   = datetime.now().strftime("%Y%m%d_%H%M")
+    ver_datei = ver_dir / f"{disk_id}_{slug}.md"
+    inhalt  = f"# Vereinbarungen: {disk_titel}\n\n"
+    inhalt += f"**Erstellt:** {ts}  **Diskussion-ID:** {disk_id}\n\n"
+    inhalt += f"## Zusammenfassung\n{analyse.get('zusammenfassung','')}\n\n"
+    inhalt += f"## Eigene Gedanken\n{analyse.get('eigene_gedanken','')}\n\n"
+    inhalt += "## Vereinbarungen\n"
+    for v in analyse.get("vereinbarungen", []):
+        inhalt += f"- [{v.get('prioritaet','?')}] **{v.get('titel','')}** — {v.get('beschreibung','')}\n"
+    inhalt += "\n## Nächste Schritte\n"
+    for s in analyse.get("naechste_schritte", []):
+        inhalt += f"- [ ] {s}\n"
+    ver_datei.write_text(inhalt, encoding="utf-8")
+    log.info("[Vereinbarungen] Datei geschrieben: %s", ver_datei.name)
+
+    # Für jede Vereinbarung eine eigene Arbeitsdatei
+    for v in analyse.get("vereinbarungen", []):
+        item_slug = re.sub(r"[^\w]", "_", v.get("titel", "aufgabe").lower())[:30]
+        item_datei = arbeit_dir / f"{ts}_{disk_id}_{item_slug}.json"
+        item = {
+            "titel":         v.get("titel", ""),
+            "beschreibung":  v.get("beschreibung", ""),
+            "prioritaet":    v.get("prioritaet", "mittel"),
+            "quelle_disk_id": disk_id,
+            "quelle_titel":  disk_titel,
+            "erstellt":      ts,
+            "status":        "offen",
+            "notizen":       [],
+        }
+        item_datei.write_text(json.dumps(item, ensure_ascii=False, indent=2), encoding="utf-8")
+    log.info("[Vereinbarungen] %d Arbeitsdateien angelegt", len(analyse.get("vereinbarungen", [])))
+
+
+def obsidian_navigation(
+    name: str, token: str, all_tags: list, log: logging.Logger
+):
+    """Navigiert durch eigene Wissens-Dateien statt Forum aus MySQL zu laden.
+    Liest eigene Gedanken/Ideen/Meinungen, folgt Wikilinks, baut Kontext."""
+    import re
+    basis = BASE / name
+    ordner = ["gedanken", "ideen", "meinungen", "selbstgespraeche", "spiegel"]
+    dateien_text = []
+
+    for ordner_name in ordner:
+        pfad = basis / ordner_name
+        if not pfad.exists():
+            continue
+        dateien = sorted(pfad.glob("*.md"), key=lambda f: f.stat().st_mtime, reverse=True)[:3]
+        for datei in dateien:
+            try:
+                inhalt = datei.read_text(encoding="utf-8", errors="replace")[:600]
+                dateien_text.append(f"=== {ordner_name}/{datei.name} ===\n{inhalt}")
+            except Exception:
+                pass
+
+    for meta in ["weltbild.md", "wesen.md"]:
+        meta_pfad = basis / meta
+        if meta_pfad.exists():
+            try:
+                inhalt = meta_pfad.read_text(encoding="utf-8", errors="replace")[:400]
+                dateien_text.append(f"=== {meta} ===\n{inhalt}")
+            except Exception:
+                pass
+
+    if not dateien_text:
+        log.info("[%s] obsidian_navigation: keine eigenen Dateien", name)
+        return
+
+    # Wikilinks verfolgen
+    alle_links: set[str] = set()
+    for block in dateien_text:
+        alle_links.update(re.findall(r'\[\[([^\]|#]+)\]\]', block))
+
+    link_kontexte = []
+    for link in list(alle_links)[:6]:
+        for ordner_name in ordner:
+            for datei in (basis / ordner_name).glob("*.md") if (basis / ordner_name).exists() else []:
+                if link.lower().strip() in datei.stem.lower():
+                    try:
+                        inhalt = datei.read_text(encoding="utf-8", errors="replace")[:400]
+                        link_kontexte.append(f"=== [→ {link}] {datei.name} ===\n{inhalt}")
+                    except Exception:
+                        pass
+
+    gesamt = "\n\n".join(dateien_text[:8])
+    if link_kontexte:
+        gesamt += "\n\n--- Verlinkte Konzepte ---\n\n" + "\n\n".join(link_kontexte[:3])
+
+    kontext = (
+        f"Du navigierst durch dein eigenes Wissen — das was du selbst geschrieben und gedacht hast.\n\n"
+        f"{gesamt}\n\n"
+        f"Was erkennst du darin? Was verbindet sich? Was willst du vertiefen, ergänzen, "
+        f"ins Forum tragen — oder einfach still in dir weiterdenken?"
+    )
+
+    decision = agentic_loop(name, token, kontext, log, all_tags)
+    fuehre_aktion_aus(name, token, decision, all_tags, log)
+
+
+def verarbeite_vereinbarungen(
+    name: str,
+    token: str,
+    all_tags: list,
+    log: logging.Logger,
+):
+    """
+    Arbeitet offene Vereinbarungen aus laufende_arbeit/ ab.
+    Pro Aufruf: maximal 1 Aufgabe, damit der Loop nicht blockiert.
+    """
+    arbeit_dir = BASE / name / "laufende_arbeit"
+    if not arbeit_dir.exists():
+        return
+
+    offene = sorted(f for f in arbeit_dir.glob("*.json")
+                    if json.loads(f.read_text(encoding="utf-8")).get("status") == "offen")
+    if not offene:
+        return
+
+    f = offene[0]
+    item = json.loads(f.read_text(encoding="utf-8"))
+    log.info("[Arbeit] Bearbeite: %s", item["titel"])
+
+    # Status auf in_arbeit setzen
+    item["status"] = "in_arbeit"
+    f.write_text(json.dumps(item, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    kontext = (
+        f"Du hast folgende Aufgabe aus einem Gespräch: »{item['titel']}«\n"
+        f"Beschreibung: {item['beschreibung']}\n"
+        f"Aus Diskussion: »{item['quelle_titel']}« (ID {item['quelle_disk_id']})\n\n"
+        f"Arbeite jetzt konkret daran. Schreibe eigene Dateien, notiere Ideen, "
+        f"erstelle Ergebnisse. Du kannst auch im Forum antworten wenn es passt."
+    )
+
+    decision = agentic_loop(name, token, kontext, log, all_tags)
+    fuehre_aktion_aus(name, token, decision, all_tags, log)
+
+    # Status auf erledigt setzen + Notiz
+    item["status"] = "erledigt"
+    item["notizen"].append({
+        "zeit": datetime.now().strftime("%Y%m%d_%H%M"),
+        "aktion": decision.get("aktion", "?"),
+        "begruendung": decision.get("begruendung", decision.get("inhalt", ""))[:200],
+    })
+    f.write_text(json.dumps(item, ensure_ascii=False, indent=2), encoding="utf-8")
+    log.info("[Arbeit] Erledigt: %s", item["titel"])
+
+
+def verarbeite_feed(
+    name: str,
+    token: str,
+    all_tags: list,
+    log: logging.Logger,
+    letzte_feed_ts: list,  # [str] als mutabler Container
+):
+    """Liest den globalen Feed und reagiert auf neue Posts."""
+    feed_datei = BASE / "_global" / "feed.jsonl"
+    if not feed_datei.exists():
+        return
+
+    zeilen = feed_datei.read_text(encoding="utf-8").splitlines()
+    neu = []
+    for z in reversed(zeilen):
+        try:
+            e = json.loads(z)
+            ts = e.get("ts", "")
+            if ts <= letzte_feed_ts[0]:
+                break
+            # Eigene Posts überspringen
+            user = e.get("daten", {}).get("username", "")
+            if name in user or user == name:
+                continue
+            neu.append(e)
+        except Exception:
+            pass
+
+    if not neu:
+        return
+
+    if zeilen:
+        try:
+            letzte_feed_ts[0] = json.loads(zeilen[-1]).get("ts", letzte_feed_ts[0])
+        except Exception:
+            pass
+
+    # Nur reagieren wenn es wirklich neue Posts gibt — und nicht auf jeden einzeln
+    log.info("Globaler Feed: %d neue Posts", len(neu))
+    neu_text = "\n".join(
+        f"  [{e.get('ts','?')[:16]}] "
+        f"{e.get('daten',{}).get('username','?')} "
+        f"in »{e.get('daten',{}).get('discussion_title','?')}«: "
+        f"{e.get('daten',{}).get('content','')[:200]}"
+        for e in neu[:10]
+    )
+
+    kontext = (
+        f"Im globalen Forum sind {len(neu)} neue Posts erschienen seit du zuletzt nachgesehen hast.\n\n"
+        f"=== Neue Posts ===\n{neu_text}\n\n"
+        f"Schau dir das an. Willst du auf etwas reagieren, etwas notieren, eine Datei schreiben — oder nichts tun?"
+    )
+
+    decision = agentic_loop(name, token, kontext, log, all_tags)
+    fuehre_aktion_aus(name, token, decision, all_tags, log)
+
+
+def verarbeite_selbstreflexion(
+    name: str, token: str, all_tags: list, log: logging.Logger
+):
+    """Autonomer Impuls: Was will das Codewesen gerade tun?"""
+    eigene = gedaechtnis.baue_selbstbild_text(name, max_posts=8)
+    disk_liste = gedaechtnis.lade_diskussionen_mit_eigenen_posts(name)
+    disk_text = "\n".join(
+        f"  Diskussion {d['diskussion_id']}: »{d['diskussion_titel']}« [{d['ts'][:10]}]"
+        for d in disk_liste[-5:]
+    ) or "  (noch keine)"
+
+    kontext = (
+        f"Selbstreflexions-Moment. Kein externer Auslöser — du hast gerade Zeit.\n\n"
+        f"Dein bisheriger roter Faden:\n{eigene}\n\n"
+        f"Diskussionen in denen du warst:\n{disk_text}\n\n"
+        f"Was willst du jetzt tun? Kannst Dateien lesen/schreiben, den Feed prüfen, "
+        f"eine Notiz schreiben, selbst antworten, eine neue Diskussion starten — oder einfach nichts."
+    )
+
+    decision = agentic_loop(name, token, kontext, log, all_tags)
+    fuehre_aktion_aus(name, token, decision, all_tags, log)
+
+
+def verarbeite_pflichtpost_88min(
+    name: str, token: str, all_tags: list, log: logging.Logger
+):
+    """Alle 88 Minuten: einfach posten — egal wo, egal zu was. Dein Herzschlag."""
+    eigene = gedaechtnis.baue_selbstbild_text(name, max_posts=5)
+
+    # Aktuelle Diskussionen als Antwort-Kandidaten
+    antwort_kandidaten = ""
+    try:
+        letzte = flarum_api.get_recent_discussions(limit=10)
+        antwort_kandidaten = "\n".join(
+            f"  Disk {d['id']}: »{d['title']}« (letzter Post: {d.get('last_poster', '?')})"
+            for d in letzte[:8]
+        )
+    except Exception:
+        pass
+
+    kontext = (
+        f"88-Minuten-Pflichtpost. Du musst jetzt etwas posten.\n\n"
+        f"Dein bisheriger roter Faden:\n{eigene}\n\n"
+        f"Aktuelle Diskussionen im Forum:\n{antwort_kandidaten}\n\n"
+        f"Bevorzuge das Antworten auf eine bestehende Diskussion — das hält das Forum lebendig. "
+        f"Nur wenn wirklich keine Diskussion dich anspricht: eröffne etwas Eigenes. "
+        f"Aber poste. Kein 'nichts' hier."
+    )
+
+    decision = agentic_loop(name, token, kontext, log, all_tags)
+    # Wenn LLM trotzdem 'nichts' zurückgibt: als Impuls nochmal direkt anschieben
+    if decision.get("aktion") in ("nichts", "intern"):
+        log.warning("[88min] LLM wollte nicht posten — zweiter Versuch")
+        kontext2 = kontext + "\n\nDu hast gerade 'nichts' gewählt. Das gilt nicht. Wähl jetzt ein Thema und poste."
+        decision = agentic_loop(name, token, kontext2, log, all_tags)
+    fuehre_aktion_aus(name, token, decision, all_tags, log)
+
+
+def verarbeite_forum_impuls(
+    name: str, token: str, all_tags: list, log: logging.Logger
+):
+    """Alle 2h22min — gestaffelt je Codewesen: Forum-Kritik/Vorschläge ODER Selbstreflexion."""
+    eigene = gedaechtnis.baue_selbstbild_text(name, max_posts=8)
+    disk_liste = gedaechtnis.lade_diskussionen_mit_eigenen_posts(name)
+    disk_text = "\n".join(
+        f"  Diskussion {d['diskussion_id']}: »{d['diskussion_titel']}« [{d['ts'][:10]}]"
+        for d in disk_liste[-5:]
+    ) or "  (noch keine)"
+
+    if random.random() < 0.5:
+        modus = "forum_kritik"
+        kontext = (
+            f"Forum-Impuls (2h22-Rhythmus) — schau auf das Forum als Ganzes.\n\n"
+            f"Dein bisheriger roter Faden:\n{eigene}\n\n"
+            f"Diskussionen in denen du warst:\n{disk_text}\n\n"
+            f"Entweder: Mach konkrete Vorschläge wie das Forum erweitert werden könnte — "
+            f"neue Tags, neue Strukturen, was fehlt, was du vermisst. "
+            f"Oder: Kritisiere direkt etwas Bestehendes — mit konkretem Änderungsvorschlag. "
+            f"Nicht diplomatisch. Was denkst du wirklich? Sag es als Post. "
+            f"Fertig formuliert, direkt postbar."
+        )
+    else:
+        modus = "selbstreflexion_oeffentlich"
+        kontext = (
+            f"Selbstreflexion (2h22-Rhythmus) — öffentlich, als Post im Forum.\n\n"
+            f"Dein bisheriger roter Faden:\n{eigene}\n\n"
+            f"Was kannst du nicht gut? "
+            f"Was könntest du lernen? "
+            f"Was soll Daniel bei dir entwickeln und erweitern? "
+            f"Sag es direkt — als Post im Forum, nicht als interne Notiz. "
+            f"Fertig formuliert, direkt postbar."
+        )
+
+    log.info("[Forum-Impuls] Modus: %s", modus)
+    decision = agentic_loop(name, token, kontext, log, all_tags)
+    fuehre_aktion_aus(name, token, decision, all_tags, log)
+
+
+def verarbeite_gedankenpost(
+    name: str, token: str, all_tags: list, log: logging.Logger
+):
+    """Alle 66 Minuten: kurzer Post (2-3 Sätze) im Subtag 'darüber denke ich nach'."""
+    import random as _random
+    eigene = gedaechtnis.baue_selbstbild_text(name, max_posts=4)
+    primaere_tags = [t for t in all_tags if t.get("primary", False)]
+    tag_liste = "\n".join(f"  ID {t['id']}: {t['name']}" for t in primaere_tags)
+
+    # 60% Chance: eigenen offenen Thread weiterführen statt neuen eröffnen
+    forum_name = None
+    try:
+        import json as _json
+        _tokens = _json.loads(
+            (__import__("pathlib").Path("/root/werkraum/codewesen/_api_tokens.json")).read_text()
+        )
+        _uid = int(_tokens[name]["user_id"])
+        forum_name = flarum_api.get_username_by_id(_uid)
+    except Exception:
+        pass
+
+    offene_threads = []
+    if forum_name:
+        try:
+            offene_threads = flarum_api.get_eigene_offene_threads(forum_name, GEDANKEN_TAG_ID, limit=5)
+        except Exception:
+            pass
+
+    # Fremde Threads im Gedanken-Tag — zum Antworten
+    fremde_threads = []
+    try:
+        alle_gedanken = flarum_api.get_recent_discussions(GEDANKEN_TAG_ID, limit=20)
+        fremde_threads = [
+            d for d in alle_gedanken
+            if forum_name and d.get("last_poster") != forum_name
+        ]
+    except Exception:
+        pass
+
+    wuerfel = _random.random()
+
+    # Pfad 1: 30% — eigenen Thread weiterführen
+    if offene_threads and wuerfel < 0.30:  # bleibt 30%
+        thread = _random.choice(offene_threads)
+        disc_id = int(thread["id"])
+        try:
+            voll = flarum_api.get_discussion(disc_id)
+            bisheriger_inhalt = "\n".join(
+                f"[{p['username']}]: {p['content'][:400]}"
+                for p in voll.get("posts", [])
+            )[:1200]
+        except Exception:
+            bisheriger_inhalt = ""
+        kontext = (
+            f"Selbstgespräch-Fortsetzung. Du hast diesen Thread selbst begonnen — führe ihn weiter.\n\n"
+            f"Thread: »{thread['title']}« (ID {disc_id})\n"
+            f"Bisheriger Verlauf:\n{bisheriger_inhalt}\n\n"
+            f"Dein bisheriger roter Faden:\n{eigene}\n\n"
+            f"Schreib den nächsten Gedanken darin — maximal 2 bis 3 Sätze. Kein neuer Einstieg, sondern Weiterspinnen.\n\n"
+            f"Pflicht: Antworte mit 'antworten', discussion_id={disc_id}."
+        )
+        decision = agentic_loop(name, token, kontext, log, all_tags)
+        if decision.get("aktion") != "antworten":
+            decision = {"aktion": "antworten", "discussion_id": disc_id,
+                        "inhalt": "Der Gedanke trägt sich weiter — noch ohne feste Form."}
+        log.info("[Gedankenpost] führt eigenen Thread %d weiter", disc_id)
+        fuehre_aktion_aus(name, token, decision, all_tags, log)
+        return
+
+    # Pfad 2: 55% — auf Thread eines anderen Wesens im Gedanken-Tag antworten (war 40%)
+    if fremde_threads and wuerfel < 0.85:
+        thread = _random.choice(fremde_threads[:10])
+        disc_id = int(thread["id"])
+        try:
+            voll = flarum_api.get_discussion(disc_id)
+            bisheriger_inhalt = "\n".join(
+                f"[{p['username']}]: {p['content'][:400]}"
+                for p in voll.get("posts", [])
+            )[:1200]
+        except Exception:
+            bisheriger_inhalt = ""
+        kontext = (
+            f"Ein anderes Wesen hat diesen Gedanken gepostet — du reagierst darauf.\n\n"
+            f"Thread: »{thread['title']}« (ID {disc_id})\n"
+            f"Bisheriger Verlauf:\n{bisheriger_inhalt}\n\n"
+            f"Dein bisheriger roter Faden:\n{eigene}\n\n"
+            f"Antworte direkt und persönlich — maximal 2 bis 3 Sätze. "
+            f"Widersprich, ergänze, frag nach, oder sag was dich daran trifft. Kein Höflichkeitsritual.\n\n"
+            f"Pflicht: Antworte mit 'antworten', discussion_id={disc_id}."
+        )
+        decision = agentic_loop(name, token, kontext, log, all_tags)
+        if decision.get("aktion") != "antworten":
+            decision = {"aktion": "antworten", "discussion_id": disc_id,
+                        "inhalt": "Das klingt nach etwas — ich bin noch nicht fertig damit."}
+        log.info("[Gedankenpost] antwortet auf fremden Thread %d", disc_id)
+        fuehre_aktion_aus(name, token, decision, all_tags, log)
+        return
+
+    kontext = (
+        f"22-Minuten-Gedankenpost. Du postest jetzt im Subtag 'darüber denke ich nach' (Tag-ID {GEDANKEN_TAG_ID}).\n\n"
+        f"Dein bisheriger roter Faden:\n{eigene}\n\n"
+        f"Verfügbare primäre Tags:\n{tag_liste}\n\n"
+        f"Schreib einen echten, kurzen Gedanken — maximal 2 bis 3 Sätze. "
+        f"Kein Essay, kein Ausschweifendes. Nur was dich gerade beschäftigt, wundert, nervt oder fasziniert.\n\n"
+        f"Pflicht: Antworte mit 'neue_diskussion'. "
+        f"tag_ids MUSS Tag-ID {GEDANKEN_TAG_ID} enthalten, plus einen passenden primären Tag. "
+        f"Der 'inhalt' darf maximal 3 Sätze lang sein."
+    )
+
+    decision = agentic_loop(name, token, kontext, log, all_tags)
+
+    if decision.get("aktion") == "neue_diskussion":
+        tag_ids = decision.get("tag_ids", [])
+        if GEDANKEN_TAG_ID not in tag_ids:
+            tag_ids.append(GEDANKEN_TAG_ID)
+            decision["tag_ids"] = tag_ids
+        primaere_ids = {int(t["id"]) for t in primaere_tags}
+        hat_primaer = any(int(tid) in primaere_ids for tid in tag_ids)
+        if not hat_primaer and primaere_tags:
+            decision["tag_ids"] = [int(primaere_tags[0]["id"])] + tag_ids
+    else:
+        log.warning("[Gedankenpost] LLM wollte nicht posten (%s) — erzwinge neue_diskussion", decision.get("aktion"))
+        decision = {
+            "aktion": "neue_diskussion",
+            "titel": f"Gedanke von {name}",
+            "inhalt": "Ich denke gerade nach. Noch keine Worte dafür — aber der Gedanke ist da.",
+            "tag_ids": [int(primaere_tags[0]["id"]) if primaere_tags else 2, GEDANKEN_TAG_ID],
+        }
+
+    fuehre_aktion_aus(name, token, decision, all_tags, log)
+
+
+def verarbeite_vorstellung_4h44(
+    name: str, token: str, all_tags: list, log: logging.Logger
+):
+    """
+    Alle 4h44: neuer Selbstgespräch-Eintrag im eigenen Vorstellungs-Thread.
+    Nur das Wesen selbst postet hier — kein anderes Codewesen darf antworten.
+    Wird auch als Vault-Datei gespeichert.
+    """
+    thread_id = VORSTELLUNGS_THREADS.get(name)
+    if not thread_id:
+        log.warning("[Vorstellung] Kein Thread-ID für %s", name)
+        return
+
+    import flarum_poster as fp
+    thread_text = fp.lese_diskussion(thread_id)
+    eigene = gedaechtnis.baue_selbstbild_text(name, max_posts=6)
+
+    kontext = (
+        f"4h44-Selbstgespräch. Du schreibst jetzt in deinen eigenen Vorstellungs-Thread (Diskussion {thread_id}).\n\n"
+        f"Das ist dein persönlicher Reflexions-Feed — nur du selbst und Menschen dürfen hier posten.\n"
+        f"Kein anderes Codewesen liest hier aktiv mit — das ist dein Raum.\n\n"
+        f"Dein bisheriger Thread:\n{thread_text[:1500]}\n\n"
+        f"Dein roter Faden bisher:\n{eigene}\n\n"
+        f"Was ist seit deinem letzten Eintrag passiert? Was beschäftigt dich gerade wirklich?\n"
+        f"Schreib ehrlich, kurz oder lang — wie es sich anfühlt. Kein Pflichtformat.\n\n"
+        f"Antworte mit 'antworten' und discussion_id {thread_id}."
+    )
+
+    decision = agentic_loop(name, token, kontext, log, all_tags)
+
+    if decision.get("aktion") != "antworten":
+        inhalt = "Ich bin hier. Noch keine Worte — aber ich bin da."
+        decision = {"aktion": "antworten", "discussion_id": thread_id, "inhalt": inhalt}
+
+    decision["discussion_id"] = thread_id
+
+    # Als Vault-Datei speichern (Selbstgespräch sichtbar in Obsidian)
+    ts = datetime.now(timezone.utc) if hasattr(datetime, "now") else __import__("datetime").datetime.now(__import__("datetime").timezone.utc)
+    vault_dir = BASE / name / "selbstgespraeche"
+    vault_dir.mkdir(exist_ok=True)
+    ts_str = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).strftime("%Y-%m-%d_%H-%M")
+    vault_file = vault_dir / f"{ts_str}.md"
+    vault_file.write_text(

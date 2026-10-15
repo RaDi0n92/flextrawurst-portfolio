@@ -1,0 +1,97 @@
+{
+  "$schema": "../schema/term.schema.json",
+  "schema_version": "1.0",
+  "id": "antibibel",
+  "canonical_form": "ANTIBIBEL",
+  "raw_form_policy": "preserve-exactly",
+  "status": "accepted",
+  "language_of_origin": "de",
+  "origin": {
+    "authorship_status": "joint-project-setting",
+    "language": "de",
+    "contributors": [
+      "daniel",
+      "chatgpt-session-20260726"
+    ],
+    "first_seen": {
+      "date": "2026-07-26",
+      "precision": "day"
+    },
+    "exact_input": "also muss ich das machen was hittler und die ganzen anderen wixxxbeutel nur falsch gemacht haben ..ich muss meine wortbibel in die welt tragen und alle sprachen „verdeutschen“? hahah",
+    "source_ref": "raw/source/06_GESPRAECHE/2026-07-26 - Geburt der WorldWORDS ANTIBIBEL.md#L44-L58",
+    "origin_note": "The raw “Wortbibel” joke and Daniel’s founding instruction preceded the ANTIBIBEL project body; exact single-person coinage of the final title is not claimed."
+  },
+  "components": [],
+  "variants": [],
+  "definitions": {
+    "de": {
+      "short": "Ein wachsender Wort- und Herkunftskörper, der gerade deshalb keine Bibel sein will: keine endgültige Lehre, kein heiliger Kanon, keine Pflichtsprache.",
+      "long": "Die ANTIBIBEL bewahrt Rohformen, Herkunft, Bedeutungswandel, Widersprüche und Verkörperungen. Ihre Autorität entsteht nicht aus einem Titel, sondern aus sichtbarer Provenienz und nachvollziehbaren Folgen."
+    },
+    "en": {
+      "short": "A growing body of words and provenance that refuses to become a bible: no final doctrine, sacred canon or mandatory language.",
+      "long": "ANTIBIBEL preserves raw forms, origins, meaning changes, contradictions and embodiments. Its authority comes from visible provenance and traceable effects, not from its title."
+    },
+    "es": {
+      "short": "Un cuerpo creciente de palabras y procedencias que se niega a convertirse en una biblia: sin doctrina final, canon sagrado ni lenguaje obligatorio.",
+      "long": "ANTIBIBEL conserva formas brutas, orígenes, cambios de significado, contradicciones y encarnaciones. Su autoridad procede de la trazabilidad y de sus efectos, no del título."
+    }
+  },
+  "translation_provenance": {
+    "de": {
+      "contributors": [
+        "daniel",
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "source-derived-and-release-edited",
+      "review_status": "founding-release"
+    },
+    "en": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "translation-from-german-explanation",
+      "review_status": "not-yet-reviewed-by-independent-native-speaker"
+    },
+    "es": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "translation-from-german-explanation",
+      "review_status": "not-yet-reviewed-by-independent-native-speaker"
+    }
+  },
+  "not_meant": {
+    "de": [
+      "endgültiger Kanon",
+      "Pflichtsprache",
+      "heilige oder unveränderliche Lehre"
+    ],
+    "en": [
+      "final canon",
+      "mandatory language",
+      "sacred or immutable doctrine"
+    ],
+    "es": [
+      "canon definitivo",
+      "lenguaje obligatorio",
+      "doctrina sagrada o inmutable"
+    ]
+  },
+  "embodiments": [
+    {
+      "date": "2026-07-26",
+      "kind": "repository",
+      "ref": "this repository"
+    }
+  ],
+  "approval": {
+    "required_for_official_registry": true,
+    "authority_contributor_id": "daniel",
+    "approval_id": "approval-antibibel-founding"
+  },
+  "notes": {}
+}

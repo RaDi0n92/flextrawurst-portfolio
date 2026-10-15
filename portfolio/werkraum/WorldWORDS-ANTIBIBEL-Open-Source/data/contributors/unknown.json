@@ -1,0 +1,11 @@
+{
+  "$schema": "../schema/contributor.schema.json",
+  "schema_version": "1.0",
+  "id": "unknown",
+  "display_name": "Unknown or unresolved contributor",
+  "type": "unresolved",
+  "roles": [
+    "unresolved-origin"
+  ],
+  "can_accept_official_terms": false
+}

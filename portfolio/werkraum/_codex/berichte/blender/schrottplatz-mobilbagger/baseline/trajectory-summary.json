@@ -1,0 +1,19 @@
+{
+  "trajectory_version": 1,
+  "completed_at": "2026-09-05T14:11:07.828+00:00",
+  "samples_attempted": 1,
+  "successful_samples": 1,
+  "samples_with_errors": 0,
+  "target_interval_s": 0.1,
+  "target_interval_ms": 100.0,
+  "cadence_tolerance_ms": 25.0,
+  "expected_samples": 10,
+  "cadence_intervals": 0,
+  "measured_intervals_ms": [],
+  "max_interval_ms": null,
+  "capture_mode": "mcp-viewport-and-world-state",
+  "cadence_met": false,
+  "cadence_status": "FAIL",
+  "duration_s": 1.0,
+  "trajectory": "/vps_root/werkraum/_codex/berichte/blender/schrottplatz-mobilbagger/baseline/trajectory.jsonl"
+}

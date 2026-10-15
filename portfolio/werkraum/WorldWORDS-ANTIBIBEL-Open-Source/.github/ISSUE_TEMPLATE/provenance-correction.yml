@@ -1,0 +1,23 @@
+name: Provenance correction
+description: Correct an attribution without deleting history
+title: "[PROVENANCE] "
+labels: ["provenance", "correction"]
+body:
+  - type: input
+    id: term_id
+    attributes:
+      label: Term ID
+    validations:
+      required: true
+  - type: textarea
+    id: incorrect
+    attributes:
+      label: Existing claim that is incorrect
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction and evidence
+    validations:
+      required: true

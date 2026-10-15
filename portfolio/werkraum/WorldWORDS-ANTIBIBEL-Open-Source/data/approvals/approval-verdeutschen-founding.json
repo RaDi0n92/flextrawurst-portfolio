@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema/approval.schema.json",
+  "schema_version": "1.0",
+  "id": "approval-verdeutschen-founding",
+  "term_id": "verdeutschen",
+  "decision": "accepted",
+  "rationale": {
+    "de": "Daniels ausdrückliche Korrektur setzt die verbindliche freiwillige Bedeutung.",
+    "en": "Daniel’s explicit correction establishes the binding voluntary meaning.",
+    "es": "La corrección explícita de Daniel establece el significado voluntario vinculante."
+  },
+  "decided_by": "daniel",
+  "decision_date": "2026-07-26",
+  "decision_basis": "inherited-founding-canonical-state",
+  "evidence_refs": [
+    "raw/source/02_WORTKOERPER/00_WORTREGISTER.md",
+    "raw/decisions/2026-07-26-open-source-governance.txt"
+  ]
+}

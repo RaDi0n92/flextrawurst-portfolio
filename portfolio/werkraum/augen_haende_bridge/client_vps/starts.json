@@ -1,0 +1,17 @@
+{
+  "_hinweis": "Startliste der Bridge (Beschluss BE02, ANFORDERUNGEN.md). Nur Einträge dieser Liste kann der Desktop starten; er liefert nie einen Befehl. bestaetigt=false: Ordner aus den Mitschriften abgeleitet, von Daniel nicht bestätigt.",
+  "starts": [
+    {"start_id": "claude-vd1", "name": "Claude", "ort": "vd1", "ordner": "/config", "programm": "claude", "bestaetigt": true, "startnachricht": "standard"},
+    {"start_id": "codex-vd1", "name": "Codex", "ort": "vd1", "ordner": "/config", "programm": "codex", "bestaetigt": true, "startnachricht": "standard"},
+    {"start_id": "gemgem-vd1", "name": "Gemgem", "ort": "vd1", "ordner": "/config", "programm": "agy", "bestaetigt": true, "startnachricht": "standard"},
+    {"start_id": "opencode-vd1", "name": "Opencode", "ort": "vd1", "ordner": "/config", "programm": "opencode", "bestaetigt": true, "startnachricht": "standard"},
+    {"start_id": "anthropic-claude-vd2", "name": "Anthropic-Claude", "ort": "vd2", "ordner": "/config", "programm": "claude", "bestaetigt": true},
+    {"start_id": "gravity-vd2", "name": "Gravity", "ort": "vd2", "ordner": "/config", "programm": "agy", "bestaetigt": true},
+    {"start_id": "haiku-host", "name": "Haiku", "ort": "Host", "ordner": "/home/claude_haiku", "programm": "claude", "bestaetigt": true},
+    {"start_id": "glm-host", "name": "GLM", "ort": "Host", "ordner": "/root", "programm": "glm", "bestaetigt": false},
+    {"start_id": "kimi-host", "name": "Kimi", "ort": "Host", "ordner": "/root", "programm": "kimi", "bestaetigt": false},
+    {"start_id": "claude-host", "name": "Claude-Host", "ort": "Host", "ordner": "/root", "programm": "claude --model claude-sonnet-5-5", "bestaetigt": false, "startnachricht": "standard"},
+    {"start_id": "codex-host", "name": "Codex-Host", "ort": "Host", "ordner": "/root", "programm": "codex", "bestaetigt": false, "startnachricht": "standard"},
+    {"start_id": "gemgem-host", "name": "Gemgem-Host", "ort": "Host", "ordner": "/root", "programm": "agy", "bestaetigt": false, "startnachricht": "standard"}
+  ]
+}

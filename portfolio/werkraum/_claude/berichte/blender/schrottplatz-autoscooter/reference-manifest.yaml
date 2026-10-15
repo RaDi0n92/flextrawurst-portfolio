@@ -1,0 +1,31 @@
+manifest_version: 1
+task: "Autoscooter (Schrottplatz-Endzeit-Steampunk-Design) fuer den Schrottplatz bauen -- echter 1:1-Test von Codex' blender-live-reference-qa-Skill"
+created_at: "2026-09-06T16:59:00Z"
+reference_revision: "autoscooter-v1"
+references:
+  - id: ref-01
+    source: "/root/werkraum/refferenzen/Schrottplatz/autoscooter.png"
+    provenance: "Von Daniel im Gespraech direkt bereitgestelltes Referenzbild, 8-Panel-Composite (3x 3/4-Front, Front, Heck, Seite x2, 2x weitere 3/4-Winkel)."
+    priority: 1
+    controls:
+      composition: "8 Panels desselben Fahrzeugs aus verschiedenen Winkeln vor transparentem Hintergrund -- echte Rundum-Referenz, nicht nur Frontalansicht."
+      silhouette: "Ovale Karosserie auf dickem Gummi-Stossring, Ledersitz mittig-hinten, Lenkrad vorne-mittig, Gittergrill mit 2 runden Scheinwerfern vorne, 2 runde Ruecklichter hinten, Fahnenmast am Heck."
+      proportions: "Kompaktes einsitziges Fahrgeschaeft-Fahrzeug -- breiter/niedriger als hoch, Sitz nimmt ca. 40% der Laenge ein, Stossring umschliesst die gesamte Grundflaeche."
+      camera: "8 feste Blickwinkel explizit vorgegeben -- echte Rundum-Silhouette vorhanden, kein unknown fuer Front/Heck/Seite."
+      palette: "Rostbraun/Kupfer/Schwarz-Metall, warmes Gelblicht (Scheinwerfer vorne), Rotlicht (Ruecklichter), schwarzes Leder (Sitz), schwarze Flagge mit weissem Totenkopf-Print."
+      materials: "Stark verwittert/rostig/genietet, keine glatten Flaechen -- durchgaengiges Endzeit-Steampunk-Finish."
+      lighting: "Warmes Scheinwerferlicht vorne (Emission), Rotlicht hinten (Emission) -- explizit als leuchtende Elemente im Referenzbild sichtbar, nicht nur reflektierend."
+      negative_space: "Transparenter/schwarzer Hintergrund je Panel, Fahrzeug voll freigestellt."
+      motion: "unknown -- kein Hinweis auf Bewegungsanimation im Referenzbild selbst."
+      non_negotiable:
+        - "Ovale Wannenform auf durchgehendem Gummi-Stossring"
+        - "SCHROTTPLATZ KING -- Schriftzug auf der Seitenflanke"
+        - "Totenkopf-Schraubenschluessel-Flagge mit Text HIER HERRSCHT BLECH! am Heck-Mast"
+        - "Gittergrill mit 2 runden leuchtenden Scheinwerfern vorne, 2 runden roten Ruecklichtern hinten"
+        - "Schwarzer Ledersitz + Lenkrad"
+        - "Rostiges, genietetes Blech-Finish, keine sauberen/glatten Flaechen"
+    tolerance:
+      framing: "Silhouette aus allen Hauptrichtungen (Front/Heck/beide Seiten) muss zum Referenzbild passen"
+      placement: "Anbauteile (Grill, Ruecklichter, Flagge, Sitz, Lenkrad) an den im Bild gezeigten Positionen"
+      color: "Visueller Match der Palette, keine Byte-Identitaet"
+      detail: "Erste Bauphase: Wanne+Stossring+Sitz als Basis, danach Anbauteile (Grill/Lichter/Flagge/Lenkrad) einzeln, Feindetails (Nieten, Textur) iterativ"

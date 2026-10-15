@@ -1,0 +1,9 @@
+# sketch · Als Objekt übernehmen
+
+- Container: `visual-thinking` · `01_Material/Replica-Container/visual-thinking`
+- Arbeitskontext: `00_Start/README.md`
+- Verknüpftes Objekt: `offen`
+- Verknüpfte Quelle: `werkraum://00_Start/README.md`
+- Zustand: `ausgeführt`
+
+Bewusst im neuen Betriebssystem ausgelöst. Die konkrete Semantik dieser Werkstatt wird am eigenen Arbeitskörper weitergebaut.

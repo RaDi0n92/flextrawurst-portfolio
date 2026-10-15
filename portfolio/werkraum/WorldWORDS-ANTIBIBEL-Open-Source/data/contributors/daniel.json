@@ -1,0 +1,13 @@
+{
+  "$schema": "../schema/contributor.schema.json",
+  "schema_version": "1.0",
+  "id": "daniel",
+  "display_name": "Daniel",
+  "type": "human",
+  "roles": [
+    "founder",
+    "founding-curator",
+    "contributor"
+  ],
+  "can_accept_official_terms": true
+}

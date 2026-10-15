@@ -1,0 +1,20 @@
+[
+  {
+    "id": "b5_scene05_15s",
+    "thron_wort": "GESETZ",
+    "reason": "Das alte Bild zeigte nur zweidimensionales Schablonen-Lettering. Die Veredelung fokussiert auf eine massive, verrostete staGroup-eiserne Typenplakette, die mit groben Nieten an einen schweren Doppel-T-Traeger geschlagen ist, mit eingestanzter Schrift im harten Kupferlicht.",
+    "new_prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, close-up of a heavy rusted cast-iron industrial specification nameplate bolted with oversized hexagonal rivets onto a massive steel I-beam, stamped mechanical serial letters, rain droplets gleaming on rough metal surface, deep comic ink shadows, warm amber side lighting, not realistic"
+  },
+  {
+    "id": "b5_scene07_22s",
+    "thron_wort": "BASSDRUM",
+    "reason": "Das alte Bild generierte eine Comic-Kriegerfigur mit Fackel statt Maschinengewalt. Die Veredelung zeigt einen monstroesen industriellen Schmiedehammer im Moment des Aufpralls auf ein rotgluehendes Schrottstueck, mit spritzendem Schlammwasser und Funken.",
+    "new_prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, low angle shot of a massive industrial steam forge drop hammer striking violently down upon an anvil, glowing red-hot scrap iron sparking, water droplets splashing upward from muddy workshop floor, deep comic ink shadows, intense orange impact glow, not realistic"
+  },
+  {
+    "id": "b5_scene08_26s",
+    "thron_wort": "MASCHINE",
+    "reason": "Das alte Bild hatte ein zerstückeltes Comic-Panel-Layout mit Sprechblasen. Die Veredelung zeigt ein einzelnes, maechtiges Notstrom-Aggregat mit freilaufenden Keilriemen und rotierendem Schwungrad im stroemenden Regen unter einer rostigen Blechhaube.",
+    "new_prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a heavy vintage diesel power generator chugging inside an open rusted corrugated tin shelter, spinning spoked cast-iron flywheel and heavy leather drive belt, rain pouring down outside, thick exhaust smoke puffing, deep comic ink shadows, warm glowing lantern, not realistic"
+  }
+]

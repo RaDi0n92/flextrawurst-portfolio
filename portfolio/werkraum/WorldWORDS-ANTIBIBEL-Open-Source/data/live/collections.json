@@ -1,0 +1,92 @@
+{
+  "collections": [
+    {
+      "descriptions": {
+        "de": "Die vier bereits aufgenommenen Ausgangswörter.",
+        "en": "The four already admitted founding words.",
+        "es": "Las cuatro palabras fundadoras ya admitidas."
+      },
+      "featured": true,
+      "slug": "founding-words",
+      "terms": [
+        "antibibel",
+        "symbositierung",
+        "verdeutschen",
+        "worldwords"
+      ],
+      "titles": {
+        "de": "Aufgenommene Grundwörter",
+        "en": "Admitted founding words",
+        "es": "Palabras fundadoras admitidas"
+      }
+    },
+    {
+      "descriptions": {
+        "de": "Wörter, deren Herkunft oder genaue Absicht noch offen ist.",
+        "en": "Words whose origin or exact intent remains open.",
+        "es": "Palabras cuyo origen o intención exacta sigue abierta."
+      },
+      "featured": true,
+      "slug": "open-origin",
+      "terms": [
+        "blendhonig",
+        "forschungssnack",
+        "gesternol",
+        "grellader",
+        "klammerhonig",
+        "nullstunden",
+        "punktbuhne",
+        "staubmilch",
+        "stillgift",
+        "thronol",
+        "wortlike"
+      ],
+      "titles": {
+        "de": "Ungeklärte Geburten",
+        "en": "Unresolved births",
+        "es": "Nacimientos sin resolver"
+      }
+    },
+    {
+      "descriptions": {
+        "de": "Begriffe mit mehrschichtiger oder gemeinsamer Entstehung.",
+        "en": "Terms with layered or joint formation.",
+        "es": "Términos de formación conjunta o por capas."
+      },
+      "featured": true,
+      "slug": "human-ai",
+      "terms": [
+        "antibibel",
+        "symbositierung",
+        "worldwords",
+        "robotermodus"
+      ],
+      "titles": {
+        "de": "Mensch–AI-Mischwörter",
+        "en": "Human–AI blended words",
+        "es": "Palabras mezcladas humano–AI"
+      }
+    },
+    {
+      "descriptions": {
+        "de": "Wörter, die nicht nur benennen, sondern eine Praxis oder Veränderung auslösen.",
+        "en": "Words that do not merely name but initiate a practice or transformation.",
+        "es": "Palabras que no solo nombran, sino que activan una práctica o transformación."
+      },
+      "featured": true,
+      "slug": "language-motion",
+      "terms": [
+        "symbositierung",
+        "verdeutschen",
+        "worldwords"
+      ],
+      "titles": {
+        "de": "Sprachbewegungen",
+        "en": "Language motions",
+        "es": "Movimientos lingüísticos"
+      }
+    }
+  ],
+  "generated_at": "2026-10-05T01:27:22.819321+00:00",
+  "schema_version": "1.0"
+}

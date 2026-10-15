@@ -1,0 +1,23 @@
+[
+  {
+    "id": "b1_scene13_44s",
+    "thron_wort": "GELD",
+    "reason": "Das alte Bild stammte aus dem Not-Fallback mit dunkler Schale und Wasserzeichen. Das neue Bild zeigt eine verru\u00dfte eiserne Schatulle voll gepr\u00e4gter Silber- und Kupfertaler im Schein einer brennenden Schmalzlampe auf feuchtem Basaltboden.",
+    "new_prompt": "an open heavy iron strongbox overflowing with tarnished copper and silver coins, tallow candle dripping wax on cold damp basalt floor, deep cellar shadows, coal dust particles, tactile coarse metal texture, oil painting realism",
+    "prompt": "an open heavy iron strongbox overflowing with tarnished copper and silver coins, tallow candle dripping wax on cold damp basalt floor, deep cellar shadows, coal dust particles, tactile coarse metal texture, oil painting realism"
+  },
+  {
+    "id": "b1_scene09_30s",
+    "thron_wort": "NACHTS",
+    "reason": "Das alte Bild zeigte einen menschlichen Schreiber. Das neue Bild r\u00fcckt die verlassene Werkstatt-Atmosph\u00e4re in den Fokus: Ein massiver Zeichentisch aus Eiche voller brennender Skizzen und zerrissener Baupl\u00e4ne im eisigen Mondlicht ohne Menschen.",
+    "new_prompt": "an abandoned heavy oak drafting table covered in scorched parchment schematics and smoking embers, brass calipers and inkwells, moonlight streaming through broken leaded glass window, empty workshop at midnight, solitude and bitter betrayal, rich textural oil painting",
+    "prompt": "an abandoned heavy oak drafting table covered in scorched parchment schematics and smoking embers, brass calipers and inkwells, moonlight streaming through broken leaded glass window, empty workshop at midnight, solitude and bitter betrayal, rich textural oil painting"
+  },
+  {
+    "id": "b1_scene04_11s",
+    "thron_wort": "W\u00c4NDEN",
+    "reason": "Das alte Bild war etwas kahl. Das neue Bild zeigt eine gewaltige, von schweren Nieten und Eisenb\u00e4ndern verst\u00e4rkte Tresort\u00fcr, die das erstickende Eingesperrtsein und die kalte Barriere symbolisiert.",
+    "new_prompt": "a massive monolithic vault door made of thick riveted iron plates and heavy hydraulic locking bars, water seepage stains on damp stone masonry, solitary amber lantern, claustrophobic and impenetrable fortress wall, dark gritty oil painting texture",
+    "prompt": "a massive monolithic vault door made of thick riveted iron plates and heavy hydraulic locking bars, water seepage stains on damp stone masonry, solitary amber lantern, claustrophobic and impenetrable fortress wall, dark gritty oil painting texture"
+  }
+]

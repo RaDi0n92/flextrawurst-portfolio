@@ -1,0 +1,88 @@
+{
+  "$schema": "../schema/term.schema.json",
+  "schema_version": "1.0",
+  "id": "worldwords",
+  "canonical_form": "WorldWORDS",
+  "raw_form_policy": "preserve-exactly",
+  "status": "accepted",
+  "language_of_origin": "mixed",
+  "origin": {
+    "authorship_status": "joint-or-unresolved-project-setting",
+    "language": "mixed",
+    "contributors": [
+      "daniel",
+      "chatgpt-session-20260726"
+    ],
+    "first_seen": {
+      "date": "2026-07-26",
+      "precision": "day"
+    },
+    "exact_input": "WorldWORDS ANTIBIBEL",
+    "source_ref": "raw/source/06_GESPRAECHE/2026-07-26 - Geburt der WorldWORDS ANTIBIBEL.md#title",
+    "origin_note": "The project title is evidenced; exact first coiner of the capitalization and compound is not asserted."
+  },
+  "components": [
+    "World",
+    "WORDS"
+  ],
+  "variants": [],
+  "definitions": {
+    "de": {
+      "short": "Wörter, die nicht nur etwas benennen, sondern eine eigene kleine Welt, Arbeitsweise oder Wirklichkeit eröffnen können.",
+      "long": "World betont Räume, Regeln und Beziehungen; WORDS hält sichtbar, dass Sprache der Keim bleibt."
+    },
+    "en": {
+      "short": "Words that do not merely label something but can open a small world, practice or reality of their own.",
+      "long": "World emphasizes spaces, rules and relations; WORDS keeps language visible as the seed."
+    },
+    "es": {
+      "short": "Palabras que no se limitan a nombrar algo, sino que pueden abrir un pequeño mundo, una práctica o una realidad propia.",
+      "long": "World subraya espacios, reglas y relaciones; WORDS mantiene visible que el lenguaje sigue siendo la semilla."
+    }
+  },
+  "translation_provenance": {
+    "de": {
+      "contributors": [
+        "daniel",
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "source-derived-and-release-edited",
+      "review_status": "founding-release"
+    },
+    "en": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "translation-from-german-explanation",
+      "review_status": "not-yet-reviewed-by-independent-native-speaker"
+    },
+    "es": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "translation-from-german-explanation",
+      "review_status": "not-yet-reviewed-by-independent-native-speaker"
+    }
+  },
+  "not_meant": {
+    "de": [],
+    "en": [],
+    "es": []
+  },
+  "embodiments": [],
+  "approval": {
+    "required_for_official_registry": true,
+    "authority_contributor_id": "daniel",
+    "approval_id": "approval-worldwords-founding"
+  },
+  "notes": {
+    "open_question": {
+      "de": "Ob Projektname, Wortklasse oder beides, bleibt offen.",
+      "en": "Whether this is a project name, word class or both remains open.",
+      "es": "Sigue abierto si es nombre del proyecto, clase de palabras o ambas cosas."
+    }
+  }
+}

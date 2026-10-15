@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Provenance event",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "event_id",
+    "term_id",
+    "event_type",
+    "event_date",
+    "contributors",
+    "statement",
+    "source_ref"
+  ],
+  "properties": {
+    "event_type": {
+      "enum": [
+        "first-use",
+        "transmission",
+        "interpretation",
+        "translation",
+        "correction",
+        "retraction",
+        "embodiment",
+        "admission",
+        "status-change"
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "delegation_id": "omega-parallel-build-teams-20260730",
+  "created_utc": "2026-07-30T17:10:00Z",
+  "canonical_owner_session_id": "chatgpt-2026-07-30-vps-rettung",
+  "purpose": "Zwei vorhandene Sitzungen als parallele Bautrupps einsetzen, nicht als Prüfer oder konkurrierende Owner.",
+  "rules": [
+    "Nur der kanonische Owner integriert in gemeinsame Produktivdateien.",
+    "Delegierte Sitzungen schreiben ausschließlich in ihre exklusiven Arbeitskörper.",
+    "Keine delegierte Sitzung setzt Ready-Marker, verändert systemd, startet Dienste neu oder aktiviert Produktion.",
+    "Keine delegierte Sitzung verändert Pointer, Baselines, Evidence, gemeinsame Manifeste oder produktive Owner-Dateien.",
+    "Jeder Bautrupp liefert vollständige Dateien, eigene Abschnittstests, Playwright-Belege, Screenshots, Integrationshinweise und eine Hashliste.",
+    "Keine Rolle als unabhängiger Prüfer; die Sitzungen bauen konkrete Teile des Endprodukts."
+  ],
+  "teams": [
+    {
+      "session_id": "chatgpt-20260730T060500Z-gesamtatlas-eli5-vollverwirklichung",
+      "role": "BAUTRUPP_A_MENSCH_KIND_REISE_EXPLORATION",
+      "exclusive_write_root": "/root/werkraum/tools/gesamtatlas_world/delegated_builds/human_experience_v1",
+      "evidence_root": "/root/werkraum/_gpt/gesamtatlas/omega/delegated_evidence/human_experience_v1"
+    },
+    {
+      "session_id": "chatgpt-20260730T113500Z-omega-production-redteam-continuation",
+      "role": "BAUTRUPP_B_MCP_API_LIFECYCLE_RUNTIME",
+      "exclusive_write_root": "/root/werkraum/tools/gesamtatlas_omega/delegated_builds/machine_lifecycle_v1",
+      "evidence_root": "/root/werkraum/_gpt/gesamtatlas/omega/delegated_evidence/machine_lifecycle_v1"
+    }
+  ],
+  "owner_only_targets": [
+    "/root/werkraum/_gpt/gesamtatlas/omega/VERIFIED_FULL_BASELINE.json",
+    "/root/werkraum/_gpt/gesamtatlas/omega/verified_full_baselines",
+    "/root/werkraum/_gpt/gesamtatlas/omega/TRUTH_RING_MANIFEST.json",
+    "/root/werkraum/_gpt/gesamtatlas/omega/MCP_WORLD_READY.json",
+    "/root/werkraum/_gpt/gesamtatlas/omega/FINAL_SCAN_READY.json",
+    "/root/werkraum/tools/vps_mcp/vps_mcp_server.py",
+    "/root/werkraum/tools/vps_mcp/mcp_atlas_omega_api.py",
+    "/root/werkraum/tools/vps_mcp/mcp_atlas_omega_lean.py",
+    "/root/werkraum/tools/gesamtatlas_world/app.py",
+    "/root/werkraum/_gpt/gesamtatlas/systemd"
+  ],
+  "truth_boundary": "Die delegierten Ergebnisse sind Baukandidaten. Kanonisch werden sie erst nach Owner-Integration und den vorgeschriebenen Abschnittsabnahmen."
+}

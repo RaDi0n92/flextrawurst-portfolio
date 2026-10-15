@@ -1,0 +1,45 @@
+[Unit]
+Description=Flextrawurst Agent Gateway (sandboxed)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/werkraum
+Environment=WORKSPACE_ROOT=/root/werkraum
+Environment=AGENT_ALLOWED_COMMAND_PREFIXES=git,python,pytest,ls,cat,sed
+EnvironmentFile=/root/werkraum/.agent/gateway.env
+ExecStart=/root/werkraum/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8010
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectClock=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+UMask=077
+
+# Der Gateway braucht bewusst den Werkraum für seine Agentenfunktion. Die
+# Zugangsschicht selbst bleibt geladen, aber vor dem Prozess verborgen.
+InaccessiblePaths=/root/.ssh /root/.claude /root/.codex /root/.gemini /root/.config /root/werkraum/.agent
+ReadWritePaths=/root/werkraum
+
+[Install]
+WantedBy=multi-user.target

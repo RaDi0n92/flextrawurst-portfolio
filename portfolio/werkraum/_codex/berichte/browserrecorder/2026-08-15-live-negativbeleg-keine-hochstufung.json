@@ -1,0 +1,94 @@
+{
+  "schema": "codex-live-negative-provenance-manifest-v1",
+  "manifested_utc": "2026-08-15T05:29:10Z",
+  "environment": "real virtuellerdesktop2 Chromium via CDP",
+  "collection_id": "collection-2026-08-15T041300230Z-ab03126e",
+  "crawl_id": "crawl-2026-08-15T052548876Z-e24f0e29",
+  "capture": {
+    "source": "https://flextrawurst.de/",
+    "trigger": "visible button Aktuelle sichtbare Seite aufnehmen",
+    "source_mode": "active_visible_tab",
+    "position": "0/5875",
+    "initial_persisted_stages": {
+      "seen": "pass",
+      "read_back": "open",
+      "checked": "open",
+      "visual": "open"
+    }
+  },
+  "screen_evidence": [
+    {
+      "event": "sidepanel before visible capture click",
+      "path": "/tmp/codex-negative-live-sidepanel-before.png",
+      "sha256": "07b61c158bc3b3dc699b1008c4f6389ccc557e000f3d2bee32a8648ce2343c0b"
+    },
+    {
+      "event": "sidepanel after visible capture click",
+      "path": "/tmp/codex-negative-live-sidepanel-after-capture.png",
+      "sha256": "5583e6d2b09121a8e5a985db3522502bde86923706d05f763769e584a71f9c04"
+    },
+    {
+      "event": "fresh snapshot selected; stages visibly open",
+      "path": "/tmp/codex-negative-fresh-provenance-open.png",
+      "sha256": "e3201797417a62b63f0cc86b58b3168c6ea1f539892252c83fffcb63ae0dcd83"
+    },
+    {
+      "event": "after one visible workspace reload; stages visibly unchanged",
+      "path": "/tmp/codex-negative-fresh-after-reload-top.png",
+      "sha256": "0c0ce856d16b5691f3d98343e2e19ed6d64379377c33407c1379ce72944c7f19"
+    },
+    {
+      "event": "visible PDF control before click; stages visibly open",
+      "path": "/tmp/codex-negative-fresh-pdf-visible.png",
+      "sha256": "b2a0c797416047a077f47214819abed1c19310f7078fd6cd70534f8c97dc478e"
+    },
+    {
+      "event": "after one visible Chromium-PDF click; export status visible",
+      "path": "/tmp/codex-negative-fresh-pdf-after.png",
+      "sha256": "daf88cd7748cc48251c50e435f112c0a078b7ee4ccc06c0db760960d28a213c2"
+    },
+    {
+      "event": "after PDF click; all provenance stages visibly readable",
+      "path": "/tmp/codex-negative-fresh-pdf-after-stages.png",
+      "sha256": "216e2c75c9db94100cb1a4b659cccf906ad1dd410ff5ce7215a591a560b3678b"
+    }
+  ],
+  "negative_actions": [
+    {
+      "action": "one visible workspace reload",
+      "persisted_stages_after": {
+        "seen": "pass",
+        "read_back": "open",
+        "checked": "open",
+        "visual": "open"
+      }
+    },
+    {
+      "action": "one visible Chromium-PDF click",
+      "persisted_stages_after": {
+        "seen": "pass",
+        "read_back": "open",
+        "checked": "open",
+        "visual": "open"
+      },
+      "pdf": {
+        "source": "browser_print_to_pdf",
+        "bytes": 266690,
+        "page_count": 1,
+        "sha256": "606719f37a40ab5f5f823cdc234d2ffb2190c93579b31862c18950aed79a8a49"
+      }
+    }
+  ],
+  "raw_hashes_after_pdf": {
+    "html_sha256": "46c94b0d755f5d1dcf8cdf81822e14e22519f3fb303a5062832f5f368b7fe699",
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "screenshot_sha256": "2ed30f3108c9bd9698e44191eab9083e7429666b310e5f5afa7bbcbbc4a04bf0"
+  },
+  "result": {
+    "reload_promoted_provenance": false,
+    "pdf_promoted_provenance": false,
+    "only_explicit_provenance_buttons_can_promote": true,
+    "visual_original_comparison": "open"
+  },
+  "readback": "After each live action the extension runtime reread the persisted snapshot from IndexedDB; the screen state and stored stages agreed."
+}

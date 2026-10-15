@@ -1,0 +1,36 @@
+{
+  "anti_fraud": [
+    "Unit-Test grün ist kein Playwright-Beweis",
+    "Syntax grün ist kein Funktionsbeweis",
+    "HTTP 200 ist kein sichtbarer Browserbeweis",
+    "ein späterer Gesamttest ersetzt nicht die Einzelabnahme der Bauabschnitte"
+  ],
+  "created_utc": "2026-07-30T07:11:58.468895+00:00",
+  "gates": {
+    "CORE_READY": "verboten ohne Core-Playwright-Abnahme",
+    "FINAL_SCAN_READY": "verboten ohne vollständige E2E-Playwright-Abnahme",
+    "MCP_WORLD_READY": "verboten ohne MCP-/Welt-Playwright-Abnahme"
+  },
+  "protocol_id": "gesamtatlas.omega.playwright_each_step.v1",
+  "required_per_step": [
+    "Testdatei oder eindeutig benannter Testfall",
+    "Browserstart",
+    "realer Funktionsweg",
+    "maschinenlesbarer PASS/FAIL-Bericht",
+    "Screenshotbeleg",
+    "bewahrter roter Erstlauf, wenn vorhanden",
+    "Hash und Pfad der Belege"
+  ],
+  "rule": "Ein funktionaler Bauabschnitt ist erst abgeschlossen, wenn sein eigener realer Playwright-Lauf bestanden und der sichtbare Beleg gespeichert wurde. Andere grüne Tests sind nur Vorprüfungen.",
+  "schema_version": "1.0",
+  "scope": [
+    "Omega-Owner",
+    "unabhängige Prüfsession",
+    "Monsterlabor",
+    "spätere beteiligte Sessions"
+  ],
+  "set_by": "Daniel",
+  "status": "required",
+  "title": "Playwright-Abnahme nach jedem funktionalen Omega-Bauabschnitt",
+  "truth_boundary": "Reine Leseschritte, Metadatenprüfungen und interne Hilfsberechnungen brauchen keinen Browser. Jeder neue funktionale Zustand und jede Fertigbehauptung schon."
+}

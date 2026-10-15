@@ -1,0 +1,15 @@
+[Unit]
+Description=Neue GENI-Dokumentationsfassungen sofort ins Versionsarchiv sichern
+After=local-fs.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/werkraum
+ExecStart=/usr/bin/python3 /root/werkraum/scripts/geni_dokumentation_versionsarchiv_watch.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

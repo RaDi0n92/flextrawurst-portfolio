@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily WorldWORDS ANTIBIBEL backup
+
+[Timer]
+OnCalendar=*-*-* 03:17:00 Europe/Berlin
+Persistent=true
+RandomizedDelaySec=12m
+Unit=worldwords-antibibel-backup.service
+
+[Install]
+WantedBy=timers.target

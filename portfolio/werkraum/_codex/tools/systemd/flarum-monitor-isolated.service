@@ -1,0 +1,41 @@
+[Unit]
+Description=Flarum Event Monitor — leitet Forum-Events an Codewesen-Inboxen weiter (sandboxed)
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/werkraum
+EnvironmentFile=/root/werkraum/.agent/flarum.env
+ExecStart=/usr/bin/python3 /root/werkraum/flarum_monitor.py
+Restart=always
+RestartSec=15
+StandardOutput=journal
+StandardError=journal
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectClock=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET AF_INET6
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+UMask=077
+
+InaccessiblePaths=/root/.ssh /root/.claude /root/.codex /root/.gemini /root/.config /root/werkraum/.agent
+ReadWritePaths=/root/werkraum/codewesen
+
+[Install]
+WantedBy=multi-user.target

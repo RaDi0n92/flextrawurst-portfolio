@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contributor",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "display_name",
+    "type",
+    "roles",
+    "can_accept_official_terms"
+  ],
+  "properties": {
+    "type": {
+      "enum": [
+        "human",
+        "ai-system",
+        "organization",
+        "unresolved"
+      ]
+    }
+  }
+}

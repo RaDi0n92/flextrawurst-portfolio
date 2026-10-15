@@ -1,0 +1,18 @@
+[Unit]
+Description=Mein Gesamtkonstrukt Planer - minimaler SSE-Signalgeber (Stage 3 Live-Updates)
+After=network.target
+
+[Service]
+Type=simple
+User=worldwords
+Group=worldwords
+ExecStart=/usr/bin/python3 /root/werkraum/Mein-Gesamtkonstrukt-planer/server/planner_events_stream.py
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadOnlyPaths=/root/werkraum/Mein-Gesamtkonstrukt-planer/data
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

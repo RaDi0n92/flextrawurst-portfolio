@@ -1,0 +1,93 @@
+{
+  "$schema": "../schema/term.schema.json",
+  "schema_version": "1.0",
+  "id": "verdeutschen",
+  "canonical_form": "Verdeutschen",
+  "raw_form_policy": "preserve-exactly",
+  "status": "accepted",
+  "language_of_origin": "de",
+  "origin": {
+    "authorship_status": "existing-word-redefined-by-daniel",
+    "language": "de",
+    "contributors": [
+      "daniel"
+    ],
+    "first_seen": {
+      "date": "2026-07-26",
+      "precision": "day"
+    },
+    "exact_input": "du hast halluziniert ich hab noch gesagt die wixxxbeutel haben alles falsch gemacht....und mein „verdeutschen“ beruht auf freiwilligkeit nach verstehen der tragweite neuer wortschöpfungen xD",
+    "source_ref": "raw/source/06_GESPRAECHE/2026-07-26 - Geburt der WorldWORDS ANTIBIBEL.md#L54-L64",
+    "origin_note": "This record concerns Daniel’s project-specific redefinition, not authorship of the ordinary German verb."
+  },
+  "components": [],
+  "variants": [],
+  "definitions": {
+    "de": {
+      "short": "Ein neues Wort so verständlich und tragfähig machen, dass Menschen es nach dem Verstehen seiner Tragweite freiwillig übernehmen können.",
+      "long": "Andere dürfen das Wort übernehmen, verändern, übersetzen, zurückweisen oder liegen lassen. Der Begriff bezeichnet Einladung, nicht sprachliche Herrschaft."
+    },
+    "en": {
+      "short": "To make a new word understandable and substantial enough that people may voluntarily adopt it after grasping its implications.",
+      "long": "Others may adopt, alter, translate, reject or ignore the word. The project-specific meaning is invitation, not linguistic domination."
+    },
+    "es": {
+      "short": "Hacer una palabra nueva lo bastante comprensible y sólida para que otras personas puedan adoptarla voluntariamente tras entender su alcance.",
+      "long": "Las demás personas pueden adoptarla, modificarla, traducirla, rechazarla o dejarla. El sentido específico del proyecto es invitación, no dominio lingüístico."
+    }
+  },
+  "translation_provenance": {
+    "de": {
+      "contributors": [
+        "daniel",
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "source-derived-and-release-edited",
+      "review_status": "founding-release"
+    },
+    "en": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "translation-from-german-explanation",
+      "review_status": "not-yet-reviewed-by-independent-native-speaker"
+    },
+    "es": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "translation-from-german-explanation",
+      "review_status": "not-yet-reviewed-by-independent-native-speaker"
+    }
+  },
+  "not_meant": {
+    "de": [
+      "Zwang",
+      "Verbot anderer Sprachen",
+      "politische oder ethnische Vereinheitlichung",
+      "sprachliche Herrschaft"
+    ],
+    "en": [
+      "coercion",
+      "banning other languages",
+      "political or ethnic homogenization",
+      "linguistic domination"
+    ],
+    "es": [
+      "coacción",
+      "prohibición de otros idiomas",
+      "homogeneización política o étnica",
+      "dominio lingüístico"
+    ]
+  },
+  "embodiments": [],
+  "approval": {
+    "required_for_official_registry": true,
+    "authority_contributor_id": "daniel",
+    "approval_id": "approval-verdeutschen-founding"
+  },
+  "notes": {}
+}

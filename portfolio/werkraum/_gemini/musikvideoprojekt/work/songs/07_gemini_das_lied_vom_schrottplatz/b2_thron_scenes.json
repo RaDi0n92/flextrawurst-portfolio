@@ -1,0 +1,98 @@
+[
+  {
+    "id": "b2_scene01_00s",
+    "start": 0.00,
+    "end": 3.65,
+    "thron_wort": "VENTURE-KAPITAL",
+    "begruendung": "Die stolze Absage an fremdes Investorengeld und Hochglanz-Bürokratie zugunsten der eigenen Freiheit.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, crumpled legal corporate venture capital contract stamped with big red void stamp, stained with dark machine oil on rough splintered workbench, deep comic ink shadows, glowing amber desk lamp light, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene02_03s",
+    "start": 3.65,
+    "end": 7.30,
+    "thron_wort": "KASTEN",
+    "begruendung": "Der klapprige, improvisierte Blechkasten-Server, der trotz Hitze und Qualm unerbittlich den Takt hält.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, battered dented sheet metal computer server case with side panel removed, thick curls of grey smoke rising from tangled glowing copper wires, oil grease smudges on matte grey metal, deep comic ink shadows, warm incandescent orange rim light, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene03_07s",
+    "start": 7.30,
+    "end": 10.95,
+    "thron_wort": "DEBIAN",
+    "begruendung": "Das unzerstörbare Betriebssystem-Fundament, das auf dem 40-Euro-Schrottplatzrechner treu seinen Dienst tut.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, chunky vintage CRT monitor displaying a glowing red Debian spiral swirl logo and terminal prompt, thick dusty cables, scratched glass screen, heavy cast iron brackets, deep comic ink shadows, luminous crimson backlighting, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene04_11s",
+    "start": 10.95,
+    "end": 14.60,
+    "thron_wort": "BROT",
+    "begruendung": "Der karge Preis der Unabhängigkeit – das letzte Stück Kruste wird geteilt, um die eigene Vision am Leben zu halten.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, a rustic loaf of dark rye bread broken into rough chunks on a weathered timber chopping block, dusting of coarse flour, an old carbon steel pocketknife stuck in wood, deep comic ink shadows, warm amber side light, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene05_14s",
+    "start": 14.60,
+    "end": 18.25,
+    "thron_wort": "VISION",
+    "begruendung": "Die geistige Glühbirne im Sturm – der unbändige Wille, der den Schrottplatz erleuchtet.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, vintage industrial clear glass incandescent bulb hanging by frayed textile wire, glowing orange tungsten filament casting harsh dramatic shadows through swirling workshop dust, deep comic ink shadows, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene06_18s",
+    "start": 18.25,
+    "end": 21.90,
+    "thron_wort": "SCHROTTPLATZ",
+    "begruendung": "Das Epizentrum der Flextrawurst-Saga – bergeweise Eisen, Monitore und Maschinenteile unter nächtlichem Himmel.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, massive heaps of crushed scrap car chassis, broken CRT television monitors and heavy iron chains in a muddy rainy junkyard, deep comic ink shadows, luminous amber yard floodlights reflecting in puddles, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene07_21s",
+    "start": 21.90,
+    "end": 25.55,
+    "thron_wort": "RAUCH",
+    "begruendung": "Das visuelle Siegel des Schrottplatz-Alltags – dichter bläulicher Qualm steigt in den finsteren Hof.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, close-up profile of a weathered mechanic face with stubble and flat cap, glowing cigarette tip clamped in mouth corner, dense curls of blue-grey smoke billowing into night air, deep comic ink shadows, glowing ember light, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene08_25s",
+    "start": 25.55,
+    "end": 29.20,
+    "thron_wort": "CHROM",
+    "begruendung": "Die Verachtung für glatte, verlogene Fassaden – stumpfes, verbeultes Eisen statt eitlem Glanz.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, heavily scratched and pitted vintage chrome car bumper lying on greasy oil-stained concrete floor, rust eating through metal edges, head of a heavy forged sledgehammer resting on it, deep comic ink shadows, dramatic amber glare, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene09_29s",
+    "start": 29.20,
+    "end": 32.85,
+    "thron_wort": "MOTOR",
+    "begruendung": "Das mechanische Herz des Werkhofs – ein massiver V8-Graugussblock, der unter Volllast vibriert.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, cast iron V8 combustion engine block dripping with dark engine oil, exposed pistons, violent spray of bright golden sparks showering across dark metal from an angle grinder, deep comic ink shadows, high contrast rim lighting, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene10_32s",
+    "start": 32.85,
+    "end": 36.50,
+    "thron_wort": "KAFFEE",
+    "begruendung": "Der eiskalt gewordene Kraftstoff langer Nächte – eine dicke braune Schicht in der abgeplatzten Emaille-Tasse.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, chipped white enamel tin mug filled with oily black cold coffee, ring stains on an open grease-smudged technical repair manual, deep comic ink shadows, moody amber desk light, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene11_36s",
+    "start": 36.50,
+    "end": 40.15,
+    "thron_wort": "DREHBANK",
+    "begruendung": "Wo Code zu Spänen wird – die schwere Leitspindeldrehbank schneidet millimetergenau das Gewinde.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, heavy industrial metal lathe machine chuck spinning rapidly, curling blue steel shavings flying through air, cooling fluid spraying on glowing hot turned metal shaft, deep comic ink shadows, rich amber and teal highlights, stylized cel-shaded art style, not realistic, no photograph"
+  },
+  {
+    "id": "b2_scene12_40s",
+    "start": 40.15,
+    "end": 43.76,
+    "thron_wort": "GEWÜRZSCHADEN",
+    "begruendung": "Das Flextrawurst-Ur-Chaos – der kochende, scharfe Sud, der die Maschinen befeuert, während die 60 Bilder unbarmherzig rennen.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller and Mike Mignola noir aesthetic, cast iron cauldron bubbling with dark spicy brew over roaring forge coals, red chili flakes and glowing paprika powder bursting into embers, billowing steam, deep comic ink shadows, fiery orange underglow, stylized cel-shaded art style, not realistic, no photograph"
+  }
+]

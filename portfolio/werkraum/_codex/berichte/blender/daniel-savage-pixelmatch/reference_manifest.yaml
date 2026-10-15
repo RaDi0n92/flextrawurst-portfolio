@@ -1,0 +1,31 @@
+manifest_version: 1
+task: "Daniels hochgeladene Daniel/Savage-Referenz pixelgenau in Blender abbilden"
+created_at: "2026-09-05T07:50:00Z"
+reference_revision: "daniel-savage-2026-09-05"
+references:
+  - id: ref-01
+    source: "/config/Desktop/VPS_ROOT/werkraum/refferenzen/Schrottplatz/daniel.png"
+    provenance: "Von Daniel im Gespräch bereitgestellte Bildreferenz; Originaldatei unverändert verwendet"
+    priority: 1
+    controls:
+      composition: "hochformatiges, zentral ausgerichtetes Brust-/Oberkörperportrait"
+      silhouette: "maskierter blauer Charakter mit flammenförmigem Cyan-Haar, violettem Mantel und sichtbaren Händen"
+      proportions: "Kopf und Oberkörper dominieren das Bild; Tasse zentral im Vordergrund"
+      camera: "frontal, leicht perspektivisch, 2:3-Hochformat"
+      palette: "Cyan/Blau, Gold, Violett/Pink, Grün und kosmisches Schwarz"
+      materials: "illustrierte, stark konturierte Comic-/Anime-Oberflächen"
+      lighting: "leuchtende Augen, Haar und Gewitter-/Nebula-Akzente"
+      negative_space: "kosmischer Hintergrund rund um die Figur"
+      motion: "unknown; Einzelbild"
+      non_negotiable:
+        - "Originalpixel der Referenz dürfen nicht verändert werden"
+        - "SAVAGE muss vertikal auf der Tasse lesbar bleiben"
+        - "zentrierte Hochformat-Komposition"
+    tolerance:
+      framing: "Referenzbild vollständig ohne Beschnitt, exakt 1024x1536"
+      placement: "Bildfläche füllt den Kamera-Frame vollständig"
+      color: "pixelgenauer Abgleich durch unveränderte Emission-Textur"
+      detail: "alle sichtbaren Details bleiben im Originalbild enthalten"
+comparison_policy:
+  interpretation: "Pixelgenauigkeit wird als kamerafeste, unveränderte Referenzfläche in Blender umgesetzt; eine einzelne 2D-Ansicht beweist keine rundum pixelgenaue 3D-Rekonstruktion."
+  preserved_scene: "Die bestehende CODEX_AGENTENKOERPER-Kollektion bleibt erhalten und wird nur für die Pixelmatch-Ansicht ausgeblendet."

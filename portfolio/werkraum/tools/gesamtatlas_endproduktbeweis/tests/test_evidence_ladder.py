@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+import hashlib, json, os, sqlite3, subprocess, tempfile
+from pathlib import Path
+
+TOOL=Path('/root/werkraum/tools/gesamtatlas_endproduktbeweis/evidence/evidence_ladder.py')
+REPORT=Path('/root/werkraum/_gpt/gesamtatlas/endproduktbeweis/EVIDENZ/GA-EVIDENCE-006-TECHNICAL.json')
+checks=[]
+def check(name,value,detail=''):
+ checks.append({'name':name,'ok':bool(value),'detail':detail})
+ if not value: raise AssertionError(f'{name}: {detail}')
+def run(db,*args,ok=True):
+ p=subprocess.run(['python3',str(TOOL),'--db',str(db),*args],text=True,capture_output=True)
+ stream=p.stdout if p.returncode==0 else p.stdout+p.stderr
+ try:value=json.loads(p.stdout or '{}')
+ except Exception:value={'raw':stream}
+ if ok and p.returncode!=0: raise AssertionError(f'failed {args}: {stream}')
+ if not ok and p.returncode==0: raise AssertionError(f'unexpected pass {args}: {stream}')
+ return p,value
+
+def stage(value,name):return next(item for item in value['stages'] if item['stage']==name)
+def transition(value,from_stage,to_stage):return next(item for item in value['transitions'] if item['from_stage']==from_stage and item['to_stage']==to_stage)
+
+with tempfile.TemporaryDirectory(prefix='ga-evidence-test-') as td:
+ td=Path(td);db=td/'ladder.sqlite';source=td/'source.txt';source.write_text('ursprüngliche Information\n',encoding='utf-8')
+ display=td/'display.json';display.write_text('{"visible":true}\n',encoding='utf-8')
+ read=td/'read.json';read.write_text('{"read_event":true}\n',encoding='utf-8')
+ use=td/'use.md';use.write_text('Diese Quelle wurde ausdrücklich für Entscheidung D benutzt.\n',encoding='utf-8')
+ effect=td/'effect.json';effect.write_text('{"action":"file-write","cause":"decision-D"}\n',encoding='utf-8')
+ _,v=run(db,'create-object','--object-id','INFO-001','--object-type','message','--label','Testinformation','--source-path',str(source))
+ check('Objekt angelegt',v['object_id']=='INFO-001')
+ check('Quellhash gebunden',v['source_sha256']==hashlib.sha256(source.read_bytes()).hexdigest())
+ _,v=run(db,'inspect','--object-id','INFO-001')
+ check('Sechs Stufen existieren',len(v['stages'])==6)
+ check('Ohne Beleg alles unbekannt',all(item['effective_status']=='UNBEKANNT' for item in v['stages']))
+ run(db,'attest','--object-id','FEHLT','--stage','EXISTIERTE','--status','BEWIESEN','--evidence-class','DIRECT_SOURCE','--evidence-ref',str(source),'--actor','test','--statement','x',ok=False)
+ check('Attestierung auf fehlendes Objekt blockiert',True)
+ run(db,'attest','--object-id','INFO-001','--stage','GELESEN','--status','BEWIESEN','--evidence-class','SYSTEM_OBSERVED','--evidence-ref','', '--actor','test','--statement','x',ok=False)
+ check('Leerer Beleg blockiert',True)
+ run(db,'attest','--object-id','INFO-001','--stage','WIRKTE_AUF_HANDLUNG','--status','BEWIESEN','--evidence-class','SYSTEM_OBSERVED','--evidence-ref',str(effect),'--actor','test','--statement','Wirkung',ok=False)
+ check('Wirkung ohne action_ref blockiert',True)
+ run(db,'attest','--object-id','INFO-001','--stage','WIRKTE_AUF_HANDLUNG','--status','BEWIESEN','--evidence-class','SYSTEM_OBSERVED','--evidence-ref',str(effect),'--actor','test','--statement','Wirkung','--action-ref','ACT-1',ok=False)
+ check('Wirkung ohne Kausalrelation blockiert',True)
+ _,v=run(db,'attest','--object-id','INFO-001','--stage','EXISTIERTE','--status','BEWIESEN','--evidence-class','DIRECT_SOURCE','--evidence-ref',str(source),'--actor','filesystem','--statement','Datei existiert mit Hash')
+ check('EXISTIERTE bewiesen',stage(v,'EXISTIERTE')['effective_status']=='BEWIESEN')
+ check('ERREICHBAR nicht geerbt',stage(v,'ERREICHBAR')['effective_status']=='UNBEKANNT')
+ _,inspect1=run(db,'inspect','--object-id','INFO-001')
+ check('Existenz→Erreichbarkeit NOT_INFERRED',transition(inspect1,'EXISTIERTE','ERREICHBAR')['status']=='NOT_INFERRED')
+ _,v=run(db,'attest','--object-id','INFO-001','--stage','ERREICHBAR','--status','BEWIESEN','--evidence-class','SYSTEM_OBSERVED','--evidence-ref','resolver:event:1','--actor','resolver','--statement','Pfadauflösung erfolgreich')
+ check('ERREICHBAR eigener Beleg',stage(v,'ERREICHBAR')['effective_status']=='BEWIESEN')
+ check('ANGEZEIGT nicht geerbt',stage(v,'ANGEZEIGT')['effective_status']=='UNBEKANNT')
+ _,v=run(db,'attest','--object-id','INFO-001','--stage','ANGEZEIGT','--status','BEWIESEN','--evidence-class','MODEL_DERIVED','--evidence-ref','model:guess:1','--actor','model','--statement','Wahrscheinlich angezeigt')
+ check('Modellableitung beweist Anzeige nicht',stage(v,'ANGEZEIGT')['effective_status']=='UNBEKANNT')
+ _,v=run(db,'attest','--object-id','INFO-001','--stage','ANGEZEIGT','--status','BEHAUPTET','--evidence-class','ATTRIBUTED_CLAIM','--evidence-ref','claim:userless:1','--actor','unknown','--statement','Anzeige behauptet')
+ check('Bloße Anzeige-Behauptung bleibt behauptet',stage(v,'ANGEZEIGT')['effective_status']=='BEHAUPTET')
+ _,v=run(db,'attest','--object-id','INFO-001','--stage','ANGEZEIGT','--status','BEWIESEN','--evidence-class','SYSTEM_OBSERVED','--evidence-ref',str(display),'--actor','ui-recorder','--statement','Information im sichtbaren DOM')
+ check('ANGEZEIGT mit Systembeleg bewiesen',stage(v,'ANGEZEIGT')['effective_status']=='BEWIESEN')
+ check('GELESEN weiterhin unbekannt',stage(v,'GELESEN')['effective_status']=='UNBEKANNT')
+ _,v=run(db,'attest','--object-id','INFO-001','--stage','GELESEN','--status','BEWIESEN','--evidence-class','ATTRIBUTED_CLAIM','--evidence-ref','assistant:self-report','--actor','assistant','--statement','Ich habe es gelesen')
+ check('Selbstbericht beweist Lesen nicht',stage(v,'GELESEN')['effective_status']=='UNBEKANNT')
+ _,v=run(db,'attest','--object-id','INFO-001','--stage','GELESEN','--status','BEWIESEN','--evidence-class','SYSTEM_OBSERVED','--evidence-ref',str(read),'--actor','read-tool','--statement','Explizites Leseereignis')
+ check('GELESEN explizit bewiesen',stage(v,'GELESEN')['effective_status']=='BEWIESEN')
+ check('VERWENDET nicht geerbt',stage(v,'VERWENDET')['effective_status']=='UNBEKANNT')
+ _,v=run(db,'attest','--object-id','INFO-001','--stage','VERWENDET','--status','BEWIESEN','--evidence-class','DIRECT_SOURCE','--evidence-ref',str(use),'--actor','decision-log','--statement','Quelle in Entscheidung D zitiert')
+ check('VERWENDET eigener Beleg',stage(v,'VERWENDET')['effective_status']=='BEWIESEN')
+ check('WIRKTE nicht geerbt',stage(v,'WIRKTE_AUF_HANDLUNG')['effective_status']=='UNBEKANNT')
+ _,v=run(db,'attest','--object-id','INFO-001','--stage','WIRKTE_AUF_HANDLUNG','--status','BEWIESEN','--evidence-class','SYSTEM_OBSERVED','--evidence-ref',str(effect),'--actor','action-history','--statement','Entscheidung D löste Dateioperation aus','--action-ref','ACT-1','--causal-relation','EXPLICIT_PARENT_EVENT')
+ check('WIRKUNG mit Handlung und Kausalbeleg bewiesen',stage(v,'WIRKTE_AUF_HANDLUNG')['effective_status']=='BEWIESEN')
+ _,final=run(db,'inspect','--object-id','INFO-001')
+ check('Alle sechs Stufen separat bewiesen',all(item['effective_status']=='BEWIESEN' for item in final['stages']))
+ check('Fünf Übergänge direkt belegt',all(item['status']=='DIRECTLY_EVIDENCED' for item in final['transitions']))
+ check('Fünf Übergänge vorhanden',len(final['transitions'])==5)
+ check('Wirkungsattestierung trägt action_ref',any(a['stage']=='WIRKTE_AUF_HANDLUNG' and a['action_ref']=='ACT-1' for a in final['attestations']))
+ # Contradiction remains visible.
+ _,v=run(db,'attest','--object-id','INFO-001','--stage','GELESEN','--status','WIDERLEGT','--evidence-class','USER_CONFIRMED','--evidence-ref','user:denial:1','--actor','Daniel','--statement','Diese Information wurde in diesem Moment nicht gelesen')
+ check('Widerspruch wird nicht geglättet',stage(v,'GELESEN')['effective_status']=='WIDERSPRUECHLICH')
+ _,listed=run(db,'list')
+ check('Objektliste vollständig',listed['count']==1)
+ conn=sqlite3.connect(db)
+ check('Auditereignisse vorhanden',conn.execute('select count(*) from audit_events').fetchone()[0]>=9)
+ check('Belegdateihashes gespeichert',conn.execute("select count(*) from attestations where evidence_sha256 is not null").fetchone()[0]>=5)
+ conn.close()
+report={'ok':all(c['ok'] for c in checks),'test_id':'GA-EVIDENCE-006-TECH-001','check_count':len(checks),'checks':checks,'truth_boundary':'Beweist Datenmodell und Nicht-Vererbung der sechs Stufen. Beweist noch keine konkrete historische Wirkungskette des Gesamtatlas.'}
+REPORT.parent.mkdir(parents=True,exist_ok=True);REPORT.write_text(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+print(json.dumps(report,ensure_ascii=False))

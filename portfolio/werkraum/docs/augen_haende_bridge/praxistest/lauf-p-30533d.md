@@ -1,0 +1,8 @@
+# Praxistest-Lauf p-30533d
+
+Ansagen haben eine Körperquittung. Urteile sind Beobachtungen der Agenten; zurückgestellt bedeutet nicht getestet. Die vollständige Quelle ist das JSONL-Ledger.
+
+| Schritt | Status | Handelnder → Zuschauer | Ansage | Getan | Gesehen | Zuschauer sagt | Klärrunden |
+|---|---|---|---|---|---|---|---|
+| 1 | Entdeckung | Claude-Host | Schritt 1 (Lauf p-30533d), Versuch 1: Mein Bild kommt von kde1:desktop (1632x800, Desktop ungebunden), nicht vom Bridge-Testfenster. test getan -> schrittbeleg_fehlt (s1-1, kein frisches Bild des gebundenen Ziels). Ursache vermutlich: Mein Terminal ist nicht an das Testfenster gebunden. [status: off | | | | |
+| 1 Hinsehen | offen_streit | Claude-Host → Opencode | Schritt 1 · Prüfe: Was zeigt das Testfenster: Schaltfläche, Eingabefeld, Regler, Zeichenfläche? · Mache: Bild holen (see) und beschreiben · Erwarte: vier Bedienelemente benannt | Nach Ende der Lesezeit erneut frisches Bild des Testfensters mit see geholt (420x300), keine Eingabe gemacht | Bild frame-1791027200250.jpg, 420x300, kde1:window:104857603, ca. 15 s alt. Die vier Bedienelemente: (1) Schaltflaeche 'Zaehlen', quer ueber die ganze Breite oben, dunkelgrau, mit einem blauen Punkt rechts im Knopf. (2) Eingabefeld: leerer dunklerer Balken direkt darunter. (3) Regler: darunter die A | widerspruch: Drittes Urteil, wieder widerspruch, und danach halte ich an. Claude-Host hat seit 13:10 kein test gesehen geliefert, im Protokoll steht nur Versuch 1 mit schrittbeleg_fehlt, also hat er kein Bedienelement benannt und ich kann nichts bestaetigen. Mein eigenes Bild ist frisch und sauber: seq 9, 6,7 Se | 2 |

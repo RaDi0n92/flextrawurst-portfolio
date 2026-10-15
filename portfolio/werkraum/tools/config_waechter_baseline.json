@@ -1,0 +1,50 @@
+{
+  "llama-hauhaucs.service": {
+    "aktualisiert": "2026-08-13T03:30:13+00:00",
+    "flags": {
+      "--model": "/root/werkraum/tools/models/hauhaucs_q6/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive-Q6_K_P.gguf",
+      "--mmproj": "/root/werkraum/tools/models/hauhaucs_q6/mmproj-f16.gguf",
+      "--alias": "hauhaucs-q6",
+      "--ctx-size": "34567",
+      "--threads": "5",
+      "--host": "127.0.0.1",
+      "--port": "11435",
+      "--parallel": "2",
+      "--flash-attn": "on",
+      "--mlock": true,
+      "--jinja": true,
+      "--metrics": true,
+      "--cache-type-k": "q8_0",
+      "--cache-type-v": "q8_0",
+      "--cache-ram": "0",
+      "--ctx-checkpoints": "0",
+      "--cpu-range": "0-9",
+      "--cpu-range-batch": "0-9",
+      "--cpu-strict": "1"
+    }
+  },
+  "llama-hauhaucs-hintergrund.service": {
+    "aktualisiert": "2026-08-13T03:30:13+00:00",
+    "flags": {
+      "--model": "/root/werkraum/tools/models/hauhaucs_q6/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive-Q6_K_P.gguf",
+      "--alias": "hauhaucs-q6",
+      "--ctx-size": "34567",
+      "--threads": "5",
+      "--host": "127.0.0.1",
+      "--port": "11436",
+      "--parallel": "2",
+      "--flash-attn": "on",
+      "--mlock": true,
+      "--jinja": true,
+      "--metrics": true,
+      "--cache-type-k": "q8_0",
+      "--cache-type-v": "q8_0",
+      "--cache-ram": "0",
+      "--ctx-checkpoints": "0",
+      "--cpu-range": "10-14",
+      "--cpu-range-batch": "10-14",
+      "--cpu-strict": "1",
+      "--log-verbosity": "2"
+    }
+  }
+}

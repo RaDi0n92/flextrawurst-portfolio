@@ -1,0 +1,16 @@
+[
+  {
+    "id": "b1_scene01_00s",
+    "thron_wort": "BETON",
+    "reason": "Die alte Szene zeigte eine Zigarette mit modernem Filter. Die veredelte Szene rückt die rohe Schrottplatz-Realität in den Fokus: Eine rostige alte Konservendose als Aschenbecher voller Asche und glimmender Stummel auf einer ölverschmierten, geborstenen Betonplatte im kalten Werkstattlicht.",
+    "new_prompt": "a rusted dented tin can used as an overflowing ashtray with crushed smoking cigarette butts and drifting grey ash, sitting on an oil-stained cracked cold concrete floor in a dark scrapyard workshop, macro texture of metal corrosion and soot, dramatic low-angle chiaroscuro lighting, painterly graphic novel oil texture",
+    "prompt": "a rusted dented tin can used as an overflowing ashtray with crushed smoking cigarette butts and drifting grey ash, sitting on an oil-stained cracked cold concrete floor in a dark scrapyard workshop, macro texture of metal corrosion and soot, dramatic low-angle chiaroscuro lighting, painterly graphic novel oil texture"
+  },
+  {
+    "id": "b1_scene05_15s",
+    "thron_wort": "WUT",
+    "reason": "Die alte Szene zeigte nur eine Hand. Die neue Szene fängt die Ur-Emotion des Vierjährigen ein: Aus der tiefen Finsternis eines Dachbodens starren zornige, trotzige Augen eines kleinen Kindes hervor, Tränenspuren auf rußigen Wangen, beleuchtet von einem schwachen Bernstein-Lichtstrahl.",
+    "new_prompt": "dramatic close-up of a defiant young 4-year-old childs face in the dark, fierce intense angry eyes filled with stubborn defiance and unyielding will, faint dried tear tracks on a soot-smudged cheek, harsh side lighting cutting across the eyes, dark textured timber background, painterly graphic novel oil texture",
+    "prompt": "dramatic close-up of a defiant young 4-year-old childs face in the dark, fierce intense angry eyes filled with stubborn defiance and unyielding will, faint dried tear tracks on a soot-smudged cheek, harsh side lighting cutting across the eyes, dark textured timber background, painterly graphic novel oil texture"
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Daniel admission decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "term_id",
+    "decision",
+    "decided_by",
+    "decision_date",
+    "rationale",
+    "evidence_refs"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "term_id": {
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "accepted",
+        "accepted-as-variant",
+        "accepted-as-translation",
+        "accepted-as-interpretation",
+        "deferred",
+        "declined",
+        "withdrawn"
+      ]
+    },
+    "decided_by": {
+      "const": "daniel"
+    },
+    "decision_date": {
+      "type": "string"
+    },
+    "rationale": {
+      "type": "object"
+    },
+    "evidence_refs": {
+      "type": "array"
+    }
+  }
+}

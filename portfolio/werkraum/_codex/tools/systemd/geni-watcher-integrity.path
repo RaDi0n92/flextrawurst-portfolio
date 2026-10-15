@@ -1,0 +1,9 @@
+[Unit]
+Description=GENI watcher integrity check on file change
+
+[Path]
+PathChanged=/root/werkraum_geni/inbox_antworten_watcher.py
+Unit=geni-watcher-integrity.service
+
+[Install]
+WantedBy=multi-user.target

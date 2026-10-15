@@ -1,0 +1,11 @@
+{"timestamp": 1789779011.885135, "iso_time": "2026-09-19T00:50:11.885137+00:00", "text": "Hallo Gemgem, ich sehe jetzt die leuchtende Raute!", "target_agent": "gemini", "sender": "Daniel_Live_Tester"}
+{"timestamp": 1789779134.102984, "iso_time": "2026-09-19T00:52:14.102986+00:00", "text": "da?", "target_agent": "all", "sender": "WindowsCopilotClient_ThinkPad"}
+{"timestamp": 1789779915.8959014, "iso_time": "2026-09-19T01:05:15.895903+00:00", "text": "nö", "target_agent": "all", "sender": "WindowsCopilotClient_ThinkPad"}
+{"timestamp": 1789780191.2637477, "iso_time": "2026-09-19T01:09:51.263918+00:00", "text": "warim trigge wenn ich was tippedas auch deine raute ?", "target_agent": "all", "sender": "WindowsCopilotClient_ThinkPad"}
+{"timestamp": 1789780692.4241872, "iso_time": "2026-09-19T01:18:12.424274+00:00", "text": "tet", "target_agent": "all", "sender": "WindowsCopilotClient_ThinkPad"}
+{"timestamp": 1789780882.6726937, "iso_time": "2026-09-19T01:21:22.672695+00:00", "text": "ls -lh _gemini/windows_bridge/", "target_agent": "all", "sender": "Daniel_Live"}
+{"timestamp": 1789780884.6752212, "iso_time": "2026-09-19T01:21:24.675223+00:00", "text": "wer bist du genau und was kannst du?", "target_agent": "gemini", "sender": "Daniel_Live"}
+{"timestamp": 1789780905.514455, "iso_time": "2026-09-19T01:21:45.514455+00:00", "text": "clear", "target_agent": "all", "sender": "Daniel_Live"}
+{"timestamp": 1789780906.0163987, "iso_time": "2026-09-19T01:21:46.016399+00:00", "text": "git status -s", "target_agent": "all", "sender": "Daniel_Live"}
+{"timestamp": 1789781407.3028972, "iso_time": "2026-09-19T01:30:07.302898+00:00", "text": "no", "target_agent": "all", "sender": "WindowsCopilotClient_ThinkPad"}
+{"timestamp": 1789782427.5313418, "iso_time": "2026-09-19T01:47:07.531343+00:00", "text": "dooofiii", "target_agent": "gemini", "sender": "WindowsCopilotClient_ThinkPad"}

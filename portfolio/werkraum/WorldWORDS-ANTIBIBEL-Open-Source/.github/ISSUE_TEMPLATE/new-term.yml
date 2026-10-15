@@ -1,0 +1,46 @@
+name: New term / Neuer Begriff / Nuevo término
+description: Submit a raw word form with provenance
+title: "[TERM] "
+labels: ["term-proposal", "provenance-needed"]
+body:
+  - type: input
+    id: raw_form
+    attributes:
+      label: Raw form / Rohform / Forma bruta
+    validations:
+      required: true
+  - type: input
+    id: submitted_by
+    attributes:
+      label: Submitted by / Eingereicht von / Presentado por
+    validations:
+      required: true
+  - type: textarea
+    id: exact_input
+    attributes:
+      label: Exact input and context / Exakte Eingabe und Kontext / Entrada exacta y contexto
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Date or uncertainty / Datum oder Unsicherheit / Fecha o incertidumbre
+  - type: input
+    id: source
+    attributes:
+      label: Publishable source / Veröffentlichbare Quelle / Fuente publicable
+  - type: textarea
+    id: meaning
+    attributes:
+      label: Proposed explanation / Vorgeschlagene Erklärung / Explicación propuesta
+  - type: textarea
+    id: not_meaning
+    attributes:
+      label: Explicitly does not mean / Bedeutet ausdrücklich nicht / No significa expresamente
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Rights and privacy
+      options:
+        - label: I may publish this material under the repository licenses and have removed private credentials/data.
+          required: true

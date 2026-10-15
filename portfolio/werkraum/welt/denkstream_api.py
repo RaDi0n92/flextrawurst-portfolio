@@ -1,0 +1,258 @@
+#!/usr/bin/env python3
+"""
+Denkstream-API: SSE-Endpunkte für live Denkstream der Wesen.
+Wird von api.py importiert via: from denkstream_api import denkstream_router
+
+Endpunkte:
+  GET /denkstream/{entity_id}      — SSE-Stream eines Wesens (öffentlich)
+  GET /denkstream/all              — SSE-Stream aller Wesen (öffentlich)
+  GET /denkstream/{entity_id}/last — letzte 20 Einträge (öffentlich)
+  POST /denkstream/chunk           — Browser-Agent schreibt Chunk (intern)
+
+Live-Bildanzeige laeuft seit 2026-07-21 ausschliesslich ueber rrweb (dom_events_api.py,
+Grundgesetz 1 Menschen-Auge-Ebene) -- kein Screenshot-Endpunkt mehr, siehe
+docs/systemdoku fuer die Begruendung (Nutzer: "wir sind doch weg von vision und screenshots").
+"""
+
+import json
+import logging
+import asyncio
+import select as sel
+import threading
+from typing import AsyncGenerator
+
+import hmac
+
+import psycopg2
+import psycopg2.extras
+from fastapi import APIRouter, HTTPException, Header
+from fastapi.responses import StreamingResponse, Response
+from pydantic import BaseModel, Field
+
+log = logging.getLogger("denkstream")
+
+import os as _os
+from db_runtime import DB_URI
+
+# Interner Producer-Token (C-011): nur authentisierte Browser-Agent-Daemons dürfen
+# Chunks schreiben. Ohne gesetzten Token ist der Schreib-Endpunkt fail-closed gesperrt.
+_INTERNAL_TOKEN = _os.environ.get("DENKSTREAM_INTERNAL_TOKEN", "")
+
+
+def _require_internal(authorization: str | None) -> None:
+    if not _INTERNAL_TOKEN:
+        raise HTTPException(status_code=503, detail="Denkstream-Schreibzugriff gesperrt: kein Token konfiguriert")
+    if not authorization or not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Token fehlt")
+    if not hmac.compare_digest(authorization.removeprefix("Bearer ").strip(), _INTERNAL_TOKEN):
+        raise HTTPException(status_code=401, detail="Ungültiges Token")
+
+
+denkstream_router = APIRouter(prefix="/denkstream", tags=["denkstream"])
+
+
+def get_conn():
+    return psycopg2.connect(DB_URI, cursor_factory=psycopg2.extras.RealDictCursor)
+
+
+class ChunkBody(BaseModel):
+    entity_id: str = Field(max_length=128)
+    stream_id: str = Field(max_length=128)
+    chunk: str = Field(max_length=20000)
+    seq: int = 0
+    done: bool = False
+    url: str = Field(default="", max_length=2048)
+
+
+@denkstream_router.post("/chunk", status_code=201)
+def denkstream_chunk(body: ChunkBody, authorization: str | None = Header(default=None)):
+    """Browser-Agent schreibt einen Chunk — nur intern authentisiert (C-011)."""
+    _require_internal(authorization)
+    conn = get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                INSERT INTO entity_denkstream
+                    (entity_id, stream_id, chunk, seq, done, url)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """, (body.entity_id, body.stream_id, body.chunk,
+                  body.seq, body.done, body.url))
+        conn.commit()
+    finally:
+        conn.close()
+    return {"ok": True}
+
+
+@denkstream_router.get("/{entity_id}/last")
+def denkstream_last(entity_id: str, limit: int = 20):
+    """Letzte N Denklogs eines Wesens — öffentlich, kein Auth."""
+    conn = get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT entity_id, gedanke, entscheidung, begruendung,
+                       tick_at, meta->>'url' AS url
+                FROM entity_thinking_log
+                WHERE entity_id = %s
+                  AND meta->>'source' = 'browser_agent'
+                ORDER BY tick_at DESC
+                LIMIT %s
+            """, (entity_id, limit))
+            rows = [dict(r) for r in cur.fetchall()]
+    finally:
+        conn.close()
+    return {"logs": rows, "entity_id": entity_id}
+
+
+@denkstream_router.get("/all/last")
+def denkstream_all_last(limit: int = 10):
+    """Letzte N Denklogs aller Wesen — öffentlich."""
+    conn = get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT entity_id, gedanke, entscheidung, tick_at,
+                       meta->>'url' AS url
+                FROM entity_thinking_log
+                WHERE meta->>'source' = 'browser_agent'
+                ORDER BY tick_at DESC
+                LIMIT %s
+            """, (limit,))
+            rows = [dict(r) for r in cur.fetchall()]
+    finally:
+        conn.close()
+    return {"logs": rows}
+
+
+@denkstream_router.get("/traumbilder/{entity_id}")
+def denkstream_traumbilder(entity_id: str):
+    """Liste der letzten Traumbilder eines Wesens."""
+    import os, glob as _glob
+    bild_dir = "/tmp/wesen_traumbilder"
+    pattern = f"{bild_dir}/{entity_id}_*.jpg"
+    dateien = sorted(_glob.glob(pattern), reverse=True)[:5]
+    bilder = []
+    for p in dateien:
+        fname = os.path.basename(p)
+        ts_str = fname.replace(f"{entity_id}_", "").replace(".jpg", "")
+        try:
+            ts = int(ts_str)
+            from datetime import datetime
+            dt = datetime.fromtimestamp(ts).isoformat()
+        except Exception:
+            dt = ts_str
+        bilder.append({"pfad": p, "url": f"/api/denkstream/traumbild/{entity_id}/{fname}", "erstellt": dt})
+    return {"bilder": bilder}
+
+
+@denkstream_router.get("/traumbild/{entity_id}/{filename}")
+def denkstream_traumbild_file(entity_id: str, filename: str):
+    """Einzelnes Traumbild als JPEG."""
+    import os
+    pfad = f"/tmp/wesen_traumbilder/{filename}"
+    if not os.path.exists(pfad) or not pfad.endswith(".jpg"):
+        raise HTTPException(status_code=404, detail="Traumbild nicht gefunden")
+    with open(pfad, "rb") as f:
+        data = f.read()
+    return Response(content=data, media_type="image/jpeg",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
+@denkstream_router.get("/status/all")
+def denkstream_status_all():
+    """Aktueller Browser-Status aller Wesen — URL + letzter Gedanke."""
+    conn = get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT DISTINCT ON (entity_id)
+                    entity_id,
+                    gedanke,
+                    entscheidung,
+                    tick_at,
+                    meta->>'url' AS url
+                FROM entity_thinking_log
+                WHERE meta->>'source' = 'browser_agent'
+                  AND tick_at > NOW() - INTERVAL '15 minutes'
+                ORDER BY entity_id, tick_at DESC
+            """)
+            rows = [dict(r) for r in cur.fetchall()]
+    finally:
+        conn.close()
+    return {"status": rows, "count": len(rows)}
+
+
+def _pg_listen_sse(channel: str, entity_filter: str | None) -> AsyncGenerator:
+    """Generator: PostgreSQL LISTEN → SSE-Chunks.
+    2026-07-21 gefunden (siehe dom_events_api.py fuer die volle Herleitung): Verbindungsaufbau
+    lief vorher in der SYNCHRONEN Routen-Funktion (anyio-Worker-Thread), Polling/Notifies-
+    Verarbeitung aber im Event-Loop-Thread der async gen()-Funktion -- reale NOTIFYs von
+    anderen Prozessen kamen dadurch nie zuverlaessig an. Fix: alles innerhalb von gen()."""
+    async def gen():
+        conn = psycopg2.connect(DB_URI)
+        conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
+        cur = conn.cursor()
+        cur.execute(f"LISTEN {channel}")
+
+        def _poll_once():
+            # 2026-07-21 gefunden: bool(select.select(...)) ist IMMER True, da select()
+            # immer ein 3-Tupel zurueckgibt -- der Heartbeat-Zweig unten war toter Code.
+            readable, _, _ = sel.select([conn], [], [], 0.5)
+            return bool(readable)
+
+        loop = asyncio.get_running_loop()
+        try:
+            heartbeat = 0
+            while True:
+                # blocking select in thread pool — event loop bleibt frei
+                ready = await loop.run_in_executor(None, _poll_once)
+                if ready:
+                    conn.poll()
+                    while conn.notifies:
+                        notify = conn.notifies.pop(0)
+                        try:
+                            data = json.loads(notify.payload)
+                        except Exception:
+                            continue
+                        if entity_filter and data.get("entity_id") != entity_filter:
+                            continue
+                        yield f"data: {json.dumps(data)}\n\n"
+                        heartbeat = 0
+                else:
+                    heartbeat += 1
+                    if heartbeat >= 60:  # alle 30s Heartbeat (60 × 0.5s)
+                        yield f": heartbeat\n\n"
+                        heartbeat = 0
+        finally:
+            cur.close()
+            conn.close()
+
+    return gen()
+
+
+@denkstream_router.get("/{entity_id}")
+async def denkstream_sse(entity_id: str):
+    """Live-SSE-Stream des Denkens eines Wesens — öffentlich, kein Auth."""
+    return StreamingResponse(
+        _pg_listen_sse("entity_denkstream", entity_id),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+            "Access-Control-Allow-Origin": "*",
+        }
+    )
+
+
+@denkstream_router.get("/all/stream")
+async def denkstream_all_sse():
+    """Live-SSE-Stream aller Wesen — öffentlich."""
+    return StreamingResponse(
+        _pg_listen_sse("entity_denkstream", None),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+            "Access-Control-Allow-Origin": "*",
+        }
+    )

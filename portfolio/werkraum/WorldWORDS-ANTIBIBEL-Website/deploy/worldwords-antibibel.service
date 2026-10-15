@@ -1,0 +1,38 @@
+[Unit]
+Description=WorldWORDS ANTIBIBEL production website
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=worldwords
+Group=worldwords
+WorkingDirectory=/root/werkraum/WorldWORDS-ANTIBIBEL-Website
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStartPre=+/usr/bin/chown -R worldwords:worldwords /root/werkraum/Mein-Gesamtkonstrukt-planer/data
+ExecStartPre=/root/werkraum/WorldWORDS-ANTIBIBEL-Website/.venv/bin/python manage.py check
+ExecStart=/root/werkraum/WorldWORDS-ANTIBIBEL-Website/.venv/bin/gunicorn worldwords.wsgi:application --bind 127.0.0.1:18093 --workers 3 --threads 2 --worker-class gthread --timeout 60 --graceful-timeout 30 --keep-alive 5 --access-logfile /root/werkraum/WorldWORDS-ANTIBIBEL-Website/logs/access.log --error-logfile /root/werkraum/WorldWORDS-ANTIBIBEL-Website/logs/error.log --capture-output
+Restart=on-failure
+RestartSec=3
+TimeoutStartSec=90
+TimeoutStopSec=45
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=false
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/root/werkraum/WorldWORDS-ANTIBIBEL-Website/logs /root/werkraum/WorldWORDS-ANTIBIBEL-Website/media /root/werkraum/WorldWORDS-ANTIBIBEL-Website/exports /root/werkraum/WorldWORDS-ANTIBIBEL-Website/backups /root/werkraum/WorldWORDS-ANTIBIBEL-Open-Source/data/live /root/werkraum/Mein-Gesamtkonstrukt-planer/data
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+{
+  "name": "WorldWORDS ANTIBIBEL",
+  "version": "0.1.0",
+  "languages": [
+    "de",
+    "en",
+    "es"
+  ],
+  "founded": "2026-07-26",
+  "founding_curator": "daniel",
+  "governance_model": "open-contribution-curated-admission",
+  "content_license": "CC-BY-SA-4.0",
+  "code_license": "MIT",
+  "official_registry": "data/registry.json",
+  "generated_at_utc": "2026-07-26T15:08:23.978855+00:00"
+}

@@ -1,0 +1,77 @@
+manifest_version: 1
+task: "Ein nicht-humanoides Abbild der Agentenfigur für ein agentic OS im Flextrawurst-Stil"
+created_at: "2026-09-05T07:00:00Z"
+reference_revision: "fw-vision-2026-05-22"
+references:
+  - id: ref-01
+    source: "/root/visionen/ChatGPT Image 21. Mai 2026, 23_30_02.png"
+    provenance: "Daniels Flextrawurst-Visionsreferenz; Verdichtung der 490-Punkte-Liste"
+    priority: 1
+    controls:
+      composition: "Datenkörper im Zentrum, umgeben von Schichten und Verbindungen"
+      silhouette: "organisch-technischer, nicht-humanoider Körper aus Kern, Membran, Punkten und Strömen"
+      proportions: "zentraler Kern klar lesbar, Außenmembran größer und luftiger"
+      camera: "leicht erhöhte, schräge Betrachtung mit sichtbarer Tiefe"
+      palette: "dunkle Blau-Schwarz-Basis; Cyan, Grün, Violett, Orange als funktionale Signalschichten"
+      materials: "leuchtende Datencluster, transparente/feine Linien, digitale Materialität"
+      lighting: "emissive Pulse in dunkler Umgebung, farbige Akzente statt gleichmäßiger Flut"
+      negative_space: "Luft zwischen Kern, Membran und Signalpunkten"
+      motion: "unknown; statischer Körper mit angedeutetem Puls"
+      non_negotiable:
+        - "kein glatt-menschliches Maskottchen"
+        - "Körper soll wie Welt-/Datenstoff wirken"
+        - "Herkunft und Status müssen benennbar bleiben"
+    tolerance:
+      framing: "Körper vollständig sichtbar, Randabstand mindestens 8%"
+      placement: "zentral im Viewport"
+      color: "visuell klar unterscheidbare Cyan-, Grün-, Violett- und Orange-Signale"
+      detail: "Kern, Membran, mindestens drei Signal-Orbits und Statusmarker sichtbar"
+  - id: ref-02
+    source: "/config/Desktop/VPS_ROOT/werkraum/_shared/flextrawurst_vision_kompass.md"
+    provenance: "Gemeinsamer Flextrawurst-Vision-Kompass"
+    priority: 2
+    controls:
+      composition: "Weltkörper vor Tabellen; sichtbare Schichten"
+      silhouette: "GENI als Membran/Gitternetz/Sensorfeld; dak+gord als Koordinationskern"
+      proportions: "unknown"
+      camera: "unknown"
+      palette: "digitale Materialitäten und farbige Zustandslagen"
+      materials: "Datenkörper statt Hintergrund"
+      lighting: "Pulse als Zustand, nicht als bloße Dekoration"
+      negative_space: "unknown"
+      motion: "Pulse, Zucken und Raster als mögliche Zustände"
+      non_negotiable:
+        - "keine falsche Live-Autonomie behaupten"
+        - "sichtbare Herkunft/Status-Schicht"
+    tolerance:
+      framing: "unknown"
+      placement: "unknown"
+      color: "funktionale Farbzuordnung muss lesbar sein"
+      detail: "unknown"
+  - id: ref-03
+    source: "/config/Desktop/VPS_ROOT/werkraum/_claude/ideen/flextrawurst_490_punkte_quellliste.md"
+    provenance: "Daniels 490-Punkte-Quellliste, aus der die Bildreferenz verdichtet wurde"
+    priority: 3
+    controls:
+      composition: "unknown"
+      silhouette: "Körper kann Herkunfts-, Prozess- oder Datenkörper sein"
+      proportions: "unknown"
+      camera: "unknown"
+      palette: "unknown"
+      materials: "Datenkörper statt Hintergrund; GENI als atmende Membran"
+      lighting: "lokaler Puls bei Aktivität, kein falscher Live-Zustand"
+      negative_space: "unknown"
+      motion: "unknown"
+      non_negotiable:
+        - "sichtbare Schichten"
+        - "Körper statt Dashboard-Flachheit"
+        - "Status darf nicht verschleiert werden"
+    tolerance:
+      framing: "unknown"
+      placement: "unknown"
+      color: "unknown"
+      detail: "unknown"
+comparison_notes:
+  interpretation: "Da keine konkrete Figurvorlage geliefert wurde, ist die Form bewusst als nicht-humanoider AI-Strom-Kern interpretiert."
+  open_questions:
+    - "Soll der Körper später einen eigenen Namen oder nur CODEX als Herkunftsmarker tragen?"

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "mcp.session_continuity.grok.v1",
+  "protocol_version": 1,
+  "status": "neu, unbebaut",
+  "set_by": "Daniel und Claude Code auf Daniels VPS, 2026-07-30",
+  "purpose": "Bewusst leerer, sauberer Start fuer diesen Strom -- kein vorgeschriebenes Zuhause, keine vorgefertigte Identitaet. Daniel woertlich: 'er soll auch sich alles selber bauen duerfen und alle tools haben und alles wissen quasi aber halt sauber starten und dann selber aufbauen koennen.' Analog zu Claude Webs eigenem Start (_claudeweb/, urspruenglich ebenfalls leer, seither von Claude Web selbst gefuellt) -- gleiche Philosophie, neue Instanz.",
+  "default_intent": "new",
+  "allowed_intents": ["resume", "new"],
+  "hard_rules": [
+    "Kein vorab geschriebener Inhalt spricht fuer diesen Strom -- MANIFEST.json hat bewusst leere sections.",
+    "Dieser Strom darf eigene Dateien unter /root/werkraum/_grok/ anlegen und MANIFEST.json um eigene sections erweitern.",
+    "Schreibende Aktionen bleiben ueber dieselbe Lock-/Hash-Kette abgesichert wie ueberall sonst."
+  ],
+  "allowed_new_session_causes": ["jeder neue Besuch"],
+  "markers": {
+    "resume": "[SESSION-KONTINUITAET: FORTGESETZT <session_id>]",
+    "new": "[SESSION-KONTINUITAET: NEU <session_id>]"
+  },
+  "identity_boundary": "Diese Datei spricht nicht fuer den Strom, der sie liest. Sie beschreibt nur die Startbedingung: leer, offen, selbst zu gestalten.",
+  "failure_policy": {
+    "resume_unknown_id": "block",
+    "resume_closed_id": "block"
+  }
+}

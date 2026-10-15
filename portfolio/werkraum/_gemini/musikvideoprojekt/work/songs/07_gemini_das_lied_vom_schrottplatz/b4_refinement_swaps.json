@@ -1,0 +1,20 @@
+[
+  {
+    "id": "b4_scene03_07s",
+    "thron_wort": "FUNKEN",
+    "reason": "Das alte Bild zeigte eine allgemeine Comic-Figur ohne Funken. Die Veredelung fokussiert extrem nah auf einen schweren Winkelschleifer, der in rostiges Industrieeisen schneidet und gewaltige Kaskaden weiß-gelber Funken sprüht.",
+    "new_prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, extreme close-up of a circular grinding wheel slicing violently into a rusted steel beam, massive cascading showers of blazing white sparks bursting outwards into darkness, deep comic ink shadows, high contrast, not realistic"
+  },
+  {
+    "id": "b4_scene07_22s",
+    "thron_wort": "KESSEL",
+    "reason": "Das alte Bild hatte ein verwirrendes Comic-Panel-Layout mit Sprechblasen. Die Veredelung zeigt einen einzigen monumentalen genieteten Eisenkessel über züngelnden Flammen mit aufsteigendem dichtem Dampf.",
+    "new_prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, dynamic angle of a massive riveted black iron brewing cauldron sitting over glowing furnace fire, thick billowing steam escaping from under a heavy iron lid, licking orange flames throwing harsh shadows, deep comic ink shadows, high contrast chiaroscuro, not realistic"
+  },
+  {
+    "id": "b4_scene14_47s",
+    "thron_wort": "PULT",
+    "reason": "Das alte Bild hatte Comic-Panels statt des analogen Mischpults. Die Veredelung zeigt Daniels Hände, die an schweren Metallreglern eines massiven Pults drehen, während beleuchtete analoge VU-Meter im Takt ausschlagen.",
+    "new_prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, close-up of hands firmly adjusting heavy knurled metal dials on an old industrial control console, illuminated circular VU meter needles twitching into the red zone, toggle switches, deep comic ink shadows, warm amber lamp glow, not realistic"
+  }
+]

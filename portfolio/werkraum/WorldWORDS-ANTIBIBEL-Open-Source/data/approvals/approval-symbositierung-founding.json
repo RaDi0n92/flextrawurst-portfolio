@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema/approval.schema.json",
+  "schema_version": "1.0",
+  "id": "approval-symbositierung-founding",
+  "term_id": "symbositierung",
+  "decision": "accepted",
+  "rationale": {
+    "de": "Bereits als erstes stark verkörpertes WorldWORD aufgenommen.",
+    "en": "Already admitted as the first strongly embodied WorldWORD.",
+    "es": "Ya admitido como el primer WorldWORD fuertemente encarnado."
+  },
+  "decided_by": "daniel",
+  "decision_date": "2026-07-26",
+  "decision_basis": "inherited-founding-canonical-state",
+  "evidence_refs": [
+    "raw/source/02_WORTKOERPER/00_WORTREGISTER.md",
+    "raw/decisions/2026-07-26-open-source-governance.txt"
+  ]
+}

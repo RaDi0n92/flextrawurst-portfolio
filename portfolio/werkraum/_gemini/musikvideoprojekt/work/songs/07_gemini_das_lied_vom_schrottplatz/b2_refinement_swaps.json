@@ -1,0 +1,20 @@
+[
+  {
+    "id": "b2_scene05_14s",
+    "thron_wort": "GLUEHFADEN",
+    "reason": "Das alte Bild zeigte eine generische Superhelden-Silhouette; das neue Bild fokussiert makroskopisch den glühenden Wolframfaden als Symbol der Vision.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, extreme close-up of a glowing orange spiral tungsten filament inside an old glass lightbulb, filaments incandescence casting stark shadows, dust motes in dark workshop, deep comic ink shadows, warm amber illumination, not realistic"
+  },
+  {
+    "id": "b2_scene08_25s",
+    "thron_wort": "VORSCHLAGHAMMER",
+    "reason": "Das alte Bild zeigte fahrende Autos vor Hochhäusern; das neue Bild visualisiert die Zerstörung des eitlen Glanzes durch einen Vorschlaghammer auf rostiges Chrom.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, heavy forged steel sledgehammer smashing down onto a dented peeling chrome car bumper on dark greasy workshop floor, metal fragments and rust dust exploding, deep comic ink shadows, high contrast dramatic lighting, not realistic"
+  },
+  {
+    "id": "b2_scene10_32s",
+    "thron_wort": "EMAILLETASSE",
+    "reason": "Das alte Bild zeigte eine schreibende Person; das neue Bild zeigt die abgeplatzte Emaille-Blechtasse mit kaltem pechschwarzem Kaffee.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, close-up of a battered white enamel tin cup with chipped black rim, filled with cold oily black coffee, sitting on an oil-stained blueprint on rough wooden desk, deep comic ink shadows, moody amber desk light, not realistic"
+  }
+]

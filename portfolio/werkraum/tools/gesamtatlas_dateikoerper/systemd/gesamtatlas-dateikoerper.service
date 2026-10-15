@@ -1,0 +1,17 @@
+[Unit]
+Description=Gesamtatlas aktualisierbarer Dateikoerper
+After=network.target mcp-gesamtatlas-light.service
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/root/werkraum/tools/gesamtatlas_dateikoerper
+ExecStart=/usr/bin/python3 /root/werkraum/tools/gesamtatlas_dateikoerper/build.py --refresh --final-playwright
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=6
+TimeoutStartSec=1800
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/root/werkraum/_gpt/gesamtatlas/dateikoerper /root/werkraum/_gpt/gesamtatlas/GESAMTATLAS_DATEIKOERPER_AKTUELL.zip

@@ -1,0 +1,11 @@
+# Sketch-Werkstatt: Zeichenflaeche, Teilschritt 2 (Bugfixes + Verifikation)
+
+Fortsetzung von Teilschritt 1. Live-Test nach Neustart von worldwords-antibibel deckte zwei echte Bugs auf, beide behoben und einzeln verifiziert.
+
+- Bug 1 (Zeichnen): render() ersetzt bei jedem mousemove komplett shell.innerHTML, wodurch das urspruengliche svg-Element (Referenz im Maus-Handler) losgeloest wurde. getBoundingClientRect() auf dem losgeloesten Element lieferte Nullen, dadurch wurden gezeichnete Formen mit Breite/Hoehe 0 gespeichert. Fix: move/up-Handler fragen das aktuelle svg-Element jetzt frisch ueber shell.querySelector nach (liveSvg()), statt die alte Referenz zu benutzen.
+- Bug 2 (Treffer auf duennen Linien): Stift/Pfeil sind reine line-Elemente ohne Flaeche, dadurch kaum treffbar fuer Auswahl/Verschieben. Erster Loesungsversuch mit stroke="transparent" plus pointer-events wurde vom Renderer in dieser Umgebung nicht als treffbar behandelt (elementFromPoint traf konsequent den Hintergrund). Funktionierender Fix: eine zweite, breite (stroke-width 16) Trefferlinie mit echter, aber nahezu unsichtbarer Deckkraft (stroke-opacity 0.01) hinter der sichtbaren duennen Linie.
+- Live verifiziert (echte Maus-/Tastatursimulation auf virtuellerdesktop1, jeder Schritt einzeln geprueft): Rechteck zeichnen, Pfeil zeichnen, Element auswaehlen, Element verschieben (Position und updatedAt aendern sich korrekt, auf Platte bestaetigt), Mehrfachauswahl per Shift-Klick, Gruppe setzen fuer zwei Elemente (groupId auf Platte bestaetigt).
+- Reload-Test bestanden: nach vollem Seiten-Reload bleiben alle Positionen und beide Gruppen-Markierungen ("Gruppe" Badge) erhalten.
+- Altbestand aus den fruehen, noch fehlerhaften Testzeichnungen (drei Elemente mit Breite/Hoehe 0) liegt weiterhin unveraendert auf der Platte, wird ueber "Ohne Position" mit Platzieren-Button in der UI angezeigt, nichts geloescht.
+
+Damit ist die Skizze-Werkstatt aus der uebernommenen Roadmap ("Skizze vollstaendig machen: sichtbare Zeichenflaeche, Elementpositionen, Auswahl, Verschieben, gruppierbare Beziehungen, Reload-Test") aus meiner Sicht funktional erfuellt. Naechster Roadmap-Schritt waere Referenzwand/Ideenraum/Wissensraum als ein zusammenhaengendes System.

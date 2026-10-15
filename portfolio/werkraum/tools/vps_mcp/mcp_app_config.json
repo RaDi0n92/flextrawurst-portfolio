@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-07-24T01:44:00+02:00",
+  "mcp_url": "https://flextrawurst.de/werkzeugkoerper-[PFAD-GESCHWAERZT]/mcp",
+  "auth_type": "OAuth",
+  "version_name": "dev mode",
+  "version_notes": "dev-0",
+  "version_id": "asdk_app_v_6a62a75303888191982946dd21be4b94",
+  "app_id": "asdk_app_6a62a7518104819184f3ea20665fe5ff",
+  "verification_status": "development",
+  "server_script": "/root/werkraum/tools/vps_mcp/vps_mcp_server.py"
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Gesamtatlas-Beweiskapsel regelmaessig auf Quellenveraenderungen pruefen
+
+[Timer]
+OnBootSec=7min
+OnUnitInactiveSec=15min
+RandomizedDelaySec=2min
+AccuracySec=1min
+Unit=gesamtatlas-proof-capsule.service
+
+[Install]
+WantedBy=timers.target

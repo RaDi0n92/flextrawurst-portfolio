@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "id": "gov-2026-07-26-open-source-trilingual-curation",
+  "decision_date": "2026-07-26",
+  "decided_by": "daniel",
+  "decision_type": "governance-foundation",
+  "exact_input": "so und nun verwandel das alles in etwas dass man opensource veröffentlichen kann in 3 sprachen (deutsch/englisch/spanisch) - behalte die rohform- setze eine schicht dahin die sagt dass jeder mitarbeiten kann aber ich (daniel) begrife bestätige die ich aufnehmen will - aufgenommene begriffe bleiben aber markiert von wem wann miteingabracht wurde und die genauen erklärungen etc",
+  "rules": [
+    "publishable open-source/open-content form in German, English and Spanish",
+    "preserve raw forms",
+    "everyone may contribute",
+    "Daniel confirms which terms enter the official registry",
+    "accepted terms retain contributor, date, exact input and detailed explanations"
+  ],
+  "raw_source_ref": "raw/decisions/2026-07-26-open-source-governance.txt"
+}

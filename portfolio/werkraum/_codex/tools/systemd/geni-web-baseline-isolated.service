@@ -1,0 +1,56 @@
+[Unit]
+Description=GENI Web — Browser-Schnittstelle Port 8020 (baseline sandboxed)
+After=network.target geni-hoerer.service
+Wants=geni-hoerer.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/werkraum/geni
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /root/werkraum/geni/dialog.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+NoNewPrivileges=yes
+PrivateTmp=no
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectClock=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+# `/root/geni_gedaechtnis` stammt aus einem historischen UID-911-Datenraum
+# mit 0755. Diese eine DAC-Fähigkeit ist nötig, damit GENI neue Kanten/Counter
+# anlegen kann; ProtectSystem/ReadWritePaths begrenzen weiterhin den Raum.
+CapabilityBoundingSet=CAP_DAC_OVERRIDE
+AmbientCapabilities=CAP_DAC_OVERRIDE
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+UMask=077
+
+# GENI-Web hat weiterhin bewusst fachliche Schreibpfade: Gedächtnis, Bilder,
+# Tagebuch, Chat-Trace, den separaten Codewesen-Datenraum, die ausdrücklich
+# dokumentierten Claude-Spiegel und das gemeinsame /tmp-Flag. Alles andere im
+# Werkraum bleibt durch ProtectSystem/ProtectHome read-only.
+InaccessiblePaths=/root/.ssh /root/.claude /root/.codex /root/.gemini /root/.config /root/werkraum/.agent
+ReadWritePaths=/root/geni_gedaechtnis \
+ /root/werkraum_geni/sinne/bilder \
+ /root/werkraum_geni/tagebuch \
+ /root/werkraum/_shared \
+ /root/werkraum/_claude/spiegel \
+ /root/werkraum_codewesen \
+ /tmp
+
+[Install]
+WantedBy=multi-user.target

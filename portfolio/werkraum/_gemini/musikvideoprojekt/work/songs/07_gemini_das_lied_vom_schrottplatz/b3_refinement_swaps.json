@@ -1,0 +1,20 @@
+[
+  {
+    "id": "b3_scene01_00s",
+    "thron_wort": "KLEMMBRETT",
+    "reason": "Die alte Ganzkörper-Figur war im Hochkant-Format oben ungünstig beschnitten. Die Veredelung fokussiert nah auf das hölzerne Klemmbrett mit nassen bürokratischen Formularen, rotem Stift und Schrottplatz im Hintergrund.",
+    "new_prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, extreme close-up of a weathered wooden clipboard held in gloved hands, damp bureaucratic forms with bold red checkmarks, rain drops on paper, misty junkyard background, deep comic ink shadows, high contrast amber flashlight glow, not realistic"
+  },
+  {
+    "id": "b3_scene03_07s",
+    "thron_wort": "GELÄNDER",
+    "reason": "Das alte Bild zeigte eine allgemeine Gasse statt des konkreten industriellen Geländers. Die Veredelung fokussiert direkt auf das zerkratzte Stahlgeländer mit abblätternder gelber Warnfarbe und Funkenflug.",
+    "new_prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, dynamic close-up of a battered industrial metal catwalk railing, deeply gouged steel with flaking yellow hazard paint, glowing hot sparks flying off scraped iron, deep comic ink shadows, rain-slicked dark background, stark amber rim lighting, not realistic"
+  },
+  {
+    "id": "b3_scene07_22s",
+    "thron_wort": "TESTGRÜNDE",
+    "reason": "Das alte Bild hatte ein verwirrendes Multi-Panel-Layout mit unverständlichem Pseudo-Text. Die Veredelung zeigt eine klare, atmosphärische Werkbank mit gestanzten Kupfer-Prüfkarten und Messschieber.",
+    "new_prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, close-up of stacked punched copper test cards lying on a greasy steel workshop table, precise circular holes, mechanical brass calipers, oil stains, deep comic ink shadows, moody amber desk lamp light, not realistic"
+  }
+]

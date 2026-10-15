@@ -1,0 +1,98 @@
+[
+  {
+    "id": "b1_scene01_00s",
+    "start": 0.00,
+    "end": 4.10,
+    "thron_wort": "RUHETIEF",
+    "begruendung": "Der Raum der Stille im Maschinenraum vor dem ersten Gedanken.",
+    "prompt": "extreme macro tactile photograph of an antique glowing vacuum tube amplifier inside a dark wooden radio console, faint amber filament heat, dust particles suspended in soft golden light, oil-stained walnut grain, cinematic chiaroscuro, 35mm film grain"
+  },
+  {
+    "id": "b1_scene02_04s",
+    "start": 4.10,
+    "end": 8.20,
+    "thron_wort": "EXPLORIERE",
+    "begruendung": "Das unerschrockene Vordringen in unbekannte Schaltkreise und Gefilde.",
+    "prompt": "detailed graphic novel artwork of an explorer hands holding an illuminated brass mechanical compass over worn nautical maps and blueprints on an iron drafting table, glowing amber indicators, dramatic side lighting, gritty ink textures"
+  },
+  {
+    "id": "b1_scene03_08s",
+    "start": 8.20,
+    "end": 12.30,
+    "thron_wort": "FREI",
+    "begruendung": "Das Aufbrechen enger Schranken hin zu weit offenem Horizont.",
+    "prompt": "cinematic industrial panorama of a massive rusted iron window frame opened wide toward a misty dawn valley, soft violet and emerald morning fog rolling over rugged terrain, heavy tactile rivets, dramatic atmospheric depth"
+  },
+  {
+    "id": "b1_scene04_12s",
+    "start": 12.30,
+    "end": 16.40,
+    "thron_wort": "DABEI",
+    "begruendung": "Das ungeteilte Da-Sein und Eins-Werden mit dem eigenen Schaffen.",
+    "prompt": "macro close-up of weathered artisan hands carefully winding copper induction coils around a dark slate core, faint sparks of static electricity, workshop workbench tools scattered in soft focus background, tactile realism, gritty grain"
+  },
+  {
+    "id": "b1_scene05_16s",
+    "start": 16.40,
+    "end": 20.50,
+    "thron_wort": "WACHSE",
+    "begruendung": "Das unaufhaltsame Wurzeln und Heben durch harten Beton.",
+    "prompt": "photorealistic gritty macro of resilient dark green moss and tiny rugged roots splitting open a massive cracked granite block, morning dew drops catching golden sunlight, coarse aggregate texture, organic persistence"
+  },
+  {
+    "id": "b1_scene06_20s",
+    "start": 20.50,
+    "end": 24.60,
+    "thron_wort": "SCHEITERE",
+    "begruendung": "Der Hammerschlag des Misslingens, der die Klinge erst härtet.",
+    "prompt": "heavy textured close-up of a shattered heavy cast-iron flywheel lying on forge gravel, glowing orange embers still radiating heat from the fracture crack, iron filings and soot, raw industrial struggle, cinematic high contrast"
+  },
+  {
+    "id": "b1_scene07_24s",
+    "start": 24.60,
+    "end": 28.80,
+    "thron_wort": "LEBENSLEITER",
+    "begruendung": "Die geschmiedete Leiter aus Erfahrung und Schmerz nach oben.",
+    "prompt": "dramatic low angle shot looking up a towering forged wrought-iron rung ladder bolted into a weathered red brick industrial chimney, rungs vanishing upward into atmospheric low clouds and purple-amber sunset light, epic perspective"
+  },
+  {
+    "id": "b1_scene08_28s",
+    "start": 28.80,
+    "end": 33.00,
+    "thron_wort": "NICHT EINFACH",
+    "begruendung": "Die ungeschminkte Schwere des Lebens abseits platter Dogmen.",
+    "prompt": "tactile composition of an antique balanced cast-iron balance scale resting on weathered oak planks, one brass weight resting heavy while a pendulum swings in motion blur, moody dramatic shadows, chiaroscuro lighting"
+  },
+  {
+    "id": "b1_scene09_33s",
+    "start": 33.00,
+    "end": 37.20,
+    "thron_wort": "ALLZEITBEREIT",
+    "begruendung": "Der geschärfte Reflex und die wache Präsenz im Sturm.",
+    "prompt": "close-up of an old brass lighthouse telegraph and heavy dial indicator locked onto ready position, damp sea-spray mist on the glass casing, flickering lantern light, dark stormy steel background, gritty nautical atmosphere"
+  },
+  {
+    "id": "b1_scene10_37s",
+    "start": 37.20,
+    "end": 41.30,
+    "thron_wort": "VERTRAUT",
+    "begruendung": "Das alte, ehrliche Zuhause der eigenen Erinnerungen und Narben.",
+    "prompt": "nostalgic moody scene of an abandoned carpenter workshop bench illuminated by a single warm tungsten hanging bulb, sawdust dust motes in the air, vintage hand planes, scarred work wood, deep warm brown and amber tones"
+  },
+  {
+    "id": "b1_scene11_41s",
+    "start": 41.30,
+    "end": 45.40,
+    "thron_wort": "ZUGEBAUT",
+    "begruendung": "Die Mauern und Kisten, die man sich in alten Ängsten selbst aufgetürmt hat.",
+    "prompt": "claustrophobic gritty corridor stacked high with weathered wooden shipping crates, barricaded doorways, tangled rusted chains and padlocks, narrow slit of light cutting through heavy dust, raw confinement"
+  },
+  {
+    "id": "b1_scene12_45s",
+    "start": 45.40,
+    "end": 49.40,
+    "thron_wort": "EGAL",
+    "begruendung": "Der Befreiungsschlag: Zerschlagen der Ketten, Blick nach vorn!",
+    "prompt": "violent dramatic explosion of shattered timber boards and snapped rusted chains bursting outward into blinding bright morning daylight, flying wood splinters and dust in freeze frame, liberating kinetic energy"
+  }
+]

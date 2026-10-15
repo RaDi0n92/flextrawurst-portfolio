@@ -1,0 +1,46 @@
+[Unit]
+Description=Flextrawurst 3D MCP Engine (Blender & Godot Headless Service, sandboxed)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/werkraum/tools/3d_pipeline
+EnvironmentFile=/root/werkraum/.agent/flextrawurst-3d-mcp.env
+Environment=FLEXTRAWURST_3D_MCP_PORT=8090
+Environment=FLEXTRAWURST_3D_MCP_PUBLIC_URL=https://flextrawurst.de/3d-mcp
+ExecStart=/usr/bin/python3 /root/werkraum/tools/3d_pipeline/flextrawurst_3d_mcp.py
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectClock=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+UMask=077
+
+# systemd lädt die Secrets vor dem Start; der Prozess selbst darf die Datei
+# danach nicht mehr sehen. Blender/Godot bekommen nur ihren Arbeits- und
+# Laufzeitbereich zum Schreiben, der übrige Werkraum bleibt read-only.
+InaccessiblePaths=/root/.ssh /root/.claude /root/.codex /root/.gemini /root/.config /root/werkraum/.agent
+ReadWritePaths=/root/werkraum/tools/3d_pipeline/test_artifacts /root/werkraum/engine_runtime /tmp
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "b3_scene01_00s",
+    "start": 0.00,
+    "end": 3.76,
+    "thron_wort": "KLEMMBRETT",
+    "begruendung": "Das hölzerne Symbol kleinlicher Bürokratie – ein fieser bürokratischer Klemmbrett-Roboter stolpert aus dem nassen Schrottplatz-Gebüsch hervor.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a neurotic little bureaucrat creature emerging from wet junkyard bushes clutching a heavy wooden clipboard covered in bureaucratic checklists and red question marks, deep comic ink shadows, misty rain, eerie amber flashlight glare, not realistic"
+  },
+  {
+    "id": "b3_scene02_03s",
+    "start": 3.76,
+    "end": 7.52,
+    "thron_wort": "ZERTIFIKAT",
+    "begruendung": "Die Wut über inhaltslose Siegel – ein absurdes, vergilbtes bürokratisches Zertifikat mit goldenem Wachssiegel, das von Rostflecken und schwarzer Schmiere zerfressen wird.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, close-up of a pompous bureaucratic certificate with ornate borders and cracked wax seal, smeared with black machine grease and rust fingerprints on rough metal table, deep comic ink shadows, high contrast dramatic side lighting, not realistic"
+  },
+  {
+    "id": "b3_scene03_07s",
+    "start": 7.52,
+    "end": 11.28,
+    "thron_wort": "GELÄNDER",
+    "begruendung": "Die physische Eskalation am rohen Industriestahl – zerkratztes Metall, wo die Wut einschlug.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, battered industrial metal railing on a junkyard catwalk deeply gouged and scratched, chipped yellow hazard paint, sparks glinting off bare scraped steel, dark rainy night, deep comic ink shadows, moody amber illumination, not realistic"
+  },
+  {
+    "id": "b3_scene04_11s",
+    "start": 11.28,
+    "end": 15.04,
+    "thron_wort": "KRAGEN",
+    "begruendung": "Die Explosion der Geduld – der Meister zerreißt vor Zorn über Formulare den staubigen Kragen der Arbeitsjacke.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, extreme close-up of furious dirt-caked mechanic fists violently ripping open the frayed collar of a heavy grease-stained leather work jacket, intense muscular tension, deep comic ink shadows, stark amber side lighting, not realistic"
+  },
+  {
+    "id": "b3_scene05_15s",
+    "start": 15.04,
+    "end": 18.80,
+    "thron_wort": "WERK",
+    "begruendung": "Das staubige, handwerkliche Lebenswerk – riesige Stapel von ölverschmierten Bauplänen und Zahnrädern im fahlen Mai-Licht.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, dusty cluttered workshop table piled high with stained blueprints, massive cast iron gears, calipers and heavy iron wrenches, shaft of pale spring sunlight cutting through thick workshop dust, deep comic ink shadows, not realistic"
+  },
+  {
+    "id": "b3_scene06_18s",
+    "start": 18.80,
+    "end": 22.56,
+    "thron_wort": "FELS",
+    "begruendung": "Die unerschütterliche Standhaftigkeit – ein monumentaler, schwarzer Basaltfelsen auf dem Werkhof, der jeder Flut trotzt.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a massive rugged black basalt rock monolith standing firm against churning waves of rusty rain water on a stormy junkyard ground, deep comic ink shadows, stark white spray, dark brooding sky, not realistic"
+  },
+  {
+    "id": "b3_scene07_22s",
+    "start": 22.56,
+    "end": 26.32,
+    "thron_wort": "TESTGRÜNDE",
+    "begruendung": "Die unbarmherzige, schweigende Test-Routine – 54 gestanzte Prüfkarten aus Kupferblech, die der Reihe nach durchgecheckt werden.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, rows of heavy punched copper test plates laid out on an iron inspection bench, intricate punched circular holes, oil droplets on brushed metal, mechanical calipers measuring tolerance, deep comic ink shadows, amber workshop lamp glow, not realistic"
+  },
+  {
+    "id": "b3_scene08_26s",
+    "start": 26.32,
+    "end": 30.08,
+    "thron_wort": "BRAND",
+    "begruendung": "Das innere Feuer der Besessenheit – glühend rote Schmiedekohlen und züngelnde Flammen, die das Eisen erhitzen.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, roaring open forge fire pit with glowing white-hot coals, dark silhouette of heavy blacksmith tongs gripping a red-hot iron rod, licking orange flames throwing wild shadows, deep comic ink shadows, not realistic"
+  },
+  {
+    "id": "b3_scene09_30s",
+    "start": 30.08,
+    "end": 33.84,
+    "thron_wort": "SPIEGEL",
+    "begruendung": "Die schmerzhafte Selbsterkenntnis – ein zersplitterter Rückspiegel im Schlamm, in dem sich der dunkle Himmel spiegelt.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a cracked vintage truck rearview mirror half buried in black junkyard mud and oil puddle, reflecting a stormy dark night sky and jagged scrap metal silhouettes, sharp glass shards, deep comic ink shadows, not realistic"
+  },
+  {
+    "id": "b3_scene10_33s",
+    "start": 33.84,
+    "end": 37.65,
+    "thron_wort": "SERVERPLATINE",
+    "begruendung": "Der finale Code-Schwur der Freiheit – die rohe grüne Leiterplatte, auf der Drähte improvisiert angelötet sind und der freie Arbeitsmarsch pulsiert.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, macro view of a heavily modified dark green server circuit board, hand-soldered thick copper jumper wires bridging IC chips, shiny silver solder joints, glowing amber traces, deep comic ink shadows, high contrast dramatic lighting, not realistic"
+  }
+]

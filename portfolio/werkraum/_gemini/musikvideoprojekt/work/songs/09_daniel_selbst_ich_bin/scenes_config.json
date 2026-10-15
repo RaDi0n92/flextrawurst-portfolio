@@ -1,0 +1,52 @@
+[
+  {
+    "id": "s01_spiegelkabinett",
+    "dur": 5.06,
+    "prompt": "cinematic photorealistic wide shot of an ornate antique hall of mirrors, infinite reflections receding into glowing twilight, brass and copper frames, soft volumetric dust particles in warm golden hour light, philosophical surreal depth, intricate details, octane render ### blurry, watermark, low quality, modern furniture"
+  },
+  {
+    "id": "s02_gedankenzahnraeder",
+    "dur": 5.06,
+    "prompt": "cinematic photorealistic macro shot of massive intricate brass and blackened steel clockwork gears interlocking, delicate sparks flying, soft amber lighting, shallow depth of field, artisan craftmanship, cinematic lighting, 8k ### blurry, watermark, plastic, low detail"
+  },
+  {
+    "id": "s03_alchemisten_werkbank",
+    "dur": 5.06,
+    "prompt": "cinematic photorealistic view of an antique philosopher workbench, weathered drafting paper with complex geometric blueprints and glowing glyphs, brass calipers, vintage sandglass, warm desk lamp, moody artisan atmosphere, 8k ### blurry, watermark, modern computer, deformed"
+  },
+  {
+    "id": "s04_lichtprisma",
+    "dur": 5.06,
+    "prompt": "cinematic photorealistic crystal glass prism hovering above dark slate stone, split beam of bright pure sunlight dispersing into vivid rainbow spectrum colors, dark moody room, smoky atmosphere, dramatic contrast, high resolution, 8k ### blurry, watermark, text, cartoon"
+  },
+  {
+    "id": "s05_himmelsleiter",
+    "dur": 5.06,
+    "prompt": "cinematic low angle dramatic perspective of a weathered forged iron ladder extending endlessly into a majestic twilight sky with purple and gold nebula clouds, surreal artisan architecture, cinematic lighting, 8k ### blurry, watermark, lowres, ugly"
+  },
+  {
+    "id": "s06_steinernes_sonnenuhr",
+    "dur": 5.06,
+    "prompt": "cinematic photorealistic shot of an ancient monolithic carved stone sundial on a rugged mountain ridge, warm sunset light casting long sharp shadows, dramatic alpine landscape, deep philosophy, 8k ### blurry, watermark, signature, oversaturated"
+  },
+  {
+    "id": "s07_kosmisches_portal",
+    "dur": 5.06,
+    "prompt": "cinematic photorealistic portal ring made of dark forged iron and pulsing warm amber runes, swirling cosmic vortex and stars inside the ring, misty dark ground, epic sci-fi atmospheric lighting, 8k ### blurry, watermark, 3d amateur, plastic"
+  },
+  {
+    "id": "s08_masken_schmiede",
+    "dur": 5.06,
+    "prompt": "cinematic close-up of a blacksmith anvil with glowing red-hot gold and bronze metal being forged into a sleek majestic mask, flying orange embers, dark moody forge environment, tactile artisan grit, 8k ### blurry, watermark, modern tools, ugly"
+  },
+  {
+    "id": "s09_sternen_leuchtturm",
+    "dur": 5.06,
+    "prompt": "cinematic majestic stone lighthouse standing on a sharp dark cliff overlooking an ocean of glowing stardust and nebula clouds, sweeping beam of golden light cutting through the purple night sky, 8k ### blurry, watermark, anime, lowres"
+  },
+  {
+    "id": "s10_observatorium_horizont",
+    "dur": 5.1,
+    "prompt": "cinematic photorealistic panoramic window of an old observatory tower looking out at a magnificent purple and gold rotating spiral galaxy, vintage brass telescope in silhouette, epic sense of cosmic wonder, 8k ### blurry, watermark, cartoon, bad quality"
+  }
+]

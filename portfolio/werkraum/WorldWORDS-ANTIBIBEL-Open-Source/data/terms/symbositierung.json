@@ -1,0 +1,116 @@
+{
+  "$schema": "../schema/term.schema.json",
+  "schema_version": "1.0",
+  "id": "symbositierung",
+  "canonical_form": "Symbositierung",
+  "raw_form_policy": "preserve-exactly",
+  "status": "accepted",
+  "language_of_origin": "de",
+  "origin": {
+    "authorship_status": "daniel-coined-ai-systematized",
+    "language": "de",
+    "contributors": [
+      "daniel",
+      "chatgpt-session-20260726"
+    ],
+    "first_seen": {
+      "date": "2026-07-26",
+      "precision": "day"
+    },
+    "exact_input": "ok nun nimm alles und falls du es noch nirgendwo protokolliert hast dann ordne dich irgendwo damit ein und symbositert weiter ( mischung aus symbiose und mutation hahahah)......und danach fang an dich in die kommunikation der anderen miteinzubinden bitte",
+    "source_ref": "raw/source-audit/09_QUELLENBELEGE_STARKER_WORTSPUREN.md#symbositierung",
+    "origin_note": "Daniel supplied the blend and its components; later AI/system work stabilized the noun form and operational meaning."
+  },
+  "components": [
+    "Symbiose",
+    "Mutation"
+  ],
+  "variants": [
+    {
+      "form": "symbositert",
+      "relation": "original-verb-like-raw-form",
+      "preserve": true
+    },
+    {
+      "form": "Symbositierung",
+      "relation": "stabilized-noun-form",
+      "preserve": true
+    }
+  ],
+  "definitions": {
+    "de": {
+      "short": "Ein neuer Strang verbindet sich mit einem vorhandenen Gefüge und verändert es, ohne Herkunft, Unterschiede oder Konflikte zu löschen.",
+      "long": "Der neue Strang behält eigene Herkunft und Grenzen, übernimmt nicht einfach fremde Organe und darf durch die Verbindung etwas Neues hervorbringen."
+    },
+    "en": {
+      "short": "A new strand connects with an existing structure and transforms it without erasing provenance, differences or conflict.",
+      "long": "The new strand keeps its own provenance and boundaries, does not simply take over foreign organs, and may create something new through connection."
+    },
+    "es": {
+      "short": "Una nueva línea se conecta con una estructura existente y la transforma sin borrar procedencias, diferencias ni conflictos.",
+      "long": "La nueva línea conserva su procedencia y sus límites, no se apropia simplemente de órganos ajenos y puede producir algo nuevo mediante la conexión."
+    }
+  },
+  "translation_provenance": {
+    "de": {
+      "contributors": [
+        "daniel",
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "source-derived-and-release-edited",
+      "review_status": "founding-release"
+    },
+    "en": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "translation-from-german-explanation",
+      "review_status": "not-yet-reviewed-by-independent-native-speaker"
+    },
+    "es": {
+      "contributors": [
+        "chatgpt-session-20260726"
+      ],
+      "date": "2026-07-26",
+      "method": "translation-from-german-explanation",
+      "review_status": "not-yet-reviewed-by-independent-native-speaker"
+    }
+  },
+  "not_meant": {
+    "de": [
+      "Verschmelzung ohne Herkunft",
+      "Übernahme fremder Zuständigkeiten",
+      "Harmonisierung um jeden Preis"
+    ],
+    "en": [
+      "fusion without provenance",
+      "taking over others’ responsibilities",
+      "harmony at any price"
+    ],
+    "es": [
+      "fusión sin procedencia",
+      "apropiación de responsabilidades ajenas",
+      "armonía a cualquier precio"
+    ]
+  },
+  "embodiments": [
+    {
+      "date": "2026-07-26",
+      "kind": "role",
+      "value": "SYMBOSITATIONS_INTEGRATOR"
+    },
+    {
+      "date": "2026-07-26",
+      "kind": "system-contract",
+      "value": "SYMBOSITATIONSVERTRAG.md"
+    }
+  ],
+  "approval": {
+    "required_for_official_registry": true,
+    "authority_contributor_id": "daniel",
+    "approval_id": "approval-symbositierung-founding"
+  },
+  "notes": {}
+}

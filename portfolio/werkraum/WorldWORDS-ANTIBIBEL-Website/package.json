@@ -1,0 +1,22 @@
+{
+  "name": "worldwords-antibibel-website",
+  "version": "1.0.0",
+  "description": "Production website for the trilingual WorldWORDS ANTIBIBEL registry, discussion and curation system.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test:e2e": "node tests/live_e2e.js",
+    "test:a11y": "node tests/accessibility_audit.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "private": "true",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "playwright": "^1.62.0"
+  }
+}

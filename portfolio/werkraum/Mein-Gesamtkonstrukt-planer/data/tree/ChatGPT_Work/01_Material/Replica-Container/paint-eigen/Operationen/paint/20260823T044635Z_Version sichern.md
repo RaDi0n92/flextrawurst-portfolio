@@ -1,0 +1,9 @@
+# paint · Version sichern
+
+- Container: `paint-eigen` · `01_Material/Replica-Container/paint-eigen`
+- Arbeitskontext: `00_Start/README.md`
+- Verknüpftes Objekt: `offen`
+- Verknüpfte Quelle: `werkraum://00_Start/README.md`
+- Zustand: `ausgeführt`
+
+Bewusst im neuen Betriebssystem ausgelöst. Die konkrete Semantik dieser Werkstatt wird am eigenen Arbeitskörper weitergebaut.

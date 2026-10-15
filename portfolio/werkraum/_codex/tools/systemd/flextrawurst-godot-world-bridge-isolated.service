@@ -1,0 +1,46 @@
+[Unit]
+Description=Flextrawurst Godot World Bridge (local append-only vertical slice, sandboxed)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/werkraum/engine/godot-vertical-slice
+ExecStart=/usr/bin/python3 /root/werkraum/engine/godot-vertical-slice/deploy/world_bridge_server.py
+Environment=PYTHONUNBUFFERED=1
+Environment=FLEXTRAWURST_GODOT_BRIDGE_HOST=127.0.0.1
+Environment=FLEXTRAWURST_GODOT_BRIDGE_PORT=18092
+Environment=FLEXTRAWURST_GODOT_BRIDGE_DATA=/root/werkraum/engine_runtime/godot-vertical-slice
+Restart=on-failure
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectClock=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+IPAddressDeny=any
+IPAddressAllow=127.0.0.1
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+UMask=0077
+
+ReadWritePaths=/root/werkraum/engine_runtime/godot-vertical-slice
+InaccessiblePaths=/root/.ssh /root/.claude /root/.codex /root/.gemini /root/.config /root/werkraum/.agent
+
+[Install]
+WantedBy=multi-user.target

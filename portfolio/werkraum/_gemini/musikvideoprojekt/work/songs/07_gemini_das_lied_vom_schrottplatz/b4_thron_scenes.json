@@ -1,0 +1,114 @@
+[
+  {
+    "id": "b4_scene01_00s",
+    "start": 0.00,
+    "end": 3.69,
+    "thron_wort": "TELEFON",
+    "begruendung": "Der schrillende Notruf auf dem Schrottplatz – das alte Wählscheibentelefon aus Bakelit, dessen Hörer abgehoben im Schlamm liegt, während Funken aus dem Draht sprühen.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, close-up of a vintage black rotary telephone on a wet wooden post, receiver dangling off hook in the rain, sparks sputtering from frayed copper wires, deep comic ink shadows, high contrast amber streetlamp rim lighting, not realistic"
+  },
+  {
+    "id": "b4_scene02_03s",
+    "start": 3.69,
+    "end": 7.37,
+    "thron_wort": "RAUCH",
+    "begruendung": "Das Zippo-Ritual und die dichte Atmosphäre – eine brennende Zichte im Mundwinkel einer kantigen Comic-Noir-Silhouette, dichter Rauch schwelt in den regennassen Nachthimmel.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, intense low-angle silhouette of a rugged mechanic with a glowing cigarette in the corner of his mouth, thick billowing clouds of white smoke rising into rainy dark sky, deep comic ink shadows, dramatic amber ember glow, stark contrast, not realistic"
+  },
+  {
+    "id": "b4_scene03_07s",
+    "start": 7.37,
+    "end": 11.06,
+    "thron_wort": "FUNKEN",
+    "begruendung": "Die rohe, funkensprühende Werkstattarbeit – ein Winkelschleifer frisst sich in einen verrosteten E-Träger, Kaskaden von glühenden Funken schneiden durch die Dunkelheit.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, dynamic angle of heavy gloved hands pressing an angle grinder hard against a thick rusted steel I-beam, massive cascading stream of bright white-hot sparks cutting through pitch black darkness, deep comic ink shadows, high contrast, not realistic"
+  },
+  {
+    "id": "b4_scene04_11s",
+    "start": 11.06,
+    "end": 14.74,
+    "thron_wort": "MOTOR",
+    "begruendung": "Der ungezähmte Kraftblock – ein freiliegender, vibrierender V8-Motorblock auf Ketten, zersprungene Zylinderköpfe und rauchende Krümmerrohre.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a massive stripped cast-iron V8 engine block hanging from heavy steel chains, hot exhaust manifolds glowing dull copper orange, oil drips splashing on cracked concrete floor, deep comic ink shadows, intense side lighting, not realistic"
+  },
+  {
+    "id": "b4_scene05_14s",
+    "start": 14.74,
+    "end": 18.43,
+    "thron_wort": "SESSEL",
+    "begruendung": "Die Ruhe im Auge des Sturms – ein zerschlissener Leder-Ohrensessel im Werkstattstaub, darin ein Schatten mit dampfender Tasse.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, wide shot of an old battered leather armchair sitting amidst junkyard machinery and towering scrap iron heaps, single beam of pale light cutting through drifting dust motes, deep comic ink shadows, stark noir lighting, not realistic"
+  },
+  {
+    "id": "b4_scene06_18s",
+    "start": 18.43,
+    "end": 22.11,
+    "thron_wort": "PRÜFSCHRAUBE",
+    "begruendung": "Die absolute mechanische Präzision – eine monströse Gewindeschraube im Spannfutter der Drehbank, Metallspäne rollen unter der Schnittkante ab.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, extreme close-up of a massive threaded steel test bolt clamped in the chuck of a heavy industrial lathe, sharp curling ribbons of steel swarf shaving off the cutting tool, droplets of cutting oil, deep comic ink shadows, amber illumination, not realistic"
+  },
+  {
+    "id": "b4_scene07_22s",
+    "start": 22.11,
+    "end": 25.80,
+    "thron_wort": "KESSEL",
+    "begruendung": "Das alchemistische Herz des Systems – ein riesiger genieteter Eisenkessel auf offener Flamme, kochender Sud wirft Blasen und Dampf.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a colossal riveted iron industrial cauldron simmering over an open pit furnace, thick steam billowing violently from under a heavy iron lid, glowing orange embers beneath, deep comic ink shadows, dramatic chiaroscuro lighting, not realistic"
+  },
+  {
+    "id": "b4_scene08_25s",
+    "start": 25.80,
+    "end": 29.49,
+    "thron_wort": "BILDERN",
+    "begruendung": "Das 60-FPS-Heiligtum – ein analoger Filmstreifen / Kathodenstrahl-Monitor, der 60 rasende Phasen von zuckendem Blitz und Bewegung anzeigt.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a cracked vintage CRT oscilloscope monitor flickering with high-frequency 60hz wave patterns and rapid frame silhouettes, thick wires trailing into dark junk piles, deep comic ink shadows, glowing amber green phosphors against black, not realistic"
+  },
+  {
+    "id": "b4_scene09_29s",
+    "start": 29.49,
+    "end": 33.17,
+    "thron_wort": "NARBEN",
+    "begruendung": "Das Trauma der frühen Kämpfe – zwei verhärmte Hände, die eine schwere Ziegelwand umkrallen, tiefe gezeichnete Schnittnarben auf der rauen Haut.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, close-up of weathered calloused hands clutching the rough crumbling bricks of an alley wall at 2am, deep etched scars across knuckles and wrists, rain trickling down rough masonry, deep comic ink shadows, high contrast moonlight, not realistic"
+  },
+  {
+    "id": "b4_scene10_33s",
+    "start": 33.17,
+    "end": 36.86,
+    "thron_wort": "FREIHEIT",
+    "begruendung": "Der unzerbrechliche Wille – ein schweres zerrissenes Eisenkettenglied, das auf nassen Pflastersteinen zerschellt liegt.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a thick forged iron chain link snapped violently in half lying on wet cobblestones, glowing fracture edges, heavy dark iron textures, deep comic ink shadows, stark amber side lighting, not realistic"
+  },
+  {
+    "id": "b4_scene11_36s",
+    "start": 36.86,
+    "end": 40.54,
+    "thron_wort": "KANINCHEN",
+    "begruendung": "Das surreale Vektor-Wesen – die stilisierte Comic-Silhouette eines mystischen Kaninchens mit langen spitzen Ohren, das aus einem aufgerissenen Serverschacht emporsteigt.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, a mysterious stylized wild rabbit silhouette with sharp ears emerging from a ripped-open dark metal server hatchway, intense glowing white eyes cutting through deep shadow, mist rising from junkyard floor, deep comic ink shadows, not realistic"
+  },
+  {
+    "id": "b4_scene12_40s",
+    "start": 40.54,
+    "end": 44.23,
+    "thron_wort": "GEIST",
+    "begruendung": "Die schwebende stille Präsenz – ein schemenhaftes, rauchiges Tuschwesen im Raum der Werkstatt, umgeben von schwebenden Papierplänen.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, an ethereal smoky apparition silhouette floating silently in a dark dusty workshop attic, surrounded by swirling blueprint scraps and falling dust motes, deep comic ink shadows, stark high contrast backlight, not realistic"
+  },
+  {
+    "id": "b4_scene13_44s",
+    "start": 44.23,
+    "end": 47.91,
+    "thron_wort": "KANTEN",
+    "begruendung": "Die raue, ungeschliffene Textur gegen sterile Glätte – zerklüftete scharfkantige Metall- und Granitplatten mit Rissen und Scharten.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, extreme macro of jagged fractured granite and sharp chipped iron plates interlocking, raw tactile rough surface, cracks filled with dark ink grime, deep comic ink shadows, raking side lighting, stark contrast, not realistic"
+  },
+  {
+    "id": "b4_scene14_47s",
+    "start": 47.91,
+    "end": 51.60,
+    "thron_wort": "PULT",
+    "begruendung": "Das Steuerpult der Macht – zwei Hände an massiven analogen Drehpotis und Messinstrumenten, Nadeln schnellen im Takt nach oben.",
+    "prompt": "dark graphic novel comic art, heavy black ink outlines, gritty crosshatching, bold comic book illustration, Frank Miller noir aesthetic, hands gripping heavy knurled aluminum knobs on a massive vintage analog mixing console, illuminated VU meter needles peaking into the red, banks of toggle switches, deep comic ink shadows, warm amber console glow, not realistic"
+  }
+]

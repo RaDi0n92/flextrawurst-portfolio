@@ -1,0 +1,25 @@
+{
+  "name": "flextrawurst",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-strip-types --test tests/event_core.test.ts tests/world_engine_tick.test.ts tests/state_transition_presence_pulse.test.ts tests/deterministic_world_movement_multi_entity.test.ts tests/world_runtime_pipeline.test.ts tests/world_operating_system_ring_1.test.ts tests/world_operating_system_ring_2_scenario_inspection.test.ts tests/world_os_spine_ring_3.test.ts tests/world_os_ring_4_import_console_convergence.test.ts tests/world_os_ring_5_6_7_visual_replay_worldview.test.ts tests/world_os_ring_8_12_origin_start_memory_continuity.test.ts tests/world_os_ring_13_15_worldblick_static_preview.test.ts tests/world_os_ring_16_organ_dock_blueprints.test.ts tests/world_os_ring_17_admin_feature_control.test.ts tests/world_os_ring_18_deep_search_archaeology.test.ts tests/world_os_ring_19_worldrun_control_locks.test.ts tests/world_os_ring_20_global_governance_matrix.test.ts tests/world_os_ring_22abc_process_camera_foundation.test.ts tests/world_os_ring_22d_h_static_process_camera_worldblick.test.ts tests/world_os_ring_22i_process_camera_browser_preview_access.test.ts tests/world_os_ring_22j_l_interactive_static_neural_process_camera.test.ts tests/world_os_ring_22m_kompOase_vorform.test.ts tests/surface_ring_23.test.ts tests/surface_ring_23_inventory.test.ts",
+    "worldblick": "node --experimental-strip-types scripts/build_worldblick_preview.ts",
+    "process-camera": "node --experimental-strip-types scripts/build_process_camera_worldblick.ts",
+    "process-camera:serve": "node --experimental-strip-types scripts/serve_process_camera_preview.ts",
+    "process-camera:preview": "node --experimental-strip-types scripts/build_and_serve_process_camera.ts",
+    "kompOase-vorform": "node --experimental-strip-types scripts/build_kompOase_vorform.ts",
+    "surface": "node --experimental-strip-types scripts/build_surface.ts"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.2.0",
+    "mammoth": "^1.12.0",
+    "pdf-parse": "^2.4.5",
+    "playwright": "^1.61.1"
+  },
+  "allowScripts": {
+    "onnxruntime-node@1.24.3": true,
+    "protobufjs@7.6.5": true,
+    "sharp@0.34.5": true
+  }
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "b1_scene01_00s",
+    "start": 0.00,
+    "end": 3.70,
+    "thron_wort": "BETON",
+    "begruendung": "Der unnachgiebige, kalte Boden der Realität, auf dem die Zigarettenasche verglimmt.",
+    "prompt": "close up of glowing cigarette ash crumbling onto rough cracked cold grey concrete slab, macro texture of coarse aggregate and stone dust, dim ambient workshop shadows, tactile realism, high contrast dramatic side lighting, authentic film grain"
+  },
+  {
+    "id": "b1_scene02_03s",
+    "start": 3.70,
+    "end": 7.40,
+    "thron_wort": "TELEFON",
+    "begruendung": "Der analoge Ruf aus dem Nirgendwo, der die Stille des Schrottplatzes zerschneidet.",
+    "prompt": "a battered heavy black rotary telephone from the 1970s sitting on an oil-stained wooden desk, frayed coiled cord, cracked bakelite casing, faint brass bell visible inside, moody dramatic lighting, dust motes in single shaft of light, tactile realism"
+  },
+  {
+    "id": "b1_scene03_07s",
+    "start": 7.40,
+    "end": 11.10,
+    "thron_wort": "SAG",
+    "begruendung": "Der knappe, ungeduldige Befehl zur Wahrheit ohne Umschweife.",
+    "prompt": "an old cast iron workshop intercom horn speaker mounted on rusty corrugated sheet metal wall, peeling industrial green paint, thick greasy cables running down, heavy tactile texture of rust and rivets, cinematic chiaroscuro lighting, gritty atmosphere"
+  },
+  {
+    "id": "b1_scene04_11s",
+    "start": 11.10,
+    "end": 14.80,
+    "thron_wort": "FUNKEN",
+    "begruendung": "Der mechanische Zündfunke des alten Feuerzeugs entzündet den Maschinenraum.",
+    "prompt": "extreme macro close-up of a vintage brass lighter wheel striking a flint, violent burst of microscopic orange sparks flying across dark worn steel, scratch marks on brushed metal, tactile heat and soot, hyper-detailed gritty texture"
+  },
+  {
+    "id": "b1_scene05_15s",
+    "start": 14.80,
+    "end": 18.50,
+    "thron_wort": "WUT",
+    "begruendung": "Die früheste, fundamentale Urkraft des Kindes, die sich in den Schläfen staut.",
+    "prompt": "a small childs clenched fist gripping a rough splintered block of dark wood, dramatic low key lighting, harsh shadows outlining tense knuckles, gritty grain, dark textured plaster wall background, raw emotional tension, tactile realism"
+  },
+  {
+    "id": "b1_scene06_18s",
+    "start": 18.50,
+    "end": 22.20,
+    "thron_wort": "EISEN",
+    "begruendung": "Die unerbittliche Schwere der Ohnmacht, die sich wie kaltes Roheisen anfühlt.",
+    "prompt": "a heavy cast iron anvil sitting in an abandoned dimly lit forge, coarse surface pitted with hammer strikes, deep gouges, layers of black iron oxide, cold pale light glinting on worn metal edges, dense gritty texture"
+  },
+  {
+    "id": "b1_scene07_22s",
+    "start": 22.20,
+    "end": 25.90,
+    "thron_wort": "KISSEN",
+    "begruendung": "Der verschwiegene Schauplatz des ersten Schwurs, wo Tränen und Widerstand geboren wurden.",
+    "prompt": "a rough textured vintage feather pillow pressed against dark weathered floorboards, single tear drop damp stain absorbing into coarse linen fabric, moody atmospheric shadows, soft diffused dust motes, dramatic cinematic side light"
+  },
+  {
+    "id": "b1_scene08_26s",
+    "start": 25.90,
+    "end": 29.60,
+    "thron_wort": "PAKT",
+    "begruendung": "Der unzerbrechliche Lebensschwur, der in der dunkelsten Sekunde besiegelt wird.",
+    "prompt": "two rough industrial iron links forged together with a molten fiery weld seam, bright orange embers glowing in the seam, hammer slag flying, dark smoky workshop background, solid unbreakable bond, tactile craftsmanship"
+  },
+  {
+    "id": "b1_scene09_30s",
+    "start": 29.60,
+    "end": 33.30,
+    "thron_wort": "KNIE",
+    "begruendung": "Die absolute Weigerung der Unterwerfung; der feste Stand auf dem Werkstattboden.",
+    "prompt": "heavy worn steel-toed leather work boots planted firmly on cracked concrete covered with metal shavings and sawdust, thick scuffed leather, heavy double stitching, unyielding grounded stance, gritty dramatic shadows"
+  },
+  {
+    "id": "b1_scene10_33s",
+    "start": 33.30,
+    "end": 37.00,
+    "thron_wort": "PFLASTER",
+    "begruendung": "Das nasskalte Straßenpflaster, das jahrelang die Schritte durch den Nebel getragen hat.",
+    "prompt": "wet dark cobblestones on an empty urban alley at dawn, puddles reflecting gloomy overcast sky, oil rainbow sheen on dark water, moss growing in cracked stone joints, gritty textured perspective, atmospheric mist"
+  },
+  {
+    "id": "b1_scene11_37s",
+    "start": 37.00,
+    "end": 40.70,
+    "thron_wort": "WINTER",
+    "begruendung": "Die lange, eisige Isolation, die den Willen gestählt statt gebrochen hat.",
+    "prompt": "rusted industrial machinery covered in thin brittle layer of frost and rime ice, overgrown with dead briars in an overgrown scrapyard, cold grey winter twilight, frozen iron chains hanging still, somber tactile beauty"
+  },
+  {
+    "id": "b1_scene12_41s",
+    "start": 40.70,
+    "end": 44.40,
+    "thron_wort": "EIGENSINN",
+    "begruendung": "Der reine, unbändige Trotz als wahrer Motor des Überlebens.",
+    "prompt": "a solitary hand-welded steel gear mechanism standing upright on a battered wooden workbench, jagged teeth cut by hand, grease and carbon deposits, stubborn unyielding metal craft, warm beam of golden morning light cutting through dusty gloom"
+  }
+]

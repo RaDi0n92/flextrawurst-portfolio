@@ -1,0 +1,41 @@
+[Unit]
+Description=GENI-Dokumentationsarchiv-Watcher (sandboxed)
+After=local-fs.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/werkraum
+ExecStart=/usr/bin/python3 /root/werkraum/scripts/geni_dokumentation_versionsarchiv_watch.py
+Restart=always
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectClock=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+UMask=077
+
+InaccessiblePaths=/root/.ssh /root/.claude /root/.codex /root/.gemini /root/.config
+ReadWritePaths=/root/werkraum/geni_dokumentation_versionsarchiv
+
+[Install]
+WantedBy=multi-user.target

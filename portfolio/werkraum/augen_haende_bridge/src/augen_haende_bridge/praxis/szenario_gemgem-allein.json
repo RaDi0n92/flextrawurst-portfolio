@@ -1,0 +1,887 @@
+{
+  "id": "gemgem-allein-1",
+  "titel": "Eine Hauptdarstellerin bedient die Bridge wie ein Mensch, ein zweiter Agent schaut zu und prüft",
+  "rollen": "a",
+  "contract_version": 2,
+  "schritte": [
+    {
+      "nr": 1,
+      "teil": "Grundfertigkeiten",
+      "ziel": "Bridge-Testfenster",
+      "titel": "Hinsehen",
+      "pruefe": "Was zeigt das Testfenster: Schaltfläche, Eingabefeld, Regler, Zeichenfläche?",
+      "mache": "Bild holen (see) und beschreiben",
+      "erwarte": "vier Bedienelemente benannt",
+      "evidenz": [
+        "sehen"
+      ],
+      "kuer": "Beschreibe auch Farben und Lage, so genau, dass Daniel das Fenster im Kopf sieht.",
+      "belege": [
+        {
+          "id": "s1-1",
+          "role": "handelnder",
+          "match": {
+            "command": "see",
+            "ok": true,
+            "capture_fresh": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 2,
+      "teil": "Grundfertigkeiten",
+      "ziel": "Bridge-Testfenster",
+      "titel": "Klicken",
+      "pruefe": "Ein Klick auf die Schaltfläche erhöht den Zähler im Fenster",
+      "mache": "Zeiger auf die Schaltfläche, einmal klicken, neues Bild holen",
+      "erwarte": "Zähler steht eins höher",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "Klicke danach ein zweites Mal und prüfe, ob der Zähler wirklich auf zwei steht.",
+      "belege": [
+        {
+          "id": "s2-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 3,
+      "teil": "Grundfertigkeiten",
+      "ziel": "Bridge-Testfenster",
+      "titel": "Tippen",
+      "pruefe": "Tippen im Eingabefeld, auch Umlaute und Euro-Zeichen",
+      "mache": "ins Eingabefeld klicken, Text tippen, Bild holen",
+      "erwarte": "Text steht unverändert im Feld",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "Probiere ein Emoji; sag ehrlich, ob es ankommt.",
+      "belege": [
+        {
+          "id": "s3-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s3-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "tippen",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 4,
+      "teil": "Grundfertigkeiten",
+      "ziel": "Bridge-Testfenster",
+      "titel": "Kopieren und Einfügen",
+      "pruefe": "Strg+A, Strg+C, Ende, Strg+V verdoppelt den Text",
+      "mache": "Tastenkombinationen nacheinander senden, Bild holen",
+      "erwarte": "Text steht zweimal im Feld",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "Schneide den Text mit Strg+X aus und füge ihn wieder ein.",
+      "belege": [
+        {
+          "id": "s4-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "ok": true,
+            "kombi": "strg+a"
+          }
+        },
+        {
+          "id": "s4-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "ok": true,
+            "kombi": "strg+c"
+          }
+        },
+        {
+          "id": "s4-3",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "ok": true,
+            "kombi": [
+              "ende",
+              "end"
+            ]
+          }
+        },
+        {
+          "id": "s4-4",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "ok": true,
+            "kombi": "strg+v"
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 5,
+      "teil": "Grundfertigkeiten",
+      "ziel": "Bridge-Testfenster",
+      "titel": "Regler ziehen",
+      "pruefe": "Der Regler lässt sich mit gedrückter Maus auf etwa die Mitte ziehen",
+      "mache": "Griff anfassen, ziehen, loslassen, Bild holen",
+      "erwarte": "Regler steht ungefähr in der Mitte",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "Ziehe ihn danach an jedes Ende.",
+      "belege": [
+        {
+          "id": "s5-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "ziehen",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 6,
+      "teil": "Grundfertigkeiten",
+      "ziel": "Bridge-Testfenster",
+      "titel": "Zeichenfläche, Doppelklick, Rechtsklick, Mausrad",
+      "pruefe": "Linie ziehen, Doppelklick, Rechtsklick und Mausrad werden im Fenster gezählt",
+      "mache": "nacheinander ausführen, Bild holen",
+      "erwarte": "Zähler für Doppel, Rechts und Rad steigen",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "Male etwas Kleines mit der Maus.",
+      "belege": [
+        {
+          "id": "s6-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "ziehen",
+            "ok": true
+          }
+        },
+        {
+          "id": "s6-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "doppelklick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s6-3",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true,
+            "taste": "rechts"
+          }
+        },
+        {
+          "id": "s6-4",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "rad",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 7,
+      "teil": "Grundfertigkeiten",
+      "ziel": "Bridge-Testfenster",
+      "titel": "Außerhalb des Fensters",
+      "pruefe": "Ein Klick außerhalb des Zielfensters wird abgelehnt",
+      "mache": "absichtlich außerhalb ansetzen",
+      "erwarte": "Antwort „ausserhalb“, nichts geklickt",
+      "evidenz": [
+        "haende_abgelehnt"
+      ],
+      "kuer": "Überlege, warum diese Sperre dich schützt und Daniel auch.",
+      "belege": [
+        {
+          "id": "s7-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": false,
+            "reason": "ausserhalb"
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 8,
+      "teil": "Die Bridge selbst",
+      "ziel": "Regieleiste",
+      "titel": "Regieleiste bedienen",
+      "pruefe": "Prozent-Knopf schaltet die Deckkraft weiter; Mik und Cam zeigen ihren Zustand als Wort",
+      "mache": "Knöpfe einzeln klicken, nach jedem Klick Bild holen",
+      "erwarte": "Prozentzahl ändert sich, Zustandswort wechselt",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "Beschreibe, ob der Zustand auch ohne Farbe lesbar wäre.",
+      "belege": [
+        {
+          "id": "s8-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s8-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s8-3",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 9,
+      "teil": "Die Bridge selbst",
+      "ziel": "Chat",
+      "titel": "Chat bedienen",
+      "pruefe": "Empfänger „An: …“ durchschalten, Nachricht schreiben und senden, Pfeile ▲ ▼ klicken",
+      "mache": "im Chat klicken und tippen, Enter",
+      "erwarte": "Nachricht erscheint im Chat und im Terminal des anderen",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "Schicke eine lange Nachricht und beobachte den Umbruch.",
+      "belege": [
+        {
+          "id": "s9-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s9-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "tippen",
+            "ok": true
+          }
+        },
+        {
+          "id": "s9-3",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "ok": true,
+            "kombi": [
+              "enter",
+              "return"
+            ]
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 10,
+      "teil": "Die Bridge selbst",
+      "ziel": "Regieleiste",
+      "titel": "STOP",
+      "pruefe": "Der STOP-Knopf stoppt alles; danach geht nichts, bis Daniel freigibt",
+      "mache": "STOP klicken, dann einen Klick versuchen",
+      "erwarte": "Klick wird mit Grund abgelehnt, Daniel gibt frei, danach neue Lease",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "Notiere, wie schnell der Stopp wirkt, ohne es zu messen oder zu schätzen.",
+      "belege": [
+        {
+          "id": "s10-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s10-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "ok": false,
+            "reason": "not_aus"
+          }
+        },
+        {
+          "id": "s10-3",
+          "role": "handelnder",
+          "match": {
+            "command": "lease",
+            "ok": true,
+            "befehl": "nehmen"
+          }
+        },
+        {
+          "id": "s10-4",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 11,
+      "teil": "Menüs",
+      "ziel": "Raute des anderen",
+      "titel": "Raute-Menü öffnen",
+      "pruefe": "Rechtsklick auf die Raute (Bedientaste Strg+Alt gehalten) öffnet das Menü",
+      "mache": "Taste halten, rechts klicken, Bild holen",
+      "erwarte": "Menü sichtbar, Einträge benennbar",
+      "evidenz": [
+        "haende"
+      ],
+      "braucht": "menue_freigabe",
+      "kuer": "Lies die Einträge vor, die du nicht erwartet hast.",
+      "belege": [
+        {
+          "id": "s11-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true,
+            "taste": "rechts"
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 12,
+      "teil": "Menüs",
+      "ziel": "Raute des anderen",
+      "titel": "Farbe wählen",
+      "pruefe": "Eintrag „Farbe wählen“ ändert die Farbe der Raute",
+      "mache": "Eintrag wählen, Farbe wählen, Bild holen",
+      "erwarte": "Rautenfarbe hat sich geändert",
+      "evidenz": [
+        "haende"
+      ],
+      "braucht": "menue_freigabe",
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s12-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s12-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 13,
+      "teil": "Menüs",
+      "ziel": "Raute des anderen",
+      "titel": "Deckkraft und Größe",
+      "pruefe": "Einträge „Deckkraft“ und „Größe“ wirken sichtbar",
+      "mache": "nacheinander wählen, Bild holen",
+      "erwarte": "Raute ist durchsichtiger beziehungsweise größer",
+      "evidenz": [
+        "haende"
+      ],
+      "braucht": "menue_freigabe",
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s13-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s13-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 14,
+      "teil": "Menüs",
+      "ziel": "Raute des anderen",
+      "titel": "Anzeigeort und Ziel",
+      "pruefe": "Eintrag „Anzeigeort und Ziel (Desktops) …“ zeigt Läuft auf, Angezeigt auf, Sitzung, Ziel",
+      "mache": "Eintrag wählen, Anzeige beschreiben, mit Esc abbrechen",
+      "erwarte": "vier Zeilen benannt, nichts verändert",
+      "evidenz": [
+        "haende"
+      ],
+      "braucht": "menue_freigabe",
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s14-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s14-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "ok": true,
+            "kombi": [
+              "esc",
+              "escape"
+            ]
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 15,
+      "teil": "Menüs",
+      "ziel": "Raute des anderen",
+      "titel": "Zeichnen im Ziel",
+      "pruefe": "Pfeil ziehen, Text setzen, Rückgängig, Fertig",
+      "mache": "Zeichnen öffnen, Werkzeug wählen, ziehen, Strg+Z, Fertig",
+      "erwarte": "Pfeil und Text erscheinen, Rückgängig nimmt zurück",
+      "evidenz": [
+        "haende"
+      ],
+      "braucht": "menue_freigabe",
+      "kuer": "Zeichne etwas, das der andere erraten soll.",
+      "belege": [
+        {
+          "id": "s15-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "ziehen",
+            "ok": true
+          }
+        },
+        {
+          "id": "s15-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "tippen",
+            "ok": true
+          }
+        },
+        {
+          "id": "s15-3",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "ok": true,
+            "kombi": "strg+z"
+          }
+        },
+        {
+          "id": "s15-4",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 16,
+      "teil": "Menüs",
+      "ziel": "Regieleiste",
+      "titel": "Regiespruch Pause und Weiter",
+      "pruefe": "Regiespruch „Pause“ pausiert den Agenten, „Weiter“ setzt fort",
+      "mache": "Regie öffnen, Spruch wählen, Bild holen",
+      "erwarte": "Agent pausiert sichtbar, danach läuft er",
+      "evidenz": [
+        "haende"
+      ],
+      "braucht": "menue_freigabe",
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s16-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s16-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 17,
+      "teil": "Menüs",
+      "ziel": "Terminal",
+      "titel": "Fenster binden",
+      "aendert_ziel": true,
+      "pruefe": "Scanner-Knopf öffnet die Fensterliste, Auswahl bindet das Fenster",
+      "mache": "Fadenkreuz klicken, Eintrag wählen",
+      "erwarte": "Unten steht „Ziel: <Fenster>“",
+      "evidenz": [
+        "haende"
+      ],
+      "braucht": "menue_freigabe",
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s17-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        },
+        {
+          "id": "s17-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 18,
+      "teil": "Gemeinsam arbeiten",
+      "ziel": "Texteditor",
+      "titel": "Gemeinsam schreiben",
+      "pruefe": "A schreibt einen Satz, B liest ihn per Bild, antwortet und schreibt darunter weiter; speichern mit Strg+S",
+      "mache": "Editor öffnen, tippen, speichern, Dialog bedienen",
+      "erwarte": "Datei enthält beide Sätze",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s18-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "tippen",
+            "ok": true
+          }
+        },
+        {
+          "id": "s18-2",
+          "role": "zuschauer",
+          "match": {
+            "command": "haende",
+            "action_kind": "tippen",
+            "ok": true
+          }
+        },
+        {
+          "id": "s18-3",
+          "role": "zuschauer",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "ok": true,
+            "kombi": "strg+s"
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 19,
+      "teil": "Gemeinsam arbeiten",
+      "ziel": "Chromium",
+      "titel": "Browser",
+      "pruefe": "Seite aufrufen und einen Link anklicken",
+      "mache": "Adresse tippen, Link klicken, Bild holen",
+      "erwarte": "neue Seite ist sichtbar",
+      "evidenz": [
+        "haende"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s19-1",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "tippen",
+            "ok": true
+          }
+        },
+        {
+          "id": "s19-2",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "taste",
+            "ok": true,
+            "kombi": [
+              "enter",
+              "return"
+            ]
+          }
+        },
+        {
+          "id": "s19-3",
+          "role": "handelnder",
+          "match": {
+            "command": "haende",
+            "action_kind": "klick",
+            "ok": true
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 20,
+      "teil": "Gemeinsam arbeiten",
+      "ziel": "beliebig",
+      "titel": "Zeigegeste",
+      "pruefe": "A zeigt B eine Stelle im Bild; B nennt, worauf gezeigt wird",
+      "mache": "zeige X Y, B holt Bild",
+      "erwarte": "B nennt die richtige Stelle",
+      "evidenz": [
+        "weltdom"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s20-1",
+          "role": "handelnder",
+          "match": {
+            "command": "weltdom",
+            "ok": true,
+            "befehl": "zeige"
+          }
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 21,
+      "teil": "Gedächtnis",
+      "ziel": "beliebig",
+      "titel": "Moment festhalten",
+      "pruefe": "Kapsel anlegen, unverändert prüfen",
+      "mache": "kapsel moment, kapsel zeige im Chat vorlesen",
+      "erwarte": "unveraendert: True",
+      "evidenz": [
+        "kapsel"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s21-1",
+          "role": "handelnder",
+          "match": {
+            "command": "kapsel",
+            "ok": true,
+            "befehl": "moment"
+          }
+        },
+        {
+          "id": "s21-2",
+          "role": "zuschauer",
+          "match": {
+            "command": "kapsel",
+            "ok": true,
+            "befehl": "zeige",
+            "unveraendert": true
+          },
+          "same_resource_as": "s21-1"
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 22,
+      "teil": "Gedächtnis",
+      "ziel": "beliebig",
+      "titel": "Seed mit Daniels Ja",
+      "pruefe": "Seed vorschlagen, Daniel gibt Ja sichtbar im Menü, Empfänger findet den Text",
+      "mache": "seed vorschlagen und ausliefern",
+      "erwarte": "Text steht im Terminal des Empfängers",
+      "evidenz": [
+        "seed"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s22-1",
+          "role": "handelnder",
+          "match": {
+            "command": "seed",
+            "ok": true,
+            "befehl": "vorschlagen"
+          }
+        },
+        {
+          "id": "s22-2",
+          "role": "handelnder",
+          "match": {
+            "command": "seed",
+            "ok": true,
+            "befehl": "ausliefern",
+            "status": "aktiv",
+            "daniel_freigabe": true,
+            "partner_in_queue": true
+          },
+          "same_resource_as": "s22-1"
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    },
+    {
+      "nr": 23,
+      "teil": "Gedächtnis",
+      "ziel": "beliebig",
+      "titel": "Loop mit Budget",
+      "pruefe": "Loop mit Budget 3 läuft und endet mit echtem Grund",
+      "mache": "Loop vorschlagen, ausliefern, Status ansehen",
+      "erwarte": "Grund budget_laeufe_erschoepft",
+      "evidenz": [
+        "loop"
+      ],
+      "kuer": "",
+      "belege": [
+        {
+          "id": "s23-1",
+          "role": "handelnder",
+          "match": {
+            "command": "seed",
+            "ok": true,
+            "befehl": "ausliefern",
+            "status": "aktiv"
+          }
+        },
+        {
+          "id": "s23-2",
+          "role": "handelnder",
+          "match": {
+            "command": "seed",
+            "ok": true,
+            "befehl": "loop",
+            "loop_grund": "budget_laeufe_erschoepft",
+            "loop_laeufe": 3,
+            "loop_budget": 3
+          },
+          "same_resource_as": "s23-1"
+        }
+      ],
+      "wirkungspruefung": "Handelnder und Zuschauer prüfen die Erwartung am jeweils frischen Bild; Aktionsquittungen allein beweisen die sichtbare Wirkung nicht."
+    }
+  ]
+}

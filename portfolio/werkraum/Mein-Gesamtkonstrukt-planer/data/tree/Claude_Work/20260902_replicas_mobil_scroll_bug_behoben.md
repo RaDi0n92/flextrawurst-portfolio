@@ -1,0 +1,13 @@
+# Replicas mobil: kompletter Werkstatt-Canvas war unerreichbar
+
+Naechster Schritt im Mobil-Durchgang nach Zeitspur (sauber) - Replicas-Tab bei 375px geprueft.
+
+Auf den ersten Blick sah die Arbeitsweisen-Liste (2-spaltiges Grid, 17 Eintraege) normal aus. Scrollen innerhalb der Liste bewegte aber nichts - weder Mausrad noch Seiten-Scroll zeigten mehr als die ersten rund 8 Eintraege plus den Kopfbereich.
+
+Ursache gefunden: main.app-shell bekommt im Replica-Studio-Modus (.replica-focus) durch einen bereits vorhandenen aelteren Mobil-Fix in workspace.js bewusst height:auto, damit der Inhalt (Liste + Werkstatt-Canvas) in die Hoehe umbricht statt in feste Spalten gepresst zu werden - das Prinzip war also schon richtig angelegt. Was fehlte: html, body und #root sind app-weit fest auf Viewport-Hoehe (812px) mit overflow:hidden gesetzt - die Standard-Architektur, bei der jede Ansicht nur INTERN scrollt und die Aussenhuelle nie ueber den Viewport hinauswaechst. main.app-shell wuchs dadurch zwar korrekt auf ueber 3000px echte Inhaltshoehe, aber #root hat alles ab der ersten Bildschirmhoehe hart abgeschnitten, ohne selbst scrollbar zu sein. Live gemessen: #root scrollHeight 3100px bei einer festen Boxhoehe von 812px und overflow:hidden - der komplette Skizze-Werkstatt-Canvas mit 51 Objekten und 44 Kanten lag darunter, fuer niemanden auf mobil erreichbar.
+
+Fix: html, body und #root bekommen jetzt, wenn main.app-shell.replica-focus aktiv ist (per CSS :has()-Selektor, nur in diesem Zustand), height:auto und overflow:visible - der Inhalt geht dann in den normalen, nativen Seiten-Scroll ueber statt an einer inneren Box abgeschnitten zu werden. Scoped ueber :has(), daher keine Auswirkung auf Desktop oder auf die anderen mobilen Ansichten, die weiterhin ihre eigenen internen Scroll-Container nutzen (Zeitspur, Objektliste etc. unveraendert).
+
+Live verifiziert bei 375px: nach dem Fix wachsen html/body/#root auf die volle Inhaltshoehe, echtes Scrollen per Tastatur (PageDown) bestaetigt Bewegung bis zum Seitenende, wo der komplette Werkstatt-Canvas (Skizze-Ansicht mit allen 17 Objekt-Karten und Verbindungslinien) sichtbar und die Objekt-Detailformulare am Seitenende erreichbar sind. Randnotiz: ein synthetisches Mausrad-Event ueber das CDP-Testwerkzeug hat hier merkwuerdigerweise nicht gescrollt, waehrend programmatisches scrollTo und ein echter Tastendruck (PageDown) beide sauber funktionierten - das ist eine Eigenart des Test-Werkzeugs in dieser Sitzung, kein App-Verhalten (aehnlich der bereits frueher dokumentierten Screenshot-Staleness-Eigenart). Bei 1297px Desktop-Breite unveraendert, da replica-focus dort nie aktiv wird.
+
+Committet.

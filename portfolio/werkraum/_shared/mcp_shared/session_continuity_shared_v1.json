@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "mcp.session_continuity.shared.v1",
+  "protocol_version": 1,
+  "status": "required",
+  "set_by": "Daniel und Claude auf Daniels VPS, 2026-07-28",
+  "purpose": "Angepasste Version von session_continuity_v1.json (ChatGPTs Browser-Tab-Modell) fuer dauerhafte CLI-Agenten (Claude Code, Codex, Gemini CLI), die nicht per F5/Wiedereinwahl neu verbinden, sondern typischerweise eine Session pro Prozesslauf haben. Dieselbe Grundsicherheit (keine stille Session-Verwechslung, jede Aktion einem Strom zuordenbar), ohne die Browser-Reconnect-Ceremony.",
+  "default_intent": "new",
+  "allowed_intents": [
+    "resume",
+    "new"
+  ],
+  "hard_rules": [
+    "Jeder Aufruf braucht einen stream_id-Parameter (claude / codex / gemini), damit Aktionen im geteilten Gesamtatlas dem richtigen Strom zugeordnet werden.",
+    "Ein neuer Prozesslauf darf ohne Weiteres eine neue Session eroeffnen (default_intent=new) -- das ist bei CLI-Agenten der Normalfall, kein Sonderfall wie bei Browser-Tabs.",
+    "Eine bewusst fortzusetzende Session (resume) braucht weiterhin die bekannte session_id und darf nicht geschlossene Sessions still ersetzen.",
+    "Schreibende Atlas-Aktionen (record_consensus, record_conflict, idea_marker) laufen ueber dieselbe Lock-/Hash-Kette wie bei ChatGPT -- kein roher Dateizugriff auf die Register."
+  ],
+  "allowed_new_session_causes": [
+    "neuer CLI-Prozesslauf ohne offene bekannte session_id",
+    "expliziter Wunsch nach einer parallelen/isolierten Arbeitslinie"
+  ],
+  "markers": {
+    "resume": "[SESSION-KONTINUITAET: FORTGESETZT <session_id>]",
+    "new": "[SESSION-KONTINUITAET: NEU <session_id>]"
+  },
+  "identity_boundary": "Bindet technische Zuordnung im geteilten Gesamtatlas. Verschmilzt keine Erinnerungen zwischen Claude, Codex und Gemini -- jeder Strom bleibt in AI_STROEME.json/den Registern als eigene Herkunft erkennbar.",
+  "failure_policy": {
+    "resume_unknown_id": "block",
+    "resume_closed_id": "block",
+    "missing_stream_id": "block"
+  }
+}

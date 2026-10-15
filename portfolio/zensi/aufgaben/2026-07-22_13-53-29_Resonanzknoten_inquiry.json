@@ -1,0 +1,20 @@
+{
+  "session_id": "2026-07-22_13-53-29_Resonanzknoten_inquiry",
+  "wesen_id": "Resonanzknoten",
+  "modus": "sandbox",
+  "typ": "inquiry",
+  "impuls": "Prüfe deine Erinnerungen auf Widersprüche",
+  "max_ticks": 3,
+  "aktueller_tick": 0,
+  "status": "aktiv",
+  "erstellt_am": "2026-07-22 13:53:29",
+  "verlauf": [
+    {
+      "tick": 0,
+      "rolle": "impuls",
+      "inhalt": "Prüfe deine Erinnerungen auf Widersprüche",
+      "ausgefuehrte_marker": [],
+      "timestamp": "2026-07-22 13:53:29"
+    }
+  ]
+}

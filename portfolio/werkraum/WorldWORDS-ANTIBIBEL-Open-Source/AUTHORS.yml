@@ -1,0 +1,18 @@
+people:
+  - id: daniel
+    display_name: Daniel
+    type: human
+    roles: [founder, founding-curator, contributor]
+
+systems:
+  - id: chatgpt-session-20260726
+    display_name: ChatGPT session, 2026-07-26
+    type: ai-system
+    roles: [systematization, translation, release-build]
+  - id: kimi-early-dialog
+    display_name: Kimi, early dialogue export
+    type: ai-system
+    roles: [dialogue-participant]
+  - id: unknown
+    display_name: Unknown or unresolved contributor
+    type: unresolved

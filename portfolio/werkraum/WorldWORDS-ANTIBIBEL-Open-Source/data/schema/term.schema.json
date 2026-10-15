@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldwords.example/schema/term.schema.json",
+  "title": "WorldWORDS term record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "id",
+    "canonical_form",
+    "raw_form_policy",
+    "status",
+    "origin",
+    "definitions",
+    "approval"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "canonical_form": {
+      "type": "string",
+      "minLength": 1
+    },
+    "raw_form_policy": {
+      "const": "preserve-exactly"
+    },
+    "status": {
+      "enum": [
+        "accepted",
+        "submitted",
+        "deferred",
+        "declined",
+        "withdrawn",
+        "superseded",
+        "deprecated",
+        "retired"
+      ]
+    },
+    "origin": {
+      "type": "object",
+      "required": [
+        "authorship_status",
+        "contributors",
+        "first_seen",
+        "exact_input",
+        "source_ref"
+      ]
+    },
+    "definitions": {
+      "type": "object",
+      "required": [
+        "de",
+        "en",
+        "es"
+      ]
+    },
+    "approval": {
+      "type": "object",
+      "required": [
+        "required_for_official_registry",
+        "authority_contributor_id",
+        "approval_id"
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+[Unit]
+Description=Private Gesamtatlas-Beweiskapsel atomar ueber die aktuelle Basiskapsel legen
+After=gesamtatlas-organismus.service
+ConditionPathExists=/root/werkraum/_gpt/gesamtatlas/GESAMTATLAS_KAPSEL_AKTUELL.zip
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/root/werkraum/tools/gesamtatlas_endproduktbeweis/capsule
+ExecStart=/usr/bin/python3 /root/werkraum/tools/gesamtatlas_endproduktbeweis/capsule/install_proof_capsule.py
+TimeoutStartSec=1200
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=6
+Environment=PYTHONUNBUFFERED=1

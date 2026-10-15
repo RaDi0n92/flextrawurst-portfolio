@@ -1,0 +1,20 @@
+[Unit]
+Description=Gesamtatlas begehbare Welt
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/werkraum/tools/gesamtatlas_world
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/local/bin/uvicorn app:app --host 127.0.0.1 --port 18108
+Restart=always
+RestartSec=3
+TimeoutStartSec=45
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/root/werkraum/tools/gesamtatlas_world/runtime /root/werkraum/tools/gesamtatlas_world/evidence
+
+[Install]
+WantedBy=multi-user.target

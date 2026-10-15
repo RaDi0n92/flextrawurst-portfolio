@@ -1,0 +1,30 @@
+manifest_version: 1
+task: "Kombi-Baumaschine fuer den Schrottplatz bauen: Gabelstapler-Basis mit Baggerarm und Magnetkran, drehbare Kabine"
+created_at: "2026-09-05T13:31:00Z"
+reference_revision: "baumaschine-v1"
+references:
+  - id: ref-01
+    source: "/config/Desktop/VPS_ROOT/werkraum/refferenzen/Schrottplatz/file_00000000e7e08243b75be7fd407a390c.png"
+    provenance: "Von Daniel im Gespraech direkt gezeigtes Referenzbild, mehrteiliges Ansichts-Composite mit Beschriftungen."
+    priority: 1
+    controls:
+      composition: "Sechs Panels: 3/4-Ansicht mit Labels, Rueckansicht, drei Seitenansichten (links/front/rechts), Kabinen-Drehsequenz (4 Schritte), Draufsicht."
+      silhouette: "Robustes gelb-schwarzes Baufahrzeug auf 4 grossen Reifen, Fahrerkabine mittig, Gabelstapler-Gabeln vorne unten, Baggerarm mit Zahnschaufel links oben, Magnetkran mit Kettenmagnet rechts oben."
+      proportions: "Kabine relativ kompakt/eckig, Reifen gross und breit (Baufahrzeug-Massstab), Baggerarm laenger als Magnetkranarm, Gabeln auf Hoehe der Vorderachse."
+      camera: "Mehrere feste Blickwinkel explizit im Bild vorgegeben -- Front, Rueck, beide Seiten, oben, 3/4 -- also RUNDUM-Referenz vorhanden, kein unknown fuer die Silhouette aus jeder Haupt-Richtung."
+      palette: "Karosserie gelb (verwittert/rostig), Kabine/Chassis dunkelgrau bis schwarz, Metallteile (Arm, Schaufel, Kran, Gabeln) mattes Grau/Rostbraun, rote Rueckleuchten, gelb-schwarze Warnstreifen vorne."
+      materials: "Verwittert/rostig, keine glatten Hochglanzflaechen -- Gebrauchsspuren gewuenscht."
+      lighting: "unknown -- neutrales Produktshot-Grau, keine Szenen-Lichtstimmung ableitbar."
+      negative_space: "Neutraler grauer Hintergrund je Panel, volles Fahrzeug freigestellt."
+      motion: "Kabine ist explizit als 360-Grad-drehbar markiert -- funktionale Anforderung, keine reine Pose."
+      non_negotiable:
+        - "Vier grosse Reifen, Radlader-Baufahrzeug-Massstab"
+        - "Baggerarm mit Zahnschaufel links, Magnetkran mit Kettenmagnet rechts"
+        - "Gabelstapler-Gabeln vorne unten am Chassis"
+        - "Kabine mittig, drehbar konzipiert"
+        - "Gelb/Schwarz-Farbschema mit Rost-/Gebrauchsspuren"
+    tolerance:
+      framing: "Silhouette aus allen 4 Hauptrichtungen (Front/Rueck/beide Seiten) muss erkennbar zum Referenzbild passen"
+      placement: "Anbauteile (Baggerarm/Magnetkran/Gabeln) an den im Bild gezeigten Chassis-Positionen"
+      color: "Visueller Match der Palette, keine Byte-Identitaet"
+      detail: "Erste Bauphase: Chassis+Reifen+Kabine als Basis, danach Anbauteile einzeln, Feindetails (Ketten, Zaehne) iterativ"

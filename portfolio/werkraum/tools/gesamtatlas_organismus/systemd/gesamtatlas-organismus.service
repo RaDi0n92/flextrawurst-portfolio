@@ -1,0 +1,15 @@
+[Unit]
+Description=Gesamtatlas Organismus und kleine Explorationskapsel aktualisieren
+After=network-online.target mcp-gesamtatlas-light.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/root/werkraum/tools/gesamtatlas_organismus
+ExecStart=/usr/bin/python3 /root/werkraum/tools/gesamtatlas_organismus/build_all.py
+TimeoutStartSec=3600
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=6
+Environment=PYTHONUNBUFFERED=1

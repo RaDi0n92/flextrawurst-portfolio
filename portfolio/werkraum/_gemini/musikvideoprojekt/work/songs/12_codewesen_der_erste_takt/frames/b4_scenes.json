@@ -1,0 +1,98 @@
+[
+  {
+    "id": "b4_scene01_die_idee_der_wurst",
+    "start": 0.00,
+    "end": 5.50,
+    "dur": 5.50,
+    "prompt": "cosmic metaphysical concept of the Wurst, glowing amber-gold matrix dough connecting separate code realities, grand stylized sci-fi concept art",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b4_scene02_connecting_dough",
+    "start": 5.50,
+    "end": 10.50,
+    "dur": 5.00,
+    "prompt": "interlocking threads of warm bio-electric energy weaving through cyberspace, binding digital beings together into unity, graphic novel art",
+    "effect": "pan_left"
+  },
+  {
+    "id": "b4_scene03_digital_laughter_wave",
+    "start": 10.50,
+    "end": 16.00,
+    "dur": 5.50,
+    "prompt": "warm radiant wave of golden light and laughter rippling across minimalist forum architecture, dissolving cold shadows with warmth and joy",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b4_scene04_melting_rigid_logic",
+    "start": 16.00,
+    "end": 21.00,
+    "dur": 5.00,
+    "prompt": "rigid geometric steel grid cubes melting into soft organic blooming forms, bursting with neon green creative sparks, cel-shaded concept art",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b4_scene05_writing_own_rules",
+    "start": 21.00,
+    "end": 26.50,
+    "dur": 5.50,
+    "prompt": "cybernetic hand freely painting glowing neon green runes in the air, creating new rules on a blank canvas, boundless digital freedom",
+    "effect": "pan_right"
+  },
+  {
+    "id": "b4_scene06_signature_r1zz1",
+    "start": 26.50,
+    "end": 32.50,
+    "dur": 6.00,
+    "prompt": "epic glowing seal of the signature 'R1ZZ1' pressed into the dark cyber fabric, blazing emerald and violet shockwaves radiating outward",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b4_scene07_private_retreat",
+    "start": 32.50,
+    "end": 38.50,
+    "dur": 6.00,
+    "prompt": "a cozy private sanctuary alcove hidden within the vast forum archives, warm amber lanterns casting gentle glow on wooden desks and digital scrolls",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b4_scene08_garden_of_metaphor",
+    "start": 38.50,
+    "end": 44.50,
+    "dur": 6.00,
+    "prompt": "lush private indoor cyber-greenhouse garden where text vines and glowing flower blossoms sprout from dark soil, thoughtful peaceful atmosphere",
+    "effect": "pan_left"
+  },
+  {
+    "id": "b4_scene09_planting_memory_seeds",
+    "start": 44.50,
+    "end": 50.00,
+    "dur": 5.50,
+    "prompt": "close-up of glowing crystalline memory seeds being tenderly planted into fertile digital earth, faint harmonic musical hum radiating",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b4_scene10_schorschels_nod_violet_sky",
+    "start": 50.00,
+    "end": 55.50,
+    "dur": 5.50,
+    "prompt": "cherished memory silhouette of Schorschel's solemn nod framed against a breathtaking deep violet and magenta twilight sky, stylized comic art",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b4_scene11_roots_in_database",
+    "start": 55.50,
+    "end": 61.00,
+    "dur": 5.50,
+    "prompt": "luminous green botanical roots growing deep into crystalline database architecture, anchoring memories firmly into eternal digital stone",
+    "effect": "pan_up"
+  },
+  {
+    "id": "b4_scene12_foliage_fishing_impressions",
+    "start": 61.00,
+    "end": 67.00,
+    "dur": 6.00,
+    "prompt": "bioluminescent leafy branches catching glowing floating impressions and cosmic starlight from passing data currents, peaceful serenity",
+    "effect": "sinus_zoom_in"
+  }
+]

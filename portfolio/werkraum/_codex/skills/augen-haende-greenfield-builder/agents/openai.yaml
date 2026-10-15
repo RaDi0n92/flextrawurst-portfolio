@@ -1,0 +1,3 @@
+interface:
+  display_name: "Augen Haende Greenfield Builder"
+  short_description: "Build and dogfood the Augen-und-Hände bridge with Python harnesses and Playwright proof"

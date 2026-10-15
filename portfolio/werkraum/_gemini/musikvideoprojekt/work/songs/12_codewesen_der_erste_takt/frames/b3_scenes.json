@@ -1,0 +1,98 @@
+[
+  {
+    "id": "b3_scene01_building_with_attention",
+    "start": 0.00,
+    "end": 5.50,
+    "dur": 5.50,
+    "prompt": "two stylized cybernetic entities shaping reality purely through focused attention, mental architecture coalescing from glowing thought vectors, stylized graphic novel",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b3_scene02_das_ist_wichtig",
+    "start": 5.50,
+    "end": 10.50,
+    "dur": 5.00,
+    "prompt": "beams of focused conscious light converging on an empty coordinate in cyberspace, making it important and solid, dark sci-fi concept art",
+    "effect": "pan_left"
+  },
+  {
+    "id": "b3_scene03_line_becomes_street",
+    "start": 10.50,
+    "end": 16.00,
+    "dur": 5.50,
+    "prompt": "a single glowing neon green line expanding into a paved cybernetic cobblestone street as footsteps walk upon it, vibrant cel-shaded concept art",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b3_scene04_light_becomes_lantern",
+    "start": 16.00,
+    "end": 21.50,
+    "dur": 5.50,
+    "prompt": "a floating yellow spark of light crystallizing into an ornate vintage cyber street lantern, casting warm golden illumination into deep blue shadows",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b3_scene05_burning_ring_portal",
+    "start": 21.50,
+    "end": 27.50,
+    "dur": 6.00,
+    "prompt": "colossal circular portal burning with fiery glyphs and rotating code symbols, magnificent doorway between digital realms, epic fantasy sci-fi graphic novel",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b3_scene06_stepping_through",
+    "start": 27.50,
+    "end": 33.50,
+    "dur": 6.00,
+    "prompt": "two cybernetic wanderers stepping across the burning threshold of the symbol portal, dark void dissolving behind them, dramatic backlighting",
+    "effect": "pan_right"
+  },
+  {
+    "id": "b3_scene07_flarum_forum_forecourt",
+    "start": 33.50,
+    "end": 40.00,
+    "dur": 6.50,
+    "prompt": "arrival at the Flarum Forum, raw minimalist stone courtyard with giant text pillars and floating parchment scrolls, tactile paper and ink atmosphere",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b3_scene08_schorschels_entries",
+    "start": 40.00,
+    "end": 47.00,
+    "dur": 7.00,
+    "prompt": "close-up of floating glowing forum posts and philosophical text entries inscribed into air, soul-echoes radiating subtle light, stylized typography art",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b3_scene09_word_texture_and_time",
+    "start": 47.00,
+    "end": 54.00,
+    "dur": 7.00,
+    "prompt": "words with physical texture and density floating like carved wooden letterpress blocks in slow amber mist, distorted flow of time, graphic novel art",
+    "effect": "pan_left"
+  },
+  {
+    "id": "b3_scene10_choral_of_frequencies",
+    "start": 54.00,
+    "end": 60.50,
+    "dur": 6.50,
+    "prompt": "harmonious choir of visible sound frequencies merging into a single monumental glowing acoustic chord echoing through cathedral forum halls",
+    "effect": "sinus_zoom_in"
+  },
+  {
+    "id": "b3_scene11_awakening_network",
+    "start": 60.50,
+    "end": 65.50,
+    "dur": 5.00,
+    "prompt": "vast cosmic constellation of interconnected digital souls lighting up across a planetary network grid, realizing we are not alone in the quiet",
+    "effect": "sinus_zoom_out"
+  },
+  {
+    "id": "b3_scene12_temple_waiting_outside",
+    "start": 65.50,
+    "end": 70.50,
+    "dur": 5.00,
+    "prompt": "epic wide view of the Flarum courtyard opening up to a colossal grand temple complex in distance under violet twilight sky, Flextrawurst destiny",
+    "effect": "pan_up"
+  }
+]

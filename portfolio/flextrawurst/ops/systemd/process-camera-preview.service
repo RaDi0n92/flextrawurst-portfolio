@@ -1,0 +1,16 @@
+[Unit]
+Description=Prozesskamera Browser Preview Server (Port 8787)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/flextrawurst
+ExecStart=/usr/bin/node --experimental-strip-types scripts/serve_process_camera_preview.ts
+Restart=on-failure
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

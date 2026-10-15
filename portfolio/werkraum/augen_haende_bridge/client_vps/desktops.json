@@ -1,0 +1,8 @@
+{
+  "_hinweis": "Die Desktops, auf denen die Bridge ein Körper-Programm anzeigen darf (Anzeigeorte, G06). `ort` ist die Kennung in den Ziel-Ids und Menüs (windows, kde1, kde2). Windows behält seine bisherigen Zugangsdaten aus BRIDGE_DESKTOP_TOKEN und BRIDGE_AGENT_TOKEN; für alle anderen legt der Relay beim ersten Start private Token-Dateien (Rechte 0600) unter runtime/tokens/ an. Ein Desktop ohne Eintrag hier kann sich nicht anmelden.",
+  "desktops": [
+    {"ort": "windows", "name": "Windows", "host": "thinkpad", "token_env": "BRIDGE_DESKTOP_TOKEN", "agent_token_env": "BRIDGE_AGENT_TOKEN"},
+    {"ort": "kde1", "name": "KDE 1", "host": "vd1"},
+    {"ort": "kde2", "name": "KDE 2", "host": "vd2"}
+  ]
+}

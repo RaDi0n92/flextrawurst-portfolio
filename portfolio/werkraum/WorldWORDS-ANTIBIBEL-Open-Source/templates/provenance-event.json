@@ -1,0 +1,13 @@
+{
+  "event_id": "prov-TERM-YYYYMMDD-NNN",
+  "term_id": "TERM",
+  "event_type": "interpretation",
+  "event_date": "YYYY-MM-DD",
+  "date_precision": "day",
+  "contributors": [
+    "CONTRIBUTOR_ID"
+  ],
+  "statement": "EXACT OR CAREFULLY LABELED STATEMENT",
+  "source_ref": "PUBLIC OR HASHED SOURCE",
+  "status": "active"
+}

@@ -1,0 +1,28 @@
+manifest_version: 1
+task: "Daniel (maennlich, Entwurf 1) gegen die Original-Referenz pruefen -- Skill-Test 1:1 nach blender-live-reference-qa"
+created_at: "2026-09-05T13:26:00Z"
+reference_revision: "daniel-original-v1"
+references:
+  - id: ref-01
+    source: "/root/werkraum/refferenzen/Schrottplatz/daniel.png"
+    provenance: "Von Daniel bereitgestellte Original-Referenz, dieselbe Datei die auch Codex' Manifest nutzt. Originaldatei bleibt unveraendert."
+    priority: 1
+    controls:
+      composition: "Vollstaendiges Hochformat mit kosmischem Hintergrund und zentraler Figur."
+      silhouette: "Goldene offene Maske, Cyan-Flammenhaar, blauer Hals/Haut, violetter Bademantel mit Fellbesatz, Haende mit SAVAGE-Tasse."
+      proportions: "Sichtbare 2D-Proportionen des Originals -- Kopf/Maske relativ gross zum Torso, Arme angewinkelt zur Tasse."
+      camera: "Frontaler Hochformat-Blick; Rueckseite und echte Tiefe sind unknown."
+      palette: "Cyan/Blau, Gold, Violett/Pink, kosmischer dunkler Hintergrund."
+      materials: "Illustrative Oberflaechen; physikalische 3D-Materialien sind unknown."
+      lighting: "unknown -- Illustration, keine echte Lichtquelle ableitbar."
+      negative_space: "Vollstaendiger Bildrand im Hochformat."
+      motion: "unknown"
+      non_negotiable:
+        - "Originaldatei nicht ueberschreiben oder veraendern"
+        - "Maske offen mit sichtbarer blauer Haut, nicht das ganze Gesicht bedeckend"
+        - "Cyan-Flammenhaar, violetter Bademantel mit Fellbesatz, SAVAGE-Tasse in den Haenden"
+    tolerance:
+      framing: "Frontale Ansicht, ganze Figur sichtbar"
+      placement: "Silhouette optisch vergleichbar, keine Pixel-Deckung gefordert"
+      color: "Visueller Match nach Blickwinkel, keine Byte-Identitaet"
+      detail: "Gelenke (Schulter/Ellenbogen) sichtbar artikuliert, Tasse aufrecht mit Kaffee sichtbar, keine verkippte Tasse"

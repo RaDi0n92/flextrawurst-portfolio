@@ -1,0 +1,28 @@
+manifest_version: 1
+task: "Daniels Savage-Referenz in Blender sichtbar anlegen und den Pixelmatch-Aufbau beginnen"
+created_at: "2026-09-05T11:12:00Z"
+reference_revision: "daniel-savage-v1"
+references:
+  - id: ref-01
+    source: "/config/Desktop/VPS_ROOT/werkraum/refferenzen/Schrottplatz/daniel.png"
+    provenance: "Von Daniel im Gespräch bereitgestellte Referenz; Originaldatei bleibt unverändert."
+    priority: 1
+    controls:
+      composition: "Das vollständige hochformatige Bild mit kosmischem Hintergrund und zentraler Figur."
+      silhouette: "Goldene Maske, Cyan-Flammenhaar, blauer Hals, violetter Mantel, Hände und SAVAGE-Tasse."
+      proportions: "Die sichtbaren 2D-Proportionen des Originals."
+      camera: "Frontaler Hochformat-Blick; Rückseite und echte Tiefe sind unknown."
+      palette: "Cyan/Blau, Gold, Violett/Pink, Grün und kosmischer dunkler Hintergrund."
+      materials: "Illustrative Oberflächen; physikalische 3D-Materialien sind unknown."
+      lighting: "Leuchtende kosmische Aura und farbige Blitze; genaue Lichtquellen sind unknown."
+      negative_space: "Vollständiger Bildrand im 2:3-Hochformat."
+      motion: "unknown"
+      non_negotiable:
+        - "Originaldatei nicht überschreiben oder verändern"
+        - "Frontaler Bildaufbau und sichtbare Hauptfarben"
+        - "Maske, Flammenhaar, Mantel, Hände und SAVAGE-Tasse"
+    tolerance:
+      framing: "2D-Referenzfläche im 2:3-Verhältnis; sichtbarer Rand bleibt erhalten"
+      placement: "Pixelblockout wird zunächst als separate, vergleichbare Frontschicht angelegt"
+      color: "Visueller Match nach Quantisierung; Byte-Identität ist für den Blockout unknown"
+      detail: "Erste Phase: 128x192 Pixelraster; Feindetails folgen iterativ"

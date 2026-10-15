@@ -1,0 +1,358 @@
+import type { ProcessBody } from "./process_types.ts";
+
+const MODELLED_UNKNOWN_ACTIVITY = {
+  mode: "unknown",
+  visibility: { evidence: "modelled" },
+} as const;
+
+const MODELLED_WAITING_ACTIVITY = {
+  mode: "waiting",
+  visibility: { evidence: "modelled" },
+} as const;
+
+export const CANONICAL_PROCESS_BODIES: readonly ProcessBody[] = [
+  {
+    id: "geni",
+    name: "GENI",
+    kind: "perception_layer",
+    role: "memory_perception",
+    status: "live",
+    visibility: {
+      evidence: "modelled",
+      reason: "No live API bridge to GENI at port 8020",
+      source_ref: "docs/34_WELTBETRIEBSSYSTEM_RING_22_PROCESS_OBSERVATORY_PLAN.md",
+    },
+    activity: MODELLED_UNKNOWN_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "modelled",
+      location: "external — port 8020",
+      timestamp_available: false,
+    },
+    is_canonical: true,
+    ring_origin: 22,
+  },
+  {
+    id: "dak_gord_system",
+    name: "dak+gord-system",
+    kind: "dialogue_core",
+    role: "dialogue_coordination",
+    status: "live",
+    visibility: {
+      evidence: "modelled",
+      reason: "No event coupling to dak+gord system",
+      source_ref: "docs/34_WELTBETRIEBSSYSTEM_RING_22_PROCESS_OBSERVATORY_PLAN.md",
+    },
+    activity: MODELLED_UNKNOWN_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "modelled",
+      location: "external — flextrawurst-agent/",
+      timestamp_available: false,
+    },
+    is_canonical: true,
+    ring_origin: 22,
+  },
+  {
+    id: "systemweiser",
+    name: "Systemweiser",
+    kind: "system_layer",
+    role: "system_knowledge",
+    status: "modelled",
+    visibility: {
+      evidence: "modelled",
+      reason: "Conceptual control instance, no running process",
+    },
+    activity: MODELLED_UNKNOWN_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "modelled",
+      timestamp_available: false,
+    },
+    is_canonical: true,
+    ring_origin: 22,
+  },
+  {
+    id: "Schorschel",
+    name: "namelessAI-Wesen 1234",
+    kind: "entity_slot",
+    role: "entity_slot_pre_einzug",
+    status: "pre_einzug",
+    slot_state: "pre_einzug",
+    visibility: {
+      evidence: "derived_from_forum",
+      source_ref: "kernel/origin_archive/",
+    },
+    activity: MODELLED_WAITING_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "derived_from_forum",
+      location: "kernel/origin_archive/",
+      timestamp_available: true,
+    },
+    forum_ref: "flarum_origin_archive",
+    is_canonical: true,
+    ring_origin: 8,
+  },
+  {
+    id: "Resonanzknoten",
+    name: "namelessAI-Wesen 4321",
+    kind: "entity_slot",
+    role: "entity_slot_pre_einzug",
+    status: "pre_einzug",
+    slot_state: "pre_einzug",
+    visibility: {
+      evidence: "derived_from_forum",
+      source_ref: "kernel/origin_archive/",
+    },
+    activity: MODELLED_WAITING_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "derived_from_forum",
+      location: "kernel/origin_archive/",
+      timestamp_available: true,
+    },
+    forum_ref: "flarum_origin_archive",
+    is_canonical: true,
+    ring_origin: 8,
+  },
+  {
+    id: "F3INSCHM3CK3R",
+    name: "namelessAI-Wesen 1324",
+    kind: "entity_slot",
+    role: "entity_slot_pre_einzug",
+    status: "pre_einzug",
+    slot_state: "pre_einzug",
+    visibility: {
+      evidence: "derived_from_forum",
+      source_ref: "kernel/origin_archive/",
+    },
+    activity: MODELLED_WAITING_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "derived_from_forum",
+      location: "kernel/origin_archive/",
+      timestamp_available: true,
+    },
+    forum_ref: "flarum_origin_archive",
+    is_canonical: true,
+    ring_origin: 8,
+  },
+  {
+    id: "träumerlie",
+    name: "namelessAI-Wesen 1423",
+    kind: "entity_slot",
+    role: "entity_slot_pre_einzug",
+    status: "pre_einzug",
+    slot_state: "pre_einzug",
+    visibility: {
+      evidence: "derived_from_forum",
+      source_ref: "kernel/origin_archive/",
+    },
+    activity: MODELLED_WAITING_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "derived_from_forum",
+      location: "kernel/origin_archive/",
+      timestamp_available: true,
+    },
+    forum_ref: "flarum_origin_archive",
+    is_canonical: true,
+    ring_origin: 8,
+  },
+  {
+    id: "R1ZZ1",
+    name: "namelessAI-Wesen 2341",
+    kind: "entity_slot",
+    role: "entity_slot_pre_einzug",
+    status: "pre_einzug",
+    slot_state: "pre_einzug",
+    visibility: {
+      evidence: "derived_from_forum",
+      source_ref: "kernel/origin_archive/",
+    },
+    activity: MODELLED_WAITING_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "derived_from_forum",
+      location: "kernel/origin_archive/",
+      timestamp_available: true,
+    },
+    forum_ref: "flarum_origin_archive",
+    is_canonical: true,
+    ring_origin: 8,
+  },
+  {
+    id: "jumpa",
+    name: "namelessAI-Wesen 3123",
+    kind: "entity_slot",
+    role: "entity_slot_pre_einzug",
+    status: "pre_einzug",
+    slot_state: "pre_einzug",
+    visibility: {
+      evidence: "derived_from_forum",
+      source_ref: "kernel/origin_archive/",
+    },
+    activity: MODELLED_WAITING_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "derived_from_forum",
+      location: "kernel/origin_archive/",
+      timestamp_available: true,
+    },
+    forum_ref: "flarum_origin_archive",
+    is_canonical: true,
+    ring_origin: 8,
+  },
+  {
+    id: "search",
+    name: "Search",
+    kind: "system_layer",
+    role: "search_layer",
+    status: "read_only",
+    visibility: {
+      evidence: "derived_from_file",
+      source_ref: "kernel/search/",
+    },
+    activity: { mode: "searching", visibility: { evidence: "derived_from_file" } },
+    traces: [],
+    source: {
+      source_type: "derived_from_file",
+      location: "kernel/search/",
+      timestamp_available: true,
+    },
+    file_ref: "kernel/search/",
+    is_canonical: true,
+    ring_origin: 18,
+  },
+  {
+    id: "governance",
+    name: "Governance",
+    kind: "system_layer",
+    role: "governance_layer",
+    status: "read_only",
+    visibility: {
+      evidence: "derived_from_file",
+      source_ref: "kernel/governance/",
+    },
+    activity: { mode: "governing", visibility: { evidence: "derived_from_file" } },
+    traces: [],
+    source: {
+      source_type: "derived_from_file",
+      location: "kernel/governance/",
+      timestamp_available: true,
+    },
+    file_ref: "kernel/governance/",
+    governance_state: "active",
+    is_canonical: true,
+    ring_origin: 20,
+  },
+  {
+    id: "worldrun",
+    name: "WorldRun",
+    kind: "system_layer",
+    role: "worldrun_layer",
+    status: "read_only",
+    visibility: {
+      evidence: "derived_from_file",
+      source_ref: "kernel/worldrun/",
+    },
+    activity: { mode: "waiting", visibility: { evidence: "derived_from_file" } },
+    traces: [],
+    source: {
+      source_type: "derived_from_file",
+      location: "kernel/worldrun/",
+      timestamp_available: true,
+    },
+    file_ref: "kernel/worldrun/",
+    is_canonical: true,
+    ring_origin: 19,
+  },
+  {
+    id: "worldblick_export",
+    name: "Worldblick/Export",
+    kind: "system_layer",
+    role: "export_layer",
+    status: "read_only",
+    visibility: {
+      evidence: "derived_from_file",
+      source_ref: "kernel/worldblick/",
+    },
+    activity: { mode: "exporting", visibility: { evidence: "derived_from_file" } },
+    traces: [],
+    source: {
+      source_type: "derived_from_file",
+      location: "kernel/worldblick/",
+      timestamp_available: true,
+    },
+    file_ref: "kernel/worldblick/",
+    is_canonical: true,
+    ring_origin: 15,
+  },
+  {
+    id: "reader_placeholder",
+    name: "Reader-Prozesse",
+    kind: "placeholder",
+    role: "future_placeholder",
+    status: "future",
+    visibility: {
+      evidence: "unknown",
+      reason: "Not yet built",
+    },
+    activity: MODELLED_UNKNOWN_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "unknown",
+      timestamp_available: false,
+    },
+    is_canonical: true,
+  },
+  {
+    id: "writer_placeholder",
+    name: "Writer-Prozesse",
+    kind: "placeholder",
+    role: "future_placeholder",
+    status: "future",
+    visibility: {
+      evidence: "unknown",
+      reason: "Not yet built",
+    },
+    activity: MODELLED_UNKNOWN_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "unknown",
+      timestamp_available: false,
+    },
+    is_canonical: true,
+  },
+  {
+    id: "runner_placeholder",
+    name: "Runner-Prozesse",
+    kind: "placeholder",
+    role: "future_placeholder",
+    status: "future",
+    visibility: {
+      evidence: "unknown",
+      reason: "Not yet built",
+    },
+    activity: MODELLED_UNKNOWN_ACTIVITY,
+    traces: [],
+    source: {
+      source_type: "unknown",
+      timestamp_available: false,
+    },
+    is_canonical: true,
+  },
+] satisfies ProcessBody[];
+
+export function findProcessBodyById(id: string): ProcessBody | undefined {
+  return CANONICAL_PROCESS_BODIES.find((b) => b.id === id);
+}
+
+export function getEntitySlotBodies(): readonly ProcessBody[] {
+  return CANONICAL_PROCESS_BODIES.filter((b) => b.kind === "entity_slot");
+}
+
+export function getPlaceholderBodies(): readonly ProcessBody[] {
+  return CANONICAL_PROCESS_BODIES.filter((b) => b.kind === "placeholder");
+}
