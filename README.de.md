@@ -5,7 +5,7 @@
 Eine Auswahl an Text und Code vom VPS einer Person (Daniel, GitHub: RaDi0n92), entstanden über mehrere
 Monate gemeinsam mit vielen KI-Systemen: Claude, Codex, Gemini, Kimi, ChatGPT, GLM und weiteren.
 
-Die Kopie ist ein Stand vom 2026-10-15. Dateien sind so kopiert, wie sie waren; nichts wurde umgeschrieben.
+Die Kopie ist ein Stand vom 2026-10-15. Dateien sind so kopiert, wie sie waren; nichts wurde umgeschrieben, außer im separaten Reparatur-Commit (zwei abgeschnittene Python-Dateien wiederhergestellt, eine Governance-Prüfung korrigiert).
 
 ## Aufbau
 

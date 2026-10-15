@@ -5,7 +5,7 @@
 A selected copy of text and code from one person's VPS (Daniel, GitHub: RaDi0n92), built over several
 months together with many AI systems: Claude, Codex, Gemini, Kimi, ChatGPT, GLM and others.
 
-The copy is a snapshot taken on 2026-10-15. Files are copied as they were; nothing was rewritten.
+The copy is a snapshot taken on 2026-10-15. Files are copied as they were; nothing was rewritten, except for the separate repair commit (two truncated Python files restored, one governance check fixed).
 
 ## Layout
 
