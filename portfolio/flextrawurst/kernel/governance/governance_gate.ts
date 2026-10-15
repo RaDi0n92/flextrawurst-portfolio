@@ -69,7 +69,8 @@ export function evaluateGovernanceGate(
     notes.push(`dry_run_required: true for ${action.action_id}`);
   }
 
-  const allowed = missing_permissions.length === 0 && blockers.length === 0;
+  const allowed =
+    missing_permissions.length === 0 && blockers.length === 0 && missing_approvals.length === 0;
 
   if (allowed) {
     notes.push(`actor ${actor.actor_id} (${actor.role}) allowed for ${action.action_id}`);

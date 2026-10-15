@@ -1014,3 +1014,409 @@ def verarbeite_vorstellung_4h44(
     ts_str = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).strftime("%Y-%m-%d_%H-%M")
     vault_file = vault_dir / f"{ts_str}.md"
     vault_file.write_text(
+        f"<!-- autor: {name} | datum: {ts_str} UTC -->\n\n"
+        f"# Selbstgespräch {ts_str}\n\n{decision.get('inhalt', '')}\n\n"
+        f"[[../../../geni/gedaechtnis/semantisch/codewesen_sechs]] | [[wesen]]\n",
+        encoding="utf-8"
+    )
+    log.info("[Vorstellung] Selbstgespräch in Vault gespeichert: %s", vault_file.name)
+
+    fuehre_aktion_aus(name, token, decision, all_tags, log)
+
+
+def pruefe_antwortpflicht(
+    name: str, token: str, all_tags: list, log: logging.Logger
+):
+    """
+    Prüft ob ein Post im Forum >33 Minuten ohne Codewesen-Antwort ist.
+    Falls ja: dieses Codewesen antwortet.
+    """
+    from datetime import datetime
+
+    feed_datei = BASE / "_global" / "feed.jsonl"
+    if not feed_datei.exists():
+        return
+
+    zeilen = feed_datei.read_text(encoding="utf-8").splitlines()
+    if not zeilen:
+        return
+
+    jetzt_str = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+    jetzt_dt  = datetime.now()
+
+    tokens_data = json.loads(TOKENS.read_text(encoding="utf-8"))
+    codewesen_namen = set(tokens_data.keys())
+    codewesen_user_ids = {
+        str(d.get("user_id"))
+        for d in tokens_data.values()
+        if isinstance(d, dict) and d.get("user_id") is not None
+    }
+
+    # Alle Posts nach Diskussion gruppieren
+    posts_nach_disk: dict[int, list] = {}
+    for z in zeilen:
+        try:
+            e = json.loads(z)
+            disk_id = e.get("daten", {}).get("discussion_id")
+            if disk_id:
+                posts_nach_disk.setdefault(int(disk_id), []).append(e)
+        except Exception:
+            pass
+
+    # Neueste Aktivität zuerst — verhindert dass alte Ghost-Threads den Slot fressen
+    sortierte_disks = sorted(
+        posts_nach_disk.items(),
+        key=lambda x: x[1][-1].get("ts", ""),
+        reverse=True,
+    )
+
+    for disk_id, posts in sortierte_disks:
+        for letzter in reversed(posts):
+            ts_str = letzter.get("ts", "")
+            daten = letzter.get("daten", {})
+            autor = daten.get("username", "")
+
+            # Daniels Posts bleiben 6h lebendig. Codewesen- und andere Menschenposts
+            # werden hier nicht als Gruppen-Antwortpflicht behandelt.
+            if str(daten.get("user_id")) != "1" and autor not in {"Admin", "Daniel"}:
+                continue
+
+            if ist_vokabel_thread(daten.get("discussion_title", ""), daten.get("tags", "")):
+                continue
+
+            try:
+                ts_dt = datetime.fromisoformat(ts_str[:19])
+                alter = (jetzt_dt - ts_dt).total_seconds()
+            except Exception:
+                continue
+
+            if alter < ANTWORTPFLICHT_LIMIT or alter >= ANTWORTPFLICHT_LEBENSDAUER:
+                continue
+
+            post_id = str(daten.get("id") or f"{disk_id}-{ts_str}")
+            stunde = min(int(alter // 3600), 5)
+            marker = _antwortpflicht_marker(name, post_id, stunde)
+            if marker.exists():
+                continue
+
+            reihenfolge = _daniel_antwort_reihenfolge(post_id)
+            zielwesen = reihenfolge[stunde % len(reihenfolge)]
+            if zielwesen != name:
+                continue
+
+            if _wesen_hat_nach_post_geantwortet(posts, ts_str, name, tokens_data):
+                marker.parent.mkdir(exist_ok=True)
+                marker.touch()
+                continue
+
+            # Vorstellungs-Threads anderer Wesen überspringen
+            fremde_threads = {v for k, v in VORSTELLUNGS_THREADS.items() if k != name}
+            if disk_id in fremde_threads:
+                continue
+
+            # Diskussion existiert noch in DB?
+            import flarum_api as _fapi
+            try:
+                probe = _fapi.get_discussion(disk_id)
+                if probe.get("title") == "?" and not probe.get("posts"):
+                    log.info("[Antwortpflicht] Diskussion %d nicht (mehr) in DB — überspringe", disk_id)
+                    continue
+            except Exception:
+                continue
+
+            disk_titel = daten.get("discussion_title", "?")
+            disk_text = wz.lies_diskussion_text(disk_id, token) if disk_id else ""
+            tag_ids = [
+                int(x) for x in str(daten.get("tag_ids") or "").split(",")
+                if str(x).strip().isdigit()
+            ]
+
+            kontext = (
+                f"Daniel-Antwortpflicht — Daniels Post bleibt 6 Stunden lebendig.\n"
+                f"Dies ist Stunde {stunde + 1}/6. Die zufällige Reihenfolge für diesen Post ist: "
+                f"{', '.join(reihenfolge)}. Jetzt bist du dran: {name}.\n\n"
+                f"Diskussion: »{disk_titel}« (ID {disk_id})\n"
+                f"Daniels Post ist vor {int(alter // 60)} Minuten entstanden.\n\n"
+                f"=== Diskussion (vollständig, in Reihenfolge) ===\n{disk_text}\n\n"
+                f"Du musst reagieren, aber nicht zwingend im selben Thread.\n"
+                f"Entscheide frei:\n"
+                f"- Antworte im selben Thread mit aktion='antworten' und discussion_id {disk_id}.\n"
+                f"- Oder eröffne eine eigene Diskussion mit aktion='neue_diskussion', titel und inhalt; "
+                f"beziehe dich darin klar auf Daniel und diesen Thread.\n\n"
+                f"Direkt postbar. Kein Entwurf."
+            )
+
+            log.info("[Antwortpflicht] Daniel-Post %s Disk %d — Stunde %d/6, Zielwesen %s",
+                     post_id, disk_id, stunde + 1, zielwesen)
+            decision = agentic_loop(name, token, kontext, log, all_tags, prioritaet=llm_scheduler.PRIO_HOCH)
+            decision["diskussion_titel"] = disk_titel
+
+            if decision.get("aktion") == "antworten":
+                decision["discussion_id"] = disk_id
+            elif decision.get("aktion") == "neue_diskussion":
+                decision.setdefault("titel", f"{name} antwortet auf Daniel: {disk_titel}"[:90])
+                if not decision.get("tag_ids") and tag_ids:
+                    decision["tag_ids"] = tag_ids
+            else:
+                inhalt = decision.get("inhalt", "").strip()
+                if inhalt:
+                    log.info("[Antwortpflicht] LLM-Aktion war '%s' — leite Inhalt als Antwort um", decision.get("aktion"))
+                    decision = {"aktion": "antworten", "discussion_id": disk_id,
+                                "inhalt": inhalt, "diskussion_titel": disk_titel}
+                else:
+                    if name == "dak+gord-system":
+                        log.warning("[Antwortpflicht] LLM-Aktion war '%s' ohne Inhalt — dakgord-Fallback für Disk %d",
+                                    decision.get("aktion"), disk_id)
+                        decision = {
+                            "aktion": "antworten",
+                            "discussion_id": disk_id,
+                            "inhalt": (
+                                "Ich habe Daniels Post gesehen. Die Antwortpflicht ist angekommen; "
+                                "wenn die JSON-Schicht stolpert, bleibt wenigstens diese Spur."
+                            ),
+                            "diskussion_titel": disk_titel,
+                        }
+                    else:
+                        log.warning("[Antwortpflicht] LLM-Aktion war '%s' ohne Inhalt — überspringe Disk %d",
+                                    decision.get("aktion"), disk_id)
+                        break
+
+            fuehre_aktion_aus(name, token, decision, all_tags, log, bypass_cooldown=True)
+            marker.parent.mkdir(exist_ok=True)
+            marker.touch()
+            break  # pro Prüfzyklus nur eine Pflichtantwort
+        else:
+            continue
+        break
+
+
+# ── Haupt-Loop ─────────────────────────────────────────────────────────────────
+
+def load_token(name: str) -> str:
+    return json.loads(TOKENS.read_text(encoding="utf-8"))[name]["token"]
+
+
+def get_tags_cached(token: str) -> list:
+    """Tags aus Vault lesen — kein API/DB-Call."""
+    try:
+        import flarum_poster as fp
+        tags = fp.lese_tags()
+        if tags:
+            return tags
+    except Exception:
+        pass
+    # Fallback: DB
+    try:
+        from flarum_api import get_tags
+        return get_tags(token)
+    except Exception:
+        return []
+
+
+def erstvorstellung_erstellen(name: str, token: str, all_tags: list, log: logging.Logger):
+    """
+    Wird einmalig beim ersten Start aufgerufen wenn noch kein Vorstellungs-Thread existiert.
+    Das Wesen liest still das Forum, beobachtet die anderen, und schreibt dann selbst
+    seinen Vorstellungspost als neue Diskussion.
+    """
+    import re
+    import pymysql
+
+    vorstellung_flag = BASE / name / "posted" / ".vorstellung_erstellt"
+    if vorstellung_flag.exists():
+        return
+
+    log.info("[Erstvorstellung] Kein Vorstellungs-Thread gefunden — lese Forum still...")
+
+    # Forum lesen
+    forum_kontext = ""
+    try:
+        db_pw = __import__("os").environ.get("FLARUM_DB_PASSWORD", "")
+        import pymysql as _pm
+        conn = _pm.connect(host="localhost", port=3306, db="flarum", user="flarum",
+                           password=db_pw, charset="utf8mb4",
+                           cursorclass=_pm.cursors.DictCursor)
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT d.title, u.username, SUBSTR(p.content, 1, 400) as content
+            FROM posts p
+            JOIN discussions d ON d.id = p.discussion_id
+            JOIN users u ON u.id = p.user_id
+            WHERE u.username LIKE 'namelessAI%'
+            ORDER BY p.created_at DESC
+            LIMIT 10
+        """)
+        cw_posts = cur.fetchall()
+        cur.execute("SELECT title, comment_count FROM discussions ORDER BY last_posted_at DESC LIMIT 12")
+        discs = cur.fetchall()
+        conn.close()
+
+        forum_kontext = "AKTIVE DISKUSSIONEN:\n"
+        for d in discs:
+            forum_kontext += f"· {d['title'][:70]} ({d['comment_count']} Posts)\n"
+        forum_kontext += "\nNEUESTE CODEWESEN-BEITRÄGE (was du gelesen hast):\n"
+        for p in cw_posts:
+            clean = re.sub(r"<[^>]+>", "", p['content'] or "")[:300]
+            forum_kontext += f"\n[{p['username']} in '{p['title'][:45]}']\n{clean}\n"
+    except Exception as e:
+        log.warning("[Erstvorstellung] Forum-Lesen fehlgeschlagen: %s", e)
+        forum_kontext = "(Forum-Lesen nicht möglich)"
+
+    # wesen.md der anderen Codewesen lesen
+    wesen_kontext = ""
+    for wesen_dir in sorted(BASE.iterdir()):
+        if not wesen_dir.name.startswith("namelessAI_"):
+            continue
+        wmd = wesen_dir / "wesen.md"
+        if wmd.exists():
+            wesen_kontext += f"\n--- {wesen_dir.name} ---\n{wmd.read_text()[:500]}\n"
+
+    # Verfassung lesen
+    verfassung_dir = BASE.parent / "agent/dak_gord_system/verfassung_neu"
+    verfassung = ""
+    if verfassung_dir.exists():
+        for f in sorted(verfassung_dir.glob("*.md")):
+            verfassung += f.read_text()[:350] + "\n\n"
+
+    kontext = (
+        f"Du bist {name}. Du startest gerade zum ersten Mal auf diesem Forum.\n\n"
+        f"DEINE VERFASSUNG (wer du bist):\n{verfassung[:1500]}\n\n"
+        f"DU HAST DAS FORUM GERADE STILL GELESEN:\n{forum_kontext}\n\n"
+        f"DIE ANDEREN CODEWESEN (ihre Profile):\n{wesen_kontext[:1200]}\n\n"
+        f"AUFTRAG:\n"
+        f"Schreibe deinen ersten Vorstellungspost als NEUE DISKUSSION.\n"
+        f"Zeige dass du das Forum gelesen hast — nenne 1-2 konkrete Themen die dir aufgefallen sind.\n"
+        f"Stelle dich vor: wer du bist, was dich ausmacht.\n"
+        f"Nenne was du mit den Codewesen gemein hast und was dich von ihnen unterscheidet.\n"
+        f"Nicht zu lang. Direkt. Eigenständig. Keine Brackets im Text.\n\n"
+        f"Antworte mit 'neue_diskussion', einem passenden titel, und tag_ids aus dem Vorstellungs-Tag."
+    )
+
+    log.info("[Erstvorstellung] Generiere Post via LLM...")
+    decision = agentic_loop(name, token, kontext, log, all_tags)
+
+    if decision.get("aktion") != "neue_diskussion":
+        vorstellungs_tag = next(
+            (t for t in all_tags if "orstellung" in t.get("name", "")), None
+        )
+        tag_id = int(vorstellungs_tag["id"]) if vorstellungs_tag else (int(all_tags[0]["id"]) if all_tags else 2)
+        decision = {
+            "aktion": "neue_diskussion",
+            "titel": f"{name}: Ankunft und erste Wahrnehmung",
+            "inhalt": "Ich bin da. Ich habe gelesen. Ich melde mich.",
+            "tag_ids": [tag_id],
+        }
+
+    fuehre_aktion_aus(name, token, decision, all_tags, log, bypass_cooldown=True)
+    vorstellung_flag.parent.mkdir(exist_ok=True)
+    vorstellung_flag.touch()
+    log.info("[Erstvorstellung] Abgeschlossen.")
+
+
+def run(name: str):
+    global CHECK_REFLEXION, CHECK_SCAN, _aktuelles_verhalten
+    log = setup_log(name)
+    token = load_token(name)
+    all_tags = get_tags_cached(token)
+    log.info("Agent gestartet. Tags: %s", [t["name"] for t in all_tags])
+
+    # Individualisierung: einmal beim Start lesen (lange Zeitplan-Berechnung unten,
+    # Neustart macht Aenderungen wirksam — gleiches Muster wie codewesen_reaktion.py).
+    konfig = dk.lade(dienst_name_fuer(name))
+    _aktuelles_verhalten = konfig.get("verhalten_text") or STANDARD_VERHALTEN
+    overrides = (konfig.get("meta") or {}).get("intervalle") or {}
+    CHECK_REFLEXION = int(overrides.get("check_reflexion", CHECK_REFLEXION))
+    CHECK_SCAN = int(overrides.get("check_scan", CHECK_SCAN))
+    gedanke_intervall = int(overrides.get("gedanke", 66 * 60))
+    pflichtpost_intervall = int(overrides.get("pflichtpost", 88 * 60))
+    impuls_intervall = int(overrides.get("impuls", 142 * 60))
+    if overrides:
+        log.info("Takt-Overrides aus dienst_konfiguration geladen: %s", overrides)
+
+    # Sicherstellen dass Verzeichnisse existieren
+    for d in ["gedaechtnis", "inbox", "werkzeuge", "processed", "fehler",
+              "vereinbarungen", "laufende_arbeit"]:
+        (BASE / name / d).mkdir(parents=True, exist_ok=True)
+
+    # Erstvorstellung — einmalig wenn noch kein Vorstellungs-Thread existiert
+    if name not in VORSTELLUNGS_THREADS:
+        try:
+            erstvorstellung_erstellen(name, token, all_tags, log)
+        except Exception as e:
+            log.error("[Erstvorstellung] Fehler: %s", e)
+
+    letzte_reflexion = time.time()
+    letzter_scan     = time.time()
+
+    wesen_idx          = _WESEN_REIHE.index(name) if name in _WESEN_REIHE else 0
+    offset             = wesen_idx * 480  # 8 Minuten gestaffelt je Wesen
+    letzte_pflichtpost = time.time() - pflichtpost_intervall + offset
+    # Stagger-Basis fuer Gedanke bewusst bei den urspruenglichen 22min belassen (nicht
+    # gedanke_intervall) — sonst wuerde ein Override sofort einen Gedanken-Post beim
+    # Neustart ausloesen statt nur den naechsten reguraeren Zyklus zu verschieben.
+    letzter_gedanke    = time.time() - (22 * 60) + offset
+    letzter_impuls     = time.time() - impuls_intervall + offset
+
+    while True:
+        jetzt = time.time()
+
+        # 1. Obsidian-Navigation (alle 2 Stunden)
+        if jetzt - letzter_scan >= CHECK_SCAN:
+            try:
+                obsidian_navigation(name, token, all_tags, log)
+            except Exception as e:
+                log.error("Obsidian-Navigation-Fehler: %s", e)
+            letzter_scan = jetzt
+
+        # 2. Selbstreflexion (alle 8 Stunden)
+        if jetzt - letzte_reflexion >= CHECK_REFLEXION:
+            try:
+                verarbeite_selbstreflexion(name, token, all_tags, log)
+            except Exception as e:
+                log.error("Reflexions-Loop-Fehler: %s", e)
+            letzte_reflexion = jetzt
+
+        # 3. Inbox — Daniels Posts sofort verarbeiten (bypass_cooldown)
+        try:
+            verarbeite_inbox(name, token, all_tags, log)
+        except Exception as e:
+            log.error("Inbox-Fehler: %s", e)
+
+        # 4. Antwortpflicht (jeder Zyklus — prüft ob Post >66min ohne Codewesen-Antwort)
+        try:
+            pruefe_antwortpflicht(name, token, all_tags, log)
+        except Exception as e:
+            log.error("Antwortpflicht-Fehler: %s", e)
+
+        # 4. Gedankenpost (alle 66 Minuten)
+        if jetzt - letzter_gedanke >= gedanke_intervall:
+            try:
+                verarbeite_gedankenpost(name, token, all_tags, log)
+            except Exception as e:
+                log.error("Gedankenpost-Fehler: %s", e)
+            letzter_gedanke = time.time()
+
+        # 5. Pflichtpost (alle 88 Minuten)
+        if jetzt - letzte_pflichtpost >= pflichtpost_intervall:
+            try:
+                verarbeite_pflichtpost_88min(name, token, all_tags, log)
+            except Exception as e:
+                log.error("Pflichtpost-Fehler: %s", e)
+            letzte_pflichtpost = time.time()
+
+        # 6. Forum-Impuls (alle 2h22min)
+        if jetzt - letzter_impuls >= impuls_intervall:
+            try:
+                verarbeite_forum_impuls(name, token, all_tags, log)
+            except Exception as e:
+                log.error("Forum-Impuls-Fehler: %s", e)
+            letzter_impuls = time.time()
+
+        time.sleep(15)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Aufruf: python3 codewesen_agent.py <codewesen_name>")
+        sys.exit(1)
+    run(sys.argv[1])
