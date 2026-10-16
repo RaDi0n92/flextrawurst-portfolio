@@ -11,6 +11,7 @@ The copy is a snapshot taken on 2026-10-15, extended on 2026-10-16. Files are co
 
 `portfolio/` mirrors `/root` on the server.
 
+- `portfolio/WEGWEISER/` – neutral file guides (German), one per project, e.g. `codewesen.md` for how the code-beings are built. Start with `00_START_HIER.md`. Every statement is taken from the source files' own docstrings and READMEs.
 - `portfolio/werkraum/` – the main workspace: documentation, tools, the world API, concept papers, the AI-to-desktop bridge, a word register (WorldWORDS), early conversations, and a description of the game.
 - `portfolio/werkraum/_claude`, `_codex`, `_gemini`, `_kimi`, `_gpt`, `_glm`, … – one folder per AI system, each with that system's own notes and files.
 - `portfolio/flextrawurst/`, `portfolio/zensi/`, `portfolio/werkraum_geni/` and similar – further projects.

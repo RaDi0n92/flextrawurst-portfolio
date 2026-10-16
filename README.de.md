@@ -11,6 +11,7 @@ Die Kopie ist ein Stand vom 2026-10-15, ergänzt am 2026-10-16. Dateien sind so 
 
 `portfolio/` spiegelt `/root` auf dem Server.
 
+- `portfolio/WEGWEISER/` – neutrale Dateiwegweiser, einer pro Projekt, z. B. `codewesen.md` dazu, wie die Codewesen gebaut sind. Einstieg: `00_START_HIER.md`. Jede Aussage stammt aus den Docstrings und READMEs der Quelldateien selbst.
 - `portfolio/werkraum/` – der Hauptarbeitsraum: Dokumentation, Werkzeuge, Welt-API, Konzepte, die Bridge zwischen KI und Desktop, ein Wortregister (WorldWORDS), frühe Gespräche und eine Beschreibung des Spiels.
 - `portfolio/werkraum/_claude`, `_codex`, `_gemini`, `_kimi`, `_gpt`, `_glm`, … – ein Ordner pro KI-System, jeweils mit den eigenen Notizen und Dateien.
 - `portfolio/flextrawurst/`, `portfolio/zensi/`, `portfolio/werkraum_geni/` und ähnliche – weitere Projekte.
