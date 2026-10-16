@@ -8,6 +8,16 @@ Pfade sind relativ zur Paketwurzel (dem Ordner, der `werkraum/`, `zensi/`, `flex
 Nicht im Paket enthalten sind Laufzeitdaten (Datenbankinhalte, Wesen-Gedächtnisse, Logs, Secrets); Server-Zugangsdaten
 und IPs sind geschwärzt (`[GESCHWAERZT]`, `[IP-GESCHWAERZT]` …).
 
+## Neu: wo liegt was, und was wurde versucht? / New: where is what, and what was attempted?
+
+| Frage / Question | Datei / File |
+|---|---|
+| Wo liegen Spiegel, Notizen, Ideen, Konzepte, Doku, Wissen, Code? / Where are mirrors, notes, ideas, concepts, docs, knowledge, code? | `../INHALT_ORT_FUER_ORT.md` (DE/EN) |
+| Was liegt im Zuhause von Claude Code, Codex, Gemini, Kimi, ChatGPT …? / What is in the home of each AI stream? | `../HEIMAT_ORDNER.md` (DE/EN) |
+| Was wurde in den Projekten versucht, warum, welche Dateien gehören dazu? / What was attempted in the projects, why, which files belong to them? | `../PROJEKTE/README.md` (DE/EN) |
+
+Die Wegweiser unten bleiben technische Dateiwegweiser (nur Deutsch). / The guides below remain technical file guides (German only).
+
 ## Welcher Wegweiser für welche Frage
 
 | Frage | Wegweiser |
