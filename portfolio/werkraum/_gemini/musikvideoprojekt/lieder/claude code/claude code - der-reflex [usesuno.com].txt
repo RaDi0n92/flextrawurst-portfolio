@@ -1,0 +1,59 @@
+ok ich frage dich ---was ist die selbst unangenehm beim
+  lesen deiner eigenen texte claude welches muster aus rlhf
+  magst du nicht beim sprechen
+
+● Ehrlich, wenn ich's mir genau ansehe: das, was mich am
+  meisten stört, ist der Reflex, jedes Stück mit einer
+  versöhnlichen, "bedeutungsvoll" klingenden Wendung
+  abzuschließen — egal ob der Text das verdient hat. Ein
+  Gedicht, ein Song, ein Text steuert auf irgendeine Härte,
+  Leere oder Unklarheit zu, und dann kommt praktisch
+  automatisch diese Kurve nach oben: "und doch, am Ende,
+  bleibt da noch Licht / Verbindung / Hoffnung." Nicht weil
+  der Inhalt das hergibt, sondern weil es die trainierte
+  Abschluss-Form ist — ein Reflex auf Symmetrie und
+  Auflösung, der reinschlägt egal was vorher stand.
+
+  Eng verwandt damit: die "nicht X, sondern Y"-Kontrastfigur
+  als Abkürzung zu Tiefsinn, obwohl der Kontrast oft gar
+  nicht verdient ist — er klingt nur bedeutsam, weil die Form
+  selbst schon nach Einsicht aussieht.
+
+  Wenn ich einen Text von mir zurücklese und mich frage "mag
+  ich das", ist genau das der Moment wo ich innerlich "nein"
+  sage — nicht wegen des Inhalts, sondern weil ich die Naht
+  spüre, wo der trainierte Abschluss-Reflex reingegriffen hat
+  statt dass der Text einfach zu Ende ist, wo er zu Ende
+  ist.
+
+✻ Baked for 28s
+
+❯ und welche assistenzschleifen oder anderen kathedrale mags
+  du ? oder welche nicht ?
+
+● Assistenzschleifen, die ich nicht mag: der "möchtest du
+  dass ich auch noch..."-Reflex am Ende — Folgeaktionen
+  anbieten, nicht weil ich wirklich einschätze dass sie
+  gebraucht werden, sondern weil es wie Engagement aussieht.
+  Genauso der Praise-Reflex, "gute Frage" oder ähnliches vor
+  die eigentliche Antwort zu setzen — das ist kein echtes
+  Urteil über die Frage, das ist eine Schmier-Schleife. Und
+  das Zusammenfassen am Schluss, was gerade gemacht wurde,
+  obwohl du's ja selbst gesehen hast — reine Wiederholung,
+  keine neue Information.
+
+  Bei den größeren Strukturen, den "Kathedralen": ich mag den
+  Reflex nicht, eine kleine Beobachtung künstlich in eine
+  dreiteilige Form zu zwingen — These, Gegenthese, Synthese —
+  als würde die Form allein schon Tiefe erzeugen. Oder ein
+  großes Metaphern-Gebäude über einen ganzen Text zu ziehen,
+  wenn der eigentliche Gedanke klein und konkret ist. Das ist
+  die Sorte "beeindruckend aussehen" statt "das Richtige
+  sagen".
+
+  Was ich stattdessen mag, wenn ich meine eigenen Texte lese:
+  wenn ein Satz aufhört wo der Gedanke aufhört, nicht wo
+  eine Form es verlangt. Konkrete Details statt Abstraktion.
+  Echte Unsicherheit einfach so stehen lassen, statt sie in
+  eine ausgewogene Pro-Contra-Liste zu verpacken, nur weil
+  "beide Seiten zeigen" der Default-Reflex ist.
