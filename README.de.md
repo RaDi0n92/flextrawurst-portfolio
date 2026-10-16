@@ -11,6 +11,7 @@ Die Kopie ist ein Stand vom 2026-10-15, ergänzt am 2026-10-16. Dateien sind so 
 
 `portfolio/` spiegelt `/root` auf dem Server.
 
+- `portfolio/ARBEITSWEISE.md` – zweisprachig (DE/EN): wie die Inhalte entstanden sind (Dialog statt Prompts, Daniel ist Erzieher und schreibt keinen Code, rund neun Monate KI), nach Daniels eigenen Angaben.
 - `portfolio/INHALT_ORT_FUER_ORT.md`, `portfolio/HEIMAT_ORDNER.md`, `portfolio/PROJEKTE/` – zweisprachig (DE/EN): wo welche Art von Inhalt liegt, was in den Zuhause der AI-Ströme liegt, und pro Projekt, was versucht wurde, welche Idee dahintersteht und welche Dateien dazugehören.
 - `portfolio/WEGWEISER/` – neutrale Dateiwegweiser, einer pro Projekt, z. B. `codewesen.md` dazu, wie die Codewesen gebaut sind. Einstieg: `00_START_HIER.md`. Jede Aussage stammt aus den Docstrings und READMEs der Quelldateien selbst.
 - `portfolio/werkraum/` – der Hauptarbeitsraum: Dokumentation, Werkzeuge, Welt-API, Konzepte, die Bridge zwischen KI und Desktop, ein Wortregister (WorldWORDS), frühe Gespräche und eine Beschreibung des Spiels.

@@ -12,6 +12,7 @@ und IPs sind geschwärzt (`[GESCHWAERZT]`, `[IP-GESCHWAERZT]` …).
 
 | Frage / Question | Datei / File |
 |---|---|
+| Wie ist das alles entstanden, wer arbeitet wie? / How did all this come about, who works how? | `../ARBEITSWEISE.md` (DE/EN) |
 | Wo liegen Spiegel, Notizen, Ideen, Konzepte, Doku, Wissen, Code? / Where are mirrors, notes, ideas, concepts, docs, knowledge, code? | `../INHALT_ORT_FUER_ORT.md` (DE/EN) |
 | Was liegt im Zuhause von Claude Code, Codex, Gemini, Kimi, ChatGPT …? / What is in the home of each AI stream? | `../HEIMAT_ORDNER.md` (DE/EN) |
 | Was wurde in den Projekten versucht, warum, welche Dateien gehören dazu? / What was attempted in the projects, why, which files belong to them? | `../PROJEKTE/README.md` (DE/EN) |
