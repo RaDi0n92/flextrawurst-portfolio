@@ -5,7 +5,7 @@
 Eine Auswahl an Text und Code vom VPS einer Person (Daniel, GitHub: RaDi0n92), entstanden über mehrere
 Monate gemeinsam mit vielen KI-Systemen: Claude, Codex, Gemini, Kimi, ChatGPT, GLM und weiteren.
 
-Die Kopie ist ein Stand vom 2026-10-15. Dateien sind so kopiert, wie sie waren; nichts wurde umgeschrieben, außer im separaten Reparatur-Commit (zwei abgeschnittene Python-Dateien wiederhergestellt, eine Governance-Prüfung korrigiert).
+Die Kopie ist ein Stand vom 2026-10-15, ergänzt am 2026-10-16. Dateien sind so kopiert, wie sie waren; nichts wurde umgeschrieben, außer im separaten Reparatur-Commit (zwei abgeschnittene Python-Dateien wiederhergestellt, eine Governance-Prüfung korrigiert), zwei `.odt`-Notizen als reiner Text in `.md` umgewandelt, Symlinks durch normale Dateien ersetzt und ein Tab („Claude Code beleidigt?“) aus `flextrawurst/scripts/build_surface.ts` herausgeschnitten.
 
 ## Aufbau
 
