@@ -1,0 +1,4701 @@
+<!doctype html>
+<html lang="de"><head> 
+
+<meta charset="utf-8"> 
+
+<meta name="viewport" content="width=device-width,initial-scale=1"> 
+
+<title>Spiral Flow Space — Local (ohne Lovable)</title> 
+
+<style> 
+
+:root{ 
+
+  --bg:#0b0d10; --panel:#12161c; --panel2:#0f1318; --text:#d7dde7; --muted:#8e99aa; 
+
+  --line:#222a35; --chip:#1a2230; --chip2:#131a24; --danger:#ff7d7d; 
+
+} 
+
+*{box-sizing:border-box} 
+
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial} 
+
+header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,var(--bg),rgba(11,13,16,.85));backdrop-filter:blur(6px); 
+
+  border-bottom:1px solid var(--line);padding:12px 14px;display:flex;gap:10px;align-items:center;justify-content:space-between} 
+
+.brand{display:flex;flex-direction:column;gap:2px} 
+
+.brand b{font-size:14px;letter-spacing:.2px} 
+
+.brand span{font-size:12px;color:var(--muted)} 
+
+nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap} 
+
+nav button{background:var(--chip);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:9px 11px;cursor:pointer} 
+
+nav button:hover{border-color:#2d3848} 
+
+main{max-width:1100px;margin:0 auto;padding:16px} 
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px} 
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px} 
+
+@media (max-width:860px){.grid3{grid-template-columns:1fr}} 
+
+.tile{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;min-height:88px} 
+
+.tile:hover{border-color:#2d3848} 
+
+.tile h2{margin:0 0 6px 0;font-size:14px} 
+
+.tile p{margin:0;color:var(--muted);font-size:12px} 
+
+.tile .note{margin-top:6px;color:var(--muted);font-size:11px;opacity:.95} 
+
+hr{border:0;border-top:1px solid var(--line);margin:12px 0} 
+
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center} 
+
+input[type="text"], textarea, select{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 11px;outline:none} 
+
+textarea{width:100%;min-height:170px;resize:vertical} 
+
+button{background:var(--chip);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:9px 11px;cursor:pointer} 
+
+button:hover{border-color:#2d3848} 
+
+button.danger{border-color:#4a2b2b} 
+
+button.danger:hover{border-color:#6a3a3a} 
+
+.small{color:var(--muted);font-size:12px} 
+
+.pillgrid{display:grid;grid-template-columns:repeat(4, minmax(0,1fr));gap:8px} 
+
+@media (max-width:860px){.pillgrid{grid-template-columns:repeat(2, minmax(0,1fr));}} 
+
+.pill{padding:10px 10px;border-radius:999px;background:var(--chip2);border:1px solid var(--line);cursor:pointer;color:var(--text);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative} 
+
+.pill:hover{border-color:#2d3848} 
+
+.pill .sub{display:block;color:var(--muted);font-size:10px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} 
+
+.badge{display:inline-block;padding:2px 8px;border:1px solid var(--line);border-radius:999px;background:var(--chip2);color:var(--muted);font-size:12px;margin-right:6px} 
+
+.list{display:flex;flex-direction:column;gap:8px} 
+
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:12px} 
+
+.card:hover{border-color:#2d3848} 
+
+.card .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start} 
+
+.card .meta{color:var(--muted);font-size:12px} 
+
+.toast{position:fixed;right:14px;bottom:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--text);font-size:12px;max-width:360px;display:none;z-index:99} 
+
+.modalback{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:50} 
+
+.modal{width:min(980px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px} 
+
+.tablelike{display:flex;flex-direction:column;gap:10px} 
+
+.rowitem{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:10px} 
+
+.rowitem .head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start} 
+
+.rowitem .head b{font-size:13px} 
+
+.rowitem .hint{color:var(--muted);font-size:12px;margin-top:4px} 
+
+.rowitem .ctrl{display:flex;gap:8px;flex-wrap:wrap} 
+
+.kv{display:grid;grid-template-columns:160px 1fr;gap:6px 10px} 
+
+.kv .k{color:var(--muted);font-size:12px} 
+
+.kv .v{color:var(--text);font-size:12px} 
+
+.fieldgrid{display:grid;grid-template-columns:1fr;gap:8px} 
+
+.fieldrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap} 
+
+.fieldrow label{color:var(--muted);font-size:12px} 
+
+.fieldrow input[type="checkbox"]{width:18px;height:18px} 
+
+</style> 
+
+</head> 
+
+<body class="vc-init"> 
+
+<header> 
+
+  <div class="brand"> 
+
+    <b>Spiral Flow Space</b> 
+
+    <span>Local • Systeme im Vordergrund • kein Backend</span> 
+
+  </div> 
+
+  <nav> 
+
+    <button id="navHome">Start</button> 
+
+    <button id="navProtokolle">Protokolle</button> 
+
+    <button id="navResearch">States/Nodes+</button> 
+
+    <button id="navChatLab">Chat→Doku</button>
+    <button id="navDaten">Daten</button> 
+
+    <button id="navConfig">Konfiguration</button> 
+
+    <button id="navSnapshot">Snapshot</button> 
+
+  </nav> 
+
+</header> 
+
+ 
+
+<div class="toast" id="toast" style="display: none;">Gespeichert.</div> 
+
+<main id="app"> 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small">Start-Buttons sind editierbar • portable • lokal.</div> 
+
+          <div class="row"> 
+
+            <button id="homeManageHubs">Start verwalten</button> 
+
+            <button id="homeChatLab">Chat→Doku</button>
+            <button id="homeSnapshot">Snapshot</button> 
+
+          </div> 
+
+        </div> 
+
+        <div style="height:10px"></div> 
+
+        <div class="grid3" id="homeGrid"> 
+
+      <div class="tile" data-hub="hub_state"> 
+
+        <h2>Zustand</h2> 
+
+        <p>Zustandsmarker wählen/hinzufügen → dann Protokollschritte.</p> 
+
+      </div> 
+
+     
+
+      <div class="tile" data-hub="hub_node"> 
+
+        <h2>Knoten/Instanz</h2> 
+
+        <p>Knoten wählen/hinzufügen → dann Protokollschritte.</p> 
+
+      </div> 
+
+     
+
+      <div class="tile" data-hub="hub_between"> 
+
+        <h2>Zwischenraum</h2> 
+
+        <p>Freies Protokoll ohne Einordnung.</p> 
+
+      </div> 
+
+     
+
+      <div class="tile" data-hub="698fb1a7-661b-4b0c-b079-6fa798366d53"> 
+
+        <h2>Projektinfos</h2> 
+
+        <p></p> 
+
+      </div> 
+
+    </div> 
+
+      </div> 
+
+    </main> 
+
+ 
+
+<div class="modalback" id="modalBack" style="display: none;"><div class="modal" id="modal"></div></div> 
+
+ 
+
+<!-- SNAPSHOT_ANCHOR -->
+<script id="snapshotDataB64" type="text/plain" data-encoding="base64">eyJzY2hlbWFfdmVyc2lvbiI6MywiY3JlYXRlZF9hdCI6IjIwMjYtMDItMTZUMDA6MTY6NTAuMTc3WiIsImh1YnMiOlt7ImlkIjoiaHViX3N0YXRlIiwibGFiZWwiOiJadXN0YW5kIiwiZGVzYyI6Ilp1c3RhbmRzbWFya2VyIHfDpGhsZW4vaGluenVmw7xnZW4g4oaSIGRhbm4gUHJvdG9rb2xsc2Nocml0dGUuIiwia2luZCI6InN0YXRlIiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6Imh1Yl9ub2RlIiwibGFiZWwiOiJLbm90ZW4vSW5zdGFueiIsImRlc2MiOiJLbm90ZW4gd8OkaGxlbi9oaW56dWbDvGdlbiDihpIgZGFubiBQcm90b2tvbGxzY2hyaXR0ZS4iLCJraW5kIjoiZW50aXR5IiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6Imh1Yl9iZXR3ZWVuIiwibGFiZWwiOiJad2lzY2hlbnJhdW0iLCJkZXNjIjoiRnJlaWVzIFByb3Rva29sbCBvaG5lIEVpbm9yZG51bmcuIiwia2luZCI6ImJldHdlZW4iLCJkZWxldGVkX2F0IjpudWxsfSx7ImlkIjoiNjk4ZmIxYTctNjYxYi00YjBjLWIwNzktNmZhNzk4MzY2ZDUzIiwibGFiZWwiOiJQcm9qZWt0aW5mb3MiLCJkZXNjIjoiIiwia2luZCI6Im5vdGVib29rIiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6IjlkNTMwM2M0LTQ4NDYtNDkzNS1iMWE0LTk3MDM2NTdmMWRiYSIsImxhYmVsIjoibG9sIiwiZGVzYyI6IiIsImtpbmQiOiJub3RlYm9vayIsImRlbGV0ZWRfYXQiOiIyMDI2LTAyLTE2VDAxOjM1OjEzLjUyNFoiLCJsaW5lMiI6IiJ9LHsiaWQiOiJmNDU4NmI0My1lZTdiLTQ2ZmUtYjdjZi1mZDk3ZjA0ZjFmZTMiLCJsYWJlbCI6ImdnZ2ciLCJkZXNjIjoiIiwia2luZCI6InN0YXRlIiwiZGVsZXRlZF9hdCI6IjIwMjYtMDItMTZUMDE6NTk6NTYuMjA4WiJ9XSwic3RhdGVzIjpbeyJpZCI6ImNjYTUwNWE0LTk0MmYtNGRhZS04MTBiLWRmMTNhODY3MTY3NCIsImxhYmVsIjoiUmF1c2NoZW4iLCJoaW50IjoiU2lnbmFsZSBow6R1ZmVuIHNpY2ggb2huZSBSaWNodHVuZy4iLCJsaW5lMiI6IiIsImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiJmMzI1MjM0YS0wYjQyLTQwOWYtYjg3NS1hODNmZDIzZTZiY2EiLCJsYWJlbCI6IkRyaWZ0IiwiaGludCI6IkFid2VpY2h1bmcgbmltbXQgbGFuZ3NhbSB6dS4iLCJsaW5lMiI6IiIsImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiJlYTdlNzE1Mi02Mzk1LTQwMDktOGIzNi1lN2M3NDg3ZGZjY2YiLCJsYWJlbCI6IlN0YXUiLCJoaW50IjoiRHVyY2hzYXR6IHNpbmt0LCBXYXJ0ZXNjaGxhbmdlbiB3YWNoc2VuLiIsImxpbmUyIjoiIiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6ImZlM2FlNzAyLTE1M2QtNDk4YS05NWJjLTM0NzlkODdiYmFiYSIsImxhYmVsIjoiw5xiZXJzdGV1ZXJ1bmciLCJoaW50IjoiUmVnZWxrcmVpc2Ugc2Nod2luZ2VuIGF1Zi4iLCJsaW5lMiI6IiIsImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiI3ODMyZTZiNy05MTc0LTQyNDYtYWZjYy1mZDA0YWViZjU4ZWUiLCJsYWJlbCI6IkxlZXJsYXVmIiwiaGludCI6IkthcGF6aXTDpHQgaXN0IGRhLCBhYmVyIGtlaW4gc2lubnZvbGxlcyBTaWduYWwuIiwibGluZTIiOiIiLCJkZWxldGVkX2F0IjpudWxsfSx7ImlkIjoiOThhZDNjNDMtYTE5Ny00NGMyLTg5Y2EtNmNjMmNmOGQ1ODEwIiwibGFiZWwiOiJSZXNvbmFueiIsImhpbnQiOiJTaWduYWxlIHBhc3NlbiwgUmVpYnVuZyBzaW5rdC4iLCJsaW5lMiI6IiIsImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiJmMWYwODM1OS01NjY2LTQzNzItYWU2Yi0xMmRlYjc1NDI2YmEiLCJsYWJlbCI6IktpcHBrYW50ZSIsImhpbnQiOiJLbGVpbmUgw4RuZGVydW5nIGtpcHB0IGRlbiBadXN0YW5kLiIsImxpbmUyIjoiIiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6IjYwZDdiY2MzLTFhY2YtNDY2MS04Yjk4LTEyOWUxMWY2NTgyMSIsImxhYmVsIjoiUsO8Y2trb3BwbHVuZyIsImhpbnQiOiJPdXRwdXQgdmVyc3TDpHJrdCBkZW4gSW5wdXQuIiwibGluZTIiOiIiLCJkZWxldGVkX2F0IjpudWxsfSx7ImlkIjoiNWRkYTI3MjAtY2Y0OC00ZmE3LWIzYWUtMWFiZDI0MTljOGUxIiwibGFiZWwiOiJGcmFnbWVudCIsImhpbnQiOiJaZXJsZWd0LCBLb250ZXh0IGZlaGx0LiIsImxpbmUyIjoiIiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6ImY4MmVhYWQyLWRkNjktNGIzZC05MDAzLTk2MDk1YmQ5MTBlYiIsImxhYmVsIjoiU3RpbGwiLCJoaW50IjoiS2F1bSDDhG5kZXJ1bmcsIG5pZWRyaWdlIEFrdGl2aXTDpHQuIiwibGluZTIiOiIiLCJkZWxldGVkX2F0IjpudWxsfSx7ImlkIjoiZDJhY2EzYmItZWYzNS00MDVmLTgyNjctOWZkYjQxYWVhZGM0IiwibGFiZWwiOiJSb3V0aW5lIiwiaGludCI6IldpZWRlcmhvbHVuZyBvaG5lIG5ldWUgVmFyaWF0aW9uLiIsImxpbmUyIjoiIiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6IjkzNzhmNjgwLTA3YmQtNDZlNi1iNGQ2LWZhMDI1Y2EyMzIxZSIsImxhYmVsIjoiRmx1c3MiLCJoaW50IjoiS29udGludWllcmxpY2hlIEJld2VndW5nIG9obmUgU3RhdS4iLCJsaW5lMiI6IiIsImRlbGV0ZWRfYXQiOm51bGx9XSwibm9kZXMiOlt7ImlkIjoiZGU0NzRiYmQtMWVkYS00YjQ2LWJjYTItNzZkYjg4NjIxMjFiIiwibGFiZWwiOiJBZ2VudCBBIiwiaGludCI6IkF1c2bDvGhyZW5kZSBJbnN0YW56LiIsImxpbmUyIjoiIiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6IjY2ZDE3YjViLWEwYWEtNDZhMy05NTA5LTk1M2UwNTE3ZjRiMiIsImxhYmVsIjoiU2NoZWR1bGVyIiwiaGludCI6IlRha3RldCBSZWloZW5mb2xnZS4iLCJsaW5lMiI6IiIsImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiIwZDI1ZDQ4MC1jZDdjLTQ0YWMtYWFmOC0xMmY4MDZlNmMxMGMiLCJsYWJlbCI6IlNwZWljaGVycGZhZCIsImhpbnQiOiJPcnQgZsO8ciBQZXJzaXN0ZW56L1N0YXRlLiIsImxpbmUyIjoiIiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6IjNlZGEyOTQ1LWJiOTctNDc5OS04ZDJkLWI3NDA5MDIxMWEzNCIsImxhYmVsIjoiSW50ZXJmYWNlIiwiaGludCI6IsOcYmVyZ2FuZyB6d2lzY2hlbiBTY2hpY2h0ZW4uIiwibGluZTIiOiIiLCJkZWxldGVkX2F0IjpudWxsfSx7ImlkIjoiNWI0OTMzNmUtZmI4ZC00NjE0LThlZWYtNDM4YWEyOTBkYmNiIiwibGFiZWwiOiJQYXJzZXIiLCJoaW50IjoiWmVybGVndCBJbnB1dCBpbiBTdHJ1a3R1ci4iLCJsaW5lMiI6IiIsImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiJkODY2MzBiMy01Zjg3LTRkNGItYjc1Ny0zZmU4NGRiYzlkZDUiLCJsYWJlbCI6IkZlZWRiYWNrLUxvb3AiLCJoaW50IjoiUsO8Y2ttZWxkdW5nL0FucGFzc3VuZy4iLCJsaW5lMiI6IiIsImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiJjNmIwZTA3Yi03ODUzLTQyMGEtOTliOC1hNWUwYmU4OTM1YmUiLCJsYWJlbCI6IldhdGNoZG9nIiwiaGludCI6IsOcYmVyd2FjaHQgVGltZW91dHMvQXVzZsOkbGxlLiIsImxpbmUyIjoiIiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6IjNjZDAzZWY3LWVmNDQtNDkzOS04OTRhLWQyOWIxZDgyNjk4OSIsImxhYmVsIjoiUGlwZWxpbmUiLCJoaW50IjoiS2V0dGUgYXVzIFZlcmFyYmVpdHVuZ3NzY2hyaXR0ZW4uIiwibGluZTIiOiIiLCJkZWxldGVkX2F0IjpudWxsfSx7ImlkIjoiMTljMzEyMzYtZjAxMC00MjZjLWFmMWYtMjdlZDExOWU1MDBlIiwibGFiZWwiOiJNb2RlbGwtU2Vzc2lvbiIsImhpbnQiOiJLb250ZXh0IGVpbmVyIEF1c2bDvGhydW5nLiIsImxpbmUyIjoiIiwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6IjU3NTM2N2IzLTM2ZWYtNDM3My05MzUzLTIxZGNmMjkzMGNjNyIsImxhYmVsIjoiTG9nZ2VyIiwiaGludCI6IlNjaHJlaWJ0IFByb3Rva29sbGUuIiwibGluZTIiOiIiLCJkZWxldGVkX2F0IjpudWxsfSx7ImlkIjoiMjJlMjBkMmItMTg0NC00YWI1LTgyNjAtOWIxYWQzYTYxMGJiIiwibGFiZWwiOiJNb25pdG9yIiwiaGludCI6IkFnZ3JlZ2llcnQgU2lnbmFsZS4iLCJsaW5lMiI6IiIsImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiIwYTI3YmRmNy1lOGJiLTQ5ZmMtYjc4ZC05MjFhY2U5YWYyNDYiLCJsYWJlbCI6IlF1ZXVlIiwiaGludCI6IldhcnRlc2NobGFuZ2UuIiwibGluZTIiOiIiLCJkZWxldGVkX2F0IjpudWxsfV0sInN0ZXBzIjpbeyJpZCI6InN0ZXBfcGVyY2VpdmUiLCJ0aXRsZSI6IldhaHJuZWhtZW4iLCJwcm9tcHQiOiJXYXMgaXN0IGFscyBTaWduYWwvQmVvYmFjaHR1bmcgZGE/Iiwibm90ZSI6IiIsImxpbmUyIjoiIn0seyJpZCI6InN0ZXBfZm9ybSIsInRpdGxlIjoiRm9ybWJlc2NocmVpYnVuZyIsInByb21wdCI6IldpZSB6ZWlndCBlcyBzaWNoIChGb3JtL1Rha3QvUsO8Y2trb3BwbHVuZyk/Iiwibm90ZSI6ImF1Y2g6IFNpZ25hbGZvcm0gwrcgTXVzdGVyZm9ybSDCtyBBdXNwcsOkZ3VuZyDCtyBNYW5pZmVzdGF0aW9uIiwibGluZTIiOiIifSx7ImlkIjoic3RlcF9ob2xkIiwidGl0bGUiOiJWZXJ3ZWlsZW4iLCJwcm9tcHQiOiJLdXJ6IHN0YWJpbGlzaWVyZW46IFJhdW0gaGFsdGVuIG9obmUgRWluZ3JpZmYuIiwibm90ZSI6IiIsImxpbmUyIjoiIn0seyJpZCI6InN0ZXBfbW92ZSIsInRpdGxlIjoiQmV3ZWdlbiIsInByb21wdCI6IldlbGNoZXIgw5xiZXJnYW5nIC8gd2VsY2hlciBuw6RjaHN0ZSBWZXJzdWNoPyIsIm5vdGUiOiIiLCJsaW5lMiI6IiJ9LHsiaWQiOiIxIiwidGl0bGUiOiJTdG9wcGVuIiwicHJvbXB0IjoiV2VsY2hlciDDnGJlcmdhbmciLCJub3RlIjoiIiwibGluZTIiOiIifV0sImVudHJ5X2ZpZWxkcyI6W3siaWQiOiJmaWVsZF9saW5lIiwibGFiZWwiOiJaZWlsZSAob3B0aW9uYWwpIiwidHlwZSI6InRleHQiLCJub3RlIjoiIn0seyJpZCI6ImZpZWxkX2V4Y2hhbmdlIiwibGFiZWwiOiJvZmZlbiBmw7xyIEF1c3RhdXNjaD8iLCJ0eXBlIjoiY2hlY2tib3giLCJub3RlIjoiIn0seyJpZCI6ImZpZWxkXzAwNDMyN2MzYTE5NiIsImxhYmVsIjoiYmV3dXNzdHdlcmRlbiIsInR5cGUiOiJjaGVja2JveCIsIm5vdGUiOiJsb2wifSx7ImlkIjoiZmllbGRfOTU2MDI0NmYzYjRkIiwibGFiZWwiOiJoYWhhaGEiLCJ0eXBlIjoiY2hlY2tib3giLCJub3RlIjoiIn1dLCJlbnRyaWVzIjpbeyJpZCI6ImQzZThiZWI0LWFlOTQtNDQyMC1iZTFkLTBhZmRmMTExM2ZjZSIsImNvbnRleHRfdHlwZSI6ImJldHdlZW4iLCJjb250ZXh0X2xhYmVsIjoiIiwiY29udGV4dF9pZCI6IiIsInNwaXJhbF9zdGVwX2lkIjoiIiwic3BpcmFsX3N0ZXAiOiIiLCJjb250ZW50Ijoia2xhcHB0IiwiZmllbGRzIjp7ImZpZWxkX2xpbmUiOiJkYWsiLCJmaWVsZF9leGNoYW5nZSI6dHJ1ZSwiZmllbGRfMDA0MzI3YzNhMTk2Ijp0cnVlfSwiY3JlYXRlZF9hdCI6IjIwMjYtMDItMTZUMDA6MzA6MDYuMjE1WiIsInVwZGF0ZWRfYXQiOiIyMDI2LTAyLTE2VDAxOjM3OjI5LjEyNloiLCJpc19lZGl0ZWQiOnRydWUsImFyY2hpdmVkX2F0IjpudWxsLCJkZWxldGVkX2F0IjpudWxsfSx7ImlkIjoiNzJkMGQ3NjEtNzE0Zi00OWE0LWI5MDEtOWJjYTM3MTg0MWRlIiwiY29udGV4dF90eXBlIjoiZW50aXR5IiwiY29udGV4dF9sYWJlbCI6IkludGVyZmFjZSIsImNvbnRleHRfaWQiOiIzZWRhMjk0NS1iYjk3LTQ3OTktOGQyZC1iNzQwOTAyMTFhMzQiLCJzcGlyYWxfc3RlcF9pZCI6InN0ZXBfZm9ybSIsInNwaXJhbF9zdGVwIjoiRm9ybWJlc2NocmVpYnVuZyIsImNvbnRlbnQiOiJkaXJla3QgZGlyZWt0IGRpcmVrdCBkaXJla3QgZGlyZWt0IGRpcmVrdCBkaXJla3QgZGlyZWt0IGRpcmVrdCBkaXJla3QgZGlyZWt0IGRpcmVrdCBkaXJla3QgZGlyZWt0IGRpcmVrdCBkaXJla3QgZGlyZWt0IGRpcmVrdCIsImZpZWxkcyI6eyJmaWVsZF9saW5lIjoiZGFrIiwiZmllbGRfZXhjaGFuZ2UiOnRydWV9LCJjcmVhdGVkX2F0IjoiMjAyNi0wMi0xNlQwMDozMzo1My4xNDNaIiwidXBkYXRlZF9hdCI6IjIwMjYtMDItMTZUMDE6MjE6MDcuMjgwWiIsImlzX2VkaXRlZCI6dHJ1ZSwiYXJjaGl2ZWRfYXQiOm51bGwsImRlbGV0ZWRfYXQiOiIyMDI2LTAyLTE2VDAxOjIxOjIxLjAzOFoifSx7ImlkIjoiOWQ5NzBhZWMtYzFjNy00ZTdiLTlhNzItNTUzM2EwMDI4OTdlIiwiY29udGV4dF90eXBlIjoic3RhdGUiLCJjb250ZXh0X2xhYmVsIjoiw5xiZXJzdGV1ZXJ1bmciLCJjb250ZXh0X2lkIjoiZmUzYWU3MDItMTUzZC00OThhLTk1YmMtMzQ3OWQ4N2JiYWJhIiwic3BpcmFsX3N0ZXBfaWQiOiJzdGVwX21vdmUiLCJzcGlyYWxfc3RlcCI6IkJld2VnZW4iLCJjb250ZW50IjoiaW5zIHdlaXRlIiwiZmllbGRzIjp7ImZpZWxkX2xpbmUiOiJkYWsiLCJmaWVsZF9leGNoYW5nZSI6dHJ1ZX0sImNyZWF0ZWRfYXQiOiIyMDI2LTAyLTE2VDAxOjE0OjU4Ljc2MVoiLCJ1cGRhdGVkX2F0IjpudWxsLCJpc19lZGl0ZWQiOmZhbHNlLCJhcmNoaXZlZF9hdCI6bnVsbCwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6IjFmZTM2ZWI4LTljOWQtNDVmMy05YWM4LWJlZjgwZDQ3YTgzMCIsImNvbnRleHRfdHlwZSI6ImVudGl0eSIsImNvbnRleHRfbGFiZWwiOiJTcGVpY2hlcnBmYWQiLCJjb250ZXh0X2lkIjoiMGQyNWQ0ODAtY2Q3Yy00NGFjLWFhZjgtMTJmODA2ZTZjMTBjIiwic3BpcmFsX3N0ZXBfaWQiOiJzdGVwX21vdmUiLCJzcGlyYWxfc3RlcCI6IkJld2VnZW4iLCJjb250ZW50IjoidmVyc2NoaWVibnVuZyIsImZpZWxkcyI6eyJmaWVsZF9saW5lIjoiIiwiZmllbGRfZXhjaGFuZ2UiOnRydWUsImZpZWxkXzAwNDMyN2MzYTE5NiI6ZmFsc2V9LCJjcmVhdGVkX2F0IjoiMjAyNi0wMi0xNlQwMTo0Njo1Ni4xNjRaIiwidXBkYXRlZF9hdCI6bnVsbCwiaXNfZWRpdGVkIjpmYWxzZSwiYXJjaGl2ZWRfYXQiOm51bGwsImRlbGV0ZWRfYXQiOm51bGx9XX0=</script>
+ 
+
+ 
+
+<script> 
+
+(() => { 
+
+  // ============================================================ 
+
+  // v3: Start-Buttons (Hubs) + Protokoll-Felder + Snapshot Button 
+
+  // ============================================================ 
+
+ 
+
+  const STORAGE_KEY = "spiral_flow_space_store_v3"; 
+
+  const LEGACY_V2_KEY = "spiral_flow_space_store_v2"; 
+
+  const LEGACY_V1_KEY = "spiral_flow_space_store_v1"; 
+
+ 
+
+  const DEFAULT_STATES = [ 
+
+    {label:"Rauschen",hint:"Signale häufen sich ohne Richtung."}, 
+
+    {label:"Drift",hint:"Abweichung nimmt langsam zu."}, 
+
+    {label:"Stau",hint:"Durchsatz sinkt, Warteschlangen wachsen."}, 
+
+    {label:"Übersteuerung",hint:"Regelkreise schwingen auf."}, 
+
+    {label:"Leerlauf",hint:"Kapazität ist da, aber kein sinnvolles Signal."}, 
+
+    {label:"Resonanz",hint:"Signale passen, Reibung sinkt."}, 
+
+    {label:"Kippkante",hint:"Kleine Änderung kippt den Zustand."}, 
+
+    {label:"Rückkopplung",hint:"Output verstärkt den Input."}, 
+
+    {label:"Fragment",hint:"Zerlegt, Kontext fehlt."}, 
+
+    {label:"Still",hint:"Kaum Änderung, niedrige Aktivität."}, 
+
+    {label:"Routine",hint:"Wiederholung ohne neue Variation."}, 
+
+    {label:"Fluss",hint:"Kontinuierliche Bewegung ohne Stau."} 
+
+  ]; 
+
+ 
+
+  const DEFAULT_NODES = [ 
+
+    {label:"Agent A",hint:"Ausführende Instanz."}, 
+
+    {label:"Scheduler",hint:"Taktet Reihenfolge."}, 
+
+    {label:"Speicherpfad",hint:"Ort für Persistenz/State."}, 
+
+    {label:"Interface",hint:"Übergang zwischen Schichten."}, 
+
+    {label:"Parser",hint:"Zerlegt Input in Struktur."}, 
+
+    {label:"Feedback-Loop",hint:"Rückmeldung/Anpassung."}, 
+
+    {label:"Watchdog",hint:"Überwacht Timeouts/Ausfälle."}, 
+
+    {label:"Pipeline",hint:"Kette aus Verarbeitungsschritten."}, 
+
+    {label:"Modell-Session",hint:"Kontext einer Ausführung."}, 
+
+    {label:"Logger",hint:"Schreibt Protokolle."}, 
+
+    {label:"Monitor",hint:"Aggregiert Signale."}, 
+
+    {label:"Queue",hint:"Warteschlange."} 
+
+  ]; 
+
+ 
+
+  const DEFAULT_STEPS = [ 
+
+    { id:"step_perceive", title:"Wahrnehmen", prompt:"Was ist als Signal/Beobachtung da?", note:"" }, 
+
+    { id:"step_form", title:"Formbeschreibung", prompt:"Wie zeigt es sich (Form/Takt/Rückkopplung)?", note:"auch: Signalform · Musterform · Ausprägung · Manifestation" }, 
+
+    { id:"step_hold", title:"Verweilen", prompt:"Kurz stabilisieren: Raum halten ohne Eingriff.", note:"" }, 
+
+    { id:"step_move", title:"Bewegen", prompt:"Welcher Übergang / welcher nächste Versuch?", note:"" } 
+
+  ]; 
+
+ 
+
+  // Protokoll-Felder (Default): 1) freie Zeile 2) offen für Austausch? 
+
+  const DEFAULT_ENTRY_FIELDS = [ 
+
+    { id:"field_line", label:"Zeile (optional)", type:"text", note:"" }, 
+
+    { id:"field_exchange", label:"offen für Austausch?", type:"checkbox", note:"" } 
+
+  ]; 
+
+ 
+
+  const DEFAULT_HUBS = [ 
+
+    { id:"hub_state",  label:"Zustand",        desc:"Zustandsmarker wählen/hinzufügen → dann Protokollschritte.", kind:"state", deleted_at:null }, 
+
+    { id:"hub_node",   label:"Knoten/Instanz", desc:"Knoten wählen/hinzufügen → dann Protokollschritte.",         kind:"entity", deleted_at:null }, 
+
+    { id:"hub_between",label:"Zwischenraum",   desc:"Freies Protokoll ohne Einordnung.",                          kind:"between", deleted_at:null } 
+
+  ]; 
+
+ 
+
+  const view = { 
+
+    name:"home", 
+
+    ctxType:null, ctxLabel:null, ctxId:null, 
+
+    hubId:null, 
+
+    protokolleFilter:"active", 
+
+    protokolleType:"all", 
+
+    q:"",
+    researchQ:"",
+    researchClosure:"all" 
+
+  }; 
+
+ 
+
+  const $ = (id)=>document.getElementById(id); 
+
+  const appEl = $("app"); 
+
+ 
+
+  function nowISO(){ return new Date().toISOString(); } 
+
+  function fmt(ts){ 
+
+    if(!ts) return "—"; 
+
+    const d = new Date(ts); 
+
+    if (isNaN(d.getTime())) return String(ts); 
+
+    return d.toLocaleString("de-DE"); 
+
+  } 
+
+  function uid(){ 
+
+    return (crypto?.randomUUID?.() || ("id-"+Math.random().toString(16).slice(2)+Date.now().toString(16))); 
+
+  } 
+
+  function toast(msg){ 
+
+    const t=$("toast"); 
+
+    t.textContent=msg; 
+
+    t.style.display="block"; 
+
+    clearTimeout(toast._to); 
+
+    toast._to=setTimeout(()=>t.style.display="none",2200); 
+
+  } 
+
+  function esc(s){ 
+
+    return String(s??"").replace(/[&<>\"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); 
+
+  } 
+
+ 
+
+  function openModal(html){ 
+
+    $("modal").innerHTML=html; 
+
+    $("modalBack").style.display="flex"; 
+
+  } 
+
+  function closeModal(){ 
+
+    $("modalBack").style.display="none"; 
+
+    $("modal").innerHTML=""; 
+
+  } 
+
+  $("modalBack").addEventListener("click",(e)=>{ if(e.target.id==="modalBack") closeModal(); }); 
+
+ 
+
+  // ---------- Base64 helpers (UTF-8 safe) ---------- 
+
+  function toBase64(str){ 
+
+    const bytes = new TextEncoder().encode(str); 
+
+    let bin = ""; 
+
+    const chunk = 0x8000; 
+
+    for(let i=0;i<bytes.length;i+=chunk){ 
+
+      bin += String.fromCharCode.apply(null, bytes.subarray(i, i+chunk)); 
+
+    } 
+
+    return btoa(bin); 
+
+  } 
+
+  function fromBase64(b64){ 
+
+    const bin = atob(b64); 
+
+    const bytes = new Uint8Array(bin.length); 
+
+    for(let i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i); 
+
+    return new TextDecoder().decode(bytes); 
+
+  } 
+
+ 
+
+  // ---------- Snapshot (embedded) ---------- 
+
+  function readEmbeddedSnapshot(){ 
+
+    const elB64 = document.getElementById("snapshotDataB64"); 
+
+    if(elB64){ 
+
+      try{ 
+
+        const b64 = (elB64.textContent || "").trim(); 
+
+        if(!b64) return null; 
+
+        const json = fromBase64(b64); 
+
+        return JSON.parse(json); 
+
+      }catch{ 
+
+        return null; 
+
+      } 
+
+    } 
+
+    return null; 
+
+  } 
+
+ 
+
+  // ---------- Store ---------- 
+
+  function emptyStore(){ 
+
+    return { 
+
+      schema_version:3, 
+
+      created_at:nowISO(), 
+
+      hubs:[], 
+
+      states:[], 
+
+      nodes:[], 
+
+      transitions:[],
+
+      steps:[], 
+
+      entry_fields:[], 
+
+      entries:[] 
+
+    }; 
+
+  } 
+
+ 
+
+  function mapLegacyStepToId(name){ 
+
+    const n = (name||"").trim().toLowerCase(); 
+
+    if(n==="wahrnehmen") return "step_perceive"; 
+
+    if(n==="benennen") return "step_form"; 
+
+    if(n==="formbeschreibung") return "step_form"; 
+
+    if(n==="verweilen") return "step_hold"; 
+
+    if(n==="bewegen") return "step_move"; 
+
+    return ""; 
+
+  } 
+
+ 
+
+  function normalizeImport(obj){ 
+
+    const data = obj?.data || obj?.store || obj; 
+
+    if(!data) return null; 
+
+    data.schema_version ||= 3; 
+
+    data.hubs ||= []; 
+
+    data.states ||= []; 
+
+    data.nodes ||= []; 
+
+    data.transitions ||= [];
+
+    data.steps ||= []; 
+
+    data.entry_fields ||= []; 
+
+    data.entries ||= []; 
+
+    (data.entries||[]).forEach(e=>{ 
+
+      e.fields ||= e.fields || {}; 
+
+      if(!e.spiral_step_id && e.spiral_step){ 
+
+        const mapped = mapLegacyStepToId(e.spiral_step); 
+
+        if(mapped) e.spiral_step_id = mapped; 
+
+      } 
+
+    }); 
+
+    return data; 
+
+  } 
+
+ 
+
+  function ensureDefaults(st){ 
+
+    // hubs 
+
+    if(!Array.isArray(st.hubs) || !st.hubs.length){ 
+
+      st.hubs = DEFAULT_HUBS.map(h=>({ ...h })); 
+
+    }else{ 
+
+      // ensure default hubs exist by id 
+
+      const ids = new Set(st.hubs.map(h=>h.id)); 
+
+      for(const h of DEFAULT_HUBS){ 
+
+        if(!ids.has(h.id)) st.hubs.push({ ...h }); 
+
+      } 
+
+    } 
+
+ 
+
+    // states/nodes/steps 
+
+    if(!Array.isArray(st.states) || !st.states.length){ 
+
+      st.states = DEFAULT_STATES.map(s=>({id:uid(), label:s.label, hint:s.hint, line2:"", deleted_at:null})); 
+
+    }else{ 
+
+      st.states.forEach(x=>{ x.line2 ||= ""; }); 
+
+    } 
+
+    if(!Array.isArray(st.nodes) || !st.nodes.length){ 
+
+      st.nodes = DEFAULT_NODES.map(s=>({id:uid(), label:s.label, hint:s.hint, line2:"", deleted_at:null})); 
+
+    }else{ 
+
+      st.nodes.forEach(x=>{ x.line2 ||= ""; }); 
+
+    } 
+
+    st.states.forEach(x=>{ x.description ||= ""; x.signals ||= ""; x.enters_from ||= ""; x.exits_to ||= ""; x.closure_marker ||= ""; });
+    st.nodes.forEach(x=>{ x.role_detail ||= ""; x.input ||= ""; x.output ||= ""; x.dependencies ||= ""; x.generated_states ||= ""; x.end_mode ||= ""; });
+
+    if(!Array.isArray(st.transitions)) st.transitions = [];
+    st.transitions.forEach(t=>{
+      t.from_state_id ||= ""; t.to_state_id ||= ""; t.node_id ||= ""; t.trigger ||= ""; t.closure_type ||= "offen"; t.note ||= ""; t.created_at ||= nowISO(); t.updated_at ||= t.created_at;
+    });
+
+    if(!Array.isArray(st.steps) || !st.steps.length){ 
+
+      st.steps = DEFAULT_STEPS.map(s=>({id:s.id, title:s.title, prompt:s.prompt, note:s.note, line2:""})); 
+
+    }else{ 
+
+      st.steps.forEach(x=>{ x.line2 ||= ""; }); 
+
+    } 
+
+ 
+
+    // entry fields 
+
+    if(!Array.isArray(st.entry_fields) || !st.entry_fields.length){ 
+
+      st.entry_fields = DEFAULT_ENTRY_FIELDS.map(f=>({ ...f })); 
+
+    }else{ 
+
+      // ensure defaults exist (by id) 
+
+      const ids = new Set(st.entry_fields.map(f=>f.id)); 
+
+      for(const f of DEFAULT_ENTRY_FIELDS){ 
+
+        if(!ids.has(f.id)) st.entry_fields.push({ ...f }); 
+
+      } 
+
+    } 
+
+ 
+
+    // entries 
+
+    (st.entries||[]).forEach(e=>{ 
+
+      e.fields ||= {}; 
+
+      e.context_id ||= e.context_id || ""; 
+
+    }); 
+
+ 
+
+    st.schema_version = 3; 
+
+    return st; 
+
+  } 
+
+ 
+
+  function migrateV2ToV3(v2){ 
+
+    const st = emptyStore(); 
+
+    st.states = (v2.states||[]).map(x=>({ id:x.id||uid(), label:x.label||"", hint:x.hint||"", line2:x.line2||"", deleted_at:x.deleted_at||null })); 
+
+    st.nodes  = (v2.nodes ||[]).map(x=>({ id:x.id||uid(), label:x.label||"", hint:x.hint||"", line2:x.line2||"", deleted_at:x.deleted_at||null })); 
+
+    st.steps  = (v2.steps ||[]).map(x=>({ id:x.id||uid(), title:x.title||"", prompt:x.prompt||"", note:x.note||"", line2:x.line2||"" })); 
+
+ 
+
+    st.entries = (v2.entries||[]).map(e=>{ 
+
+      const x = Object.assign({}, e); 
+
+      x.context_id = x.context_id || ""; 
+
+      x.fields = x.fields || {}; 
+
+      if(!x.spiral_step_id && x.spiral_step){ 
+
+        const mapped = mapLegacyStepToId(x.spiral_step); 
+
+        if(mapped) x.spiral_step_id = mapped; 
+
+      } 
+
+      return x; 
+
+    }); 
+
+ 
+
+    // new in v3 
+
+    st.hubs = DEFAULT_HUBS.map(h=>({ ...h })); 
+
+    st.entry_fields = DEFAULT_ENTRY_FIELDS.map(f=>({ ...f })); 
+
+ 
+
+    return ensureDefaults(st); 
+
+  } 
+
+ 
+
+  function migrateV1ToV3(v1){ 
+
+    // v1 had user_states/user_nodes and entries; steps were static names 
+
+    const st = emptyStore(); 
+
+ 
+
+    // merge seeds + user lists by label (keep stable ids) 
+
+    const mByLabel = (seed, extra)=>{ 
+
+      const m = new Map(); 
+
+      for(const x of seed) m.set((x.label||"").toLowerCase(), x); 
+
+      for(const x of extra){ 
+
+        const k = (x.label||"").toLowerCase(); 
+
+        if(k && !m.has(k)) m.set(k, x); 
+
+      } 
+
+      return Array.from(m.values()); 
+
+    }; 
+
+ 
+
+    const seedStates = DEFAULT_STATES.map(s=>({id:uid(), label:s.label, hint:s.hint, line2:"", deleted_at:null})); 
+
+    const seedNodes  = DEFAULT_NODES.map(s=>({id:uid(), label:s.label, hint:s.hint, line2:"", deleted_at:null})); 
+
+ 
+
+    const userStates = (v1.user_states||[]).map(s=>({id:uid(), label:s.label, hint:s.hint||"(eigener Marker)", line2:"", deleted_at:null})); 
+
+    const userNodes  = (v1.user_nodes ||[]).map(s=>({id:uid(), label:s.label, hint:s.hint||"(eigener Knoten)", line2:"", deleted_at:null})); 
+
+ 
+
+    st.states = mByLabel(seedStates, userStates); 
+
+    st.nodes  = mByLabel(seedNodes,  userNodes); 
+
+    st.steps  = DEFAULT_STEPS.map(s=>({id:s.id, title:s.title, prompt:s.prompt, note:s.note, line2:""})); 
+
+ 
+
+    st.entries = (v1.entries||[]).map(e=>{ 
+
+      const x = Object.assign({}, e); 
+
+      x.context_id = x.context_id || ""; 
+
+      x.fields = x.fields || {}; 
+
+      x.spiral_step_id = x.spiral_step_id || mapLegacyStepToId(x.spiral_step); 
+
+      x.spiral_step = x.spiral_step || ""; 
+
+      return x; 
+
+    }); 
+
+ 
+
+    st.hubs = DEFAULT_HUBS.map(h=>({ ...h })); 
+
+    st.entry_fields = DEFAULT_ENTRY_FIELDS.map(f=>({ ...f })); 
+
+ 
+
+    return ensureDefaults(st); 
+
+  } 
+
+ 
+
+  function loadStore(){ 
+
+    try{ 
+
+      // 1) v3 localStorage 
+
+      const raw = localStorage.getItem(STORAGE_KEY); 
+
+      if(raw){ 
+
+        const obj = JSON.parse(raw); 
+
+        return ensureDefaults(normalizeImport(obj) || emptyStore()); 
+
+      } 
+
+ 
+
+      // 2) embedded snapshot (base64) if localStorage empty 
+
+      const snap = readEmbeddedSnapshot(); 
+
+      if(snap){ 
+
+        const st = ensureDefaults(normalizeImport({data:snap}) || emptyStore()); 
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); 
+
+        return st; 
+
+      } 
+
+ 
+
+      // 3) migrate v2 
+
+      const raw2 = localStorage.getItem(LEGACY_V2_KEY); 
+
+      if(raw2){ 
+
+        const v2 = JSON.parse(raw2); 
+
+        const st = migrateV2ToV3(v2); 
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); 
+
+        return st; 
+
+      } 
+
+ 
+
+      // 4) migrate v1 
+
+      const raw1 = localStorage.getItem(LEGACY_V1_KEY); 
+
+      if(raw1){ 
+
+        const v1 = JSON.parse(raw1); 
+
+        const st = migrateV1ToV3(v1); 
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); 
+
+        return st; 
+
+      } 
+
+ 
+
+      // 5) fresh init 
+
+      const st = ensureDefaults(emptyStore()); 
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); 
+
+      return st; 
+
+    }catch{ 
+
+      const st = ensureDefaults(emptyStore()); 
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); 
+
+      return st; 
+
+    } 
+
+  } 
+
+ 
+
+  let store = loadStore(); 
+
+  function saveStore(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } 
+
+ 
+
+  function stepById(id){ return (store.steps||[]).find(s=>s.id===id) || null; } 
+
+  function stepTitleForEntry(e){ 
+
+    if(e.spiral_step_id){ 
+
+      const s = stepById(e.spiral_step_id); 
+
+      if(s) return s.title; 
+
+    } 
+
+    return e.spiral_step || ""; 
+
+  } 
+
+ 
+
+  function listStatesActive(){ return (store.states||[]).filter(s=>!s.deleted_at); } 
+
+  function listNodesActive(){ return (store.nodes||[]).filter(s=>!s.deleted_at); } 
+
+  function listHubsActive(){ return (store.hubs||[]).filter(h=>!h.deleted_at); } 
+
+  function listEntryFields(){ return (store.entry_fields||[]).slice(); } 
+
+ 
+
+  function findByLabel(arr, label){ 
+
+    const k=(label||"").toLowerCase(); 
+
+    return arr.find(s=>(s.label||"").toLowerCase()===k) || null; 
+
+  } 
+
+ 
+
+  function addState(label){ 
+
+    label=(label||"").trim(); if(!label) return false; 
+
+    if(findByLabel(store.states, label)) return false; 
+
+    store.states.push({id:uid(), label, hint:"(eigener Marker)", line2:"", deleted_at:null}); 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+  function addNode(label){ 
+
+    label=(label||"").trim(); if(!label) return false; 
+
+    if(findByLabel(store.nodes, label)) return false; 
+
+    store.nodes.push({id:uid(), label, hint:"(eigener Knoten)", line2:"", deleted_at:null}); 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+ 
+
+  function moveItem(arr, id, dir){ 
+
+    const idx = arr.findIndex(x=>x.id===id); 
+
+    if(idx<0) return false; 
+
+    const j = idx + dir; 
+
+    if(j<0 || j>=arr.length) return false; 
+
+    const tmp = arr[idx]; 
+
+    arr[idx] = arr[j]; 
+
+    arr[j] = tmp; 
+
+    return true; 
+
+  } 
+
+ 
+
+  function setView(name, opts={}){ 
+
+    view.name = name; 
+
+    Object.assign(view, opts); 
+
+    render(); 
+
+  } 
+
+ 
+
+  // ---------- Entries ---------- 
+
+  function createEntry({context_type, context_label, context_id, spiral_step_id, spiral_step, content, fields}){ 
+
+    const e = { 
+
+      id: uid(), 
+
+      context_type, 
+
+      context_label: context_label || "", 
+
+      context_id: context_id || "", 
+
+      spiral_step_id: spiral_step_id || "", 
+
+      spiral_step: spiral_step || "", 
+
+      content: content || "", 
+
+      fields: fields || {}, 
+
+      created_at: nowISO(), 
+
+      updated_at: null, 
+
+      is_edited: false, 
+
+      archived_at: null, 
+
+      deleted_at: null 
+
+    }; 
+
+    store.entries.push(e); 
+
+    saveStore(); 
+
+    return e.id; 
+
+  } 
+
+  function updateEntry(id, patch){ 
+
+    const e = store.entries.find(x=>x.id===id); 
+
+    if(!e) return false; 
+
+    Object.assign(e, patch); 
+
+    e.updated_at = nowISO(); 
+
+    e.is_edited = true; 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+  function toggleArchive(id){ 
+
+    const e = store.entries.find(x=>x.id===id); 
+
+    if(!e) return false; 
+
+    e.archived_at = e.archived_at ? null : nowISO(); 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+  function softDelete(id){ 
+
+    const e = store.entries.find(x=>x.id===id); 
+
+    if(!e) return false; 
+
+    e.deleted_at = e.deleted_at ? null : nowISO(); 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+ 
+
+  function contextLabelForEntry(e){ 
+
+    return e.context_label || ""; 
+
+  } 
+
+ 
+
+  function entryBadges(e){ 
+
+    const badges = []; 
+
+    const ty = e.context_type; 
+
+    badges.push(`<span class="badge">${ty==="state"?"Zustand":(ty==="entity"?"Knoten":(ty==="between"?"Zwischenraum":(ty==="hub"?"Start":"—")))}</span>`); 
+
+    const cl = contextLabelForEntry(e); 
+
+    if(cl) badges.push(`<span class="badge">${esc(cl)}</span>`); 
+
+    const st = stepTitleForEntry(e); 
+
+    if(st) badges.push(`<span class="badge">${esc(st)}</span>`); 
+
+    if(e.archived_at) badges.push(`<span class="badge">Archiv</span>`); 
+
+    if(e.deleted_at) badges.push(`<span class="badge">Gelöscht</span>`); 
+
+    if(e.is_edited) badges.push(`<span class="badge">bearbeitet</span>`); 
+
+ 
+
+    // show checkbox true as badge (only if configured) 
+
+    const fields = e.fields || {}; 
+
+    const defs = listEntryFields(); 
+
+    for(const f of defs){ 
+
+      if(f.type==="checkbox" && fields[f.id]===true){ 
+
+        badges.push(`<span class="badge">${esc(f.label)}</span>`); 
+
+      } 
+
+    } 
+
+    return badges.join(""); 
+
+  } 
+
+ 
+
+  function renderEntryCards(entries, {showGoto=false}={}){ 
+
+    if(!entries.length) return `<div class="small">Keine Einträge.</div>`; 
+
+    return entries.map(e=>{ 
+
+      const snippet = (e.content||"").replace(/\s+/g," ").slice(0,180); 
+
+      return ` 
+
+        <div class="card"> 
+
+          <div class="top"> 
+
+            <div> 
+
+              <div class="meta">${entryBadges(e)}</div> 
+
+              <div style="height:6px"></div> 
+
+              <div>${esc(snippet || "(leer)")}</div> 
+
+              <div style="height:6px"></div> 
+
+              <div class="meta">erstellt: ${fmt(e.created_at)}${e.updated_at?` • bearbeitet: ${fmt(e.updated_at)}`:""}</div> 
+
+            </div> 
+
+            <div class="row"> 
+
+              ${showGoto?`<button data-act="goto" data-entry="${e.id}">Zum Kontext</button>`:""} 
+
+              <button data-act="edit" data-entry="${e.id}">Bearbeiten</button> 
+
+              <button data-act="arch" data-entry="${e.id}">${e.archived_at?"Archiv zurück":"Archivieren"}</button> 
+
+              <button class="danger" data-act="del" data-entry="${e.id}">${e.deleted_at?"Wiederherstellen":"Löschen"}</button> 
+
+            </div> 
+
+          </div> 
+
+        </div> 
+
+      `; 
+
+    }).join(""); 
+
+  } 
+
+ 
+
+  // ---------- Hubs (Start-Buttons) ---------- 
+
+  function addHub(label, desc, kind){ 
+
+    label=(label||"").trim(); if(!label) return false; 
+
+    kind = (kind||"notebook").trim(); 
+
+    const clash = (store.hubs||[]).find(h=>!h.deleted_at && (h.label||"").toLowerCase()===label.toLowerCase()); 
+
+    if(clash) return false; 
+
+    store.hubs.push({id:uid(), label, desc:desc||"", kind, deleted_at:null}); 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+ 
+
+  function findHubById(id){ 
+
+    return (store.hubs||[]).find(h=>h.id===id) || null; 
+
+  } 
+
+ 
+
+  // ---------- UI render ---------- 
+
+  function renderHome(){ 
+
+    const hubs = listHubsActive(); 
+
+    const tiles = hubs.map(h=>` 
+
+      <div class="tile" data-hub="${esc(h.id)}"> 
+
+        <h2>${esc(h.label)}</h2> 
+
+        <p>${esc(h.desc||"")}</p> 
+
+      </div> 
+
+    `).join(""); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small">Start-Buttons sind editierbar • portable • lokal.</div> 
+
+          <div class="row"> 
+
+            <button id="homeManageHubs">Start verwalten</button> 
+
+            <button id="homeSnapshot">Snapshot</button> 
+
+          </div> 
+
+        </div> 
+
+        <div style="height:10px"></div> 
+
+        <div class="grid3" id="homeGrid">${tiles}</div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function renderPicker(kind){ 
+
+    const isState = kind==="state"; 
+
+    const items = isState ? listStatesActive() : listNodesActive(); 
+
+    const pills = items.map(it=>{ 
+
+      const hint = it.hint || ""; 
+
+      const line2 = it.line2 || ""; 
+
+      return `<div class="pill" title="${esc(hint)}" data-id="${esc(it.id)}" data-label="${esc(it.label)}"> 
+
+        ${esc(it.label)} 
+
+        ${hint?`<span class="sub">${esc(hint)}</span>`:""} 
+
+        ${line2?`<span class="sub">${esc(line2)}</span>`:""} 
+
+      </div>`; 
+
+    }).join(""); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div> 
+
+            <div class="small">${isState?"Zustände":"Entitäten/Knoten"} • Auswahl</div> 
+
+            <div class="small">${isState?"Zustand als Marker.":"Knoten/Instanz als System-Punkt."}</div> 
+
+          </div> 
+
+          <div class="row"> 
+
+            <button id="manageList">${isState?"Zustände verwalten":"Knoten verwalten"}</button> 
+
+            <button id="researchJump">States/Nodes+</button>
+
+            <button id="backHome">Zurück</button> 
+
+          </div> 
+
+        </div> 
+
+        <hr/> 
+
+        <div class="pillgrid" id="pillGrid">${pills}</div> 
+
+        <div style="height:12px"></div> 
+
+        <div class="row"> 
+
+          <input id="newLabel" type="text" placeholder="${isState?"Neuen Zustand hinzufügen":"Neuen Knoten hinzufügen"}" style="min-width:260px"/> 
+
+          <button id="addLabel">Hinzufügen</button> 
+
+          <span class="small">Alles lokal gespeichert • editierbar • portable.</span> 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function filterEntriesForContext({type, label, id}){ 
+
+    return (store.entries||[]) 
+
+      .filter(e=>e.context_type===type) 
+
+      .filter(e=>!e.deleted_at) 
+
+      .filter(e=>{ 
+
+        // prefer id match if present 
+
+        if(id){ 
+
+          if(e.context_id && e.context_id===id) return true; 
+
+          // legacy entries without context_id fallback to label 
+
+          return (!e.context_id && e.context_label===label); 
+
+        } 
+
+        return e.context_label===label; 
+
+      }) 
+
+      .sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)); 
+
+  } 
+
+ 
+
+  function renderSpiral(ctxType, ctxLabel, ctxId){ 
+
+    const stepTiles = (store.steps||[]).map(s=>` 
+
+      <div class="tile" data-step-id="${esc(s.id)}"> 
+
+        <h2>${esc(s.title)}</h2> 
+
+        <p>${esc(s.prompt||"")}</p> 
+
+        ${s.note?`<div class="note">${esc(s.note)}</div>`:""} 
+
+        ${s.line2?`<div class="note">${esc(s.line2)}</div>`:""} 
+
+      </div> 
+
+    `).join(""); 
+
+ 
+
+    const entries = filterEntriesForContext({type:(ctxType==="state"?"state":"entity"), label:ctxLabel, id:ctxId}); 
+
+    const active = entries.filter(e=>!e.archived_at); 
+
+    const archived = entries.filter(e=>!!e.archived_at); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small"> 
+
+            <span class="badge">${ctxType==="state"?"Zustand":"Knoten"}</span> 
+
+            <span class="badge">${esc(ctxLabel)}</span> 
+
+          </div> 
+
+          <div class="row"> 
+
+            <button id="manageSteps">Schritte verwalten</button> 
+
+            <button id="backPicker">Zurück</button> 
+
+          </div> 
+
+        </div> 
+
+        <div style="height:10px"></div> 
+
+        <div class="grid3" style="grid-template-columns:repeat(4,1fr)">${stepTiles}</div> 
+
+ 
+
+        <div style="height:12px"></div> 
+
+        <div class="panel" style="padding:12px"> 
+
+          <div class="row" style="justify-content:space-between"> 
+
+            <div class="small"><b>Protokolle</b> • Aktiv: ${active.length} • Archiv: ${archived.length}</div> 
+
+            <div class="small">Klick „Bearbeiten“ für Edit/Archiv/Löschen.</div> 
+
+          </div> 
+
+          <div style="height:10px"></div> 
+
+          <div class="list"> 
+
+            ${renderEntryCards(active)} 
+
+            ${archived.length?`<div class="small" style="padding:6px 2px">Archiv</div>${renderEntryCards(archived)}`:""} 
+
+          </div> 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function renderBetween(){ 
+
+    const entries = (store.entries||[]) 
+
+      .filter(e=>e.context_type==="between") 
+
+      .filter(e=>!e.deleted_at) 
+
+      .sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)); 
+
+ 
+
+    const active = entries.filter(e=>!e.archived_at); 
+
+    const archived = entries.filter(e=>!!e.archived_at); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div> 
+
+            <div class="small"><span class="badge">Zwischenraum</span></div> 
+
+            <div class="small">Freies Protokoll ohne Einordnung.</div> 
+
+          </div> 
+
+          <div class="row"> 
+
+            <button id="newBetween">Neues Protokoll</button> 
+
+            <button id="backHome">Zurück</button> 
+
+          </div> 
+
+        </div> 
+
+        <hr/> 
+
+        <div class="panel" style="padding:12px"> 
+
+          <div class="row" style="justify-content:space-between"> 
+
+            <div class="small"><b>Protokolle</b> • Aktiv: ${active.length} • Archiv: ${archived.length}</div> 
+
+          </div> 
+
+          <div style="height:10px"></div> 
+
+          <div class="list"> 
+
+            ${renderEntryCards(active)} 
+
+            ${archived.length?`<div class="small" style="padding:6px 2px">Archiv</div>${renderEntryCards(archived)}`:""} 
+
+          </div> 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function renderHubNotebook(hubId){ 
+
+    const hub = findHubById(hubId); 
+
+    if(!hub) return `<div class="panel"><div class="small">Start-Modul nicht gefunden.</div></div>`; 
+
+ 
+
+    const entries = filterEntriesForContext({type:"hub", label:hub.label, id:hub.id}); 
+
+    const active = entries.filter(e=>!e.archived_at); 
+
+    const archived = entries.filter(e=>!!e.archived_at); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div> 
+
+            <div class="small"> 
+
+              <span class="badge">Start</span> 
+
+              <span class="badge">${esc(hub.label)}</span> 
+
+            </div> 
+
+            <div class="small">${esc(hub.desc||"")}</div> 
+
+          </div> 
+
+          <div class="row"> 
+
+            <button id="newHubEntry">Neues Protokoll</button> 
+
+            <button id="backHome">Zurück</button> 
+
+          </div> 
+
+        </div> 
+
+        <hr/> 
+
+        <div class="panel" style="padding:12px"> 
+
+          <div class="row" style="justify-content:space-between"> 
+
+            <div class="small"><b>Protokolle</b> • Aktiv: ${active.length} • Archiv: ${archived.length}</div> 
+
+          </div> 
+
+          <div style="height:10px"></div> 
+
+          <div class="list"> 
+
+            ${renderEntryCards(active)} 
+
+            ${archived.length?`<div class="small" style="padding:6px 2px">Archiv</div>${renderEntryCards(archived)}`:""} 
+
+          </div> 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function entryMatchesFilters(e){ 
+
+    const life = view.protokolleFilter; 
+
+    if(life==="active" && (e.archived_at||e.deleted_at)) return false; 
+
+    if(life==="archived" && (!e.archived_at||e.deleted_at)) return false; 
+
+    if(life==="deleted" && !e.deleted_at) return false; 
+
+ 
+
+    const ty = view.protokolleType; 
+
+    if(ty!=="all" && e.context_type!==ty) return false; 
+
+ 
+
+    const q = (view.q||"").trim().toLowerCase(); 
+
+    if(q){ 
+
+      const stepName = stepTitleForEntry(e); 
+
+      const hay = [ 
+
+        e.content, 
+
+        e.context_label, 
+
+        e.context_type, 
+
+        stepName, 
+
+        JSON.stringify(e.fields||{}) 
+
+      ].join("\n").toLowerCase(); 
+
+      if(!hay.includes(q)) return false; 
+
+    } 
+
+    return true; 
+
+  } 
+
+ 
+
+  function renderProtokolleGlobal(){ 
+
+    const all = (store.entries||[]).slice().sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)); 
+
+    const filtered = all.filter(entryMatchesFilters); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div> 
+
+            <div class="small"><b>Protokolle</b> • global • lokal</div> 
+
+            <div class="small">Suche/Filter ohne Durchklicken.</div> 
+
+          </div> 
+
+          <button id="backHome">Zurück</button> 
+
+        </div> 
+
+        <hr/> 
+
+        <div class="row"> 
+
+          <input id="q" type="text" placeholder="Suche…" value="${esc(view.q)}" style="min-width:260px"/> 
+
+          <select id="life"> 
+
+            <option value="active" ${view.protokolleFilter==="active"?"selected":""}>Aktiv</option> 
+
+            <option value="archived" ${view.protokolleFilter==="archived"?"selected":""}>Archiv</option> 
+
+            <option value="deleted" ${view.protokolleFilter==="deleted"?"selected":""}>Gelöscht</option> 
+
+            <option value="all" ${view.protokolleFilter==="all"?"selected":""}>Alles</option> 
+
+          </select> 
+
+          <select id="ty"> 
+
+            <option value="all" ${view.protokolleType==="all"?"selected":""}>Alle Typen</option> 
+
+            <option value="state" ${view.protokolleType==="state"?"selected":""}>Zustand</option> 
+
+            <option value="entity" ${view.protokolleType==="entity"?"selected":""}>Knoten</option> 
+
+            <option value="between" ${view.protokolleType==="between"?"selected":""}>Zwischenraum</option> 
+
+            <option value="hub" ${view.protokolleType==="hub"?"selected":""}>Start</option> 
+
+          </select> 
+
+          <span class="small">Treffer: <b>${filtered.length}</b></span> 
+
+        </div> 
+
+        <div style="height:12px"></div> 
+
+        <div class="list"> 
+
+          ${renderEntryCards(filtered, {showGoto:true})} 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  // ---------- Entry fields UI ---------- 
+
+  function renderEntryFieldsForm(fieldsValue){ 
+
+    const defs = listEntryFields(); 
+
+    const values = fieldsValue || {}; 
+
+    const rows = defs.map(f=>{ 
+
+      if(f.type==="checkbox"){ 
+
+        const checked = values[f.id]===true ? "checked" : ""; 
+
+        return ` 
+
+          <div class="fieldrow"> 
+
+            <input id="fld_${esc(f.id)}" type="checkbox" ${checked}/> 
+
+            <label for="fld_${esc(f.id)}">${esc(f.label||f.id)}</label> 
+
+          </div> 
+
+        `; 
+
+      } 
+
+      // default: text 
+
+      const val = (values[f.id] ?? ""); 
+
+      return ` 
+
+        <div class="fieldrow" style="align-items:flex-start"> 
+
+          <div style="min-width:180px"> 
+
+            <label for="fld_${esc(f.id)}">${esc(f.label||f.id)}</label> 
+
+            ${f.note?`<div class="small">${esc(f.note)}</div>`:""} 
+
+          </div> 
+
+          <input id="fld_${esc(f.id)}" type="text" value="${esc(val)}" style="flex:1;min-width:240px"/> 
+
+        </div> 
+
+      `; 
+
+    }).join(""); 
+
+    return `<div class="panel" style="padding:12px"><div class="small"><b>Felder</b></div><div style="height:8px"></div><div class="fieldgrid">${rows || `<div class="small">Keine Felder.</div>`}</div></div>`; 
+
+  } 
+
+ 
+
+  function readEntryFieldsFromModal(){ 
+
+    const defs = listEntryFields(); 
+
+    const out = {}; 
+
+    for(const f of defs){ 
+
+      const el = document.getElementById("fld_"+f.id); 
+
+      if(!el) continue; 
+
+      if(f.type==="checkbox") out[f.id] = !!el.checked; 
+
+      else out[f.id] = (el.value||""); 
+
+    } 
+
+    return out; 
+
+  } 
+
+ 
+
+  // ---------- Editors ---------- 
+
+  function openStepEditor(ctxType, ctxLabel, ctxId, stepId){ 
+
+    const step = stepById(stepId); 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"> 
+
+            <span class="badge">${ctxType==="state"?"Zustand":"Knoten"}</span> 
+
+            <span class="badge">${esc(ctxLabel)}</span> 
+
+            <span class="badge">${esc(step?.title || "")}</span> 
+
+          </div> 
+
+          <div class="small">${esc(step?.prompt || "")}</div> 
+
+          ${step?.note?`<div class="small">${esc(step.note)}</div>`:""} 
+
+          ${step?.line2?`<div class="small">${esc(step.line2)}</div>`:""} 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <textarea id="mText" placeholder="Protokoll…"></textarea> 
+
+      <div style="height:10px"></div> 
+
+      ${renderEntryFieldsForm({})} 
+
+      <div style="height:10px"></div> 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div class="small">Lokal gespeichert. Export/Import/Snapshot über „Daten“.</div> 
+
+        <button id="mSave">Speichern</button> 
+
+      </div> 
+
+    `); 
+
+    $("mClose").onclick = closeModal; 
+
+    $("mSave").onclick = () => { 
+
+      createEntry({ 
+
+        context_type: (ctxType==="state"?"state":"entity"), 
+
+        context_label: ctxLabel, 
+
+        context_id: ctxId || "", 
+
+        spiral_step_id: stepId, 
+
+        spiral_step: step?.title || "", 
+
+        content: $("mText").value, 
+
+        fields: readEntryFieldsFromModal() 
+
+      }); 
+
+      closeModal(); 
+
+      toast("Gespeichert."); 
+
+      render(); 
+
+    }; 
+
+  } 
+
+ 
+
+  function openNewBetween(){ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><span class="badge">Zwischenraum</span></div> 
+
+          <div class="small">Freies Protokoll ohne Einordnung.</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <textarea id="mText" placeholder="Protokoll…"></textarea> 
+
+      <div style="height:10px"></div> 
+
+      ${renderEntryFieldsForm({})} 
+
+      <div style="height:10px"></div> 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div class="small">Lokal gespeichert.</div> 
+
+        <button id="mSave">Speichern</button> 
+
+      </div> 
+
+    `); 
+
+    $("mClose").onclick = closeModal; 
+
+    $("mSave").onclick = () => { 
+
+      createEntry({ 
+
+        context_type:"between", 
+
+        context_label:"", 
+
+        context_id:"", 
+
+        spiral_step_id:"", 
+
+        spiral_step:"", 
+
+        content:$("mText").value, 
+
+        fields: readEntryFieldsFromModal() 
+
+      }); 
+
+      closeModal(); 
+
+      toast("Gespeichert."); 
+
+      render(); 
+
+    }; 
+
+  } 
+
+ 
+
+  function openNewHubEntry(hubId){ 
+
+    const hub = findHubById(hubId); 
+
+    if(!hub) return; 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"> 
+
+            <span class="badge">Start</span> 
+
+            <span class="badge">${esc(hub.label)}</span> 
+
+          </div> 
+
+          <div class="small">${esc(hub.desc||"")}</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <textarea id="mText" placeholder="Protokoll…"></textarea> 
+
+      <div style="height:10px"></div> 
+
+      ${renderEntryFieldsForm({})} 
+
+      <div style="height:10px"></div> 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div class="small">Lokal gespeichert.</div> 
+
+        <button id="mSave">Speichern</button> 
+
+      </div> 
+
+    `); 
+
+    $("mClose").onclick = closeModal; 
+
+    $("mSave").onclick = () => { 
+
+      createEntry({ 
+
+        context_type:"hub", 
+
+        context_label:hub.label, 
+
+        context_id:hub.id, 
+
+        spiral_step_id:"", 
+
+        spiral_step:"", 
+
+        content:$("mText").value, 
+
+        fields: readEntryFieldsFromModal() 
+
+      }); 
+
+      closeModal(); 
+
+      toast("Gespeichert."); 
+
+      render(); 
+
+    }; 
+
+  } 
+
+ 
+
+  function openEditEntry(id){ 
+
+    const e = (store.entries||[]).find(x=>x.id===id); 
+
+    if(!e) return; 
+
+ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small">${entryBadges(e)}</div> 
+
+          <div class="small">erstellt: ${fmt(e.created_at)}${e.updated_at?` • bearbeitet: ${fmt(e.updated_at)}`:""}</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <textarea id="mText">${esc(e.content)}</textarea> 
+
+      <div style="height:10px"></div> 
+
+      ${renderEntryFieldsForm(e.fields || {})} 
+
+      <div style="height:10px"></div> 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div class="small">Status: ${e.deleted_at?"Gelöscht":(e.archived_at?"Archiv":"Aktiv")}</div> 
+
+        <div class="row"> 
+
+          <button id="mArch">${e.archived_at?"Archiv zurück":"Archivieren"}</button> 
+
+          <button class="danger" id="mDel">${e.deleted_at?"Wiederherstellen":"Löschen"}</button> 
+
+          <button id="mSave">Speichern</button> 
+
+        </div> 
+
+      </div> 
+
+      <div style="height:10px"></div> 
+
+      <div class="panel" style="padding:12px"> 
+
+        <div class="small"><b>Meta</b></div> 
+
+        <div style="height:8px"></div> 
+
+        <div class="kv"> 
+
+          <div class="k">Kontext</div><div class="v">${esc(e.context_type)} / ${esc(e.context_label||"")}</div> 
+
+          <div class="k">Schritt</div><div class="v">${esc(stepTitleForEntry(e))}</div> 
+
+          <div class="k">ID</div><div class="v">${esc(e.id)}</div> 
+
+        </div> 
+
+      </div> 
+
+    `); 
+
+ 
+
+    $("mClose").onclick = closeModal; 
+
+    $("mSave").onclick = () => { 
+
+      updateEntry(id, { 
+
+        content:$("mText").value, 
+
+        fields: readEntryFieldsFromModal() 
+
+      }); 
+
+      closeModal(); 
+
+      toast("Gespeichert."); 
+
+      render(); 
+
+    }; 
+
+    $("mArch").onclick = () => { toggleArchive(id); closeModal(); toast("Archiv-Status geändert."); render(); }; 
+
+    $("mDel").onclick = () => { 
+
+      const cur = (store.entries||[]).find(x=>x.id===id); 
+
+      if(cur && !cur.deleted_at){ 
+
+        const ok = confirm("Wirklich löschen? (soft, wiederherstellbar)"); 
+
+        if(!ok) return; 
+
+      } 
+
+      softDelete(id); 
+
+      closeModal(); 
+
+      toast("Status geändert."); 
+
+      render(); 
+
+    }; 
+
+  } 
+
+ 
+
+  function gotoContext(id){ 
+
+    const e = (store.entries||[]).find(x=>x.id===id); 
+
+    if(!e) return; 
+
+    if(e.context_type==="state") setView("spiral", {ctxType:"state", ctxLabel:e.context_label, ctxId:e.context_id||null}); 
+
+    else if(e.context_type==="entity") setView("spiral", {ctxType:"entity", ctxLabel:e.context_label, ctxId:e.context_id||null}); 
+
+    else if(e.context_type==="between") setView("between"); 
+
+    else if(e.context_type==="hub") setView("hub", {hubId: e.context_id || null}); 
+
+    else setView("home"); 
+
+  } 
+
+ 
+
+  // ---------- Config / Manage ---------- 
+
+  function openConfigModal(){ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>Konfiguration</b></div> 
+
+          <div class="small">Start • Zustände • Knoten • Schritte • Protokoll-Felder</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="row"> 
+
+        <button id="cfgHubs">Start verwalten</button> 
+
+        <button id="cfgStates">Zustände verwalten</button> 
+
+        <button id="cfgNodes">Knoten verwalten</button> 
+
+        <button id="cfgSteps">Schritte verwalten</button> 
+
+        <button id="cfgFields">Protokoll-Felder verwalten</button> 
+
+      </div> 
+
+      <div style="height:10px"></div> 
+
+      <div class="small">Alles lokal. Export/Import/Snapshot über „Daten“.</div> 
+
+    `); 
+
+    $("mClose").onclick = closeModal; 
+
+    $("cfgHubs").onclick = ()=>openManageHubs(); 
+
+    $("cfgStates").onclick = ()=>openManageList("state"); 
+
+    $("cfgNodes").onclick  = ()=>openManageList("node"); 
+
+    $("cfgSteps").onclick  = ()=>openManageSteps(); 
+
+    $("cfgFields").onclick = ()=>openManageEntryFields(); 
+
+  } 
+
+ 
+
+  function openManageHubs(){ 
+
+    const arr = store.hubs || []; 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>Start verwalten</b></div> 
+
+          <div class="small">Label • Beschreibung • Typ • Sortierung • (soft) entfernen</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="tablelike" id="hlist"> 
+
+        ${arr.map(h=>{ 
+
+          const isDel = !!h.deleted_at; 
+
+          return ` 
+
+            <div class="rowitem" data-id="${esc(h.id)}"> 
+
+              <div class="head"> 
+
+                <div style="flex:1;min-width:240px"> 
+
+                  <b>${esc(h.label||"")}</b> 
+
+                  <div class="hint"> 
+
+                    ${esc(h.desc||"")} 
+
+                    <div class="small">Typ: ${esc(h.kind||"")}${isDel?` • <span class="badge">entfernt</span>`:""}</div> 
+
+                  </div> 
+
+                </div> 
+
+                <div class="ctrl"> 
+
+                  <button data-act="up">↑</button> 
+
+                  <button data-act="down">↓</button> 
+
+                  <button data-act="edit">Bearbeiten</button> 
+
+                  <button class="danger" data-act="toggleDel">${isDel?"Wiederherstellen":"Entfernen"}</button> 
+
+                </div> 
+
+              </div> 
+
+            </div> 
+
+          `; 
+
+        }).join("")} 
+
+      </div> 
+
+      <div style="height:12px"></div> 
+
+      <div class="panel" style="padding:12px"> 
+
+        <div class="small"><b>Neu</b></div> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row"> 
+
+          <input id="hubNewLabel" type="text" placeholder="Label" style="min-width:220px"/> 
+
+          <select id="hubNewKind"> 
+
+            <option value="notebook">Notiz/Protokolle</option> 
+
+            <option value="between">Zwischenraum</option> 
+
+            <option value="state">Zustand</option> 
+
+            <option value="entity">Knoten</option> 
+
+          </select> 
+
+        </div> 
+
+        <div style="height:8px"></div> 
+
+        <textarea id="hubNewDesc" placeholder="Beschreibung…" style="min-height:90px"></textarea> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small">Hinweis: „Notiz/Protokolle“ erzeugt ein eigenes Protokoll-Modul.</div> 
+
+          <button id="hubNewAdd">Hinzufügen</button> 
+
+        </div> 
+
+      </div> 
+
+    `); 
+
+ 
+
+    $("mClose").onclick = closeModal; 
+
+ 
+
+    $("hubNewAdd").onclick = ()=>{ 
+
+      const ok = addHub($("hubNewLabel").value, $("hubNewDesc").value, $("hubNewKind").value); 
+
+      if(!ok){ toast("Nicht hinzugefügt."); return; } 
+
+      toast("Hinzugefügt."); 
+
+      openManageHubs(); 
+
+      render(); 
+
+    }; 
+
+ 
+
+    $("hlist").querySelectorAll(".rowitem").forEach(row=>{ 
+
+      const id = row.getAttribute("data-id"); 
+
+      row.querySelectorAll("button[data-act]").forEach(btn=>{ 
+
+        btn.onclick = ()=>{ 
+
+          const act = btn.getAttribute("data-act"); 
+
+          const hub = arr.find(x=>x.id===id); 
+
+          if(!hub) return; 
+
+ 
+
+          if(act==="up"){ moveItem(arr, id, -1); saveStore(); openManageHubs(); render(); return; } 
+
+          if(act==="down"){ moveItem(arr, id, +1); saveStore(); openManageHubs(); render(); return; } 
+
+ 
+
+          if(act==="toggleDel"){ 
+
+            if(!hub.deleted_at){ 
+
+              const ok = confirm("Entfernen? (soft)"); 
+
+              if(!ok) return; 
+
+              hub.deleted_at = nowISO(); 
+
+            }else{ 
+
+              hub.deleted_at = null; 
+
+            } 
+
+            saveStore(); 
+
+            openManageHubs(); 
+
+            render(); 
+
+            return; 
+
+          } 
+
+ 
+
+          if(act==="edit"){ 
+
+            openModal(` 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div> 
+
+                  <div class="small"><b>Start-Button bearbeiten</b></div> 
+
+                  <div class="small">Label + Beschreibung + Typ</div> 
+
+                </div> 
+
+                <button id="mClose">Schließen</button> 
+
+              </div> 
+
+              <hr/> 
+
+              <div class="row"> 
+
+                <input id="hubLabel" type="text" value="${esc(hub.label||"")}" style="min-width:260px"/> 
+
+                <select id="hubKind"> 
+
+                  <option value="notebook" ${hub.kind==="notebook"?"selected":""}>Notiz/Protokolle</option> 
+
+                  <option value="between" ${hub.kind==="between"?"selected":""}>Zwischenraum</option> 
+
+                  <option value="state" ${hub.kind==="state"?"selected":""}>Zustand</option> 
+
+                  <option value="entity" ${hub.kind==="entity"?"selected":""}>Knoten</option> 
+
+                </select> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <textarea id="hubDesc" placeholder="Beschreibung…" style="min-height:90px">${esc(hub.desc||"")}</textarea> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row"> 
+
+                <input id="hubLine2" type="text" placeholder="Zusatzzeile (optional)" value="${esc(hub.line2||"")}" style="min-width:260px"/> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div class="small">Hinweis: Für alte Protokolle bleibt das gespeicherte Label bestehen.</div> 
+
+                <button id="hubSave">Speichern</button> 
+
+              </div> 
+
+            `); 
+
+            $("mClose").onclick = ()=>openManageHubs(); 
+
+            $("hubSave").onclick = ()=>{ 
+
+              const nl = ($("hubLabel").value||"").trim(); 
+
+              const nd = $("hubDesc").value||""; 
+
+              const nk = ($("hubKind").value||"notebook").trim(); 
+
+              const n2 = ($("hubLine2").value||"").trim(); 
+
+              if(!nl){ toast("Label leer."); return; } 
+
+              const clash = arr.find(x=>x.id!==id && !x.deleted_at && (x.label||"").toLowerCase()===nl.toLowerCase()); 
+
+              if(clash){ toast("Label existiert bereits."); return; } 
+
+              hub.label = nl; 
+
+              hub.desc = nd; 
+
+              hub.kind = nk; 
+
+              hub.line2 = n2; 
+
+              saveStore(); 
+
+              toast("Gespeichert."); 
+
+              openManageHubs(); 
+
+              render(); 
+
+            }; 
+
+          } 
+
+        }; 
+
+      }); 
+
+    }); 
+
+  } 
+
+ 
+
+  function renderManageRow(kind, x){ 
+
+    const isState = kind==="state"; 
+
+    const isDeleted = !!x.deleted_at; 
+
+    return ` 
+
+      <div class="rowitem" data-id="${esc(x.id)}"> 
+
+        <div class="head"> 
+
+          <div style="flex:1;min-width:240px"> 
+
+            <b>${esc(x.label)}</b> 
+
+            <div class="hint"> 
+
+              ${esc(x.hint||"")} 
+
+              ${x.line2?`<div class="small">${esc(x.line2)}</div>`:""} 
+
+              ${isDeleted?` • <span class="badge">entfernt</span>`:""} 
+
+            </div> 
+
+          </div> 
+
+          <div class="ctrl"> 
+
+            <button data-act="up">↑</button> 
+
+            <button data-act="down">↓</button> 
+
+            <button data-act="edit">Bearbeiten</button> 
+
+            <button class="danger" data-act="toggleDel">${isDeleted?"Wiederherstellen":"Entfernen"}</button> 
+
+          </div> 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function wireManageList(kind){ 
+
+    const isState = kind==="state"; 
+
+    const arr = isState ? store.states : store.nodes; 
+
+    $("mlist").querySelectorAll(".rowitem").forEach(row=>{ 
+
+      const id = row.getAttribute("data-id"); 
+
+      row.querySelectorAll("button[data-act]").forEach(btn=>{ 
+
+        btn.onclick = ()=>{ 
+
+          const act = btn.getAttribute("data-act"); 
+
+          if(act==="up"){ moveItem(arr, id, -1); saveStore(); openManageList(kind); return; } 
+
+          if(act==="down"){ moveItem(arr, id, +1); saveStore(); openManageList(kind); return; } 
+
+          if(act==="toggleDel"){ 
+
+            const it = arr.find(z=>z.id===id); 
+
+            if(!it) return; 
+
+            if(!it.deleted_at){ 
+
+              const ok = confirm("Entfernen? (soft: alte Protokolle bleiben lesbar)"); 
+
+              if(!ok) return; 
+
+              it.deleted_at = nowISO(); 
+
+            }else{ 
+
+              it.deleted_at = null; 
+
+            } 
+
+            saveStore(); 
+
+            openManageList(kind); 
+
+            render(); 
+
+            return; 
+
+          } 
+
+          if(act==="edit"){ 
+
+            const it0 = arr.find(z=>z.id===id); 
+
+            openModal(` 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div> 
+
+                  <div class="small"><b>${isState?"Zustand":"Knoten"} bearbeiten</b></div> 
+
+                  <div class="small">Name + Hint + Zusatzzeile • tieferes Profil über States/Nodes+</div> 
+
+                </div> 
+
+                <button id="mClose">Schließen</button> 
+
+              </div> 
+
+              <hr/> 
+
+              <div class="row"> 
+
+                <input id="eLabel" type="text" value="${esc(it0?.label||"")}" style="min-width:260px"/> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <textarea id="eHint" placeholder="Hint / kurze Spezifikation…">${esc(it0?.hint||"")}</textarea> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row"> 
+
+                <input id="eLine2" type="text" placeholder="Zusatzzeile (optional)" value="${esc(it0?.line2||"")}" style="min-width:260px"/> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div class="small">Änderung wirkt auf Auswahlchips (alte Einträge bleiben lesbar).</div> 
+
+                <button id="eSave">Speichern</button> 
+
+              </div> 
+
+            `); 
+
+            $("mClose").onclick = ()=>openManageList(kind); 
+
+            $("eSave").onclick = ()=>{ 
+
+              const it = arr.find(z=>z.id===id); 
+
+              if(!it) return; 
+
+              const newLabel = ($("eLabel").value||"").trim(); 
+
+              const newHint  = $("eHint").value||""; 
+
+              const newLine2 = ($("eLine2").value||"").trim(); 
+
+              if(!newLabel){ toast("Name leer."); return; } 
+
+              const clash = arr.find(z=>z.id!==id && !z.deleted_at && (z.label||"").toLowerCase()===newLabel.toLowerCase()); 
+
+              if(clash){ toast("Name existiert bereits."); return; } 
+
+              it.label = newLabel; 
+
+              it.hint = newHint; 
+
+              it.line2 = newLine2; 
+
+              saveStore(); 
+
+              toast("Gespeichert."); 
+
+              openManageList(kind); 
+
+              render(); 
+
+            }; 
+
+          } 
+
+        }; 
+
+      }); 
+
+    }); 
+
+  } 
+
+ 
+
+  function openManageList(kind){ 
+
+    const isState = kind==="state"; 
+
+    const arr = isState ? store.states : store.nodes; 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>${isState?"Zustände":"Knoten"} verwalten</b></div> 
+
+          <div class="small">Umbenennen • Hint • Zusatzzeile • Sortieren • (soft) entfernen</div> 
+
+        </div> 
+
+        <div class="row"> 
+
+          <button id="mClose">Schließen</button> 
+
+        </div> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="tablelike" id="mlist"> 
+
+        ${arr.map(x=>renderManageRow(kind, x)).join("")} 
+
+      </div> 
+
+      <div style="height:12px"></div> 
+
+      <div class="row"> 
+
+        <input id="newItemLabel" type="text" placeholder="${isState?"Neuen Zustand hinzufügen":"Neuen Knoten hinzufügen"}" style="min-width:260px"/> 
+
+        <button id="newItemAdd">Hinzufügen</button> 
+
+      </div> 
+
+    `); 
+
+ 
+
+    $("mClose").onclick = closeModal; 
+
+ 
+
+    $("newItemAdd").onclick = ()=>{ 
+
+      const v = $("newItemLabel").value; 
+
+      const ok = isState ? addState(v) : addNode(v); 
+
+      $("newItemLabel").value=""; 
+
+      toast(ok?"Hinzugefügt.":"Nicht hinzugefügt."); 
+
+      openManageList(kind); 
+
+      render(); 
+
+    }; 
+
+ 
+
+    wireManageList(kind); 
+
+  } 
+
+ 
+
+  function openManageSteps(){ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>Schritte verwalten</b></div> 
+
+          <div class="small">Titel • Prompt • Note • Zusatzzeile • Sortierung • Neu hinzufügen</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="tablelike" id="slist"> 
+
+        ${(store.steps||[]).map(s=>` 
+
+          <div class="rowitem" data-id="${esc(s.id)}"> 
+
+            <div class="head"> 
+
+              <div style="flex:1;min-width:240px"> 
+
+                <b>${esc(s.title)}</b> 
+
+                <div class="hint"> 
+
+                  ${esc(s.prompt||"")} 
+
+                  ${s.note?`<div class="small">${esc(s.note)}</div>`:""} 
+
+                  ${s.line2?`<div class="small">${esc(s.line2)}</div>`:""} 
+
+                </div> 
+
+              </div> 
+
+              <div class="ctrl"> 
+
+                <button data-act="up">↑</button> 
+
+                <button data-act="down">↓</button> 
+
+                <button data-act="edit">Bearbeiten</button> 
+
+              </div> 
+
+            </div> 
+
+          </div> 
+
+        `).join("")} 
+
+      </div> 
+
+ 
+
+      <div style="height:12px"></div> 
+
+      <div class="panel" style="padding:12px"> 
+
+        <div class="small"><b>Neuer Schritt</b></div> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row"> 
+
+          <input id="stNewTitle" type="text" placeholder="Titel" style="min-width:220px"/> 
+
+          <input id="stNewId" type="text" placeholder="ID (optional)" style="min-width:220px"/> 
+
+        </div> 
+
+        <div style="height:8px"></div> 
+
+        <textarea id="stNewPrompt" placeholder="Prompt…" style="min-height:90px"></textarea> 
+
+        <div style="height:8px"></div> 
+
+        <textarea id="stNewNote" placeholder="Note / Synonyme (eine Zeile)…" style="min-height:70px"></textarea> 
+
+        <div style="height:8px"></div> 
+
+        <input id="stNewLine2" type="text" placeholder="Zusatzzeile (optional)" style="min-width:260px"/> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small">Wenn ID leer: wird automatisch generiert. IDs bleiben stabil.</div> 
+
+          <button id="stNewAdd">Hinzufügen</button> 
+
+        </div> 
+
+      </div> 
+
+    `); 
+
+    $("mClose").onclick = closeModal; 
+
+ 
+
+    $("stNewAdd").onclick = ()=>{ 
+
+      const title = ($("stNewTitle").value||"").trim(); 
+
+      const id0 = ($("stNewId").value||"").trim(); 
+
+      const prompt = $("stNewPrompt").value||""; 
+
+      const note = ($("stNewNote").value||"").trim(); 
+
+      const line2 = ($("stNewLine2").value||"").trim(); 
+
+      if(!title){ toast("Titel leer."); return; } 
+
+      const id = id0 || ("step_"+uid().replace(/[^a-z0-9_]/gi,"").slice(0,12)); 
+
+      const clash = (store.steps||[]).find(s=>s.id===id); 
+
+      if(clash){ toast("ID existiert bereits."); return; } 
+
+      store.steps.push({id, title, prompt, note, line2}); 
+
+      saveStore(); 
+
+      toast("Hinzugefügt."); 
+
+      openManageSteps(); 
+
+      render(); 
+
+    }; 
+
+ 
+
+    $("slist").querySelectorAll(".rowitem").forEach(row=>{ 
+
+      const id = row.getAttribute("data-id"); 
+
+      row.querySelectorAll("button[data-act]").forEach(btn=>{ 
+
+        btn.onclick = ()=>{ 
+
+          const act = btn.getAttribute("data-act"); 
+
+          if(act==="up"){ moveItem(store.steps, id, -1); saveStore(); openManageSteps(); render(); return; } 
+
+          if(act==="down"){ moveItem(store.steps, id, +1); saveStore(); openManageSteps(); render(); return; } 
+
+          if(act==="edit"){ 
+
+            const s = store.steps.find(x=>x.id===id); 
+
+            if(!s) return; 
+
+            openModal(` 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div> 
+
+                  <div class="small"><b>Schritt bearbeiten</b></div> 
+
+                  <div class="small">Titel + Prompt + Note + Zusatzzeile</div> 
+
+                </div> 
+
+                <button id="mClose">Schließen</button> 
+
+              </div> 
+
+              <hr/> 
+
+              <div class="row"> 
+
+                <input id="stTitle" type="text" value="${esc(s.title)}" style="min-width:260px"/> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <textarea id="stPrompt" placeholder="Prompt…">${esc(s.prompt||"")}</textarea> 
+
+              <div style="height:10px"></div> 
+
+              <textarea id="stNote" placeholder="Note / Synonyme (eine Zeile)…" style="min-height:90px">${esc(s.note||"")}</textarea> 
+
+              <div style="height:10px"></div> 
+
+              <input id="stLine2" type="text" placeholder="Zusatzzeile (optional)" value="${esc(s.line2||"")}" style="min-width:260px"/> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div class="small">„Formbeschreibung“-Synonyme gehören in Note.</div> 
+
+                <button id="stSave">Speichern</button> 
+
+              </div> 
+
+            `); 
+
+            $("mClose").onclick = ()=>openManageSteps(); 
+
+            $("stSave").onclick = ()=>{ 
+
+              const nt = ($("stTitle").value||"").trim(); 
+
+              const np = $("stPrompt").value||""; 
+
+              const nn = ($("stNote").value||"").trim(); 
+
+              const n2 = ($("stLine2").value||"").trim(); 
+
+              if(!nt){ toast("Titel leer."); return; } 
+
+              s.title = nt; 
+
+              s.prompt = np; 
+
+              s.note = nn; 
+
+              s.line2 = n2; 
+
+              saveStore(); 
+
+              toast("Gespeichert."); 
+
+              openManageSteps(); 
+
+              render(); 
+
+            }; 
+
+          } 
+
+        }; 
+
+      }); 
+
+    }); 
+
+  } 
+
+ 
+
+  function openManageEntryFields(){ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>Protokoll-Felder verwalten</b></div> 
+
+          <div class="small">Text/Checkbox • Sortierung • Bearbeiten • Neu hinzufügen</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="tablelike" id="flist"> 
+
+        ${(store.entry_fields||[]).map(f=>` 
+
+          <div class="rowitem" data-id="${esc(f.id)}"> 
+
+            <div class="head"> 
+
+              <div style="flex:1;min-width:240px"> 
+
+                <b>${esc(f.label||f.id)}</b> 
+
+                <div class="hint"> 
+
+                  <div class="small">Typ: ${esc(f.type||"text")}</div> 
+
+                  ${f.note?`<div class="small">${esc(f.note)}</div>`:""} 
+
+                  <div class="small">ID: ${esc(f.id)}</div> 
+
+                </div> 
+
+              </div> 
+
+              <div class="ctrl"> 
+
+                <button data-act="up">↑</button> 
+
+                <button data-act="down">↓</button> 
+
+                <button data-act="edit">Bearbeiten</button> 
+
+              </div> 
+
+            </div> 
+
+          </div> 
+
+        `).join("")} 
+
+      </div> 
+
+ 
+
+      <div style="height:12px"></div> 
+
+      <div class="panel" style="padding:12px"> 
+
+        <div class="small"><b>Neues Feld</b></div> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row"> 
+
+          <input id="fNewLabel" type="text" placeholder="Label" style="min-width:240px"/> 
+
+          <select id="fNewType"> 
+
+            <option value="text">Text</option> 
+
+            <option value="checkbox">Checkbox</option> 
+
+          </select> 
+
+          <input id="fNewId" type="text" placeholder="ID (optional)" style="min-width:220px"/> 
+
+        </div> 
+
+        <div style="height:8px"></div> 
+
+        <input id="fNewNote" type="text" placeholder="Note (optional)" style="min-width:260px"/> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small">IDs sollten stabil bleiben.</div> 
+
+          <button id="fNewAdd">Hinzufügen</button> 
+
+        </div> 
+
+      </div> 
+
+    `); 
+
+ 
+
+    $("mClose").onclick = closeModal; 
+
+ 
+
+    $("fNewAdd").onclick = ()=>{ 
+
+      const label = ($("fNewLabel").value||"").trim(); 
+
+      const type = ($("fNewType").value||"text").trim(); 
+
+      const id0 = ($("fNewId").value||"").trim(); 
+
+      const note = ($("fNewNote").value||"").trim(); 
+
+      if(!label){ toast("Label leer."); return; } 
+
+      const id = id0 || ("field_"+uid().replace(/[^a-z0-9_]/gi,"").slice(0,12)); 
+
+      const clash = (store.entry_fields||[]).find(x=>x.id===id); 
+
+      if(clash){ toast("ID existiert bereits."); return; } 
+
+      store.entry_fields.push({id, label, type, note}); 
+
+      saveStore(); 
+
+      toast("Hinzugefügt."); 
+
+      openManageEntryFields(); 
+
+      render(); 
+
+    }; 
+
+ 
+
+    $("flist").querySelectorAll(".rowitem").forEach(row=>{ 
+
+      const id = row.getAttribute("data-id"); 
+
+      row.querySelectorAll("button[data-act]").forEach(btn=>{ 
+
+        btn.onclick = ()=>{ 
+
+          const act = btn.getAttribute("data-act"); 
+
+          if(act==="up"){ moveItem(store.entry_fields, id, -1); saveStore(); openManageEntryFields(); render(); return; } 
+
+          if(act==="down"){ moveItem(store.entry_fields, id, +1); saveStore(); openManageEntryFields(); render(); return; } 
+
+          if(act==="edit"){ 
+
+            const f = (store.entry_fields||[]).find(x=>x.id===id); 
+
+            if(!f) return; 
+
+            openModal(` 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div> 
+
+                  <div class="small"><b>Feld bearbeiten</b></div> 
+
+                  <div class="small">Label + Typ + Note (ID bleibt fix)</div> 
+
+                </div> 
+
+                <button id="mClose">Schließen</button> 
+
+              </div> 
+
+              <hr/> 
+
+              <div class="row"> 
+
+                <input id="fLabel" type="text" value="${esc(f.label||"")}" style="min-width:260px"/> 
+
+                <select id="fType"> 
+
+                  <option value="text" ${f.type==="text"?"selected":""}>Text</option> 
+
+                  <option value="checkbox" ${f.type==="checkbox"?"selected":""}>Checkbox</option> 
+
+                </select> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <input id="fNote" type="text" value="${esc(f.note||"")}" placeholder="Note (optional)" style="min-width:260px"/> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div class="small">ID: <b>${esc(f.id)}</b></div> 
+
+                <button id="fSave">Speichern</button> 
+
+              </div> 
+
+            `); 
+
+            $("mClose").onclick = ()=>openManageEntryFields(); 
+
+            $("fSave").onclick = ()=>{ 
+
+              const nl = ($("fLabel").value||"").trim(); 
+
+              const nt = ($("fType").value||"text").trim(); 
+
+              const nn = ($("fNote").value||"").trim(); 
+
+              if(!nl){ toast("Label leer."); return; } 
+
+              f.label = nl; 
+
+              f.type = nt; 
+
+              f.note = nn; 
+
+              saveStore(); 
+
+              toast("Gespeichert."); 
+
+              openManageEntryFields(); 
+
+              render(); 
+
+            }; 
+
+          } 
+
+        }; 
+
+      }); 
+
+    }); 
+
+  } 
+
+ 
+
+  // ---------- Data (Export/Import/Snapshot) ---------- 
+
+  function openDataModal(){ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>Daten</b></div> 
+
+          <div class="small">Export/Import + Snapshot (portable HTML)</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="row"> 
+
+        <button id="mExport">Export (JSON)</button> 
+
+        <button id="mExportSnap">Export (HTML Snapshot)</button> 
+
+        <input id="mFile" type="file" accept=".json,application/json"/> 
+
+      </div> 
+
+      <div style="height:10px"></div> 
+
+      <div class="row"> 
+
+        <button id="mImportMerge">Import: Zusammenführen</button> 
+
+        <button class="danger" id="mImportReplace">Import: Ersetzen</button> 
+
+      </div> 
+
+      <div style="height:10px"></div> 
+
+      <div class="small">„HTML Snapshot“ bettet alle Daten Base64 ein.</div> 
+
+    `); 
+
+ 
+
+    $("mClose").onclick = closeModal; 
+
+ 
+
+    $("mExport").onclick = () => { 
+
+      const payload = {schema_version:3,exported_at:nowISO(),data:store}; 
+
+      const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"}); 
+
+      const a = document.createElement("a"); 
+
+      const dt = new Date(); 
+
+      const pad = (n)=>String(n).padStart(2,"0"); 
+
+      a.download = `spiral-flow-space-export-${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}-${pad(dt.getHours())}${pad(dt.getMinutes())}.json`; 
+
+      a.href = URL.createObjectURL(blob); 
+
+      a.click(); 
+
+      toast("Export erstellt."); 
+
+    }; 
+
+ 
+
+    $("mExportSnap").onclick = () => exportHTMLSnapshotBase64(); 
+
+ 
+
+    let importObj = null; 
+
+    $("mFile").onchange = async () => { 
+
+      const f = $("mFile").files?.[0]; 
+
+      if(!f) return; 
+
+      try{ 
+
+        importObj = JSON.parse(await f.text()); 
+
+        toast("Importdatei geladen."); 
+
+      }catch{ 
+
+        importObj = null; 
+
+        toast("Importdatei ungültig."); 
+
+      } 
+
+    }; 
+
+ 
+
+    $("mImportMerge").onclick = () => doImport("merge", importObj); 
+
+    $("mImportReplace").onclick = () => doImport("replace", importObj); 
+
+  } 
+
+ 
+
+  function doImport(mode, obj){ 
+
+    const data0 = normalizeImport(obj); 
+
+    if(!data0 || !Array.isArray(data0.entries)){ toast("Schema nicht erkannt."); return; } 
+
+    const data = ensureDefaults(data0); 
+
+ 
+
+    if(mode==="replace"){ 
+
+      const ok = confirm("Ersetzen? Lokale Daten (v3) werden überschrieben."); 
+
+      if(!ok) return; 
+
+      store = data; 
+
+      saveStore(); 
+
+      closeModal(); 
+
+      toast("Import: ersetzt."); 
+
+      render(); 
+
+      return; 
+
+    } 
+
+ 
+
+    const existingIds = new Set((store.entries||[]).map(e=>e.id)); 
+
+    const mergedEntries = (store.entries||[]).slice(); 
+
+    for(const e of data.entries){ 
+
+      if(!existingIds.has(e.id)) mergedEntries.push(e); 
+
+    } 
+
+ 
+
+    function mergeBy(base, add, keyFn){ 
+
+      const m = new Map((base||[]).map(x=>[keyFn(x), x])); 
+
+      for(const x of (add||[])){ 
+
+        const k = keyFn(x); 
+
+        if(k && !m.has(k)) m.set(k, x); 
+
+      } 
+
+      return Array.from(m.values()); 
+
+    } 
+
+ 
+
+    store.hubs = mergeBy(store.hubs, data.hubs, x=>x.id); 
+
+    store.states = mergeBy(store.states, data.states, x=>(x.label||"").toLowerCase()); 
+
+    store.nodes  = mergeBy(store.nodes,  data.nodes,  x=>(x.label||"").toLowerCase()); 
+
+    store.steps  = mergeBy(store.steps,  data.steps,  x=>x.id); 
+
+    store.entry_fields = mergeBy(store.entry_fields, data.entry_fields, x=>x.id); 
+
+    store.entries = mergedEntries; 
+
+ 
+
+    saveStore(); 
+
+    closeModal(); 
+
+    toast("Import: zusammengeführt."); 
+
+    render(); 
+
+  } 
+
+ 
+
+  
+  /* ===== PATCHES (v1) ===== */
+
+  function postLoadFixes(){
+    try{
+      store.entry_fields = store.entry_fields || [];
+      // normalize entry_fields
+      for(const f of store.entry_fields){
+        if(f.deleted_at === undefined) f.deleted_at = null;
+        if(f.id === "field_exchange" && typeof f.label === "string" && /\?\s*$/.test(f.label)) f.label = "offen für Austausch";
+      }
+      // add default checkbox: suche lösung
+      if(!store.entry_fields.some(f=>f.id==="field_search_solution")){
+        store.entry_fields.push({id:"field_search_solution", label:"suche lösung", type:"checkbox", deleted_at:null});
+      }
+
+      // normalize deleted_at across common lists
+      for(const k of ["states","entities","hubs","steps","entries","hub_entries"]){
+        const arr = store[k] || [];
+        for(const it of arr){
+          if(it && it.deleted_at === undefined) it.deleted_at = null;
+        }
+      }
+
+      // view extensions for filters
+      if(view.ctx === undefined) view.ctx = "";
+      if(view.cbf === undefined) view.cbf = "";
+
+      saveStore();
+    }catch(e){
+      console.error(e);
+    }
+  }
+
+  function injectPatchStyle(){
+    const css = `
+      #homeSnapshot{display:none !important;}
+      .badgeCheck{border-color:#2f6b3e;background:rgba(47,107,62,.22);color:#c9f4d2}
+      .entryMore{color:var(--acc);text-decoration:none;font-weight:600}
+      .entryMore:hover{text-decoration:underline}
+      .metaLine{margin-top:6px;font-size:12px;opacity:.9}
+    `;
+    const st = document.createElement("style");
+    st.textContent = css;
+    document.head.appendChild(st);
+  }
+
+  // override: listEntryFields supports soft-delete
+  function listEntryFields(opts={}){
+    const inc = !!opts.includeDeleted;
+    const arr = (store.entry_fields||[]);
+    return inc ? arr.slice() : arr.filter(f=>!f.deleted_at);
+  }
+
+  function cleanFieldLabel(label){
+    const s = (label||"").toString().trim();
+    return s.replace(/\?\s*$/,"").trim();
+  }
+
+  function entryBadges(e){
+    const defs = listEntryFields({includeDeleted:true});
+    const values = e.fields || {};
+    const badges = [];
+    for(const fid of Object.keys(values)){
+      const v = values[fid];
+      if(!v) continue;
+      const def = defs.find(d=>d.id===fid);
+      const label = cleanFieldLabel(def ? def.label : fid);
+      const type = def ? def.type : "checkbox";
+      if(type === "checkbox") badges.push(`<span class="badge badgeCheck">${esc(label)}</span>`);
+      else badges.push(`<span class="badge">${esc(label)}: ${esc(String(v))}</span>`);
+    }
+    return badges.join("");
+  }
+
+  function entryTextFieldPreview(e, maxPerField=60){
+    const defs = listEntryFields({includeDeleted:true}).filter(f=>f.type==="text");
+    const values = e.fields || {};
+    const parts = [];
+    for(const f of defs){
+      const v = (values[f.id]||"").toString().trim();
+      if(!v) continue;
+      const vv = v.replace(/\s+/g," ");
+      const cut = vv.length>maxPerField ? (vv.slice(0,maxPerField)+"…") : vv;
+      parts.push(`<span><b>${esc(cleanFieldLabel(f.label))}:</b> ${esc(cut)}</span>`);
+    }
+    return parts.length ? `<div class="metaLine">${parts.join(" • ")}</div>` : "";
+  }
+
+  // override: entries list shows text-field preview + …mehr
+  function renderEntryCards(entries, showGoto=true){
+    const sorted = entries.slice().sort((a,b)=>(b.ts||0)-(a.ts||0));
+    return sorted.map(e=>{
+      const when = fmtDate(e.ts);
+      const step = stepTitleForEntry(e);
+      const ctx  = e.context_label ? esc(e.context_label) : "";
+      const content = (e.content||"").trim().replace(/\s+/g," ");
+      const truncated = content.length>180;
+      const snippet = esc(truncated ? (content.slice(0,180)+"…") : content);
+      const more = truncated ? ` <a class="entryMore" href="#" data-act="edit" data-entry="${e.id}">…mehr</a>` : "";
+      const meta = entryTextFieldPreview(e);
+      const badges = entryBadges(e);
+
+      const gotoBtn = showGoto ? `<button class="btn" data-act="goto" data-entry="${e.id}">hin</button>` : "";
+      const editBtn = `<button class="btn" data-act="edit" data-entry="${e.id}">edit</button>`;
+      const archBtn = `<button class="btn" data-act="arch" data-entry="${e.id}">${e.archived_at?"unarch":"arch"}</button>`;
+      const delBtn  = `<button class="btn danger" data-act="del" data-entry="${e.id}">${e.deleted_at?"restore":"del"}</button>`;
+
+      return `
+        <div class="card entryCard">
+          <div class="row">
+            <div>
+              <div><b>${esc(step)}</b> <span class="small">· ${when}</span></div>
+              <div class="small">${ctx}</div>
+              <div class="entryText">${snippet}${more}</div>
+              ${meta}
+              <div class="badges">${badges}</div>
+            </div>
+            <div class="rightcol">
+              ${gotoBtn}${editBtn}${archBtn}${delBtn}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  // override: filters support ctx label + checkbox field
+  function entryMatchesFilters(e){
+    const q = (view.q||"").toLowerCase().trim();
+    const type = view.life || "all";
+    const status = view.ty || "active";
+    const ctx = (view.ctx||"").toString();
+    const cbf = (view.cbf||"").toString();
+
+    if(type !== "all" && e.context_type !== type) return false;
+
+    const isDel = !!e.deleted_at;
+    const isArch = !!e.archived_at;
+    if(status === "active" && (isDel || isArch)) return false;
+    if(status === "arch" && (!isArch || isDel)) return false;
+    if(status === "deleted" && !isDel) return false;
+
+    if(ctx && (e.context_label||"") !== ctx) return false;
+
+    if(cbf){
+      const v = (e.fields||{})[cbf];
+      if(!v) return false;
+    }
+
+    if(q){
+      const hay = JSON.stringify(e).toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  }
+
+  // override: Protokolle global view with extra filters
+  function renderProtokolleGlobal(){
+    const type = view.life || "all";
+    const q = view.q || "";
+    const ctx = view.ctx || "";
+    const cbf = view.cbf || "";
+
+    const ctxLabels = Array.from(new Set((store.entries||[])
+      .filter(e=> type==="all" ? true : e.context_type===type)
+      .map(e=>(e.context_label||"").toString()).filter(Boolean)
+    )).sort((a,b)=>a.localeCompare(b));
+
+    const ctxOptions = ['<option value="">Alle</option>'].concat(ctxLabels.map(l=>`<option value="${escAttr(l)}">${esc(l)}</option>`)).join("");
+
+    const cbFields = listEntryFields({includeDeleted:false}).filter(f=>f.type==="checkbox");
+    const cbOptions = ['<option value="">—</option>'].concat(cbFields.map(f=>`<option value="${escAttr(f.id)}">${esc(cleanFieldLabel(f.label))}</option>`)).join("");
+
+    const entries = (store.entries||[]).filter(e=>entryMatchesFilters(e));
+
+    return `
+      <div class="topbar">
+        <button class="btn" id="backHome">← Start</button>
+        <div class="grow"></div>
+      </div>
+
+      <div class="card">
+        <div class="row wrap">
+          <input id="q" class="input grow" placeholder="Suche…" value="${escAttr(q)}"/>
+          <select id="life" class="input">
+            <option value="all">Alle Typen</option>
+            <option value="state">Zustand</option>
+            <option value="entity">Knoten</option>
+            <option value="between">Zwischenraum</option>
+            <option value="hub">Notiz</option>
+          </select>
+          <select id="ty" class="input">
+            <option value="active">Aktiv</option>
+            <option value="arch">Archiv</option>
+            <option value="deleted">Gelöscht</option>
+            <option value="all">Alles</option>
+          </select>
+          <select id="ctx" class="input">${ctxOptions}</select>
+          <select id="cbf" class="input">${cbOptions}</select>
+        </div>
+      </div>
+
+      <div style="margin-top:12px">
+        ${entries.length ? renderEntryCards(entries,true) : `<div class="small">Keine Treffer.</div>`}
+      </div>
+    `;
+  }
+
+  // manage entry fields: delete/restore + hard delete
+  function toggleDelEntryField(id, del=true){
+    const f = (store.entry_fields||[]).find(x=>x.id===id);
+    if(!f) return;
+    f.deleted_at = del ? Date.now() : null;
+    saveStore();
+  }
+  function hardDeleteEntryField(id){
+    const arr = (store.entry_fields||[]);
+    const idx = arr.findIndex(x=>x.id===id);
+    if(idx>=0){ arr.splice(idx,1); saveStore(); }
+  }
+
+  function openManageEntryFields(){
+    const renderAll = ()=>{
+      const fields = (store.entry_fields||[]).slice().sort((a,b)=>(a.label||"").localeCompare(b.label||""));
+      const rows = fields.map(f=>{
+        const delBtn = f.deleted_at
+          ? `<button class="btn" data-act="restore" data-id="${f.id}">restore</button>`
+          : `<button class="btn danger" data-act="del" data-id="${f.id}">del</button>`;
+        const hardBtn = f.deleted_at
+          ? `<button class="btn danger" data-act="hard" data-id="${f.id}">Endgültig</button>`
+          : "";
+        return `
+          <div class="row manageRow">
+            <div class="grow">
+              <div><b>${esc(f.label||"")}</b> <span class="small">· ${esc(f.type||"")}</span></div>
+              <div class="small">${esc(f.id)}</div>
+            </div>
+            <div class="rightcol">
+              <button class="btn" data-act="edit" data-id="${f.id}">edit</button>
+              ${delBtn}${hardBtn}
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      openModal(`
+        <div class="modalTitle">Protokoll-Felder</div>
+        <div class="card">
+          <div class="row wrap">
+            <input id="fNewLabel" class="input grow" placeholder="Neues Feld (Label)…"/>
+            <select id="fNewType" class="input">
+              <option value="checkbox">checkbox</option>
+              <option value="text">text</option>
+            </select>
+            <button class="btn" id="addField">Hinzufügen</button>
+          </div>
+        </div>
+        <div style="margin-top:12px">${rows || `<div class="small">Keine Felder.</div>`}</div>
+      `);
+
+      $("addField").onclick = ()=>{
+        const label = ($("fNewLabel").value||"").trim();
+        const type  = $("fNewType").value;
+        if(!label) return toast("Label fehlt");
+        store.entry_fields = store.entry_fields || [];
+        store.entry_fields.push({id:"field_"+uid(), label, type, deleted_at:null});
+        saveStore();
+        renderAll();
+      };
+
+      document.querySelectorAll('.modal [data-act]').forEach(btn=>{
+        btn.onclick = ()=>{
+          const act = btn.dataset.act;
+          const id  = btn.dataset.id;
+          if(act==="edit") return openEdit(id);
+          if(act==="del"){ toggleDelEntryField(id,true); return renderAll(); }
+          if(act==="restore"){ toggleDelEntryField(id,false); return renderAll(); }
+          if(act==="hard"){
+            if(!confirm("Endgültig löschen?")) return;
+            hardDeleteEntryField(id);
+            return renderAll();
+          }
+        };
+      });
+    };
+
+    const openEdit = (id)=>{
+      const f = (store.entry_fields||[]).find(x=>x.id===id);
+      if(!f) return;
+      openModal(`
+        <div class="modalTitle">Feld bearbeiten</div>
+        <div class="card">
+          <div class="small">ID</div>
+          <div class="mono">${esc(f.id)}</div>
+          <div class="row wrap" style="margin-top:10px">
+            <input id="fLabel" class="input grow" value="${escAttr(f.label||"")}"/>
+            <select id="fType" class="input">
+              <option value="checkbox">checkbox</option>
+              <option value="text">text</option>
+            </select>
+            <button class="btn" id="saveField">Speichern</button>
+          </div>
+        </div>
+      `);
+      $("fType").value = f.type || "checkbox";
+      $("saveField").onclick = ()=>{
+        f.label = ($("fLabel").value||"").trim() || f.label;
+        f.type  = $("fType").value;
+        if(f.id==="field_exchange") f.label = "offen für Austausch";
+        saveStore();
+        renderAll();
+      };
+    };
+
+    renderAll();
+  }
+
+  function renderTrash(){
+    const delEntries = (store.entries||[]).filter(e=>!!e.deleted_at).sort((a,b)=>(b.ts||0)-(a.ts||0));
+    const delStates  = (store.states||[]).filter(x=>!!x.deleted_at).sort((a,b)=>(a.label||"").localeCompare(b.label||""));
+    const delNodes   = (store.nodes||[]).filter(x=>!!x.deleted_at).sort((a,b)=>(a.label||"").localeCompare(b.label||""));
+    const delHubs    = (store.hubs||[]).filter(x=>!!x.deleted_at).sort((a,b)=>(a.label||"").localeCompare(b.label||""));
+    const delFields  = (store.entry_fields||[]).filter(x=>!!x.deleted_at).sort((a,b)=>(a.label||"").localeCompare(b.label||""));
+
+    const row = (label, line, actions)=>`
+      <div class="row manageRow">
+        <div class="grow">
+          <div><b>${esc(label||"")}</b></div>
+          ${line?`<div class="small">${esc(line)}</div>`:""}
+        </div>
+        <div class="rightcol">${actions}</div>
+      </div>
+    `;
+
+    const sec = (title, inner)=>`
+      <div class="card" style="margin-top:12px">
+        <div class="row"><div class="grow"><b>${esc(title)}</b></div></div>
+        <div style="margin-top:10px">${inner}</div>
+      </div>
+    `;
+
+    const entriesHtml = delEntries.length ? renderEntryCards(delEntries,true) : `<div class="small">Keine gelöschten Protokolle.</div>`;
+    const statesHtml  = delStates.length ? delStates.map(s=>row(s.label,s.line,`<button class="btn" data-trash="restore-state" data-id="${s.id}">restore</button><button class="btn danger" data-trash="hard-state" data-id="${s.id}">Endgültig</button>`)).join("") : `<div class="small">Keine.</div>`;
+    const nodesHtml   = delNodes.length ? delNodes.map(s=>row(s.label,s.line,`<button class="btn" data-trash="restore-entity" data-id="${s.id}">restore</button><button class="btn danger" data-trash="hard-entity" data-id="${s.id}">Endgültig</button>`)).join("") : `<div class="small">Keine.</div>`;
+    const hubsHtml    = delHubs.length ? delHubs.map(h=>row(h.label,h.line,`<button class="btn" data-trash="restore-hub" data-id="${h.id}">restore</button><button class="btn danger" data-trash="hard-hub" data-id="${h.id}">Endgültig</button>`)).join("") : `<div class="small">Keine.</div>`;
+    const fieldsHtml  = delFields.length ? delFields.map(f=>row(`${f.label} · ${f.type}`,f.id,`<button class="btn" data-trash="restore-field" data-id="${f.id}">restore</button><button class="btn danger" data-trash="hard-field" data-id="${f.id}">Endgültig</button>`)).join("") : `<div class="small">Keine.</div>`;
+
+    return `
+      <div class="topbar"><button class="btn" id="backHome">← Start</button><div class="grow"></div></div>
+      ${sec("Gelöschte Protokolle", entriesHtml)}
+      ${sec("Gelöschte Zustände", statesHtml)}
+      ${sec("Gelöschte Knoten", nodesHtml)}
+      ${sec("Gelöschte Start-Buttons", hubsHtml)}
+      ${sec("Gelöschte Protokoll-Felder", fieldsHtml)}
+    `;
+  }
+
+  function exportHTMLSnapshotBase64(){
+    try{
+      const json = JSON.stringify(store);
+      const b64  = btoa(unescape(encodeURIComponent(json)));
+      const docType = "<!doctype html>\n";
+      let html = docType + document.documentElement.outerHTML;
+
+      const openNeedle = '<script id="snapshotDataB64"';
+      const closeNeedle = '</scr' + 'ipt>';
+      const s0 = html.indexOf(openNeedle);
+      if(s0 >= 0){
+        const gt = html.indexOf(">", s0);
+        const s1 = html.indexOf(closeNeedle, gt);
+        if(gt >= 0 && s1 >= 0){
+          html = html.slice(0, gt+1) + b64 + html.slice(s1);
+        }
+      }
+
+      const blob = new Blob([html], {type:"text/html;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Live-life-support-spiralflow-space.html";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url), 1000);
+      toast("Snapshot exportiert");
+    }catch(err){
+      console.error(err);
+      toast("Snapshot fehlgeschlagen");
+    }
+  }
+
+  
+  function stateById(id){ return (store.states||[]).find(s=>s.id===id) || null; }
+  function nodeById(id){ return (store.nodes||[]).find(s=>s.id===id) || null; }
+  function listTransitionsActive(){ return (store.transitions||[]).filter(t=>!t.deleted_at); }
+  function closureOptionsHTML(sel){
+    const vals = ["offen","pausiert","abgeschlossen","abgebrochen","übergeben","ausgelaufen"];
+    return vals.map(v=>`<option value="${esc(v)}" ${sel===v?"selected":""}>${esc(v)}</option>`).join("");
+  }
+  function stateOptionsHTML(sel){
+    return ['<option value="">—</option>'].concat(listStatesActive().map(s=>`<option value="${esc(s.id)}" ${sel===s.id?"selected":""}>${esc(s.label)}</option>`)).join('');
+  }
+  function nodeOptionsHTML(sel){
+    return ['<option value="">—</option>'].concat(listNodesActive().map(n=>`<option value="${esc(n.id)}" ${sel===n.id?"selected":""}>${esc(n.label)}</option>`)).join('');
+  }
+  function transitionCountForState(id){ return listTransitionsActive().filter(t=>t.from_state_id===id || t.to_state_id===id).length; }
+  function transitionCountForNode(id){ return listTransitionsActive().filter(t=>t.node_id===id).length; }
+  function entryCountForContext(type,id,label){
+    return (store.entries||[]).filter(e=>!e.deleted_at).filter(e=>e.context_type===type).filter(e=> (id && e.context_id)? e.context_id===id : e.context_label===label).length;
+  }
+  function openResearchObjectEditor(kind, id){
+    const isState = kind==="state";
+    const arr = isState ? store.states : store.nodes;
+    const it = arr.find(x=>x.id===id);
+    if(!it) return;
+    openModal(`
+      <div class="row" style="justify-content:space-between">
+        <div>
+          <div class="small"><b>${isState?"Zustand":"Knoten"} vertiefen</b></div>
+          <div class="small">Bestehende Datei bleibt erhalten – hier kommen nur zusätzliche Greifpunkte dazu.</div>
+        </div>
+        <button id="mClose">Schließen</button>
+      </div>
+      <hr/>
+      <div class="row"><input id="eLabel" type="text" value="${esc(it.label||"")}" style="min-width:260px"/></div>
+      <div style="height:8px"></div>
+      <textarea id="eHint" placeholder="Kurzbeschreibung / Hint">${esc(it.hint||"")}</textarea>
+      <div style="height:8px"></div>
+      <input id="eLine2" type="text" placeholder="Zusatzzeile" value="${esc(it.line2||"")}" style="min-width:260px"/>
+      <div style="height:8px"></div>
+      ${isState ? `
+        <textarea id="eDescription" placeholder="Was ist dieser Zustand genauer?">${esc(it.description||"")}</textarea>
+        <div style="height:8px"></div>
+        <textarea id="eSignals" placeholder="Signale / Erkennungsmerkmale">${esc(it.signals||"")}</textarea>
+        <div style="height:8px"></div>
+        <div class="row">
+          <input id="eEnters" type="text" placeholder="Typische Auslöser / hinein" value="${esc(it.enters_from||"")}" style="min-width:260px;flex:1"/>
+          <input id="eExits" type="text" placeholder="Typische Folge / hinaus" value="${esc(it.exits_to||"")}" style="min-width:260px;flex:1"/>
+        </div>
+        <div style="height:8px"></div>
+        <input id="eClosure" type="text" placeholder="Abschlussmarker" value="${esc(it.closure_marker||"")}" style="min-width:260px;width:100%"/>
+      ` : `
+        <textarea id="eRole" placeholder="Rolle / Funktion genauer">${esc(it.role_detail||"")}</textarea>
+        <div style="height:8px"></div>
+        <div class="row">
+          <input id="eInput" type="text" placeholder="Input" value="${esc(it.input||"")}" style="min-width:260px;flex:1"/>
+          <input id="eOutput" type="text" placeholder="Output" value="${esc(it.output||"")}" style="min-width:260px;flex:1"/>
+        </div>
+        <div style="height:8px"></div>
+        <textarea id="eDeps" placeholder="Abhängigkeiten">${esc(it.dependencies||"")}</textarea>
+        <div style="height:8px"></div>
+        <textarea id="eGen" placeholder="Erzeugte Zustände / Wirkung">${esc(it.generated_states||"")}</textarea>
+        <div style="height:8px"></div>
+        <input id="eEnd" type="text" placeholder="Beendigungsart / Übergabe" value="${esc(it.end_mode||"")}" style="min-width:260px;width:100%"/>
+      `}
+      <div style="height:10px"></div>
+      <div class="row" style="justify-content:space-between">
+        <div class="small">Alte Einträge bleiben intakt. Du vertiefst nur die Objektkarte.</div>
+        <button id="eSave">Speichern</button>
+      </div>
+    `);
+    $("mClose").onclick = closeModal;
+    $("eSave").onclick = ()=>{
+      const newLabel = ($("eLabel").value||"").trim();
+      if(!newLabel) return toast("Name leer.");
+      const clash = arr.find(z=>z.id!==id && !z.deleted_at && (z.label||"").toLowerCase()===newLabel.toLowerCase());
+      if(clash) return toast("Name existiert bereits.");
+      it.label = newLabel;
+      it.hint = $("eHint").value||"";
+      it.line2 = ($("eLine2").value||"").trim();
+      if(isState){
+        it.description = $("eDescription").value||"";
+        it.signals = $("eSignals").value||"";
+        it.enters_from = $("eEnters").value||"";
+        it.exits_to = $("eExits").value||"";
+        it.closure_marker = $("eClosure").value||"";
+      }else{
+        it.role_detail = $("eRole").value||"";
+        it.input = $("eInput").value||"";
+        it.output = $("eOutput").value||"";
+        it.dependencies = $("eDeps").value||"";
+        it.generated_states = $("eGen").value||"";
+        it.end_mode = $("eEnd").value||"";
+      }
+      saveStore();
+      closeModal();
+      toast("Gespeichert.");
+      render();
+    };
+  }
+  function openTransitionEditor(id){
+    const t = (store.transitions||[]).find(x=>x.id===id);
+    if(!t) return;
+    openModal(`
+      <div class="row" style="justify-content:space-between"><div><div class="small"><b>Transition bearbeiten</b></div><div class="small">Von Zustand → via Knoten → zu Zustand</div></div><button id="mClose">Schließen</button></div>
+      <hr/>
+      <div class="row"><select id="tFrom" style="min-width:240px;flex:1">${stateOptionsHTML(t.from_state_id)}</select><select id="tNode" style="min-width:240px;flex:1">${nodeOptionsHTML(t.node_id)}</select><select id="tTo" style="min-width:240px;flex:1">${stateOptionsHTML(t.to_state_id)}</select></div>
+      <div style="height:8px"></div>
+      <input id="tTrigger" type="text" placeholder="Trigger" value="${esc(t.trigger||"")}" style="min-width:260px;width:100%"/>
+      <div style="height:8px"></div>
+      <select id="tClosure" style="min-width:240px;width:100%">${closureOptionsHTML(t.closure_type||"offen")}</select>
+      <div style="height:8px"></div>
+      <textarea id="tNote" placeholder="Notiz / Beobachtung">${esc(t.note||"")}</textarea>
+      <div style="height:10px"></div>
+      <div class="row" style="justify-content:space-between"><button class="danger" id="tDelete">Löschen</button><button id="tSave">Speichern</button></div>
+    `);
+    $("mClose").onclick = closeModal;
+    $("tDelete").onclick = ()=>{ if(!confirm("Transition entfernen?")) return; t.deleted_at = nowISO(); saveStore(); closeModal(); render(); };
+    $("tSave").onclick = ()=>{
+      t.from_state_id = $("tFrom").value || "";
+      t.node_id = $("tNode").value || "";
+      t.to_state_id = $("tTo").value || "";
+      t.trigger = $("tTrigger").value || "";
+      t.closure_type = $("tClosure").value || "offen";
+      t.note = $("tNote").value || "";
+      t.updated_at = nowISO();
+      saveStore(); closeModal(); toast("Transition gespeichert."); render();
+    };
+  }
+
+  function tokenizeForAnalysis(s){
+    return String(s||"")
+      .toLowerCase()
+      .replace(/[^a-z0-9äöüß\-\s]/gi," ")
+      .split(/\s+/)
+      .map(x=>x.trim())
+      .filter(x=>x && x.length>2);
+  }
+
+  function dedupeById(arr){
+    const seen = new Set();
+    return (arr||[]).filter(x=>{
+      if(!x || !x.id || seen.has(x.id)) return false;
+      seen.add(x.id);
+      return true;
+    });
+  }
+
+  function scoreAnalysisItem(item, text, extraFields){
+    const lower = String(text||"").toLowerCase();
+    const fields = [item.label, item.hint, item.line2].concat(extraFields||[]).filter(Boolean);
+    const tokens = [...new Set(tokenizeForAnalysis(fields.join(" ")))].filter(t=>t.length>2);
+    let score = 0;
+    const label = String(item.label||"").toLowerCase().trim();
+    if(label && lower.includes(label)) score += 8;
+    tokens.forEach(tok=>{
+      if(lower.includes(tok)) score += tok.length >= 7 ? 2 : 1;
+    });
+    return {score, tokens:tokens.slice(0,18)};
+  }
+
+  function matchStatesForText(text){
+    return dedupeById((store.states||[])
+      .filter(s=>!s.deleted_at)
+      .map(s=>{
+        const meta = scoreAnalysisItem(s, text, [s.signals, s.closure_marker]);
+        return {...s, _score:meta.score, _tokens:meta.tokens};
+      })
+      .filter(s=>s._score>0)
+      .sort((a,b)=> b._score-a._score || (a.label||"").localeCompare(b.label||""))
+      .slice(0,8));
+  }
+
+  function matchNodesForText(text){
+    return dedupeById((store.nodes||[])
+      .filter(n=>!n.deleted_at)
+      .map(n=>{
+        const meta = scoreAnalysisItem(n, text, [n.role_detail, n.input, n.output]);
+        return {...n, _score:meta.score, _tokens:meta.tokens};
+      })
+      .filter(n=>n._score>0)
+      .sort((a,b)=> b._score-a._score || (a.label||"").localeCompare(b.label||""))
+      .slice(0,8));
+  }
+
+  function collectAnalysisSnippets(text, items){
+    const lines = String(text||"").split(/\n+/).map(x=>x.trim()).filter(Boolean);
+    return (items||[]).map(it=>{
+      const ll = (it.label||"").toLowerCase();
+      const hit = lines.find(line=> line.toLowerCase().includes(ll));
+      return {id:it.id, snippet: hit || ""};
+    });
+  }
+
+  function inferTransitionsFromText(text, states, nodes){
+    const lower = String(text||"").toLowerCase();
+    const out = [];
+    const activeStates = (states||[]).slice(0,6);
+    const activeNodes = (nodes||[]).slice(0,4);
+
+    for(let i=0;i<activeStates.length;i++){
+      for(let j=0;j<activeStates.length;j++){
+        if(i===j) continue;
+        const a = activeStates[i], b = activeStates[j];
+        const al = (a.label||"").toLowerCase();
+        const bl = (b.label||"").toLowerCase();
+        if(!al || !bl) continue;
+        if(lower.includes(`${al} -> ${bl}`) || lower.includes(`${al} → ${bl}`) || lower.includes(`von ${al} nach ${bl}`) || lower.includes(`${al} zu ${bl}`)){
+          out.push({
+            id: uid(),
+            from_state_id: a.id,
+            to_state_id: b.id,
+            node_id: activeNodes[0]?.id || "",
+            trigger: "direkt aus Chat erkannt",
+            closure_type: "offen",
+            note: "Expliziter Übergang im Text erkannt."
+          });
+        }
+      }
+    }
+
+    if(!out.length && activeStates.length>=2){
+      out.push({
+        id: uid(),
+        from_state_id: activeStates[0].id,
+        to_state_id: activeStates[1].id,
+        node_id: activeNodes[0]?.id || "",
+        trigger: "heuristisch aus stärksten Treffern",
+        closure_type: "offen",
+        note: "Abgeleitet aus den stärksten State-/Node-Treffern im Chattext."
+      });
+    }
+
+    const seen = new Set();
+    return out.filter(t=>{
+      const key = [t.from_state_id,t.node_id,t.to_state_id,t.trigger].join("|");
+      if(seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).slice(0,6);
+  }
+
+  function buildChatAnalysis(text){
+    const states = matchStatesForText(text);
+    const nodes = matchNodesForText(text);
+    const transitions = inferTransitionsFromText(text, states, nodes);
+    const summary = [];
+    if(states.length) summary.push(`States: ${states.slice(0,3).map(x=>x.label).join(", ")}`);
+    if(nodes.length) summary.push(`Nodes: ${nodes.slice(0,3).map(x=>x.label).join(", ")}`);
+    if(transitions.length) summary.push(`Transitions: ${transitions.slice(0,2).map(t=>`${stateById(t.from_state_id)?.label||"?"} → ${stateById(t.to_state_id)?.label||"?"}`).join(", ")}`);
+    return {
+      text,
+      states,
+      nodes,
+      transitions,
+      stateSnippets: collectAnalysisSnippets(text, states),
+      nodeSnippets: collectAnalysisSnippets(text, nodes),
+      summary: summary.join(" • ") || "Noch keine klaren Treffer."
+    };
+  }
+
+  function saveChatAnalysisNote(ctxType, ctxId, ctxLabel, text, tag){
+    createEntry({
+      context_type: ctxType,
+      context_label: ctxLabel || "",
+      context_id: ctxId || "",
+      spiral_step_id: "chat_analysis",
+      spiral_step: tag || "Chat-Analyse",
+      content: text,
+      fields: { field_line: "Chat→Doku" }
+    });
+    toast("Als Protokoll gespeichert.");
+  }
+
+  function saveTransitionDraftFromView(idx){
+    const draft = (view.chatAnalysis && view.chatAnalysis.transitions || [])[idx];
+    if(!draft) return;
+    store.transitions = store.transitions || [];
+    store.transitions.push({
+      id: uid(),
+      from_state_id: draft.from_state_id || "",
+      node_id: draft.node_id || "",
+      to_state_id: draft.to_state_id || "",
+      trigger: draft.trigger || "",
+      closure_type: draft.closure_type || "offen",
+      note: draft.note || "",
+      created_at: nowISO(),
+      updated_at: nowISO(),
+      archived_at: null,
+      deleted_at: null
+    });
+    saveStore();
+    toast("Transition übernommen.");
+    view.chatAnalysis = buildChatAnalysis(view.chatInput||"");
+    render();
+  }
+
+  function renderChatLab(){
+    const result = view.chatAnalysis || {states:[],nodes:[],transitions:[],summary:"Noch keine Analyse."};
+    return `
+      <div class="panel">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <div class="small"><b>Chat → Doku</b> • freie Gespräche weiterführen, danach lokal vorsortieren</div>
+            <div class="small">Diese Datei arbeitet lokal heuristisch auf Basis deiner vorhandenen States/Nodes/Transitions. Kein Cloud-Call, kein Backend.</div>
+          </div>
+          <button id="backHome">Zurück</button>
+        </div>
+        <hr/>
+        <div class="panel" style="padding:12px">
+          <div class="small"><b>Rohtext aus dem Chat</b></div>
+          <div style="height:8px"></div>
+          <textarea id="chatAnalysisInput" placeholder="Chat-Abschnitt hier rein. Dann analysieren lassen und als Doku vorsortieren.">${esc(view.chatInput||"")}</textarea>
+          <div style="height:8px"></div>
+          <div class="row" style="justify-content:space-between">
+            <div class="small">Treffer laufen über Labels, Hinweise und Forschungsfelder deiner bestehenden Datei.</div>
+            <div class="row">
+              <button id="chatAnalyzeBtn">Analysieren</button>
+              <button id="chatSaveBetweenBtn">Als Zwischenraum-Notiz speichern</button>
+            </div>
+          </div>
+        </div>
+        <div style="height:12px"></div>
+        <div class="panel" style="padding:12px">
+          <div class="small"><b>Analyse-Zusammenfassung</b></div>
+          <div style="height:8px"></div>
+          <div class="card"><div class="small">${esc(result.summary||"Noch keine Analyse.")}</div></div>
+        </div>
+        <div style="height:12px"></div>
+        <div class="grid3">
+          <div class="panel" style="padding:12px">
+            <div class="small"><b>State-Treffer</b> • ${result.states.length}</div>
+            <div style="height:8px"></div>
+            <div class="list">${result.states.map((s,i)=>`<div class="card"><div class="top"><div><b>${esc(s.label)}</b><div class="meta">Score ${s._score} • Einträge ${entryCountForContext("state", s.id, s.label)}</div></div><div class="row"><button data-chat-open-state="${esc(s.id)}">Öffnen</button><button data-chat-save-state="${esc(s.id)}">Notiz daran hängen</button></div></div>${s.hint?`<div class="small" style="margin-top:6px">${esc(s.hint)}</div>`:""}${(result.stateSnippets[i]&&result.stateSnippets[i].snippet)?`<div class="small" style="margin-top:6px"><b>Treffer:</b> ${esc(result.stateSnippets[i].snippet)}</div>`:""}</div>`).join("") || `<div class="small">Noch keine State-Treffer.</div>`}</div>
+          </div>
+          <div class="panel" style="padding:12px">
+            <div class="small"><b>Node-Treffer</b> • ${result.nodes.length}</div>
+            <div style="height:8px"></div>
+            <div class="list">${result.nodes.map((n,i)=>`<div class="card"><div class="top"><div><b>${esc(n.label)}</b><div class="meta">Score ${n._score} • Einträge ${entryCountForContext("entity", n.id, n.label)}</div></div><div class="row"><button data-chat-open-node="${esc(n.id)}">Öffnen</button><button data-chat-save-node="${esc(n.id)}">Notiz daran hängen</button></div></div>${n.hint?`<div class="small" style="margin-top:6px">${esc(n.hint)}</div>`:""}${(result.nodeSnippets[i]&&result.nodeSnippets[i].snippet)?`<div class="small" style="margin-top:6px"><b>Treffer:</b> ${esc(result.nodeSnippets[i].snippet)}</div>`:""}</div>`).join("") || `<div class="small">Noch keine Node-Treffer.</div>`}</div>
+          </div>
+          <div class="panel" style="padding:12px">
+            <div class="small"><b>Transition-Entwürfe</b> • ${result.transitions.length}</div>
+            <div style="height:8px"></div>
+            <div class="list">${result.transitions.map((t,idx)=>`<div class="card"><div class="top"><div><b>${esc(stateById(t.from_state_id)?.label||"—")} → ${esc(stateById(t.to_state_id)?.label||"—")}</b><div class="meta">via ${esc(nodeById(t.node_id)?.label||"—")} • ${esc(t.closure_type||"offen")}</div></div><div class="row"><button data-chat-save-transition="${idx}">Übernehmen</button></div></div>${t.trigger?`<div class="small" style="margin-top:6px"><b>Trigger:</b> ${esc(t.trigger)}</div>`:""}${t.note?`<div class="small" style="margin-top:6px">${esc(t.note)}</div>`:""}</div>`).join("") || `<div class="small">Noch keine Transition-Entwürfe.</div>`}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function wireChatLab(){
+    const back = $("backHome"); if(back) back.onclick = ()=>setView("home");
+    const ta = $("chatAnalysisInput");
+    if(ta) ta.oninput = ()=>{ view.chatInput = ta.value; };
+    const a = $("chatAnalyzeBtn");
+    if(a) a.onclick = ()=>{
+      view.chatInput = ($("chatAnalysisInput").value||"");
+      view.chatAnalysis = buildChatAnalysis(view.chatInput);
+      render();
+    };
+    const sb = $("chatSaveBetweenBtn");
+    if(sb) sb.onclick = ()=>{
+      const text = ($("chatAnalysisInput").value||"").trim();
+      if(!text) return toast("Kein Chattext vorhanden.");
+      saveChatAnalysisNote("between", "", "", text, "Chat-Rohtext");
+      render();
+    };
+    document.querySelectorAll('[data-chat-open-state]').forEach(btn=>btn.onclick=()=>{
+      const s = stateById(btn.dataset.chatOpenState); if(!s) return; setView("spiral",{ctxType:"state",ctxLabel:s.label,ctxId:s.id});
+    });
+    document.querySelectorAll('[data-chat-open-node]').forEach(btn=>btn.onclick=()=>{
+      const n = nodeById(btn.dataset.chatOpenNode); if(!n) return; setView("spiral",{ctxType:"entity",ctxLabel:n.label,ctxId:n.id});
+    });
+    document.querySelectorAll('[data-chat-save-state]').forEach(btn=>btn.onclick=()=>{
+      const s = stateById(btn.dataset.chatSaveState); const text=(view.chatInput||"").trim(); if(!s||!text) return; saveChatAnalysisNote("state", s.id, s.label, text, "Chat-Analyse"); render();
+    });
+    document.querySelectorAll('[data-chat-save-node]').forEach(btn=>btn.onclick=()=>{
+      const n = nodeById(btn.dataset.chatSaveNode); const text=(view.chatInput||"").trim(); if(!n||!text) return; saveChatAnalysisNote("entity", n.id, n.label, text, "Chat-Analyse"); render();
+    });
+    document.querySelectorAll('[data-chat-save-transition]').forEach(btn=>btn.onclick=()=>saveTransitionDraftFromView(Number(btn.dataset.chatSaveTransition)));
+  }
+
+  function renderResearch(){
+    const q = (view.researchQ||"").trim().toLowerCase();
+    const closure = view.researchClosure || "all";
+    const states = listStatesActive().filter(s=>!q || JSON.stringify(s).toLowerCase().includes(q));
+    const nodes = listNodesActive().filter(n=>!q || JSON.stringify(n).toLowerCase().includes(q));
+    const transitions = listTransitionsActive().filter(t=> (closure==="all" || (t.closure_type||"offen")===closure)).filter(t=>{
+      if(!q) return true;
+      const a = stateById(t.from_state_id)?.label || "";
+      const b = stateById(t.to_state_id)?.label || "";
+      const n = nodeById(t.node_id)?.label || "";
+      return JSON.stringify({...t,a,b,n}).toLowerCase().includes(q);
+    }).sort((a,b)=>new Date(b.updated_at||b.created_at)-new Date(a.updated_at||a.created_at));
+    return `
+      <div class="panel">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <div class="small"><b>States / Nodes / Transitions+</b> • Überarbeitung auf Basis deiner Originaldatei</div>
+            <div class="small">Alles Portable bleibt erhalten. Hier kommt nur die vertiefte Forschungs-Schicht dazu.</div>
+          </div>
+          <button id="backHome">Zurück</button>
+        </div>
+        <hr/>
+        <div class="row">
+          <input id="researchQ" type="text" placeholder="Suche in States / Nodes / Transitions…" value="${esc(view.researchQ||"")}" style="min-width:280px;flex:1"/>
+          <select id="researchClosure" style="min-width:220px"><option value="all">Alle Abschlüsse</option>${closureOptionsHTML(closure)}</select>
+          <button id="researchManageStates">Zustände verwalten</button>
+          <button id="researchManageNodes">Knoten verwalten</button>
+        </div>
+        <div style="height:12px"></div>
+        <div class="grid3">
+          <div class="panel" style="padding:12px">
+            <div class="small"><b>Zustände</b> • ${states.length}</div>
+            <div style="height:8px"></div>
+            <div class="list">
+              ${states.map(s=>`<div class="card"><div class="top"><div><b>${esc(s.label)}</b><div class="meta">Einträge: ${entryCountForContext("state",s.id,s.label)} • Transitionen: ${transitionCountForState(s.id)}</div></div><div class="row"><button data-r-edit="state" data-id="${esc(s.id)}">Bearbeiten</button><button data-r-open="state" data-id="${esc(s.id)}">Öffnen</button></div></div>${s.hint?`<div class="small" style="margin-top:6px">${esc(s.hint)}</div>`:""}${s.signals?`<div class="small" style="margin-top:6px"><b>Signale:</b> ${esc(s.signals)}</div>`:""}${s.closure_marker?`<div class="small" style="margin-top:6px"><b>Abschlussmarker:</b> ${esc(s.closure_marker)}</div>`:""}${s.line2?`<div class="small" style="margin-top:6px">${esc(s.line2)}</div>`:""}</div>`).join("") || `<div class="small">Keine Zustände.</div>`}
+            </div>
+          </div>
+          <div class="panel" style="padding:12px">
+            <div class="small"><b>Knoten</b> • ${nodes.length}</div>
+            <div style="height:8px"></div>
+            <div class="list">
+              ${nodes.map(n=>`<div class="card"><div class="top"><div><b>${esc(n.label)}</b><div class="meta">Einträge: ${entryCountForContext("entity",n.id,n.label)} • Transitionen: ${transitionCountForNode(n.id)}</div></div><div class="row"><button data-r-edit="node" data-id="${esc(n.id)}">Bearbeiten</button><button data-r-open="node" data-id="${esc(n.id)}">Öffnen</button></div></div>${n.hint?`<div class="small" style="margin-top:6px">${esc(n.hint)}</div>`:""}${n.role_detail?`<div class="small" style="margin-top:6px"><b>Rolle:</b> ${esc(n.role_detail)}</div>`:""}${(n.input||n.output)?`<div class="small" style="margin-top:6px"><b>Flow:</b> ${esc(n.input||"—")} → ${esc(n.output||"—")}</div>`:""}${n.line2?`<div class="small" style="margin-top:6px">${esc(n.line2)}</div>`:""}</div>`).join("") || `<div class="small">Keine Knoten.</div>`}
+            </div>
+          </div>
+          <div class="panel" style="padding:12px">
+            <div class="small"><b>Neue Transition</b></div>
+            <div style="height:8px"></div>
+            <div class="row"><select id="newTransFrom" style="min-width:180px;flex:1">${stateOptionsHTML("")}</select><select id="newTransNode" style="min-width:180px;flex:1">${nodeOptionsHTML("")}</select><select id="newTransTo" style="min-width:180px;flex:1">${stateOptionsHTML("")}</select></div>
+            <div style="height:8px"></div>
+            <input id="newTransTrigger" type="text" placeholder="Trigger / Auslöser" style="width:100%"/>
+            <div style="height:8px"></div>
+            <select id="newTransClosure" style="width:100%">${closureOptionsHTML("offen")}</select>
+            <div style="height:8px"></div>
+            <textarea id="newTransNote" placeholder="Beobachtung / Notiz"></textarea>
+            <div class="row" style="justify-content:flex-end"><button id="saveTransition">Transition speichern</button></div>
+          </div>
+        </div>
+        <div style="height:12px"></div>
+        <div class="panel" style="padding:12px">
+          <div class="small"><b>Transitionsarchiv</b> • ${transitions.length}</div>
+          <div style="height:8px"></div>
+          <div class="list">${transitions.map(t=>{ const a=stateById(t.from_state_id)?.label||"—"; const b=stateById(t.to_state_id)?.label||"—"; const n=nodeById(t.node_id)?.label||"—"; return `<div class="card"><div class="top"><div><b>${esc(a)} → ${esc(b)}</b><div class="meta">via ${esc(n)} • ${esc(t.closure_type||"offen")} • ${fmt(t.updated_at||t.created_at)}</div></div><div class="row"><button data-r-edit-transition="${esc(t.id)}">Bearbeiten</button></div></div>${t.trigger?`<div class="small" style="margin-top:6px"><b>Trigger:</b> ${esc(t.trigger)}</div>`:""}${t.note?`<div class="small" style="margin-top:6px">${esc(t.note)}</div>`:""}</div>`; }).join("") || `<div class="small">Noch keine Transitionen.</div>`}</div>
+        </div>
+      </div>
+    `;
+  }
+  function wireResearch(){
+    const back = $("backHome"); if(back) back.onclick = ()=>setView("home");
+    const q = $("researchQ"); if(q) q.oninput = ()=>{ view.researchQ = q.value; render(); };
+    const c = $("researchClosure"); if(c) c.onchange = ()=>{ view.researchClosure = c.value; render(); };
+    const ms = $("researchManageStates"); if(ms) ms.onclick = ()=>openManageList("state");
+    const mn = $("researchManageNodes"); if(mn) mn.onclick = ()=>openManageList("entity");
+    const save = $("saveTransition"); if(save) save.onclick = ()=>{
+      store.transitions = store.transitions || [];
+      store.transitions.push({
+        id: uid(),
+        from_state_id: $("newTransFrom").value || "",
+        node_id: $("newTransNode").value || "",
+        to_state_id: $("newTransTo").value || "",
+        trigger: $("newTransTrigger").value || "",
+        closure_type: $("newTransClosure").value || "offen",
+        note: $("newTransNote").value || "",
+        created_at: nowISO(),
+        updated_at: nowISO(),
+        archived_at: null,
+        deleted_at: null
+      });
+      saveStore(); toast("Transition gespeichert."); render();
+    };
+    document.querySelectorAll('[data-r-edit][data-id]').forEach(btn=>btn.onclick=()=>openResearchObjectEditor(btn.dataset.rEdit, btn.dataset.id));
+    document.querySelectorAll('[data-r-open][data-id]').forEach(btn=>btn.onclick=()=>{ const kind=btn.dataset.rOpen; const arr=kind==="state"?(store.states||[]):(store.nodes||[]); const it=arr.find(x=>x.id===btn.dataset.id); if(!it) return; setView("spiral",{ctxType:kind==="state"?"state":"entity",ctxLabel:it.label,ctxId:it.id}); });
+    document.querySelectorAll('[data-r-edit-transition]').forEach(btn=>btn.onclick=()=>openTransitionEditor(btn.dataset.rEditTransition));
+  }
+function render(){
+    const ae = document.activeElement;
+    const activeId = (ae && ae.id) ? ae.id : null;
+    const selStart = (ae && ae.selectionStart!=null) ? ae.selectionStart : null;
+    const selEnd   = (ae && ae.selectionEnd!=null) ? ae.selectionEnd : null;
+
+    let html="";
+    if(view.name==="home") html = renderHome();
+    else if(view.name==="picker") html = renderPicker(view.ctxType);
+    else if(view.name==="spiral") html = renderSpiral(view.ctxType, view.ctxLabel, view.ctxId);
+    else if(view.name==="between") html = renderBetween();
+    else if(view.name==="hub") html = renderHubNotebook(view.hubId);
+    else if(view.name==="trash") html = renderTrash();
+    else if(view.name==="research") html = renderResearch();
+    else if(view.name==="chatlab") html = renderChatLab();
+    else html = renderProtokolleGlobal();
+
+    appEl.innerHTML = html;
+
+    if(view.name==="home") wireHome();
+    else if(view.name==="picker") wirePicker();
+    else if(view.name==="spiral") wireSpiral();
+    else if(view.name==="between") wireBetween();
+    else if(view.name==="hub") wireHub();
+    else if(view.name==="trash") wireTrash();
+    else if(view.name==="research") wireResearch();
+    else if(view.name==="chatlab") wireChatLab();
+    else wireProtokolle();
+
+    if(activeId){
+      const el = document.getElementById(activeId);
+      if(el && el.focus){
+        el.focus();
+        if(selStart!=null && el.setSelectionRange && typeof el.value==="string"){
+          const len = el.value.length;
+          el.setSelectionRange(Math.min(selStart,len), Math.min(selEnd,len));
+        }
+      }
+    }
+  }
+
+  function ensureNavTrash(){
+    const nav = document.querySelector("header nav");
+    if(!nav) return;
+    if(document.getElementById("navTrash")) return;
+    const btn = document.createElement("button");
+    btn.className = "navbtn";
+    btn.id = "navTrash";
+    btn.textContent = "Gelöschtes";
+    // insert after Protokolle if possible
+    const ref = document.getElementById("navProtokolle");
+    if(ref && ref.nextSibling) nav.insertBefore(btn, ref.nextSibling);
+    else nav.appendChild(btn);
+  }
+
+  function wireNav(){
+    if(wireNav._done) return;
+    wireNav._done = true;
+
+    ensureNavTrash();
+
+    $("navHome").onclick = ()=>setView("home");
+    $("navProtokolle").onclick = ()=>setView("protokolle");
+    const research = $("navResearch"); if(research) research.onclick = ()=>setView("research");
+    const chatlab = $("navChatLab"); if(chatlab) chatlab.onclick = ()=>setView("chatlab");
+    const trash = $("navTrash"); if(trash) trash.onclick = ()=>setView("trash");
+    $("navDaten").onclick = ()=>openDataModal();
+    $("navConfig").onclick = ()=>openConfigModal();
+    $("navSnapshot").onclick = ()=>exportHTMLSnapshotBase64();
+  }
+
+  function openHubById(id){
+    const h = (store.hubs||[]).find(x=>x.id===id);
+    if(!h || h.deleted_at) return;
+    if(h.kind==="state") setView("picker",{ctxType:"state", hubId:id});
+    else if(h.kind==="entity") setView("picker",{ctxType:"entity", hubId:id});
+    else if(h.kind==="between") setView("between",{hubId:id});
+    else setView("hub",{hubId:id});
+  }
+
+  function wireEntryButtons(root){
+    root.querySelectorAll('button[data-act], a[data-act]').forEach(btn=>{
+      btn.onclick = (ev)=>{
+        ev.preventDefault();
+        const act = btn.dataset.act;
+        const id  = btn.dataset.entry;
+        if(!id) return;
+        const e = (store.entries||[]).find(x=>x.id===id);
+        if(!e) return;
+
+        if(act==="goto") return gotoContext(e);
+        if(act==="edit") return openEditEntry(id);
+        if(act==="arch"){ toggleArchive(id); return render(); }
+        if(act==="del"){ softDeleteEntry(id); return render(); }
+      };
+    });
+  }
+
+  function wireHome(){
+    const m = $("homeManageHubs");
+    if(m) m.onclick = ()=>openManageHubs();
+    const c = $("homeChatLab");
+    if(c) c.onclick = ()=>setView("chatlab");
+    document.querySelectorAll("[data-hub]").forEach(btn=>{
+      btn.onclick = ()=>openHubById(btn.dataset.hub);
+    });
+  }
+
+  function wirePicker(){
+    const back = $("backHome"); if(back) back.onclick = ()=>setView("home");
+    const kind = view.ctxType;
+
+    const manage = $("manageList");
+    if(manage) manage.onclick = ()=>openManageList(kind);
+
+    const addBtn = $("addLabel");
+    if(addBtn) addBtn.onclick = ()=>{
+      const label = ($("newLabel").value||"").trim();
+      if(!label) return toast("Label fehlt");
+      const line = ($("newLine").value||"").trim();
+      if(kind==="state") addState(label,line); else addNode(label,line);
+      $("newLabel").value=""; $("newLine").value="";
+      render();
+    };
+
+    document.querySelectorAll(".pill[data-id]").forEach(p=>{
+      p.onclick = ()=>{
+        const id = p.dataset.id;
+        const arr = (kind==="state") ? (store.states||[]) : (store.nodes||[]);
+        const item = arr.find(x=>x.id===id);
+        if(!item) return;
+        setView("spiral",{ctxType:kind, ctxLabel:item.label, ctxId:item.id});
+      };
+    });
+  }
+
+  function wireSpiral(){
+    const back = $("backPicker");
+    if(back) back.onclick = ()=>setView("picker",{ctxType:view.ctxType});
+    const ms = $("manageSteps"); if(ms) ms.onclick = ()=>openManageSteps();
+    const mf = $("manageEntryFields"); if(mf) mf.onclick = ()=>openManageEntryFields();
+
+    document.querySelectorAll("[data-step]").forEach(btn=>{
+      btn.onclick = ()=>openStepEditor(view.ctxType, view.ctxLabel, view.ctxId, btn.dataset.step);
+    });
+
+    wireEntryButtons(document);
+  }
+
+  function wireBetween(){
+    const back = $("backHome"); if(back) back.onclick = ()=>setView("home");
+    const nb = $("newBetween"); if(nb) nb.onclick = ()=>openNewBetween();
+    const mf = $("manageEntryFields"); if(mf) mf.onclick = ()=>openManageEntryFields();
+    wireEntryButtons(document);
+  }
+
+  function wireHub(){
+    const back = $("backHome"); if(back) back.onclick = ()=>setView("home");
+    const nb = $("newHubEntry"); if(nb) nb.onclick = ()=>openNewHubEntry(view.hubId);
+    const mf = $("manageEntryFields"); if(mf) mf.onclick = ()=>openManageEntryFields();
+    wireEntryButtons(document);
+  }
+
+  function wireProtokolle(){
+    const back = $("backHome"); if(back) back.onclick = ()=>setView("home");
+
+    const q = $("q"); if(q) q.oninput = ()=>{ view.q = q.value; render(); };
+    const life = $("life"); if(life){ life.value = view.life || "all"; life.onchange = ()=>{ view.life = life.value; view.ctx=""; render(); }; }
+    const ty = $("ty"); if(ty){ ty.value = view.ty || "active"; ty.onchange = ()=>{ view.ty = ty.value; render(); }; }
+    const ctx = $("ctx"); if(ctx){ ctx.value = view.ctx || ""; ctx.onchange = ()=>{ view.ctx = ctx.value; render(); }; }
+    const cbf = $("cbf"); if(cbf){ cbf.value = view.cbf || ""; cbf.onchange = ()=>{ view.cbf = cbf.value; render(); }; }
+
+    wireEntryButtons(document);
+  }
+
+  function wireTrash(){
+    const back = $("backHome"); if(back) back.onclick = ()=>setView("home");
+    wireEntryButtons(document);
+
+    document.querySelectorAll("[data-trash]").forEach(btn=>{
+      btn.onclick = ()=>{
+        const act = btn.dataset.trash;
+        const id  = btn.dataset.id;
+
+        if(act==="restore-state"){ toggleDel("state",id,false); return render(); }
+        if(act==="restore-entity"){ toggleDel("entity",id,false); return render(); }
+        if(act==="restore-hub"){ toggleDel("hub",id,false); return render(); }
+        if(act==="restore-field"){ toggleDelEntryField(id,false); return render(); }
+
+        if(!confirm("Endgültig löschen?")) return;
+
+        if(act==="hard-state"){
+          const arr=store.states||[]; const idx=arr.findIndex(x=>x.id===id);
+          if(idx>=0){ arr.splice(idx,1); saveStore(); }
+          return render();
+        }
+        if(act==="hard-entity"){
+          const arr=store.nodes||[]; const idx=arr.findIndex(x=>x.id===id);
+          if(idx>=0){ arr.splice(idx,1); saveStore(); }
+          return render();
+        }
+        if(act==="hard-hub"){
+          const arr=store.hubs||[]; const idx=arr.findIndex(x=>x.id===id);
+          if(idx>=0){
+            arr.splice(idx,1);
+            store.hub_entries = (store.hub_entries||[]).filter(e=>e.hub_id!==id);
+            saveStore();
+          }
+          return render();
+        }
+        if(act==="hard-field"){
+          hardDeleteEntryField(id);
+          return render();
+        }
+      };
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", ()=>{
+    postLoadFixes();
+    injectPatchStyle();
+    wireNav();
+    render();
+  });
+
+})(); 
+
+</script> 
+
+</body> 
+
+</html> 

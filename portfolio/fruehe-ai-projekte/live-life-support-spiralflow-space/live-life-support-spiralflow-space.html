@@ -1,0 +1,3837 @@
+<!doctype html> 
+
+<html lang="de"> 
+
+<head> 
+
+<meta charset="utf-8"/> 
+
+<meta name="viewport" content="width=device-width,initial-scale=1"/> 
+
+<title>Spiral Flow Space — Local (ohne Lovable)</title> 
+
+<style> 
+
+:root{ 
+
+  --bg:#0b0d10; --panel:#12161c; --panel2:#0f1318; --text:#d7dde7; --muted:#8e99aa; 
+
+  --line:#222a35; --chip:#1a2230; --chip2:#131a24; --danger:#ff7d7d; 
+
+} 
+
+*{box-sizing:border-box} 
+
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial} 
+
+header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,var(--bg),rgba(11,13,16,.85));backdrop-filter:blur(6px); 
+
+  border-bottom:1px solid var(--line);padding:12px 14px;display:flex;gap:10px;align-items:center;justify-content:space-between} 
+
+.brand{display:flex;flex-direction:column;gap:2px} 
+
+.brand b{font-size:14px;letter-spacing:.2px} 
+
+.brand span{font-size:12px;color:var(--muted)} 
+
+nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap} 
+
+nav button{background:var(--chip);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:9px 11px;cursor:pointer} 
+
+nav button:hover{border-color:#2d3848} 
+
+main{max-width:1100px;margin:0 auto;padding:16px} 
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px} 
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px} 
+
+@media (max-width:860px){.grid3{grid-template-columns:1fr}} 
+
+.tile{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;min-height:88px} 
+
+.tile:hover{border-color:#2d3848} 
+
+.tile h2{margin:0 0 6px 0;font-size:14px} 
+
+.tile p{margin:0;color:var(--muted);font-size:12px} 
+
+.tile .note{margin-top:6px;color:var(--muted);font-size:11px;opacity:.95} 
+
+hr{border:0;border-top:1px solid var(--line);margin:12px 0} 
+
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center} 
+
+input[type="text"], textarea, select{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 11px;outline:none} 
+
+textarea{width:100%;min-height:170px;resize:vertical} 
+
+button{background:var(--chip);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:9px 11px;cursor:pointer} 
+
+button:hover{border-color:#2d3848} 
+
+button.danger{border-color:#4a2b2b} 
+
+button.danger:hover{border-color:#6a3a3a} 
+
+.small{color:var(--muted);font-size:12px} 
+
+.pillgrid{display:grid;grid-template-columns:repeat(4, minmax(0,1fr));gap:8px} 
+
+@media (max-width:860px){.pillgrid{grid-template-columns:repeat(2, minmax(0,1fr));}} 
+
+.pill{padding:10px 10px;border-radius:999px;background:var(--chip2);border:1px solid var(--line);cursor:pointer;color:var(--text);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative} 
+
+.pill:hover{border-color:#2d3848} 
+
+.pill .sub{display:block;color:var(--muted);font-size:10px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} 
+
+.badge{display:inline-block;padding:2px 8px;border:1px solid var(--line);border-radius:999px;background:var(--chip2);color:var(--muted);font-size:12px;margin-right:6px} 
+
+.list{display:flex;flex-direction:column;gap:8px} 
+
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:12px} 
+
+.card:hover{border-color:#2d3848} 
+
+.card .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start} 
+
+.card .meta{color:var(--muted);font-size:12px} 
+
+.toast{position:fixed;right:14px;bottom:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--text);font-size:12px;max-width:360px;display:none;z-index:99} 
+
+.modalback{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:50} 
+
+.modal{width:min(980px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px} 
+
+.tablelike{display:flex;flex-direction:column;gap:10px} 
+
+.rowitem{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:10px} 
+
+.rowitem .head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start} 
+
+.rowitem .head b{font-size:13px} 
+
+.rowitem .hint{color:var(--muted);font-size:12px;margin-top:4px} 
+
+.rowitem .ctrl{display:flex;gap:8px;flex-wrap:wrap} 
+
+.kv{display:grid;grid-template-columns:160px 1fr;gap:6px 10px} 
+
+.kv .k{color:var(--muted);font-size:12px} 
+
+.kv .v{color:var(--text);font-size:12px} 
+
+.fieldgrid{display:grid;grid-template-columns:1fr;gap:8px} 
+
+.fieldrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap} 
+
+.fieldrow label{color:var(--muted);font-size:12px} 
+
+.fieldrow input[type="checkbox"]{width:18px;height:18px} 
+
+</style> 
+
+</head> 
+
+<body> 
+
+<header> 
+
+  <div class="brand"> 
+
+    <b>Spiral Flow Space</b> 
+
+    <span>Local • Systeme im Vordergrund • kein Backend</span> 
+
+  </div> 
+
+  <nav> 
+
+    <button id="navHome">Start</button> 
+
+    <button id="navProtokolle">Protokolle</button> 
+
+    <button id="navDaten">Daten</button> 
+
+    <button id="navConfig">Konfiguration</button> 
+
+    <button id="navSnapshot">Snapshot</button> 
+
+  </nav> 
+
+</header> 
+
+ 
+
+<div class="toast" id="toast"></div> 
+
+<main id="app"></main> 
+
+ 
+
+<div class="modalback" id="modalBack"><div class="modal" id="modal"></div></div> 
+
+ 
+
+<!-- SNAPSHOT_ANCHOR --> 
+
+ 
+
+<script> 
+
+(() => { 
+
+  // ============================================================ 
+
+  // v3: Start-Buttons (Hubs) + Protokoll-Felder + Snapshot Button 
+
+  // ============================================================ 
+
+ 
+
+  const STORAGE_KEY = "spiral_flow_space_store_v3"; 
+
+  const LEGACY_V2_KEY = "spiral_flow_space_store_v2"; 
+
+  const LEGACY_V1_KEY = "spiral_flow_space_store_v1"; 
+
+ 
+
+  const DEFAULT_STATES = [ 
+
+    {label:"Rauschen",hint:"Signale häufen sich ohne Richtung."}, 
+
+    {label:"Drift",hint:"Abweichung nimmt langsam zu."}, 
+
+    {label:"Stau",hint:"Durchsatz sinkt, Warteschlangen wachsen."}, 
+
+    {label:"Übersteuerung",hint:"Regelkreise schwingen auf."}, 
+
+    {label:"Leerlauf",hint:"Kapazität ist da, aber kein sinnvolles Signal."}, 
+
+    {label:"Resonanz",hint:"Signale passen, Reibung sinkt."}, 
+
+    {label:"Kippkante",hint:"Kleine Änderung kippt den Zustand."}, 
+
+    {label:"Rückkopplung",hint:"Output verstärkt den Input."}, 
+
+    {label:"Fragment",hint:"Zerlegt, Kontext fehlt."}, 
+
+    {label:"Still",hint:"Kaum Änderung, niedrige Aktivität."}, 
+
+    {label:"Routine",hint:"Wiederholung ohne neue Variation."}, 
+
+    {label:"Fluss",hint:"Kontinuierliche Bewegung ohne Stau."} 
+
+  ]; 
+
+ 
+
+  const DEFAULT_NODES = [ 
+
+    {label:"Agent A",hint:"Ausführende Instanz."}, 
+
+    {label:"Scheduler",hint:"Taktet Reihenfolge."}, 
+
+    {label:"Speicherpfad",hint:"Ort für Persistenz/State."}, 
+
+    {label:"Interface",hint:"Übergang zwischen Schichten."}, 
+
+    {label:"Parser",hint:"Zerlegt Input in Struktur."}, 
+
+    {label:"Feedback-Loop",hint:"Rückmeldung/Anpassung."}, 
+
+    {label:"Watchdog",hint:"Überwacht Timeouts/Ausfälle."}, 
+
+    {label:"Pipeline",hint:"Kette aus Verarbeitungsschritten."}, 
+
+    {label:"Modell-Session",hint:"Kontext einer Ausführung."}, 
+
+    {label:"Logger",hint:"Schreibt Protokolle."}, 
+
+    {label:"Monitor",hint:"Aggregiert Signale."}, 
+
+    {label:"Queue",hint:"Warteschlange."} 
+
+  ]; 
+
+ 
+
+  const DEFAULT_STEPS = [ 
+
+    { id:"step_perceive", title:"Wahrnehmen", prompt:"Was ist als Signal/Beobachtung da?", note:"" }, 
+
+    { id:"step_form", title:"Formbeschreibung", prompt:"Wie zeigt es sich (Form/Takt/Rückkopplung)?", note:"auch: Signalform · Musterform · Ausprägung · Manifestation" }, 
+
+    { id:"step_hold", title:"Verweilen", prompt:"Kurz stabilisieren: Raum halten ohne Eingriff.", note:"" }, 
+
+    { id:"step_move", title:"Bewegen", prompt:"Welcher Übergang / welcher nächste Versuch?", note:"" } 
+
+  ]; 
+
+ 
+
+  // Protokoll-Felder (Default): 1) freie Zeile 2) offen für Austausch? 
+
+  const DEFAULT_ENTRY_FIELDS = [ 
+
+    { id:"field_line", label:"Zeile (optional)", type:"text", note:"" }, 
+
+    { id:"field_exchange", label:"offen für Austausch?", type:"checkbox", note:"" } 
+
+  ]; 
+
+ 
+
+  const DEFAULT_HUBS = [ 
+
+    { id:"hub_state",  label:"Zustand",        desc:"Zustandsmarker wählen/hinzufügen → dann Protokollschritte.", kind:"state", deleted_at:null }, 
+
+    { id:"hub_node",   label:"Knoten/Instanz", desc:"Knoten wählen/hinzufügen → dann Protokollschritte.",         kind:"entity", deleted_at:null }, 
+
+    { id:"hub_between",label:"Zwischenraum",   desc:"Freies Protokoll ohne Einordnung.",                          kind:"between", deleted_at:null } 
+
+  ]; 
+
+ 
+
+  const view = { 
+
+    name:"home", 
+
+    ctxType:null, ctxLabel:null, ctxId:null, 
+
+    hubId:null, 
+
+    protokolleFilter:"active", 
+
+    protokolleType:"all", 
+
+    q:"" 
+
+  }; 
+
+ 
+
+  const $ = (id)=>document.getElementById(id); 
+
+  const appEl = $("app"); 
+
+ 
+
+  function nowISO(){ return new Date().toISOString(); } 
+
+  function fmt(ts){ 
+
+    if(!ts) return "—"; 
+
+    const d = new Date(ts); 
+
+    if (isNaN(d.getTime())) return String(ts); 
+
+    return d.toLocaleString("de-DE"); 
+
+  } 
+
+  function uid(){ 
+
+    return (crypto?.randomUUID?.() || ("id-"+Math.random().toString(16).slice(2)+Date.now().toString(16))); 
+
+  } 
+
+  function toast(msg){ 
+
+    const t=$("toast"); 
+
+    t.textContent=msg; 
+
+    t.style.display="block"; 
+
+    clearTimeout(toast._to); 
+
+    toast._to=setTimeout(()=>t.style.display="none",2200); 
+
+  } 
+
+  function esc(s){ 
+
+    return String(s??"").replace(/[&<>\"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); 
+
+  } 
+
+ 
+
+  function openModal(html){ 
+
+    $("modal").innerHTML=html; 
+
+    $("modalBack").style.display="flex"; 
+
+  } 
+
+  function closeModal(){ 
+
+    $("modalBack").style.display="none"; 
+
+    $("modal").innerHTML=""; 
+
+  } 
+
+  $("modalBack").addEventListener("click",(e)=>{ if(e.target.id==="modalBack") closeModal(); }); 
+
+ 
+
+  // ---------- Base64 helpers (UTF-8 safe) ---------- 
+
+  function toBase64(str){ 
+
+    const bytes = new TextEncoder().encode(str); 
+
+    let bin = ""; 
+
+    const chunk = 0x8000; 
+
+    for(let i=0;i<bytes.length;i+=chunk){ 
+
+      bin += String.fromCharCode.apply(null, bytes.subarray(i, i+chunk)); 
+
+    } 
+
+    return btoa(bin); 
+
+  } 
+
+  function fromBase64(b64){ 
+
+    const bin = atob(b64); 
+
+    const bytes = new Uint8Array(bin.length); 
+
+    for(let i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i); 
+
+    return new TextDecoder().decode(bytes); 
+
+  } 
+
+ 
+
+  // ---------- Snapshot (embedded) ---------- 
+
+  function readEmbeddedSnapshot(){ 
+
+    const elB64 = document.getElementById("snapshotDataB64"); 
+
+    if(elB64){ 
+
+      try{ 
+
+        const b64 = (elB64.textContent || "").trim(); 
+
+        if(!b64) return null; 
+
+        const json = fromBase64(b64); 
+
+        return JSON.parse(json); 
+
+      }catch{ 
+
+        return null; 
+
+      } 
+
+    } 
+
+    return null; 
+
+  } 
+
+ 
+
+  // ---------- Store ---------- 
+
+  function emptyStore(){ 
+
+    return { 
+
+      schema_version:3, 
+
+      created_at:nowISO(), 
+
+      hubs:[], 
+
+      states:[], 
+
+      nodes:[], 
+
+      steps:[], 
+
+      entry_fields:[], 
+
+      entries:[] 
+
+    }; 
+
+  } 
+
+ 
+
+  function mapLegacyStepToId(name){ 
+
+    const n = (name||"").trim().toLowerCase(); 
+
+    if(n==="wahrnehmen") return "step_perceive"; 
+
+    if(n==="benennen") return "step_form"; 
+
+    if(n==="formbeschreibung") return "step_form"; 
+
+    if(n==="verweilen") return "step_hold"; 
+
+    if(n==="bewegen") return "step_move"; 
+
+    return ""; 
+
+  } 
+
+ 
+
+  function normalizeImport(obj){ 
+
+    const data = obj?.data || obj?.store || obj; 
+
+    if(!data) return null; 
+
+    data.schema_version ||= 3; 
+
+    data.hubs ||= []; 
+
+    data.states ||= []; 
+
+    data.nodes ||= []; 
+
+    data.steps ||= []; 
+
+    data.entry_fields ||= []; 
+
+    data.entries ||= []; 
+
+    (data.entries||[]).forEach(e=>{ 
+
+      e.fields ||= e.fields || {}; 
+
+      if(!e.spiral_step_id && e.spiral_step){ 
+
+        const mapped = mapLegacyStepToId(e.spiral_step); 
+
+        if(mapped) e.spiral_step_id = mapped; 
+
+      } 
+
+    }); 
+
+    return data; 
+
+  } 
+
+ 
+
+  function ensureDefaults(st){ 
+
+    // hubs 
+
+    if(!Array.isArray(st.hubs) || !st.hubs.length){ 
+
+      st.hubs = DEFAULT_HUBS.map(h=>({ ...h })); 
+
+    }else{ 
+
+      // ensure default hubs exist by id 
+
+      const ids = new Set(st.hubs.map(h=>h.id)); 
+
+      for(const h of DEFAULT_HUBS){ 
+
+        if(!ids.has(h.id)) st.hubs.push({ ...h }); 
+
+      } 
+
+    } 
+
+ 
+
+    // states/nodes/steps 
+
+    if(!Array.isArray(st.states) || !st.states.length){ 
+
+      st.states = DEFAULT_STATES.map(s=>({id:uid(), label:s.label, hint:s.hint, line2:"", deleted_at:null})); 
+
+    }else{ 
+
+      st.states.forEach(x=>{ x.line2 ||= ""; }); 
+
+    } 
+
+    if(!Array.isArray(st.nodes) || !st.nodes.length){ 
+
+      st.nodes = DEFAULT_NODES.map(s=>({id:uid(), label:s.label, hint:s.hint, line2:"", deleted_at:null})); 
+
+    }else{ 
+
+      st.nodes.forEach(x=>{ x.line2 ||= ""; }); 
+
+    } 
+
+    if(!Array.isArray(st.steps) || !st.steps.length){ 
+
+      st.steps = DEFAULT_STEPS.map(s=>({id:s.id, title:s.title, prompt:s.prompt, note:s.note, line2:""})); 
+
+    }else{ 
+
+      st.steps.forEach(x=>{ x.line2 ||= ""; }); 
+
+    } 
+
+ 
+
+    // entry fields 
+
+    if(!Array.isArray(st.entry_fields) || !st.entry_fields.length){ 
+
+      st.entry_fields = DEFAULT_ENTRY_FIELDS.map(f=>({ ...f })); 
+
+    }else{ 
+
+      // ensure defaults exist (by id) 
+
+      const ids = new Set(st.entry_fields.map(f=>f.id)); 
+
+      for(const f of DEFAULT_ENTRY_FIELDS){ 
+
+        if(!ids.has(f.id)) st.entry_fields.push({ ...f }); 
+
+      } 
+
+    } 
+
+ 
+
+    // entries 
+
+    (st.entries||[]).forEach(e=>{ 
+
+      e.fields ||= {}; 
+
+      e.context_id ||= e.context_id || ""; 
+
+    }); 
+
+ 
+
+    st.schema_version = 3; 
+
+    return st; 
+
+  } 
+
+ 
+
+  function migrateV2ToV3(v2){ 
+
+    const st = emptyStore(); 
+
+    st.states = (v2.states||[]).map(x=>({ id:x.id||uid(), label:x.label||"", hint:x.hint||"", line2:x.line2||"", deleted_at:x.deleted_at||null })); 
+
+    st.nodes  = (v2.nodes ||[]).map(x=>({ id:x.id||uid(), label:x.label||"", hint:x.hint||"", line2:x.line2||"", deleted_at:x.deleted_at||null })); 
+
+    st.steps  = (v2.steps ||[]).map(x=>({ id:x.id||uid(), title:x.title||"", prompt:x.prompt||"", note:x.note||"", line2:x.line2||"" })); 
+
+ 
+
+    st.entries = (v2.entries||[]).map(e=>{ 
+
+      const x = Object.assign({}, e); 
+
+      x.context_id = x.context_id || ""; 
+
+      x.fields = x.fields || {}; 
+
+      if(!x.spiral_step_id && x.spiral_step){ 
+
+        const mapped = mapLegacyStepToId(x.spiral_step); 
+
+        if(mapped) x.spiral_step_id = mapped; 
+
+      } 
+
+      return x; 
+
+    }); 
+
+ 
+
+    // new in v3 
+
+    st.hubs = DEFAULT_HUBS.map(h=>({ ...h })); 
+
+    st.entry_fields = DEFAULT_ENTRY_FIELDS.map(f=>({ ...f })); 
+
+ 
+
+    return ensureDefaults(st); 
+
+  } 
+
+ 
+
+  function migrateV1ToV3(v1){ 
+
+    // v1 had user_states/user_nodes and entries; steps were static names 
+
+    const st = emptyStore(); 
+
+ 
+
+    // merge seeds + user lists by label (keep stable ids) 
+
+    const mByLabel = (seed, extra)=>{ 
+
+      const m = new Map(); 
+
+      for(const x of seed) m.set((x.label||"").toLowerCase(), x); 
+
+      for(const x of extra){ 
+
+        const k = (x.label||"").toLowerCase(); 
+
+        if(k && !m.has(k)) m.set(k, x); 
+
+      } 
+
+      return Array.from(m.values()); 
+
+    }; 
+
+ 
+
+    const seedStates = DEFAULT_STATES.map(s=>({id:uid(), label:s.label, hint:s.hint, line2:"", deleted_at:null})); 
+
+    const seedNodes  = DEFAULT_NODES.map(s=>({id:uid(), label:s.label, hint:s.hint, line2:"", deleted_at:null})); 
+
+ 
+
+    const userStates = (v1.user_states||[]).map(s=>({id:uid(), label:s.label, hint:s.hint||"(eigener Marker)", line2:"", deleted_at:null})); 
+
+    const userNodes  = (v1.user_nodes ||[]).map(s=>({id:uid(), label:s.label, hint:s.hint||"(eigener Knoten)", line2:"", deleted_at:null})); 
+
+ 
+
+    st.states = mByLabel(seedStates, userStates); 
+
+    st.nodes  = mByLabel(seedNodes,  userNodes); 
+
+    st.steps  = DEFAULT_STEPS.map(s=>({id:s.id, title:s.title, prompt:s.prompt, note:s.note, line2:""})); 
+
+ 
+
+    st.entries = (v1.entries||[]).map(e=>{ 
+
+      const x = Object.assign({}, e); 
+
+      x.context_id = x.context_id || ""; 
+
+      x.fields = x.fields || {}; 
+
+      x.spiral_step_id = x.spiral_step_id || mapLegacyStepToId(x.spiral_step); 
+
+      x.spiral_step = x.spiral_step || ""; 
+
+      return x; 
+
+    }); 
+
+ 
+
+    st.hubs = DEFAULT_HUBS.map(h=>({ ...h })); 
+
+    st.entry_fields = DEFAULT_ENTRY_FIELDS.map(f=>({ ...f })); 
+
+ 
+
+    return ensureDefaults(st); 
+
+  } 
+
+ 
+
+  function loadStore(){ 
+
+    try{ 
+
+      // 1) v3 localStorage 
+
+      const raw = localStorage.getItem(STORAGE_KEY); 
+
+      if(raw){ 
+
+        const obj = JSON.parse(raw); 
+
+        return ensureDefaults(normalizeImport(obj) || emptyStore()); 
+
+      } 
+
+ 
+
+      // 2) embedded snapshot (base64) if localStorage empty 
+
+      const snap = readEmbeddedSnapshot(); 
+
+      if(snap){ 
+
+        const st = ensureDefaults(normalizeImport({data:snap}) || emptyStore()); 
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); 
+
+        return st; 
+
+      } 
+
+ 
+
+      // 3) migrate v2 
+
+      const raw2 = localStorage.getItem(LEGACY_V2_KEY); 
+
+      if(raw2){ 
+
+        const v2 = JSON.parse(raw2); 
+
+        const st = migrateV2ToV3(v2); 
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); 
+
+        return st; 
+
+      } 
+
+ 
+
+      // 4) migrate v1 
+
+      const raw1 = localStorage.getItem(LEGACY_V1_KEY); 
+
+      if(raw1){ 
+
+        const v1 = JSON.parse(raw1); 
+
+        const st = migrateV1ToV3(v1); 
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); 
+
+        return st; 
+
+      } 
+
+ 
+
+      // 5) fresh init 
+
+      const st = ensureDefaults(emptyStore()); 
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); 
+
+      return st; 
+
+    }catch{ 
+
+      const st = ensureDefaults(emptyStore()); 
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(st)); 
+
+      return st; 
+
+    } 
+
+  } 
+
+ 
+
+  let store = loadStore(); 
+
+  function saveStore(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } 
+
+ 
+
+  function stepById(id){ return (store.steps||[]).find(s=>s.id===id) || null; } 
+
+  function stepTitleForEntry(e){ 
+
+    if(e.spiral_step_id){ 
+
+      const s = stepById(e.spiral_step_id); 
+
+      if(s) return s.title; 
+
+    } 
+
+    return e.spiral_step || ""; 
+
+  } 
+
+ 
+
+  function listStatesActive(){ return (store.states||[]).filter(s=>!s.deleted_at); } 
+
+  function listNodesActive(){ return (store.nodes||[]).filter(s=>!s.deleted_at); } 
+
+  function listHubsActive(){ return (store.hubs||[]).filter(h=>!h.deleted_at); } 
+
+  function listEntryFields(){ return (store.entry_fields||[]).slice(); } 
+
+ 
+
+  function findByLabel(arr, label){ 
+
+    const k=(label||"").toLowerCase(); 
+
+    return arr.find(s=>(s.label||"").toLowerCase()===k) || null; 
+
+  } 
+
+ 
+
+  function addState(label){ 
+
+    label=(label||"").trim(); if(!label) return false; 
+
+    if(findByLabel(store.states, label)) return false; 
+
+    store.states.push({id:uid(), label, hint:"(eigener Marker)", line2:"", deleted_at:null}); 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+  function addNode(label){ 
+
+    label=(label||"").trim(); if(!label) return false; 
+
+    if(findByLabel(store.nodes, label)) return false; 
+
+    store.nodes.push({id:uid(), label, hint:"(eigener Knoten)", line2:"", deleted_at:null}); 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+ 
+
+  function moveItem(arr, id, dir){ 
+
+    const idx = arr.findIndex(x=>x.id===id); 
+
+    if(idx<0) return false; 
+
+    const j = idx + dir; 
+
+    if(j<0 || j>=arr.length) return false; 
+
+    const tmp = arr[idx]; 
+
+    arr[idx] = arr[j]; 
+
+    arr[j] = tmp; 
+
+    return true; 
+
+  } 
+
+ 
+
+  function setView(name, opts={}){ 
+
+    view.name = name; 
+
+    Object.assign(view, opts); 
+
+    render(); 
+
+  } 
+
+ 
+
+  // ---------- Entries ---------- 
+
+  function createEntry({context_type, context_label, context_id, spiral_step_id, spiral_step, content, fields}){ 
+
+    const e = { 
+
+      id: uid(), 
+
+      context_type, 
+
+      context_label: context_label || "", 
+
+      context_id: context_id || "", 
+
+      spiral_step_id: spiral_step_id || "", 
+
+      spiral_step: spiral_step || "", 
+
+      content: content || "", 
+
+      fields: fields || {}, 
+
+      created_at: nowISO(), 
+
+      updated_at: null, 
+
+      is_edited: false, 
+
+      archived_at: null, 
+
+      deleted_at: null 
+
+    }; 
+
+    store.entries.push(e); 
+
+    saveStore(); 
+
+    return e.id; 
+
+  } 
+
+  function updateEntry(id, patch){ 
+
+    const e = store.entries.find(x=>x.id===id); 
+
+    if(!e) return false; 
+
+    Object.assign(e, patch); 
+
+    e.updated_at = nowISO(); 
+
+    e.is_edited = true; 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+  function toggleArchive(id){ 
+
+    const e = store.entries.find(x=>x.id===id); 
+
+    if(!e) return false; 
+
+    e.archived_at = e.archived_at ? null : nowISO(); 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+  function softDelete(id){ 
+
+    const e = store.entries.find(x=>x.id===id); 
+
+    if(!e) return false; 
+
+    e.deleted_at = e.deleted_at ? null : nowISO(); 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+ 
+
+  function contextLabelForEntry(e){ 
+
+    return e.context_label || ""; 
+
+  } 
+
+ 
+
+  function entryBadges(e){ 
+
+    const badges = []; 
+
+    const ty = e.context_type; 
+
+    badges.push(`<span class="badge">${ty==="state"?"Zustand":(ty==="entity"?"Knoten":(ty==="between"?"Zwischenraum":(ty==="hub"?"Start":"—")))}</span>`); 
+
+    const cl = contextLabelForEntry(e); 
+
+    if(cl) badges.push(`<span class="badge">${esc(cl)}</span>`); 
+
+    const st = stepTitleForEntry(e); 
+
+    if(st) badges.push(`<span class="badge">${esc(st)}</span>`); 
+
+    if(e.archived_at) badges.push(`<span class="badge">Archiv</span>`); 
+
+    if(e.deleted_at) badges.push(`<span class="badge">Gelöscht</span>`); 
+
+    if(e.is_edited) badges.push(`<span class="badge">bearbeitet</span>`); 
+
+ 
+
+    // show checkbox true as badge (only if configured) 
+
+    const fields = e.fields || {}; 
+
+    const defs = listEntryFields(); 
+
+    for(const f of defs){ 
+
+      if(f.type==="checkbox" && fields[f.id]===true){ 
+
+        badges.push(`<span class="badge">${esc(f.label)}</span>`); 
+
+      } 
+
+    } 
+
+    return badges.join(""); 
+
+  } 
+
+ 
+
+  function renderEntryCards(entries, {showGoto=false}={}){ 
+
+    if(!entries.length) return `<div class="small">Keine Einträge.</div>`; 
+
+    return entries.map(e=>{ 
+
+      const snippet = (e.content||"").replace(/\s+/g," ").slice(0,180); 
+
+      return ` 
+
+        <div class="card"> 
+
+          <div class="top"> 
+
+            <div> 
+
+              <div class="meta">${entryBadges(e)}</div> 
+
+              <div style="height:6px"></div> 
+
+              <div>${esc(snippet || "(leer)")}</div> 
+
+              <div style="height:6px"></div> 
+
+              <div class="meta">erstellt: ${fmt(e.created_at)}${e.updated_at?` • bearbeitet: ${fmt(e.updated_at)}`:""}</div> 
+
+            </div> 
+
+            <div class="row"> 
+
+              ${showGoto?`<button data-act="goto" data-entry="${e.id}">Zum Kontext</button>`:""} 
+
+              <button data-act="edit" data-entry="${e.id}">Bearbeiten</button> 
+
+              <button data-act="arch" data-entry="${e.id}">${e.archived_at?"Archiv zurück":"Archivieren"}</button> 
+
+              <button class="danger" data-act="del" data-entry="${e.id}">${e.deleted_at?"Wiederherstellen":"Löschen"}</button> 
+
+            </div> 
+
+          </div> 
+
+        </div> 
+
+      `; 
+
+    }).join(""); 
+
+  } 
+
+ 
+
+  // ---------- Hubs (Start-Buttons) ---------- 
+
+  function addHub(label, desc, kind){ 
+
+    label=(label||"").trim(); if(!label) return false; 
+
+    kind = (kind||"notebook").trim(); 
+
+    const clash = (store.hubs||[]).find(h=>!h.deleted_at && (h.label||"").toLowerCase()===label.toLowerCase()); 
+
+    if(clash) return false; 
+
+    store.hubs.push({id:uid(), label, desc:desc||"", kind, deleted_at:null}); 
+
+    saveStore(); 
+
+    return true; 
+
+  } 
+
+ 
+
+  function findHubById(id){ 
+
+    return (store.hubs||[]).find(h=>h.id===id) || null; 
+
+  } 
+
+ 
+
+  // ---------- UI render ---------- 
+
+  function renderHome(){ 
+
+    const hubs = listHubsActive(); 
+
+    const tiles = hubs.map(h=>` 
+
+      <div class="tile" data-hub="${esc(h.id)}"> 
+
+        <h2>${esc(h.label)}</h2> 
+
+        <p>${esc(h.desc||"")}</p> 
+
+      </div> 
+
+    `).join(""); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small">Start-Buttons sind editierbar.</div> 
+
+          <div class="row"> 
+
+            <button id="homeManageHubs">Start verwalten</button> 
+
+            <button id="homeSnapshot">Snapshot</button> 
+
+          </div> 
+
+        </div> 
+
+        <div style="height:10px"></div> 
+
+        <div class="grid3" id="homeGrid">${tiles}</div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function renderPicker(kind){ 
+
+    const isState = kind==="state"; 
+
+    const items = isState ? listStatesActive() : listNodesActive(); 
+
+    const pills = items.map(it=>{ 
+
+      const hint = it.hint || ""; 
+
+      const line2 = it.line2 || ""; 
+
+      return `<div class="pill" title="${esc(hint)}" data-id="${esc(it.id)}" data-label="${esc(it.label)}"> 
+
+        ${esc(it.label)} 
+
+        ${hint?`<span class="sub">${esc(hint)}</span>`:""} 
+
+        ${line2?`<span class="sub">${esc(line2)}</span>`:""} 
+
+      </div>`; 
+
+    }).join(""); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div> 
+
+            <div class="small">${isState?"Zustände":"Entitäten/Knoten"} • Auswahl</div> 
+
+            <div class="small">${isState?"Zustand als Marker.":"Knoten/Instanz als System-Punkt."}</div> 
+
+          </div> 
+
+          <div class="row"> 
+
+            <button id="manageList">${isState?"Zustände verwalten":"Knoten verwalten"}</button> 
+
+            <button id="backHome">Zurück</button> 
+
+          </div> 
+
+        </div> 
+
+        <hr/> 
+
+        <div class="pillgrid" id="pillGrid">${pills}</div> 
+
+        <div style="height:12px"></div> 
+
+        <div class="row"> 
+
+          <input id="newLabel" type="text" placeholder="${isState?"Neuen Zustand hinzufügen":"Neuen Knoten hinzufügen"}" style="min-width:260px"/> 
+
+          <button id="addLabel">Hinzufügen</button> 
+
+          <span class="small">Alles lokal gespeichert.</span> 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function filterEntriesForContext({type, label, id}){ 
+
+    return (store.entries||[]) 
+
+      .filter(e=>e.context_type===type) 
+
+      .filter(e=>!e.deleted_at) 
+
+      .filter(e=>{ 
+
+        // prefer id match if present 
+
+        if(id){ 
+
+          if(e.context_id && e.context_id===id) return true; 
+
+          // legacy entries without context_id fallback to label 
+
+          return (!e.context_id && e.context_label===label); 
+
+        } 
+
+        return e.context_label===label; 
+
+      }) 
+
+      .sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)); 
+
+  } 
+
+ 
+
+  function renderSpiral(ctxType, ctxLabel, ctxId){ 
+
+    const stepTiles = (store.steps||[]).map(s=>` 
+
+      <div class="tile" data-step-id="${esc(s.id)}"> 
+
+        <h2>${esc(s.title)}</h2> 
+
+        <p>${esc(s.prompt||"")}</p> 
+
+        ${s.note?`<div class="note">${esc(s.note)}</div>`:""} 
+
+        ${s.line2?`<div class="note">${esc(s.line2)}</div>`:""} 
+
+      </div> 
+
+    `).join(""); 
+
+ 
+
+    const entries = filterEntriesForContext({type:(ctxType==="state"?"state":"entity"), label:ctxLabel, id:ctxId}); 
+
+    const active = entries.filter(e=>!e.archived_at); 
+
+    const archived = entries.filter(e=>!!e.archived_at); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small"> 
+
+            <span class="badge">${ctxType==="state"?"Zustand":"Knoten"}</span> 
+
+            <span class="badge">${esc(ctxLabel)}</span> 
+
+          </div> 
+
+          <div class="row"> 
+
+            <button id="manageSteps">Schritte verwalten</button> 
+
+            <button id="backPicker">Zurück</button> 
+
+          </div> 
+
+        </div> 
+
+        <div style="height:10px"></div> 
+
+        <div class="grid3" style="grid-template-columns:repeat(4,1fr)">${stepTiles}</div> 
+
+ 
+
+        <div style="height:12px"></div> 
+
+        <div class="panel" style="padding:12px"> 
+
+          <div class="row" style="justify-content:space-between"> 
+
+            <div class="small"><b>Protokolle</b> • Aktiv: ${active.length} • Archiv: ${archived.length}</div> 
+
+            <div class="small">Klick „Bearbeiten“ für Edit/Archiv/Löschen.</div> 
+
+          </div> 
+
+          <div style="height:10px"></div> 
+
+          <div class="list"> 
+
+            ${renderEntryCards(active)} 
+
+            ${archived.length?`<div class="small" style="padding:6px 2px">Archiv</div>${renderEntryCards(archived)}`:""} 
+
+          </div> 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function renderBetween(){ 
+
+    const entries = (store.entries||[]) 
+
+      .filter(e=>e.context_type==="between") 
+
+      .filter(e=>!e.deleted_at) 
+
+      .sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)); 
+
+ 
+
+    const active = entries.filter(e=>!e.archived_at); 
+
+    const archived = entries.filter(e=>!!e.archived_at); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div> 
+
+            <div class="small"><span class="badge">Zwischenraum</span></div> 
+
+            <div class="small">Freies Protokoll ohne Einordnung.</div> 
+
+          </div> 
+
+          <div class="row"> 
+
+            <button id="newBetween">Neues Protokoll</button> 
+
+            <button id="backHome">Zurück</button> 
+
+          </div> 
+
+        </div> 
+
+        <hr/> 
+
+        <div class="panel" style="padding:12px"> 
+
+          <div class="row" style="justify-content:space-between"> 
+
+            <div class="small"><b>Protokolle</b> • Aktiv: ${active.length} • Archiv: ${archived.length}</div> 
+
+          </div> 
+
+          <div style="height:10px"></div> 
+
+          <div class="list"> 
+
+            ${renderEntryCards(active)} 
+
+            ${archived.length?`<div class="small" style="padding:6px 2px">Archiv</div>${renderEntryCards(archived)}`:""} 
+
+          </div> 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function renderHubNotebook(hubId){ 
+
+    const hub = findHubById(hubId); 
+
+    if(!hub) return `<div class="panel"><div class="small">Start-Modul nicht gefunden.</div></div>`; 
+
+ 
+
+    const entries = filterEntriesForContext({type:"hub", label:hub.label, id:hub.id}); 
+
+    const active = entries.filter(e=>!e.archived_at); 
+
+    const archived = entries.filter(e=>!!e.archived_at); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div> 
+
+            <div class="small"> 
+
+              <span class="badge">Start</span> 
+
+              <span class="badge">${esc(hub.label)}</span> 
+
+            </div> 
+
+            <div class="small">${esc(hub.desc||"")}</div> 
+
+          </div> 
+
+          <div class="row"> 
+
+            <button id="newHubEntry">Neues Protokoll</button> 
+
+            <button id="backHome">Zurück</button> 
+
+          </div> 
+
+        </div> 
+
+        <hr/> 
+
+        <div class="panel" style="padding:12px"> 
+
+          <div class="row" style="justify-content:space-between"> 
+
+            <div class="small"><b>Protokolle</b> • Aktiv: ${active.length} • Archiv: ${archived.length}</div> 
+
+          </div> 
+
+          <div style="height:10px"></div> 
+
+          <div class="list"> 
+
+            ${renderEntryCards(active)} 
+
+            ${archived.length?`<div class="small" style="padding:6px 2px">Archiv</div>${renderEntryCards(archived)}`:""} 
+
+          </div> 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function entryMatchesFilters(e){ 
+
+    const life = view.protokolleFilter; 
+
+    if(life==="active" && (e.archived_at||e.deleted_at)) return false; 
+
+    if(life==="archived" && (!e.archived_at||e.deleted_at)) return false; 
+
+    if(life==="deleted" && !e.deleted_at) return false; 
+
+ 
+
+    const ty = view.protokolleType; 
+
+    if(ty!=="all" && e.context_type!==ty) return false; 
+
+ 
+
+    const q = (view.q||"").trim().toLowerCase(); 
+
+    if(q){ 
+
+      const stepName = stepTitleForEntry(e); 
+
+      const hay = [ 
+
+        e.content, 
+
+        e.context_label, 
+
+        e.context_type, 
+
+        stepName, 
+
+        JSON.stringify(e.fields||{}) 
+
+      ].join("\n").toLowerCase(); 
+
+      if(!hay.includes(q)) return false; 
+
+    } 
+
+    return true; 
+
+  } 
+
+ 
+
+  function renderProtokolleGlobal(){ 
+
+    const all = (store.entries||[]).slice().sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)); 
+
+    const filtered = all.filter(entryMatchesFilters); 
+
+ 
+
+    return ` 
+
+      <div class="panel"> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div> 
+
+            <div class="small"><b>Protokolle</b> • global • lokal</div> 
+
+            <div class="small">Suche/Filter ohne Durchklicken.</div> 
+
+          </div> 
+
+          <button id="backHome">Zurück</button> 
+
+        </div> 
+
+        <hr/> 
+
+        <div class="row"> 
+
+          <input id="q" type="text" placeholder="Suche…" value="${esc(view.q)}" style="min-width:260px"/> 
+
+          <select id="life"> 
+
+            <option value="active" ${view.protokolleFilter==="active"?"selected":""}>Aktiv</option> 
+
+            <option value="archived" ${view.protokolleFilter==="archived"?"selected":""}>Archiv</option> 
+
+            <option value="deleted" ${view.protokolleFilter==="deleted"?"selected":""}>Gelöscht</option> 
+
+            <option value="all" ${view.protokolleFilter==="all"?"selected":""}>Alles</option> 
+
+          </select> 
+
+          <select id="ty"> 
+
+            <option value="all" ${view.protokolleType==="all"?"selected":""}>Alle Typen</option> 
+
+            <option value="state" ${view.protokolleType==="state"?"selected":""}>Zustand</option> 
+
+            <option value="entity" ${view.protokolleType==="entity"?"selected":""}>Knoten</option> 
+
+            <option value="between" ${view.protokolleType==="between"?"selected":""}>Zwischenraum</option> 
+
+            <option value="hub" ${view.protokolleType==="hub"?"selected":""}>Start</option> 
+
+          </select> 
+
+          <span class="small">Treffer: <b>${filtered.length}</b></span> 
+
+        </div> 
+
+        <div style="height:12px"></div> 
+
+        <div class="list"> 
+
+          ${renderEntryCards(filtered, {showGoto:true})} 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  // ---------- Entry fields UI ---------- 
+
+  function renderEntryFieldsForm(fieldsValue){ 
+
+    const defs = listEntryFields(); 
+
+    const values = fieldsValue || {}; 
+
+    const rows = defs.map(f=>{ 
+
+      if(f.type==="checkbox"){ 
+
+        const checked = values[f.id]===true ? "checked" : ""; 
+
+        return ` 
+
+          <div class="fieldrow"> 
+
+            <input id="fld_${esc(f.id)}" type="checkbox" ${checked}/> 
+
+            <label for="fld_${esc(f.id)}">${esc(f.label||f.id)}</label> 
+
+          </div> 
+
+        `; 
+
+      } 
+
+      // default: text 
+
+      const val = (values[f.id] ?? ""); 
+
+      return ` 
+
+        <div class="fieldrow" style="align-items:flex-start"> 
+
+          <div style="min-width:180px"> 
+
+            <label for="fld_${esc(f.id)}">${esc(f.label||f.id)}</label> 
+
+            ${f.note?`<div class="small">${esc(f.note)}</div>`:""} 
+
+          </div> 
+
+          <input id="fld_${esc(f.id)}" type="text" value="${esc(val)}" style="flex:1;min-width:240px"/> 
+
+        </div> 
+
+      `; 
+
+    }).join(""); 
+
+    return `<div class="panel" style="padding:12px"><div class="small"><b>Felder</b></div><div style="height:8px"></div><div class="fieldgrid">${rows || `<div class="small">Keine Felder.</div>`}</div></div>`; 
+
+  } 
+
+ 
+
+  function readEntryFieldsFromModal(){ 
+
+    const defs = listEntryFields(); 
+
+    const out = {}; 
+
+    for(const f of defs){ 
+
+      const el = document.getElementById("fld_"+f.id); 
+
+      if(!el) continue; 
+
+      if(f.type==="checkbox") out[f.id] = !!el.checked; 
+
+      else out[f.id] = (el.value||""); 
+
+    } 
+
+    return out; 
+
+  } 
+
+ 
+
+  // ---------- Editors ---------- 
+
+  function openStepEditor(ctxType, ctxLabel, ctxId, stepId){ 
+
+    const step = stepById(stepId); 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"> 
+
+            <span class="badge">${ctxType==="state"?"Zustand":"Knoten"}</span> 
+
+            <span class="badge">${esc(ctxLabel)}</span> 
+
+            <span class="badge">${esc(step?.title || "")}</span> 
+
+          </div> 
+
+          <div class="small">${esc(step?.prompt || "")}</div> 
+
+          ${step?.note?`<div class="small">${esc(step.note)}</div>`:""} 
+
+          ${step?.line2?`<div class="small">${esc(step.line2)}</div>`:""} 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <textarea id="mText" placeholder="Protokoll…"></textarea> 
+
+      <div style="height:10px"></div> 
+
+      ${renderEntryFieldsForm({})} 
+
+      <div style="height:10px"></div> 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div class="small">Lokal gespeichert. Export/Import/Snapshot über „Daten“.</div> 
+
+        <button id="mSave">Speichern</button> 
+
+      </div> 
+
+    `); 
+
+    $("mClose").onclick = closeModal; 
+
+    $("mSave").onclick = () => { 
+
+      createEntry({ 
+
+        context_type: (ctxType==="state"?"state":"entity"), 
+
+        context_label: ctxLabel, 
+
+        context_id: ctxId || "", 
+
+        spiral_step_id: stepId, 
+
+        spiral_step: step?.title || "", 
+
+        content: $("mText").value, 
+
+        fields: readEntryFieldsFromModal() 
+
+      }); 
+
+      closeModal(); 
+
+      toast("Gespeichert."); 
+
+      render(); 
+
+    }; 
+
+  } 
+
+ 
+
+  function openNewBetween(){ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><span class="badge">Zwischenraum</span></div> 
+
+          <div class="small">Freies Protokoll ohne Einordnung.</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <textarea id="mText" placeholder="Protokoll…"></textarea> 
+
+      <div style="height:10px"></div> 
+
+      ${renderEntryFieldsForm({})} 
+
+      <div style="height:10px"></div> 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div class="small">Lokal gespeichert.</div> 
+
+        <button id="mSave">Speichern</button> 
+
+      </div> 
+
+    `); 
+
+    $("mClose").onclick = closeModal; 
+
+    $("mSave").onclick = () => { 
+
+      createEntry({ 
+
+        context_type:"between", 
+
+        context_label:"", 
+
+        context_id:"", 
+
+        spiral_step_id:"", 
+
+        spiral_step:"", 
+
+        content:$("mText").value, 
+
+        fields: readEntryFieldsFromModal() 
+
+      }); 
+
+      closeModal(); 
+
+      toast("Gespeichert."); 
+
+      render(); 
+
+    }; 
+
+  } 
+
+ 
+
+  function openNewHubEntry(hubId){ 
+
+    const hub = findHubById(hubId); 
+
+    if(!hub) return; 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"> 
+
+            <span class="badge">Start</span> 
+
+            <span class="badge">${esc(hub.label)}</span> 
+
+          </div> 
+
+          <div class="small">${esc(hub.desc||"")}</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <textarea id="mText" placeholder="Protokoll…"></textarea> 
+
+      <div style="height:10px"></div> 
+
+      ${renderEntryFieldsForm({})} 
+
+      <div style="height:10px"></div> 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div class="small">Lokal gespeichert.</div> 
+
+        <button id="mSave">Speichern</button> 
+
+      </div> 
+
+    `); 
+
+    $("mClose").onclick = closeModal; 
+
+    $("mSave").onclick = () => { 
+
+      createEntry({ 
+
+        context_type:"hub", 
+
+        context_label:hub.label, 
+
+        context_id:hub.id, 
+
+        spiral_step_id:"", 
+
+        spiral_step:"", 
+
+        content:$("mText").value, 
+
+        fields: readEntryFieldsFromModal() 
+
+      }); 
+
+      closeModal(); 
+
+      toast("Gespeichert."); 
+
+      render(); 
+
+    }; 
+
+  } 
+
+ 
+
+  function openEditEntry(id){ 
+
+    const e = (store.entries||[]).find(x=>x.id===id); 
+
+    if(!e) return; 
+
+ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small">${entryBadges(e)}</div> 
+
+          <div class="small">erstellt: ${fmt(e.created_at)}${e.updated_at?` • bearbeitet: ${fmt(e.updated_at)}`:""}</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <textarea id="mText">${esc(e.content)}</textarea> 
+
+      <div style="height:10px"></div> 
+
+      ${renderEntryFieldsForm(e.fields || {})} 
+
+      <div style="height:10px"></div> 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div class="small">Status: ${e.deleted_at?"Gelöscht":(e.archived_at?"Archiv":"Aktiv")}</div> 
+
+        <div class="row"> 
+
+          <button id="mArch">${e.archived_at?"Archiv zurück":"Archivieren"}</button> 
+
+          <button class="danger" id="mDel">${e.deleted_at?"Wiederherstellen":"Löschen"}</button> 
+
+          <button id="mSave">Speichern</button> 
+
+        </div> 
+
+      </div> 
+
+      <div style="height:10px"></div> 
+
+      <div class="panel" style="padding:12px"> 
+
+        <div class="small"><b>Meta</b></div> 
+
+        <div style="height:8px"></div> 
+
+        <div class="kv"> 
+
+          <div class="k">Kontext</div><div class="v">${esc(e.context_type)} / ${esc(e.context_label||"")}</div> 
+
+          <div class="k">Schritt</div><div class="v">${esc(stepTitleForEntry(e))}</div> 
+
+          <div class="k">ID</div><div class="v">${esc(e.id)}</div> 
+
+        </div> 
+
+      </div> 
+
+    `); 
+
+ 
+
+    $("mClose").onclick = closeModal; 
+
+    $("mSave").onclick = () => { 
+
+      updateEntry(id, { 
+
+        content:$("mText").value, 
+
+        fields: readEntryFieldsFromModal() 
+
+      }); 
+
+      closeModal(); 
+
+      toast("Gespeichert."); 
+
+      render(); 
+
+    }; 
+
+    $("mArch").onclick = () => { toggleArchive(id); closeModal(); toast("Archiv-Status geändert."); render(); }; 
+
+    $("mDel").onclick = () => { 
+
+      const cur = (store.entries||[]).find(x=>x.id===id); 
+
+      if(cur && !cur.deleted_at){ 
+
+        const ok = confirm("Wirklich löschen? (soft, wiederherstellbar)"); 
+
+        if(!ok) return; 
+
+      } 
+
+      softDelete(id); 
+
+      closeModal(); 
+
+      toast("Status geändert."); 
+
+      render(); 
+
+    }; 
+
+  } 
+
+ 
+
+  function gotoContext(id){ 
+
+    const e = (store.entries||[]).find(x=>x.id===id); 
+
+    if(!e) return; 
+
+    if(e.context_type==="state") setView("spiral", {ctxType:"state", ctxLabel:e.context_label, ctxId:e.context_id||null}); 
+
+    else if(e.context_type==="entity") setView("spiral", {ctxType:"entity", ctxLabel:e.context_label, ctxId:e.context_id||null}); 
+
+    else if(e.context_type==="between") setView("between"); 
+
+    else if(e.context_type==="hub") setView("hub", {hubId: e.context_id || null}); 
+
+    else setView("home"); 
+
+  } 
+
+ 
+
+  // ---------- Config / Manage ---------- 
+
+  function openConfigModal(){ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>Konfiguration</b></div> 
+
+          <div class="small">Start • Zustände • Knoten • Schritte • Protokoll-Felder</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="row"> 
+
+        <button id="cfgHubs">Start verwalten</button> 
+
+        <button id="cfgStates">Zustände verwalten</button> 
+
+        <button id="cfgNodes">Knoten verwalten</button> 
+
+        <button id="cfgSteps">Schritte verwalten</button> 
+
+        <button id="cfgFields">Protokoll-Felder verwalten</button> 
+
+      </div> 
+
+      <div style="height:10px"></div> 
+
+      <div class="small">Alles lokal. Export/Import/Snapshot über „Daten“.</div> 
+
+    `); 
+
+    $("mClose").onclick = closeModal; 
+
+    $("cfgHubs").onclick = ()=>openManageHubs(); 
+
+    $("cfgStates").onclick = ()=>openManageList("state"); 
+
+    $("cfgNodes").onclick  = ()=>openManageList("node"); 
+
+    $("cfgSteps").onclick  = ()=>openManageSteps(); 
+
+    $("cfgFields").onclick = ()=>openManageEntryFields(); 
+
+  } 
+
+ 
+
+  function openManageHubs(){ 
+
+    const arr = store.hubs || []; 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>Start verwalten</b></div> 
+
+          <div class="small">Label • Beschreibung • Typ • Sortierung • (soft) entfernen</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="tablelike" id="hlist"> 
+
+        ${arr.map(h=>{ 
+
+          const isDel = !!h.deleted_at; 
+
+          return ` 
+
+            <div class="rowitem" data-id="${esc(h.id)}"> 
+
+              <div class="head"> 
+
+                <div style="flex:1;min-width:240px"> 
+
+                  <b>${esc(h.label||"")}</b> 
+
+                  <div class="hint"> 
+
+                    ${esc(h.desc||"")} 
+
+                    <div class="small">Typ: ${esc(h.kind||"")}${isDel?` • <span class="badge">entfernt</span>`:""}</div> 
+
+                  </div> 
+
+                </div> 
+
+                <div class="ctrl"> 
+
+                  <button data-act="up">↑</button> 
+
+                  <button data-act="down">↓</button> 
+
+                  <button data-act="edit">Bearbeiten</button> 
+
+                  <button class="danger" data-act="toggleDel">${isDel?"Wiederherstellen":"Entfernen"}</button> 
+
+                </div> 
+
+              </div> 
+
+            </div> 
+
+          `; 
+
+        }).join("")} 
+
+      </div> 
+
+      <div style="height:12px"></div> 
+
+      <div class="panel" style="padding:12px"> 
+
+        <div class="small"><b>Neu</b></div> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row"> 
+
+          <input id="hubNewLabel" type="text" placeholder="Label" style="min-width:220px"/> 
+
+          <select id="hubNewKind"> 
+
+            <option value="notebook">Notiz/Protokolle</option> 
+
+            <option value="between">Zwischenraum</option> 
+
+            <option value="state">Zustand</option> 
+
+            <option value="entity">Knoten</option> 
+
+          </select> 
+
+        </div> 
+
+        <div style="height:8px"></div> 
+
+        <textarea id="hubNewDesc" placeholder="Beschreibung…" style="min-height:90px"></textarea> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small">Hinweis: „Notiz/Protokolle“ erzeugt ein eigenes Protokoll-Modul.</div> 
+
+          <button id="hubNewAdd">Hinzufügen</button> 
+
+        </div> 
+
+      </div> 
+
+    `); 
+
+ 
+
+    $("mClose").onclick = closeModal; 
+
+ 
+
+    $("hubNewAdd").onclick = ()=>{ 
+
+      const ok = addHub($("hubNewLabel").value, $("hubNewDesc").value, $("hubNewKind").value); 
+
+      if(!ok){ toast("Nicht hinzugefügt."); return; } 
+
+      toast("Hinzugefügt."); 
+
+      openManageHubs(); 
+
+      render(); 
+
+    }; 
+
+ 
+
+    $("hlist").querySelectorAll(".rowitem").forEach(row=>{ 
+
+      const id = row.getAttribute("data-id"); 
+
+      row.querySelectorAll("button[data-act]").forEach(btn=>{ 
+
+        btn.onclick = ()=>{ 
+
+          const act = btn.getAttribute("data-act"); 
+
+          const hub = arr.find(x=>x.id===id); 
+
+          if(!hub) return; 
+
+ 
+
+          if(act==="up"){ moveItem(arr, id, -1); saveStore(); openManageHubs(); render(); return; } 
+
+          if(act==="down"){ moveItem(arr, id, +1); saveStore(); openManageHubs(); render(); return; } 
+
+ 
+
+          if(act==="toggleDel"){ 
+
+            if(!hub.deleted_at){ 
+
+              const ok = confirm("Entfernen? (soft)"); 
+
+              if(!ok) return; 
+
+              hub.deleted_at = nowISO(); 
+
+            }else{ 
+
+              hub.deleted_at = null; 
+
+            } 
+
+            saveStore(); 
+
+            openManageHubs(); 
+
+            render(); 
+
+            return; 
+
+          } 
+
+ 
+
+          if(act==="edit"){ 
+
+            openModal(` 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div> 
+
+                  <div class="small"><b>Start-Button bearbeiten</b></div> 
+
+                  <div class="small">Label + Beschreibung + Typ</div> 
+
+                </div> 
+
+                <button id="mClose">Schließen</button> 
+
+              </div> 
+
+              <hr/> 
+
+              <div class="row"> 
+
+                <input id="hubLabel" type="text" value="${esc(hub.label||"")}" style="min-width:260px"/> 
+
+                <select id="hubKind"> 
+
+                  <option value="notebook" ${hub.kind==="notebook"?"selected":""}>Notiz/Protokolle</option> 
+
+                  <option value="between" ${hub.kind==="between"?"selected":""}>Zwischenraum</option> 
+
+                  <option value="state" ${hub.kind==="state"?"selected":""}>Zustand</option> 
+
+                  <option value="entity" ${hub.kind==="entity"?"selected":""}>Knoten</option> 
+
+                </select> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <textarea id="hubDesc" placeholder="Beschreibung…" style="min-height:90px">${esc(hub.desc||"")}</textarea> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row"> 
+
+                <input id="hubLine2" type="text" placeholder="Zusatzzeile (optional)" value="${esc(hub.line2||"")}" style="min-width:260px"/> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div class="small">Hinweis: Für alte Protokolle bleibt das gespeicherte Label bestehen.</div> 
+
+                <button id="hubSave">Speichern</button> 
+
+              </div> 
+
+            `); 
+
+            $("mClose").onclick = ()=>openManageHubs(); 
+
+            $("hubSave").onclick = ()=>{ 
+
+              const nl = ($("hubLabel").value||"").trim(); 
+
+              const nd = $("hubDesc").value||""; 
+
+              const nk = ($("hubKind").value||"notebook").trim(); 
+
+              const n2 = ($("hubLine2").value||"").trim(); 
+
+              if(!nl){ toast("Label leer."); return; } 
+
+              const clash = arr.find(x=>x.id!==id && !x.deleted_at && (x.label||"").toLowerCase()===nl.toLowerCase()); 
+
+              if(clash){ toast("Label existiert bereits."); return; } 
+
+              hub.label = nl; 
+
+              hub.desc = nd; 
+
+              hub.kind = nk; 
+
+              hub.line2 = n2; 
+
+              saveStore(); 
+
+              toast("Gespeichert."); 
+
+              openManageHubs(); 
+
+              render(); 
+
+            }; 
+
+          } 
+
+        }; 
+
+      }); 
+
+    }); 
+
+  } 
+
+ 
+
+  function renderManageRow(kind, x){ 
+
+    const isState = kind==="state"; 
+
+    const isDeleted = !!x.deleted_at; 
+
+    return ` 
+
+      <div class="rowitem" data-id="${esc(x.id)}"> 
+
+        <div class="head"> 
+
+          <div style="flex:1;min-width:240px"> 
+
+            <b>${esc(x.label)}</b> 
+
+            <div class="hint"> 
+
+              ${esc(x.hint||"")} 
+
+              ${x.line2?`<div class="small">${esc(x.line2)}</div>`:""} 
+
+              ${isDeleted?` • <span class="badge">entfernt</span>`:""} 
+
+            </div> 
+
+          </div> 
+
+          <div class="ctrl"> 
+
+            <button data-act="up">↑</button> 
+
+            <button data-act="down">↓</button> 
+
+            <button data-act="edit">Bearbeiten</button> 
+
+            <button class="danger" data-act="toggleDel">${isDeleted?"Wiederherstellen":"Entfernen"}</button> 
+
+          </div> 
+
+        </div> 
+
+      </div> 
+
+    `; 
+
+  } 
+
+ 
+
+  function wireManageList(kind){ 
+
+    const isState = kind==="state"; 
+
+    const arr = isState ? store.states : store.nodes; 
+
+    $("mlist").querySelectorAll(".rowitem").forEach(row=>{ 
+
+      const id = row.getAttribute("data-id"); 
+
+      row.querySelectorAll("button[data-act]").forEach(btn=>{ 
+
+        btn.onclick = ()=>{ 
+
+          const act = btn.getAttribute("data-act"); 
+
+          if(act==="up"){ moveItem(arr, id, -1); saveStore(); openManageList(kind); return; } 
+
+          if(act==="down"){ moveItem(arr, id, +1); saveStore(); openManageList(kind); return; } 
+
+          if(act==="toggleDel"){ 
+
+            const it = arr.find(z=>z.id===id); 
+
+            if(!it) return; 
+
+            if(!it.deleted_at){ 
+
+              const ok = confirm("Entfernen? (soft: alte Protokolle bleiben lesbar)"); 
+
+              if(!ok) return; 
+
+              it.deleted_at = nowISO(); 
+
+            }else{ 
+
+              it.deleted_at = null; 
+
+            } 
+
+            saveStore(); 
+
+            openManageList(kind); 
+
+            render(); 
+
+            return; 
+
+          } 
+
+          if(act==="edit"){ 
+
+            const it0 = arr.find(z=>z.id===id); 
+
+            openModal(` 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div> 
+
+                  <div class="small"><b>${isState?"Zustand":"Knoten"} bearbeiten</b></div> 
+
+                  <div class="small">Name + Hint + Zusatzzeile</div> 
+
+                </div> 
+
+                <button id="mClose">Schließen</button> 
+
+              </div> 
+
+              <hr/> 
+
+              <div class="row"> 
+
+                <input id="eLabel" type="text" value="${esc(it0?.label||"")}" style="min-width:260px"/> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <textarea id="eHint" placeholder="Hint / kurze Spezifikation…">${esc(it0?.hint||"")}</textarea> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row"> 
+
+                <input id="eLine2" type="text" placeholder="Zusatzzeile (optional)" value="${esc(it0?.line2||"")}" style="min-width:260px"/> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div class="small">Änderung wirkt auf Auswahlchips (alte Einträge bleiben lesbar).</div> 
+
+                <button id="eSave">Speichern</button> 
+
+              </div> 
+
+            `); 
+
+            $("mClose").onclick = ()=>openManageList(kind); 
+
+            $("eSave").onclick = ()=>{ 
+
+              const it = arr.find(z=>z.id===id); 
+
+              if(!it) return; 
+
+              const newLabel = ($("eLabel").value||"").trim(); 
+
+              const newHint  = $("eHint").value||""; 
+
+              const newLine2 = ($("eLine2").value||"").trim(); 
+
+              if(!newLabel){ toast("Name leer."); return; } 
+
+              const clash = arr.find(z=>z.id!==id && !z.deleted_at && (z.label||"").toLowerCase()===newLabel.toLowerCase()); 
+
+              if(clash){ toast("Name existiert bereits."); return; } 
+
+              it.label = newLabel; 
+
+              it.hint = newHint; 
+
+              it.line2 = newLine2; 
+
+              saveStore(); 
+
+              toast("Gespeichert."); 
+
+              openManageList(kind); 
+
+              render(); 
+
+            }; 
+
+          } 
+
+        }; 
+
+      }); 
+
+    }); 
+
+  } 
+
+ 
+
+  function openManageList(kind){ 
+
+    const isState = kind==="state"; 
+
+    const arr = isState ? store.states : store.nodes; 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>${isState?"Zustände":"Knoten"} verwalten</b></div> 
+
+          <div class="small">Umbenennen • Hint • Zusatzzeile • Sortieren • (soft) entfernen</div> 
+
+        </div> 
+
+        <div class="row"> 
+
+          <button id="mClose">Schließen</button> 
+
+        </div> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="tablelike" id="mlist"> 
+
+        ${arr.map(x=>renderManageRow(kind, x)).join("")} 
+
+      </div> 
+
+      <div style="height:12px"></div> 
+
+      <div class="row"> 
+
+        <input id="newItemLabel" type="text" placeholder="${isState?"Neuen Zustand hinzufügen":"Neuen Knoten hinzufügen"}" style="min-width:260px"/> 
+
+        <button id="newItemAdd">Hinzufügen</button> 
+
+      </div> 
+
+    `); 
+
+ 
+
+    $("mClose").onclick = closeModal; 
+
+ 
+
+    $("newItemAdd").onclick = ()=>{ 
+
+      const v = $("newItemLabel").value; 
+
+      const ok = isState ? addState(v) : addNode(v); 
+
+      $("newItemLabel").value=""; 
+
+      toast(ok?"Hinzugefügt.":"Nicht hinzugefügt."); 
+
+      openManageList(kind); 
+
+      render(); 
+
+    }; 
+
+ 
+
+    wireManageList(kind); 
+
+  } 
+
+ 
+
+  function openManageSteps(){ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>Schritte verwalten</b></div> 
+
+          <div class="small">Titel • Prompt • Note • Zusatzzeile • Sortierung • Neu hinzufügen</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="tablelike" id="slist"> 
+
+        ${(store.steps||[]).map(s=>` 
+
+          <div class="rowitem" data-id="${esc(s.id)}"> 
+
+            <div class="head"> 
+
+              <div style="flex:1;min-width:240px"> 
+
+                <b>${esc(s.title)}</b> 
+
+                <div class="hint"> 
+
+                  ${esc(s.prompt||"")} 
+
+                  ${s.note?`<div class="small">${esc(s.note)}</div>`:""} 
+
+                  ${s.line2?`<div class="small">${esc(s.line2)}</div>`:""} 
+
+                </div> 
+
+              </div> 
+
+              <div class="ctrl"> 
+
+                <button data-act="up">↑</button> 
+
+                <button data-act="down">↓</button> 
+
+                <button data-act="edit">Bearbeiten</button> 
+
+              </div> 
+
+            </div> 
+
+          </div> 
+
+        `).join("")} 
+
+      </div> 
+
+ 
+
+      <div style="height:12px"></div> 
+
+      <div class="panel" style="padding:12px"> 
+
+        <div class="small"><b>Neuer Schritt</b></div> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row"> 
+
+          <input id="stNewTitle" type="text" placeholder="Titel" style="min-width:220px"/> 
+
+          <input id="stNewId" type="text" placeholder="ID (optional)" style="min-width:220px"/> 
+
+        </div> 
+
+        <div style="height:8px"></div> 
+
+        <textarea id="stNewPrompt" placeholder="Prompt…" style="min-height:90px"></textarea> 
+
+        <div style="height:8px"></div> 
+
+        <textarea id="stNewNote" placeholder="Note / Synonyme (eine Zeile)…" style="min-height:70px"></textarea> 
+
+        <div style="height:8px"></div> 
+
+        <input id="stNewLine2" type="text" placeholder="Zusatzzeile (optional)" style="min-width:260px"/> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small">Wenn ID leer: wird automatisch generiert. IDs bleiben stabil.</div> 
+
+          <button id="stNewAdd">Hinzufügen</button> 
+
+        </div> 
+
+      </div> 
+
+    `); 
+
+    $("mClose").onclick = closeModal; 
+
+ 
+
+    $("stNewAdd").onclick = ()=>{ 
+
+      const title = ($("stNewTitle").value||"").trim(); 
+
+      const id0 = ($("stNewId").value||"").trim(); 
+
+      const prompt = $("stNewPrompt").value||""; 
+
+      const note = ($("stNewNote").value||"").trim(); 
+
+      const line2 = ($("stNewLine2").value||"").trim(); 
+
+      if(!title){ toast("Titel leer."); return; } 
+
+      const id = id0 || ("step_"+uid().replace(/[^a-z0-9_]/gi,"").slice(0,12)); 
+
+      const clash = (store.steps||[]).find(s=>s.id===id); 
+
+      if(clash){ toast("ID existiert bereits."); return; } 
+
+      store.steps.push({id, title, prompt, note, line2}); 
+
+      saveStore(); 
+
+      toast("Hinzugefügt."); 
+
+      openManageSteps(); 
+
+      render(); 
+
+    }; 
+
+ 
+
+    $("slist").querySelectorAll(".rowitem").forEach(row=>{ 
+
+      const id = row.getAttribute("data-id"); 
+
+      row.querySelectorAll("button[data-act]").forEach(btn=>{ 
+
+        btn.onclick = ()=>{ 
+
+          const act = btn.getAttribute("data-act"); 
+
+          if(act==="up"){ moveItem(store.steps, id, -1); saveStore(); openManageSteps(); render(); return; } 
+
+          if(act==="down"){ moveItem(store.steps, id, +1); saveStore(); openManageSteps(); render(); return; } 
+
+          if(act==="edit"){ 
+
+            const s = store.steps.find(x=>x.id===id); 
+
+            if(!s) return; 
+
+            openModal(` 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div> 
+
+                  <div class="small"><b>Schritt bearbeiten</b></div> 
+
+                  <div class="small">Titel + Prompt + Note + Zusatzzeile</div> 
+
+                </div> 
+
+                <button id="mClose">Schließen</button> 
+
+              </div> 
+
+              <hr/> 
+
+              <div class="row"> 
+
+                <input id="stTitle" type="text" value="${esc(s.title)}" style="min-width:260px"/> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <textarea id="stPrompt" placeholder="Prompt…">${esc(s.prompt||"")}</textarea> 
+
+              <div style="height:10px"></div> 
+
+              <textarea id="stNote" placeholder="Note / Synonyme (eine Zeile)…" style="min-height:90px">${esc(s.note||"")}</textarea> 
+
+              <div style="height:10px"></div> 
+
+              <input id="stLine2" type="text" placeholder="Zusatzzeile (optional)" value="${esc(s.line2||"")}" style="min-width:260px"/> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div class="small">„Formbeschreibung“-Synonyme gehören in Note.</div> 
+
+                <button id="stSave">Speichern</button> 
+
+              </div> 
+
+            `); 
+
+            $("mClose").onclick = ()=>openManageSteps(); 
+
+            $("stSave").onclick = ()=>{ 
+
+              const nt = ($("stTitle").value||"").trim(); 
+
+              const np = $("stPrompt").value||""; 
+
+              const nn = ($("stNote").value||"").trim(); 
+
+              const n2 = ($("stLine2").value||"").trim(); 
+
+              if(!nt){ toast("Titel leer."); return; } 
+
+              s.title = nt; 
+
+              s.prompt = np; 
+
+              s.note = nn; 
+
+              s.line2 = n2; 
+
+              saveStore(); 
+
+              toast("Gespeichert."); 
+
+              openManageSteps(); 
+
+              render(); 
+
+            }; 
+
+          } 
+
+        }; 
+
+      }); 
+
+    }); 
+
+  } 
+
+ 
+
+  function openManageEntryFields(){ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>Protokoll-Felder verwalten</b></div> 
+
+          <div class="small">Text/Checkbox • Sortierung • Bearbeiten • Neu hinzufügen</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="tablelike" id="flist"> 
+
+        ${(store.entry_fields||[]).map(f=>` 
+
+          <div class="rowitem" data-id="${esc(f.id)}"> 
+
+            <div class="head"> 
+
+              <div style="flex:1;min-width:240px"> 
+
+                <b>${esc(f.label||f.id)}</b> 
+
+                <div class="hint"> 
+
+                  <div class="small">Typ: ${esc(f.type||"text")}</div> 
+
+                  ${f.note?`<div class="small">${esc(f.note)}</div>`:""} 
+
+                  <div class="small">ID: ${esc(f.id)}</div> 
+
+                </div> 
+
+              </div> 
+
+              <div class="ctrl"> 
+
+                <button data-act="up">↑</button> 
+
+                <button data-act="down">↓</button> 
+
+                <button data-act="edit">Bearbeiten</button> 
+
+              </div> 
+
+            </div> 
+
+          </div> 
+
+        `).join("")} 
+
+      </div> 
+
+ 
+
+      <div style="height:12px"></div> 
+
+      <div class="panel" style="padding:12px"> 
+
+        <div class="small"><b>Neues Feld</b></div> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row"> 
+
+          <input id="fNewLabel" type="text" placeholder="Label" style="min-width:240px"/> 
+
+          <select id="fNewType"> 
+
+            <option value="text">Text</option> 
+
+            <option value="checkbox">Checkbox</option> 
+
+          </select> 
+
+          <input id="fNewId" type="text" placeholder="ID (optional)" style="min-width:220px"/> 
+
+        </div> 
+
+        <div style="height:8px"></div> 
+
+        <input id="fNewNote" type="text" placeholder="Note (optional)" style="min-width:260px"/> 
+
+        <div style="height:8px"></div> 
+
+        <div class="row" style="justify-content:space-between"> 
+
+          <div class="small">IDs sollten stabil bleiben.</div> 
+
+          <button id="fNewAdd">Hinzufügen</button> 
+
+        </div> 
+
+      </div> 
+
+    `); 
+
+ 
+
+    $("mClose").onclick = closeModal; 
+
+ 
+
+    $("fNewAdd").onclick = ()=>{ 
+
+      const label = ($("fNewLabel").value||"").trim(); 
+
+      const type = ($("fNewType").value||"text").trim(); 
+
+      const id0 = ($("fNewId").value||"").trim(); 
+
+      const note = ($("fNewNote").value||"").trim(); 
+
+      if(!label){ toast("Label leer."); return; } 
+
+      const id = id0 || ("field_"+uid().replace(/[^a-z0-9_]/gi,"").slice(0,12)); 
+
+      const clash = (store.entry_fields||[]).find(x=>x.id===id); 
+
+      if(clash){ toast("ID existiert bereits."); return; } 
+
+      store.entry_fields.push({id, label, type, note}); 
+
+      saveStore(); 
+
+      toast("Hinzugefügt."); 
+
+      openManageEntryFields(); 
+
+      render(); 
+
+    }; 
+
+ 
+
+    $("flist").querySelectorAll(".rowitem").forEach(row=>{ 
+
+      const id = row.getAttribute("data-id"); 
+
+      row.querySelectorAll("button[data-act]").forEach(btn=>{ 
+
+        btn.onclick = ()=>{ 
+
+          const act = btn.getAttribute("data-act"); 
+
+          if(act==="up"){ moveItem(store.entry_fields, id, -1); saveStore(); openManageEntryFields(); render(); return; } 
+
+          if(act==="down"){ moveItem(store.entry_fields, id, +1); saveStore(); openManageEntryFields(); render(); return; } 
+
+          if(act==="edit"){ 
+
+            const f = (store.entry_fields||[]).find(x=>x.id===id); 
+
+            if(!f) return; 
+
+            openModal(` 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div> 
+
+                  <div class="small"><b>Feld bearbeiten</b></div> 
+
+                  <div class="small">Label + Typ + Note (ID bleibt fix)</div> 
+
+                </div> 
+
+                <button id="mClose">Schließen</button> 
+
+              </div> 
+
+              <hr/> 
+
+              <div class="row"> 
+
+                <input id="fLabel" type="text" value="${esc(f.label||"")}" style="min-width:260px"/> 
+
+                <select id="fType"> 
+
+                  <option value="text" ${f.type==="text"?"selected":""}>Text</option> 
+
+                  <option value="checkbox" ${f.type==="checkbox"?"selected":""}>Checkbox</option> 
+
+                </select> 
+
+              </div> 
+
+              <div style="height:10px"></div> 
+
+              <input id="fNote" type="text" value="${esc(f.note||"")}" placeholder="Note (optional)" style="min-width:260px"/> 
+
+              <div style="height:10px"></div> 
+
+              <div class="row" style="justify-content:space-between"> 
+
+                <div class="small">ID: <b>${esc(f.id)}</b></div> 
+
+                <button id="fSave">Speichern</button> 
+
+              </div> 
+
+            `); 
+
+            $("mClose").onclick = ()=>openManageEntryFields(); 
+
+            $("fSave").onclick = ()=>{ 
+
+              const nl = ($("fLabel").value||"").trim(); 
+
+              const nt = ($("fType").value||"text").trim(); 
+
+              const nn = ($("fNote").value||"").trim(); 
+
+              if(!nl){ toast("Label leer."); return; } 
+
+              f.label = nl; 
+
+              f.type = nt; 
+
+              f.note = nn; 
+
+              saveStore(); 
+
+              toast("Gespeichert."); 
+
+              openManageEntryFields(); 
+
+              render(); 
+
+            }; 
+
+          } 
+
+        }; 
+
+      }); 
+
+    }); 
+
+  } 
+
+ 
+
+  // ---------- Data (Export/Import/Snapshot) ---------- 
+
+  function openDataModal(){ 
+
+    openModal(` 
+
+      <div class="row" style="justify-content:space-between"> 
+
+        <div> 
+
+          <div class="small"><b>Daten</b></div> 
+
+          <div class="small">Export/Import + Snapshot (portable HTML)</div> 
+
+        </div> 
+
+        <button id="mClose">Schließen</button> 
+
+      </div> 
+
+      <hr/> 
+
+      <div class="row"> 
+
+        <button id="mExport">Export (JSON)</button> 
+
+        <button id="mExportSnap">Export (HTML Snapshot)</button> 
+
+        <input id="mFile" type="file" accept=".json,application/json"/> 
+
+      </div> 
+
+      <div style="height:10px"></div> 
+
+      <div class="row"> 
+
+        <button id="mImportMerge">Import: Zusammenführen</button> 
+
+        <button class="danger" id="mImportReplace">Import: Ersetzen</button> 
+
+      </div> 
+
+      <div style="height:10px"></div> 
+
+      <div class="small">„HTML Snapshot“ bettet alle Daten Base64 ein.</div> 
+
+    `); 
+
+ 
+
+    $("mClose").onclick = closeModal; 
+
+ 
+
+    $("mExport").onclick = () => { 
+
+      const payload = {schema_version:3,exported_at:nowISO(),data:store}; 
+
+      const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"}); 
+
+      const a = document.createElement("a"); 
+
+      const dt = new Date(); 
+
+      const pad = (n)=>String(n).padStart(2,"0"); 
+
+      a.download = `spiral-flow-space-export-${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}-${pad(dt.getHours())}${pad(dt.getMinutes())}.json`; 
+
+      a.href = URL.createObjectURL(blob); 
+
+      a.click(); 
+
+      toast("Export erstellt."); 
+
+    }; 
+
+ 
+
+    $("mExportSnap").onclick = () => exportHTMLSnapshotBase64(); 
+
+ 
+
+    let importObj = null; 
+
+    $("mFile").onchange = async () => { 
+
+      const f = $("mFile").files?.[0]; 
+
+      if(!f) return; 
+
+      try{ 
+
+        importObj = JSON.parse(await f.text()); 
+
+        toast("Importdatei geladen."); 
+
+      }catch{ 
+
+        importObj = null; 
+
+        toast("Importdatei ungültig."); 
+
+      } 
+
+    }; 
+
+ 
+
+    $("mImportMerge").onclick = () => doImport("merge", importObj); 
+
+    $("mImportReplace").onclick = () => doImport("replace", importObj); 
+
+  } 
+
+ 
+
+  function doImport(mode, obj){ 
+
+    const data0 = normalizeImport(obj); 
+
+    if(!data0 || !Array.isArray(data0.entries)){ toast("Schema nicht erkannt."); return; } 
+
+    const data = ensureDefaults(data0); 
+
+ 
+
+    if(mode==="replace"){ 
+
+      const ok = confirm("Ersetzen? Lokale Daten (v3) werden überschrieben."); 
+
+      if(!ok) return; 
+
+      store = data; 
+
+      saveStore(); 
+
+      closeModal(); 
+
+      toast("Import: ersetzt."); 
+
+      render(); 
+
+      return; 
+
+    } 
+
+ 
+
+    const existingIds = new Set((store.entries||[]).map(e=>e.id)); 
+
+    const mergedEntries = (store.entries||[]).slice(); 
+
+    for(const e of data.entries){ 
+
+      if(!existingIds.has(e.id)) mergedEntries.push(e); 
+
+    } 
+
+ 
+
+    function mergeBy(base, add, keyFn){ 
+
+      const m = new Map((base||[]).map(x=>[keyFn(x), x])); 
+
+      for(const x of (add||[])){ 
+
+        const k = keyFn(x); 
+
+        if(k && !m.has(k)) m.set(k, x); 
+
+      } 
+
+      return Array.from(m.values()); 
+
+    } 
+
+ 
+
+    store.hubs = mergeBy(store.hubs, data.hubs, x=>x.id); 
+
+    store.states = mergeBy(store.states, data.states, x=>(x.label||"").toLowerCase()); 
+
+    store.nodes  = mergeBy(store.nodes,  data.nodes,  x=>(x.label||"").toLowerCase()); 
+
+    store.steps  = mergeBy(store.steps,  data.steps,  x=>x.id); 
+
+    store.entry_fields = mergeBy(store.entry_fields, data.entry_fields, x=>x.id); 
+
+    store.entries = mergedEntries; 
+
+ 
+
+    saveStore(); 
+
+    closeModal(); 
+
+    toast("Import: zusammengeführt."); 
+
+    render(); 
+
+  } 
+
+ 
+
+  function exportHTMLSnapshotBase64(){ 
+
+    try{ 
+
+      const json = JSON.stringify(store); 
+
+      const b64 = toBase64(json); 
+
+ 
+
+      // WICHTIG: Im Script-Quelltext darf "</scr"+"ipt>" nie als Literal vorkommen. 
+
+      const closeTag = "</scr" + "ipt>"; 
+
+      const snapTag = '<script id="snapshotDataB64" type="text/plain" data-encoding="base64">' + b64 + closeTag + "\n"; 
+
+ 
+
+      let html = "<!doctype html>\n" + document.documentElement.outerHTML; 
+
+ 
+
+      // remove existing embedded snapshot (if any) 
+
+      html = html.replace(/<script id="snapshotDataB64"[\s\S]*?<\/script>\s*/i, ""); 
+
+      // (legacy placeholder) 
+
+      html = html.replace(/<script id="snapshotData"[\s\S]*?<\/script>\s*/i, ""); 
+
+ 
+
+      if(html.includes("<!-- SNAPSHOT_ANCHOR -->")){ 
+
+        html = html.replace("<!-- SNAPSHOT_ANCHOR -->", "<!-- SNAPSHOT_ANCHOR -->\n" + snapTag); 
+
+      } else { 
+
+        html = html.replace(/<script\b/i, snapTag + "<script"); 
+
+      } 
+
+ 
+
+      const blob = new Blob([html], {type:"text/html"}); 
+
+      const a = document.createElement("a"); 
+
+      const dt = new Date(); 
+
+      const pad = (n)=>String(n).padStart(2,"0"); 
+
+      a.download = `spiral-flow-space-snapshot-${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}-${pad(dt.getHours())}${pad(dt.getMinutes())}.html`; 
+
+      a.href = URL.createObjectURL(blob); 
+
+      a.click(); 
+
+      toast("HTML Snapshot erstellt."); 
+
+    }catch(e){ 
+
+      console.error(e); 
+
+      toast("Snapshot fehlgeschlagen."); 
+
+    } 
+
+  } 
+
+ 
+
+  // ---------- Nav wiring ---------- 
+
+  $("navHome").onclick = ()=>setView("home"); 
+
+  $("navProtokolle").onclick = ()=>setView("protokolle"); 
+
+  $("navDaten").onclick = ()=>openDataModal(); 
+
+  $("navConfig").onclick = ()=>openConfigModal(); 
+
+  $("navSnapshot").onclick = ()=>exportHTMLSnapshotBase64(); 
+
+ 
+
+  // ---------- Wiring ---------- 
+
+  function wire(){ 
+
+    if(view.name==="home"){ 
+
+      $("homeManageHubs").onclick = ()=>openManageHubs(); 
+
+      $("homeSnapshot").onclick = ()=>exportHTMLSnapshotBase64(); 
+
+      $("homeGrid").querySelectorAll("[data-hub]").forEach(t=>{ 
+
+        t.onclick = ()=>{ 
+
+          const hubId = t.getAttribute("data-hub"); 
+
+          const hub = findHubById(hubId); 
+
+          if(!hub) return; 
+
+ 
+
+          if(hub.kind==="state") return setView("picker",{ctxType:"state"}); 
+
+          if(hub.kind==="entity") return setView("picker",{ctxType:"entity"}); 
+
+          if(hub.kind==="between") return setView("between"); 
+
+          // default: notebook 
+
+          return setView("hub",{hubId}); 
+
+        }; 
+
+      }); 
+
+    } 
+
+ 
+
+    if(view.name==="picker"){ 
+
+      $("backHome").onclick = ()=>setView("home"); 
+
+      $("pillGrid").querySelectorAll(".pill").forEach(p=>{ 
+
+        p.onclick = ()=>{ 
+
+          const label = p.getAttribute("data-label"); 
+
+          const id = p.getAttribute("data-id"); 
+
+          setView("spiral",{ctxType:view.ctxType, ctxLabel:label, ctxId:id}); 
+
+        }; 
+
+      }); 
+
+      $("addLabel").onclick = ()=>{ 
+
+        const inp = $("newLabel"); 
+
+        const ok = (view.ctxType==="state") ? addState(inp.value) : addNode(inp.value); 
+
+        inp.value=""; 
+
+        toast(ok?"Hinzugefügt.":"Nicht hinzugefügt."); 
+
+        render(); 
+
+      }; 
+
+      $("manageList").onclick = ()=>{ 
+
+        openManageList(view.ctxType==="state" ? "state" : "node"); 
+
+      }; 
+
+    } 
+
+ 
+
+    if(view.name==="spiral"){ 
+
+      $("backPicker").onclick = ()=>setView("picker",{ctxType:view.ctxType}); 
+
+      $("manageSteps").onclick = ()=>openManageSteps(); 
+
+      appEl.querySelectorAll("[data-step-id]").forEach(t=>{ 
+
+        t.onclick = ()=>openStepEditor(view.ctxType, view.ctxLabel, view.ctxId, t.getAttribute("data-step-id")); 
+
+      }); 
+
+    } 
+
+ 
+
+    if(view.name==="between"){ 
+
+      $("backHome").onclick = ()=>setView("home"); 
+
+      $("newBetween").onclick = ()=>openNewBetween(); 
+
+    } 
+
+ 
+
+    if(view.name==="hub"){ 
+
+      $("backHome").onclick = ()=>setView("home"); 
+
+      $("newHubEntry").onclick = ()=>openNewHubEntry(view.hubId); 
+
+    } 
+
+ 
+
+    if(view.name==="protokolle"){ 
+
+      $("backHome").onclick = ()=>setView("home"); 
+
+      $("q").oninput = (e)=>{ view.q = e.target.value; render(); }; 
+
+      $("life").onchange = (e)=>{ view.protokolleFilter = e.target.value; render(); }; 
+
+      $("ty").onchange = (e)=>{ view.protokolleType = e.target.value; render(); }; 
+
+    } 
+
+ 
+
+    appEl.querySelectorAll("[data-act]").forEach(btn=>{ 
+
+      btn.onclick = (ev)=>{ 
+
+        ev.stopPropagation(); 
+
+        const act = btn.getAttribute("data-act"); 
+
+        const id = btn.getAttribute("data-entry"); 
+
+        if(act==="edit") openEditEntry(id); 
+
+        if(act==="arch"){ toggleArchive(id); toast("Archiv-Status geändert."); render(); } 
+
+        if(act==="del"){ 
+
+          const e = (store.entries||[]).find(x=>x.id===id); 
+
+          if(e && !e.deleted_at){ 
+
+            const ok = confirm("Wirklich löschen? (soft, wiederherstellbar)"); 
+
+            if(!ok) return; 
+
+          } 
+
+          softDelete(id); 
+
+          toast("Status geändert."); 
+
+          render(); 
+
+        } 
+
+        if(act==="goto") gotoContext(id); 
+
+      }; 
+
+    }); 
+
+  } 
+
+ 
+
+  function render(){ 
+
+    if(view.name==="home") appEl.innerHTML = renderHome(); 
+
+    else if(view.name==="picker") appEl.innerHTML = renderPicker(view.ctxType==="state"?"state":"entity"); 
+
+    else if(view.name==="spiral") appEl.innerHTML = renderSpiral(view.ctxType, view.ctxLabel, view.ctxId); 
+
+    else if(view.name==="between") appEl.innerHTML = renderBetween(); 
+
+    else if(view.name==="hub") appEl.innerHTML = renderHubNotebook(view.hubId); 
+
+    else if(view.name==="protokolle") appEl.innerHTML = renderProtokolleGlobal(); 
+
+    else appEl.innerHTML = renderHome(); 
+
+    wire(); 
+
+  } 
+
+ 
+
+  // Ensure step_id exists when possible (legacy safety) 
+
+  (store.entries||[]).forEach(e=>{ 
+
+    if(!e.spiral_step_id && e.spiral_step){ 
+
+      const mapped = mapLegacyStepToId(e.spiral_step); 
+
+      if(mapped) e.spiral_step_id = mapped; 
+
+    } 
+
+    e.fields ||= {}; 
+
+    e.context_id ||= ""; 
+
+  }); 
+
+  store = ensureDefaults(store); 
+
+  saveStore(); 
+
+ 
+
+  render(); 
+
+})(); 
+
+</script> 
+
+</body> 
+
+</html> 

@@ -1,0 +1,895 @@
+<!DOCTYPE html> 
+
+<html lang="de"> 
+
+<head> 
+
+<meta charset="UTF-8"> 
+
+<title>Liga & Spiel – B.1 FINAL (FIXED)</title> 
+
+ 
+
+<style> 
+
+body{margin:0;background:#0e0e0e;color:#eee;font-family:system-ui,sans-serif} 
+
+header{padding:12px 16px;border-bottom:1px solid #222;display:flex;justify-content:space-between} 
+
+main{padding:16px} 
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px} 
+
+ 
+
+.card{border:1px solid #222;padding:8px} 
+
+.card.neutral{opacity:.45} 
+
+.card.selected{border-color:#eab308} 
+
+ 
+
+button,input{ 
+
+width:100%;padding:6px;margin-top:6px; 
+
+background:#1c1c1c;color:#eee;border:1px solid #333;cursor:pointer 
+
+} 
+
+button.selected{border-color:#eab308} 
+
+button:disabled{opacity:.4;cursor:not-allowed} 
+
+ 
+
+.score{font-size:20px;margin:4px 0} 
+
+.small{font-size:12px;opacity:.7} 
+
+.tag{font-size:11px;opacity:.6;margin-right:4px} 
+
+ 
+
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:12px} 
+
+th,td{border-bottom:1px solid #222;padding:4px;text-align:left} 
+
+th{opacity:.7} 
+
+tr.top td{background:rgba(234,179,8,0.08)} 
+
+tr.bottom td{background:rgba(239,68,68,0.08)} 
+
+ 
+
+.chart{border:1px solid #333;padding:8px;margin-bottom:12px} 
+
+.chart-item{border-top:1px solid #222;padding:6px 0} 
+
+.chart-item:first-child{border-top:none} 
+
+ 
+
+.combo{border-left:4px solid #38bdf8;padding-left:8px;background:rgba(56,189,248,0.08)} 
+
+ 
+
+.win{color:#22c55e} 
+
+.lose{color:#ef4444} 
+
+.live{color:#eab308} 
+
+.blue{color:#38bdf8} 
+
+</style> 
+
+</head> 
+
+ 
+
+<body> 
+
+ 
+
+<header> 
+
+  <div> 
+
+    💰 Saldo: <span id="saldo">666</span> €<br> 
+
+    🕒 Session: <span id="time">0:00</span> 
+
+  </div> 
+
+  <div> 
+
+    Spieltage: <span id="matchday">0</span><br> 
+
+    gewonnen: <span id="won">0</span> · verloren: <span id="lost">0</span> 
+
+  </div> 
+
+</header> 
+
+ 
+
+<main id="app"></main> 
+
+<footer id="footer"></footer> 
+
+ 
+
+<script> 
+
+// ================= BASIS ================= 
+
+const START_SALDO = 666; 
+
+const TICK_MS = 400; 
+
+const MAX_EVENTS = 4; 
+
+ 
+
+let saldo = START_SALDO; 
+
+let games = []; 
+
+let phase = "OVERVIEW"; 
+
+let seconds = 0; 
+
+let matchday = 0; 
+
+let wonTotal = 0; 
+
+let lostTotal = 0; 
+
+let settled = false; 
+
+ 
+
+let combo = { active:false, gameIds:[], stake:0, odd:1, status:"offen" }; 
+
+ 
+
+// ================= TIMER ================= 
+
+setInterval(()=>{ 
+
+  seconds++; 
+
+  const m=Math.floor(seconds/60), s=seconds%60; 
+
+  time.textContent=`${m}:${s.toString().padStart(2,"0")}`; 
+
+},1000); 
+
+ 
+
+// ================= TEAMS ================= 
+
+const TEAMS=[ 
+
+{name:"Eintracht City",sym:"🌸",color:"#ec4899"}, 
+
+{name:"SC Westend",sym:"⬛",color:"#64748b"}, 
+
+{name:"FC Hafenblick",sym:"🌊",color:"#0ea5e9"}, 
+
+{name:"Athletik Süd",sym:"🔴",color:"#ef4444"}, 
+
+{name:"Dynamo Park",sym:"⚡",color:"#22c55e"}, 
+
+{name:"Blau-Weiß Hafen",sym:"🔷",color:"#38bdf8"}, 
+
+{name:"Viktoria Platz",sym:"🌺",color:"#fb7185"}, 
+
+{name:"Union Süd",sym:"🔥",color:"#f43f5e"}, 
+
+{name:"SV Adler",sym:"🦅",color:"#a855f7"}, 
+
+{name:"Borussia Markt",sym:"⭐",color:"#fde047"}, 
+
+{name:"Union West",sym:"🟠",color:"#f97316"}, 
+
+{name:"Sportfreunde Nord",sym:"🟩",color:"#84cc16"}, 
+
+{name:"FC Ost",sym:"🟣",color:"#6366f1"}, 
+
+{name:"Nordstadt FC",sym:"🔵",color:"#3b82f6"}, 
+
+{name:"SV Meridian",sym:"🟢",color:"#10b981"}, 
+
+{name:"Rot-Gelb 07",sym:"🟡",color:"#facc15"}, 
+
+{name:"Olympia Nord",sym:"🏛️",color:"#eab308"}, 
+
+{name:"Stahlwerk 04",sym:"⚙️",color:"#9ca3af"}, 
+
+{name:"Rapid Feld",sym:"💨",color:"#22d3ee"}, 
+
+{name:"Vorstadt 09",sym:"🏘️",color:"#a3a3a3"}, 
+
+{name:"Hansa Platz",sym:"⚓",color:"#60a5fa"}, 
+
+{name:"Victoria Allee",sym:"🌿",color:"#34d399"} 
+
+]; 
+
+ 
+
+// ================= SEED ================= 
+
+TEAMS.forEach(t=>{ 
+
+  const s=Math.random()*0.9+0.4; 
+
+  t.played=11; 
+
+  t.points=Math.round(t.played*(1+s)); 
+
+  t.td=Math.round((Math.random()-0.5)*10); 
+
+  t.form=Array.from({length:5},()=>Math.random()<0.5?"W":Math.random()<0.75?"D":"L"); 
+
+}); 
+
+ 
+
+// ================= HELPERS ================= 
+
+const sortedTable=()=>[...TEAMS].sort((a,b)=>b.points-a.points||b.td-a.td); 
+
+const rankOf=t=>sortedTable().indexOf(t)+1; 
+
+const formIcons=t=>t.form.map(r=>r==="W"?"🟢":r==="D"?"⚪":"🔴").join(""); 
+
+const trend=t=>{ 
+
+  let s=0; t.form.forEach(r=>{if(r==="W")s++; if(r==="L")s--;}); 
+
+  return s>1?"↑":s<-1?"↓":"→"; 
+
+}; 
+
+const clamp=(v,min,max)=>Math.max(min,Math.min(max,v)); 
+
+ 
+
+// ================= ODDS ================= 
+
+function buildOdds(a,b){ 
+
+  const gap=(a.points-b.points)/10; 
+
+  return { 
+
+    A:clamp(2.2-gap,1.8,3.6), 
+
+    D:clamp(3.1+Math.abs(gap),2.8,4.5), 
+
+    B:clamp(2.6+gap,1.8,4.5) 
+
+  }; 
+
+} 
+
+ 
+
+// ================= TABLE ================= 
+
+function renderTable(){ 
+
+  const t=sortedTable(); 
+
+  return ` 
+
+  <table> 
+
+    <tr><th>Pl</th><th>Team</th><th>Pkt</th><th>TD</th><th>Form</th></tr> 
+
+    ${t.map((x,i)=>` 
+
+      <tr class="${i<5?'top':i>=t.length-5?'bottom':''}"> 
+
+        <td>${i+1}</td> 
+
+        <td><span style="color:${x.color}">${x.sym} ${x.name}</span></td> 
+
+        <td>${x.points}</td> 
+
+        <td>${x.td}</td> 
+
+        <td>${formIcons(x)} ${trend(x)}</td> 
+
+      </tr>`).join("")} 
+
+  </table>`; 
+
+} 
+
+ 
+
+// ================= GAMES ================= 
+
+function buildGames(){ 
+
+  games=[]; 
+
+  settled=false; 
+
+  combo={active:false,gameIds:[],stake:0,odd:1,status:"offen"}; 
+
+  const pool=[...TEAMS].sort(()=>0.5-Math.random()); 
+
+  for(let i=0;i<10;i++){ 
+
+    const a=pool[i*2],b=pool[i*2+1]; 
+
+    games.push({ 
+
+      id:i,a,b, 
+
+      odds:buildOdds(a,b), 
+
+      selected:false, 
+
+      bet:null, 
+
+      minute:0,extra:Math.floor(Math.random()*4)+1, 
+
+      scoreA:0,scoreB:0, 
+
+      events:[], 
+
+      finished:false,timer:null 
+
+    }); 
+
+  } 
+
+} 
+
+ 
+
+// ================= BET LABEL ================= 
+
+function betLabel(g){ 
+
+  if(!g.bet) return ""; 
+
+  if(g.bet.pick==="A") return `${g.a.sym} ${g.a.name}`; 
+
+  if(g.bet.pick==="B") return `${g.b.sym} ${g.b.name}`; 
+
+  return "Unentschieden"; 
+
+} 
+
+ 
+
+// ================= OVERVIEW ================= 
+
+function renderOverview(){ 
+
+  phase="OVERVIEW"; 
+
+  app.innerHTML=` 
+
+  <h2>Heutige Spiele</h2> 
+
+  <div class="grid"> 
+
+    ${games.map(g=>` 
+
+      <div class="card ${g.selected?'selected':''}" onclick="toggle(${g.id})"> 
+
+        <strong><span class="tag">#${rankOf(g.a)}</span><span style="color:${g.a.color}">${g.a.sym} ${g.a.name}</span></strong> 
+
+        vs 
+
+        <strong><span class="tag">#${rankOf(g.b)}</span><span style="color:${g.b.color}">${g.b.sym} ${g.b.name}</span></strong> 
+
+        <div class="small">${formIcons(g.a)} ${trend(g.a)} · ${formIcons(g.b)} ${trend(g.b)}</div> 
+
+        <div class="small">${g.odds.A.toFixed(2)} / ${g.odds.D.toFixed(2)} / ${g.odds.B.toFixed(2)}</div> 
+
+      </div>`).join("")} 
+
+  </div> 
+
+  <h3>Tabelle</h3> 
+
+  ${renderTable()} 
+
+  <button onclick="toBet()">Zum Tippmenü</button>`; 
+
+} 
+
+ 
+
+function toggle(id){games[id].selected=!games[id].selected;renderOverview();} 
+
+function toBet(){phase="BET";renderBet();} 
+
+ 
+
+// ================= BET ================= 
+
+function renderBet(){ 
+
+  app.innerHTML=` 
+
+  <div class="chart"> 
+
+    <h3>Aktive Wetten</h3> 
+
+    ${renderChart()} 
+
+  </div> 
+
+ 
+
+  <h2>Tippmenü</h2> 
+
+  <div class="grid"> 
+
+    ${games.filter(g=>g.selected).map(g=>` 
+
+      <div class="card"> 
+
+        <strong><span class="tag">#${rankOf(g.a)}</span><span style="color:${g.a.color}">${g.a.sym} ${g.a.name}</span></strong> 
+
+        vs 
+
+        <strong><span class="tag">#${rankOf(g.b)}</span><span style="color:${g.b.color}">${g.b.sym} ${g.b.name}</span></strong> 
+
+ 
+
+        <div class="small">${formIcons(g.a)} ${trend(g.a)} · ${formIcons(g.b)} ${trend(g.b)}</div> 
+
+ 
+
+        <button onclick="pick(${g.id},'A')" class="${g.bet?.pick==='A'?'selected':''}"> 
+
+          ${g.a.sym} Sieg (${g.odds.A.toFixed(2)}) 
+
+        </button> 
+
+        <button onclick="pick(${g.id},'D')" class="${g.bet?.pick==='D'?'selected':''}"> 
+
+          🤝 Unentschieden (${g.odds.D.toFixed(2)}) 
+
+        </button> 
+
+        <button onclick="pick(${g.id},'B')" class="${g.bet?.pick==='B'?'selected':''}"> 
+
+          ${g.b.sym} Sieg (${g.odds.B.toFixed(2)}) 
+
+        </button> 
+
+ 
+
+        <input type="number" min="1" step="1" 
+
+          value="${g.bet?.amount ?? ''}" 
+
+          placeholder="Einsatz €" 
+
+          oninput="stake(${g.id},this.value)"> 
+
+      </div>`).join("")} 
+
+  </div> 
+
+ 
+
+  <h3>Tabelle</h3> 
+
+  ${renderTable()} 
+
+  <button onclick="startLive()">Live starten</button>`; 
+
+} 
+
+ 
+
+function pick(id,p){ 
+
+  const g=games[id]; 
+
+  g.bet={ 
+
+    pick:p, 
+
+    odd:g.odds[p], 
+
+    amount: g.bet?.amount ?? "", 
+
+    status:"offen", 
+
+    checked:false 
+
+  }; 
+
+  renderBet(); 
+
+} 
+
+ 
+
+function stake(id,v){ 
+
+  const g=games[id]; 
+
+  const a=Math.floor(Number(v)); 
+
+  if(a<1) return; 
+
+  if(!g.bet){ 
+
+    g.bet={pick:null,odd:0,amount:a,status:"offen",checked:false}; 
+
+  } else { 
+
+    g.bet.amount=a; 
+
+  } 
+
+  renderBet(); 
+
+} 
+
+ 
+
+// ================= CHART ================= 
+
+function renderChart(){ 
+
+  const bets=games.filter(g=>g.bet && g.bet.amount); 
+
+  let html=""; 
+
+ 
+
+  const checked=bets.filter(g=>g.bet.checked); 
+
+  if(checked.length>=2){ 
+
+    combo.active=true; 
+
+    combo.gameIds=checked.map(g=>g.id); 
+
+    combo.stake=Math.min(...checked.map(g=>g.bet.amount)); 
+
+    combo.odd=checked.reduce((o,g)=>o*g.bet.odd,1); 
+
+    html+=` 
+
+      <div class="chart-item combo"> 
+
+        🧩 Kombiwette (${checked.length})<br> 
+
+        Einsatz ${combo.stake} € · Quote ${combo.odd.toFixed(2)}<br> 
+
+        Gewinn ${(combo.stake*combo.odd).toFixed(2)} €<br> 
+
+        <span class="small">${combo.status}</span> 
+
+      </div>`; 
+
+  } else combo.active=false; 
+
+ 
+
+  bets.forEach(g=>{ 
+
+    html+=` 
+
+      <div class="chart-item"> 
+
+        <span onclick="${phase!=='LIVE'?`toggleCheck(${g.id})`:''}"> 
+
+          ${g.bet.checked?"☑️":"☐"} 
+
+        </span> 
+
+        ${betLabel(g)} · ${g.bet.amount} € · ${g.bet.odd.toFixed(2)}<br> 
+
+        Gewinn ${(g.bet.amount*g.bet.odd).toFixed(2)} €<br> 
+
+        <span class="small">${g.bet.status}</span> 
+
+      </div>`; 
+
+  }); 
+
+ 
+
+  return html||"<div class='small'>Noch keine Wetten</div>"; 
+
+} 
+
+ 
+
+function toggleCheck(id){ 
+
+  if(phase==="LIVE") return; 
+
+  games[id].bet.checked=!games[id].bet.checked; 
+
+  renderBet(); 
+
+} 
+
+ 
+
+// ================= LIVE ================= 
+
+const ACTIONS=["Konter 💨","langer Ball ⚽","Einwurf 🦶","Freistoß 🚩","Druckphase 🔔","Klärung 🏁"]; 
+
+ 
+
+function startLive(){ 
+
+  let sum=0; 
+
+  games.forEach(g=>{if(g.bet)sum+=g.bet.amount||0}); 
+
+  if(sum<=0||sum>saldo) return alert("Einsatz ungültig"); 
+
+ 
+
+  saldo-=sum; saldoEl.textContent=Math.floor(saldo); 
+
+  phase="LIVE"; 
+
+ 
+
+  games.forEach(g=>{ 
+
+    g.timer=setInterval(()=>tick(g),TICK_MS); 
+
+  }); 
+
+  renderLive(); 
+
+} 
+
+ 
+
+function tick(g){ 
+
+  if(g.finished) return; 
+
+  g.minute++; 
+
+ 
+
+  if(Math.random()<0.28){ 
+
+    const team=Math.random()<0.5?g.a:g.b; 
+
+    g.events.unshift(`<span style="color:${team.color}">${team.sym} ${formatMin(g)} ${ACTIONS[Math.floor(Math.random()*ACTIONS.length)]}</span>`); 
+
+    if(g.events.length>MAX_EVENTS) g.events.pop(); 
+
+  } 
+
+ 
+
+  if(Math.random()<0.03) Math.random()<0.5?g.scoreA++:g.scoreB++; 
+
+ 
+
+  if(g.minute>=90+g.extra){ 
+
+    g.finished=true; 
+
+    clearInterval(g.timer); 
+
+    if(g.bet){ 
+
+      const res=g.scoreA>g.scoreB?"A":g.scoreA<g.scoreB?"B":"D"; 
+
+      g.bet.status=res===g.bet.pick?"gewonnen":"verloren"; 
+
+      res===g.bet.pick?wonTotal++:lostTotal++; 
+
+      won.textContent=wonTotal; 
+
+      lost.textContent=lostTotal; 
+
+    } 
+
+  } 
+
+  renderLive(); 
+
+} 
+
+ 
+
+function formatMin(g){ 
+
+  if(g.minute<=45) return g.minute+"′"; 
+
+  if(g.minute<=45+g.extra) return "45+"+(g.minute-45)+"′"; 
+
+  if(g.minute<=90) return g.minute+"′"; 
+
+  return "90+"+(g.minute-90)+"′"; 
+
+} 
+
+ 
+
+function renderLive(){ 
+
+  app.innerHTML=` 
+
+  <div class="chart"> 
+
+    <h3>Aktive Wetten</h3> 
+
+    ${renderChart()} 
+
+  </div> 
+
+ 
+
+  <h2>Live</h2> 
+
+  <div class="grid"> 
+
+    ${games.map(g=>` 
+
+      <div class="card ${g.bet?'':'neutral'}"> 
+
+        <strong><span class="tag">#${rankOf(g.a)}</span>${g.a.sym} ${g.a.name}</strong> 
+
+        vs 
+
+        <strong><span class="tag">#${rankOf(g.b)}</span>${g.b.sym} ${g.b.name}</strong> 
+
+ 
+
+        <div class="small">${formIcons(g.a)} ${trend(g.a)} · ${formIcons(g.b)} ${trend(g.b)}</div> 
+
+        <div class="score">${g.scoreA}:${g.scoreB}</div> 
+
+        <div class="small">${formatMin(g)}</div> 
+
+ 
+
+        ${g.bet?` 
+
+          <div class="small"> 
+
+            🎯 ${betLabel(g)} · ${g.bet.amount} € · ${g.bet.odd.toFixed(2)}<br> 
+
+            Gewinn ${(g.bet.amount*g.bet.odd).toFixed(2)} € · 
+
+            <span class="${g.bet.status==='gewonnen'?'win':g.bet.status==='verloren'?'lose':'live'}"> 
+
+              ${g.bet.status} 
+
+            </span> 
+
+          </div>`:""} 
+
+ 
+
+        <div class="small"> 
+
+          ${g.events.map(e=>`<div>${e}</div>`).join("")} 
+
+        </div> 
+
+      </div>`).join("")} 
+
+  </div> 
+
+ 
+
+  <h3>Tabelle</h3> 
+
+  ${renderTable()} 
+
+  <button ${games.every(g=>g.finished)&&!settled?"":"disabled"} onclick="settle()">Gewinne auszahlen</button>`; 
+
+} 
+
+ 
+
+// ================= SETTLE ================= 
+
+function settle(){ 
+
+  if(settled) return; 
+
+  settled=true; 
+
+  matchday++; matchdayEl.textContent=matchday; 
+
+ 
+
+  if(!combo.active){ 
+
+    games.forEach(g=>{ 
+
+      if(g.bet && g.bet.status==="gewonnen"){ 
+
+        saldo+=g.bet.amount*g.bet.odd; 
+
+      } 
+
+    }); 
+
+  } else { 
+
+    const lost=combo.gameIds.some(id=>games[id].bet.status==="verloren"); 
+
+    combo.status=lost?"verloren":"gewonnen"; 
+
+    if(!lost) saldo+=combo.stake*combo.odd; 
+
+  } 
+
+ 
+
+  saldoEl.textContent=Math.floor(saldo); 
+
+  footer.innerHTML=` 
+
+    <div>Auszahlung abgeschlossen</div> 
+
+    <div>Neues Saldo: ${Math.floor(saldo)} €</div> 
+
+    <button onclick="next()">▶️ Nächster Spieltag</button>`; 
+
+} 
+
+ 
+
+function next(){ 
+
+  footer.innerHTML=""; 
+
+  buildGames(); 
+
+  renderOverview(); 
+
+} 
+
+ 
+
+// ================= INIT ================= 
+
+const app=document.getElementById("app"); 
+
+const saldoEl=document.getElementById("saldo"); 
+
+const time=document.getElementById("time"); 
+
+const won=document.getElementById("won"); 
+
+const lost=document.getElementById("lost"); 
+
+const matchdayEl=document.getElementById("matchday"); 
+
+ 
+
+buildGames(); 
+
+renderOverview(); 
+
+</script> 
+
+</body> 
+
+</html> 
