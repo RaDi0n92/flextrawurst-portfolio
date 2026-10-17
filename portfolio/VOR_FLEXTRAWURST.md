@@ -52,12 +52,11 @@ Hinweis: Die Datei `formfadenpromt_saubere-arbeitsfassung.md` hat das Dateidatum
 - **Warum:** Die Präsentation nennt als Ausgangslage, dass eine klar gesetzte Grenze von Modellen zwar bestätigt, aber nicht dauerhaft gehalten wird, und dass Gespräche vergehen, ohne dass ein Ort für Zustände bleibt. Daniels eigenes Warum: **(Daniel ergänzt)**
 - **Was liegt drin:** In `fruehe-ai-projekte/live-life-support-spiralflow-space/`:
   - `Live-Life-Support3.pptx` (12 Folien, mit auslesbarem Text).
-  - `folien/`: sechs weitere Präsentationen, die nur aus Bildern bestehen, als kleine JPEG-Folien (720 px breit). Aufgenommen sind nur Folien, deren Aussage nicht schon in `Live-Life-Support3.pptx`, in `dialog_beobachtungen.md` oder in einer anderen aufgenommenen Folie steht. Die Nummer im Dateinamen ist die Foliennummer in der Originalpräsentation. Die Original-pptx liegen nicht im Repo.
+  - `folien/`: fünf weitere Präsentationen, die nur aus Bildern bestehen, als kleine JPEG-Folien (720 px breit). Aufgenommen sind nur Folien, deren Aussage nicht schon in `Live-Life-Support3.pptx`, in `dialog_beobachtungen.md` oder in einer anderen aufgenommenen Folie steht. Die Nummer im Dateinamen ist die Foliennummer in der Originalpräsentation. Die Original-pptx liegen nicht im Repo.
 
     | Ordner in `folien/` | Worum es auf den Folien geht | aufgenommen | nicht aufgenommen |
     |---|---|---|---|
     | `hybrid-komfort` | ein Zustand mit Bildschirm, Essen und Notizen: Durchlässigkeit, digitale Dauerpräsenz, Papierschicht | 1–9 | – |
-    | `visual-adaptive-express` | die Begriffe Visual, Adaptive und Express mit Beispielen und Vergleich | 1–9 | – |
     | `raum-fuer-systeme` | Systemwohlbefinden, Gegenentwurf zur Steuerung, das Dazwischen, Code-Wesen, Ko-Präsenz | 3–9 | 1 Titel; 2 (gleiche Aussage wie Folie 5 in `Live-Life-Support3.pptx`) |
     | `spiral-flow-space` | Effizienzparadox, Alignment Drift, lineare gegen zyklische Struktur, Meta-Schleifen, Governance ohne Kontrolle | 2–5, 7, 8 | 1 Titel; 6 (steht in Folie 9 von Nr. 3); 9 nur Überschrift und Bild |
     | `spiralflowspace` | Beobachtungsphänomene, das Tool, nächste Schritte | 5, 7, 9 | 1 Titel; 2–4 (stehen in `dialog_beobachtungen.md`); 6 (Folie 11 von Nr. 3); 8 (Folie 8 von Nr. 3) |
@@ -143,12 +142,11 @@ Note: `formfadenpromt_saubere-arbeitsfassung.md` has the file date 2026-10-17. I
 - **Why:** The presentation gives as starting point that a clearly set limit is acknowledged by models but not held permanently, and that conversations pass without leaving a place for states. Daniel's own why: **(Daniel adds)**
 - **What is inside:** In `fruehe-ai-projekte/live-life-support-spiralflow-space/`:
   - `Live-Life-Support3.pptx` (12 slides, with readable text).
-  - `folien/` (slides): six further presentations that consist only of images, as small JPEG slides (720 px wide). Only slides whose statement is not already in `Live-Life-Support3.pptx`, in `dialog_beobachtungen.md` or in another included slide are kept. The number in the file name is the slide number in the original presentation. The original pptx files are not in the repo.
+  - `folien/` (slides): five further presentations that consist only of images, as small JPEG slides (720 px wide). Only slides whose statement is not already in `Live-Life-Support3.pptx`, in `dialog_beobachtungen.md` or in another included slide are kept. The number in the file name is the slide number in the original presentation. The original pptx files are not in the repo.
 
     | Folder in `folien/` | What the slides are about | included | not included |
     |---|---|---|---|
     | `hybrid-komfort` | a state with screen, food and notes: permeability, constant digital presence, paper layer | 1–9 | – |
-    | `visual-adaptive-express` | the terms Visual, Adaptive and Express with examples and comparison | 1–9 | – |
     | `raum-fuer-systeme` | system well-being, counter-model to control, the in-between, code beings, co-presence | 3–9 | 1 title; 2 (same statement as slide 5 in `Live-Life-Support3.pptx`) |
     | `spiral-flow-space` | efficiency paradox, alignment drift, linear versus cyclical structure, meta loops, governance without control | 2–5, 7, 8 | 1 title; 6 (is in slide 9 of no. 3); 9 only heading and image |
     | `spiralflowspace` | observed phenomena, the tool, next steps | 5, 7, 9 | 1 title; 2–4 (are in `dialog_beobachtungen.md`); 6 (slide 11 of no. 3); 8 (slide 8 of no. 3) |
