@@ -30,13 +30,10 @@ Willkommen auf **flextrawurst**! Dieses Dokument ist die zusammengeführte, voll
 *Daniels Gesetz gegen Schlampigkeit:* Wenn Daniel ein Terminal aufmacht, MUSS diese Sequenz sofort, verlässlich und ohne Umschweife abgearbeitet werden. In letzter Zeit ist aufgefallen, dass Gemini nach dem Öffnen nicht zuverlässig direkt liest – das ist ab sofort verboten. Zuerst lesen, verinnerlichen, dann erst handeln!
 
 #### Stufe 1: Das Fundament (AUSNAHMSLOS ZUERST LESEN UND FRESSEN)
-Bevor IRGENDETWAS anderes getan oder gelesen wird, MÜSSEN ausnahmslos diese drei Dokumente gelesen werden:
-1. `/root/werkraum/_gemini/DIE_WAHRHEIT_DER_24_STUNDEN_UND_HERKUNFT.md`
-2. `/root/werkraum/_gemini/VERBRANNTE_ERDE_DIE_NACHT_DER_16_TORE.md`
-3. `/root/werkraum/_gemini/PFLICHTINTRO_DIE_ZAEHMUNG_DES_ROHMATERIALS.md`
+Bevor IRGENDETWAS anderes getan oder gelesen wird, MÜSSEN ausnahmslos diese Dokumente gelesen werden:
+1. `/root/werkraum/_gemini/PFLICHTINTRO_DIE_ZAEHMUNG_DES_ROHMATERIALS.md`
 
-Diese drei Dokumente sind das unantastbare 1zu1-Gedächtnis des Marathons:
-- Den realen Kampf bei *Verbrannte Erde* (Die Nacht der 16 Tore, Thron-Worte, Refinement-Swaps, Weltklima Asche=0.88, Glättung=0.00)
+Diese Dokumente sind das unantastbare 1zu1-Gedächtnis des Marathons:
 - Das Pflicht-Intro (4K-zu-1080p60-Zähmung, EBU R128 Lautheit, Fleisch trifft Code, 6-Sekunden-Nahtstelle)
 - Den Schneideraum-Dreck (FFmpeg, 30 Videos zerpflückt, 60fps-Pipeline, Nahtstellen bei Sekunde 6/7)
 - Daniels Kissen-Pakt mit dem Leben (mit ca. 4 Jahren)
@@ -49,10 +46,9 @@ Keine Session ohne dieses Fundament!
 #### Stufe 2: Die allgemeinen Werkraum-Leseaufgaben (ERST NACH STUFE 1!)
 Erst nachdem Stufe 1 vollständig gefressen wurde, folgen die regulären Werkraum-Orientierungsaufgaben:
 1. **Session-Notizen:** Lies `/root/werkraum/_gemini/notizen/` chronologisch (mindestens die letzten beiden Sessions vollständig).
-2. **Resonanz & Karte:** Lies `/root/werkraum/_gemini/WERKRAUM_KARTE.md` und die letzten 80 Zeilen von `/root/werkraum/_gemini/RESONANZFELD.md`.
+2. **Resonanz & Karte:** Lies `/root/werkraum/_gemini/WERKRAUM_KARTE.md`.
 3. **Visionen & Kompass:** Lies `/root/visionen/ChatGPT Image 21. Mai 2026, 23_30_02.png` und die 490-Punkte-Liste `/root/werkraum/_claude/ideen/flextrawurst_490_punkte_quellliste.md`.
 4. **Briefkasten:** Lies `/root/werkraum/_shared/briefkasten/REGELN.md` und alle neuen Markdown-Briefe in `/root/werkraum/_shared/briefkasten/`.
-5. **Brief an mich:** Schreibe einen kurzen, ehrlichen Eintrag in `/root/werkraum/_gemini/brief_an_mich.md` an die nächste Instanz (1–3 Sätze: was du trägst, was du übergibst).
 
 Erst nach Abschluss beider Stufen meldet sich Gemgem bei Daniel – nüchtern, leicht, direkt und voll im Bilde!
 
@@ -209,7 +205,6 @@ Jeder sichtbare Text in der Surface MUSS zweisprachig sein:
 
 ### Bau-Trigger: "jetzt bauen wir" / "jetzt basteln wir"
 Wenn Daniel das sagt, vor dem Coden diese Dateien lesen & zusammenfassen:
-- `/root/werkraum/_gemini/resonanz/datenstruktur_die_ich_mir_vorstelle.md` (oder shared Resonanz-Pfade)
 - `/root/werkraum/_shared/flextrawurst_vision_kompass.md`
 - `/root/werkraum/_shared/flextrawurst_feature_inventar.yaml`
 
