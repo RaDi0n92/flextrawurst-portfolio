@@ -32,7 +32,7 @@ Dieser Text hält fest, **wie** die Inhalte dieses Repositories entstanden sind.
 - Die genaue Reihenfolge von Live-Life-Support, Sportwettenprojekt, Gordslider und SpiralFlow ist nicht eindeutig. Einige Stränge liefen parallel. Sie sind hier absichtlich nicht als eine lückenlose Kette erzählt.
 - Der Fortschrittsanteil beim Wechsel zum Code-Agenten schwankt in Daniels Angaben (etwa 75 bis 80 Prozent).
 - Gordslider-Spielcode und rohe Chatverläufe sind nicht Teil dieses Repositories. Die genannten Größen lassen sich hier nicht gegenprüfen.
-- Genauere Daten und Stundenzahlen: **(Daniel ergänzt)**.
+- Genauere Daten und Stundenzahlen weiß Daniel nicht mehr (Gespräch 2026-10-17). Für Gordslider nennt er etwa 200 Arbeitsstunden.
 
 Die frühen Systeme mit Zeitlinie und Dateien: [`VOR_FLEXTRAWURST.md`](VOR_FLEXTRAWURST.md). Ein Bericht von ChatGPT über die gemeinsame Arbeit (unverändert, nicht gegengeprüft): [`CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md`](CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md). Wo die Ergebnisse liegen: [`PROJEKTE/README.md`](PROJEKTE/README.md), [`INHALT_ORT_FUER_ORT.md`](INHALT_ORT_FUER_ORT.md), [`WEGWEISER/00_START_HIER.md`](WEGWEISER/00_START_HIER.md).
 
@@ -65,6 +65,6 @@ This text records **how** the contents of this repository came about. All statem
 - The exact order of Live-Life-Support, the sports-betting project, Gordslider and SpiralFlow is not clear. Some strands ran in parallel. They are deliberately not told here as one seamless chain.
 - The progress share at the switch to the code agent varies in Daniel's statements (about 75 to 80 percent).
 - Gordslider game code and raw chat logs are not part of this repository. The stated sizes cannot be checked here.
-- Exact dates and hour counts: **(Daniel adds)**.
+- Daniel no longer knows exact dates and hour counts (conversation of 2026-10-17). For Gordslider he gives about 200 working hours.
 
 The early systems with timeline and files: [`VOR_FLEXTRAWURST.md`](VOR_FLEXTRAWURST.md). A report by ChatGPT about the shared work (unchanged, not cross-checked): [`CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md`](CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md). Where the results are: [`PROJEKTE/README.md`](PROJEKTE/README.md), [`INHALT_ORT_FUER_ORT.md`](INHALT_ORT_FUER_ORT.md), [`WEGWEISER/00_START_HIER.md`](WEGWEISER/00_START_HIER.md).
