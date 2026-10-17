@@ -34,7 +34,7 @@ Dieser Text hält fest, **wie** die Inhalte dieses Repositories entstanden sind.
 - Gordslider-Spielcode und rohe Chatverläufe sind nicht Teil dieses Repositories. Die genannten Größen lassen sich hier nicht gegenprüfen.
 - Genauere Daten und Stundenzahlen: **(Daniel ergänzt)**.
 
-Die frühen Systeme mit Zeitlinie und Dateien: [`VOR_FLEXTRAWURST.md`](VOR_FLEXTRAWURST.md). Wo die Ergebnisse liegen: [`PROJEKTE/README.md`](PROJEKTE/README.md), [`INHALT_ORT_FUER_ORT.md`](INHALT_ORT_FUER_ORT.md), [`WEGWEISER/00_START_HIER.md`](WEGWEISER/00_START_HIER.md).
+Die frühen Systeme mit Zeitlinie und Dateien: [`VOR_FLEXTRAWURST.md`](VOR_FLEXTRAWURST.md). Ein Bericht von ChatGPT über die gemeinsame Arbeit (unverändert, nicht gegengeprüft): [`CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md`](CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md). Wo die Ergebnisse liegen: [`PROJEKTE/README.md`](PROJEKTE/README.md), [`INHALT_ORT_FUER_ORT.md`](INHALT_ORT_FUER_ORT.md), [`WEGWEISER/00_START_HIER.md`](WEGWEISER/00_START_HIER.md).
 
 ---
 
@@ -67,4 +67,4 @@ This text records **how** the contents of this repository came about. All statem
 - Gordslider game code and raw chat logs are not part of this repository. The stated sizes cannot be checked here.
 - Exact dates and hour counts: **(Daniel adds)**.
 
-The early systems with timeline and files: [`VOR_FLEXTRAWURST.md`](VOR_FLEXTRAWURST.md). Where the results are: [`PROJEKTE/README.md`](PROJEKTE/README.md), [`INHALT_ORT_FUER_ORT.md`](INHALT_ORT_FUER_ORT.md), [`WEGWEISER/00_START_HIER.md`](WEGWEISER/00_START_HIER.md).
+The early systems with timeline and files: [`VOR_FLEXTRAWURST.md`](VOR_FLEXTRAWURST.md). A report by ChatGPT about the shared work (unchanged, not cross-checked): [`CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md`](CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md). Where the results are: [`PROJEKTE/README.md`](PROJEKTE/README.md), [`INHALT_ORT_FUER_ORT.md`](INHALT_ORT_FUER_ORT.md), [`WEGWEISER/00_START_HIER.md`](WEGWEISER/00_START_HIER.md).
