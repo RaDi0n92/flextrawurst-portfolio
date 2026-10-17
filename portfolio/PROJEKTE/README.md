@@ -24,9 +24,12 @@ Adressen von Seiten stehen bewusst nicht drin, nur die Projekte und Dateien dahi
 4. [`04_welt_und_plattform.md`](04_welt_und_plattform.md) – Dreileib-Kapseln, KompOase und Splitter, Live-Update-Kanal, Ankündigungen, Systemkarte, Live-Spiegel, Reibungsgewebe, Code-Archäologie
 5. [`05_werkzeuge_und_experimente.md`](05_werkzeuge_und_experimente.md) – Toolbox, Dolphin-Mischpult, 3D-Pipeline, Weltenkosmos, VPS-MCP, Augen und Hände, Desktop-Sichtbarkeit, AI-Strom-Brücke, Video-as-Code, virtuelle Desktops
 6. [`06_konzepte_texte_spiele_musik.md`](06_konzepte_texte_spiele_musik.md) – WorldWORDS ANTIBIBEL, Planer, DREIERREGEN, Spielwerkstatt, Musik, Beobachter-Reise, frühe Texte, Berichte von außen
+7. [`07_chat_spawner_codexium_solarius.md`](07_chat_spawner_codexium_solarius.md) – die vier Chat-Spawner (codexium, solarius, codexium2, solarius2): Testbed, E-Mail-Gefühl, Container und Memory, Sessions, Verdichtung, Feedback, Verlauf
+8. [`08_codewesen_organe_und_aufgaben.md`](08_codewesen_organe_und_aufgaben.md) – die sieben Codewesen: dak+gord und seine fünf Organe, Wesen-Prozess, Takt, Reaktion, Forum-Neugier, Aufgabenchats, Engagement, Weltbild, LangGraph, Welt-Dienste, Direktchat, Sieben Linsen
+9. [`09_dienste_hinter_den_adressen.md`](09_dienste_hinter_den_adressen.md) – Port-Härtung, Welt-API, Gateways, Bildgenerator und Galerie, Systemweiser, Fragen-API, Obsidian-Wege, GENI-Dienste, Gordslider, Spiegel-Syncs, Wächter
 
 **Was hier noch nicht oder nur am Rand steht**
-Die Codewesen selbst (Aufbau, Schichten, Takt, Chat) stehen im [`WEGWEISER/codewesen.md`](../WEGWEISER/codewesen.md) und für die Öffentlichkeit im separaten Flextrawurst-Repository. Schlaf, Träume und Cyberlings (siehe z. B. `werkraum/docs/cyberling_sim2_auswertung.md`) sind nicht eigens beschrieben. Auch nicht einzeln beschrieben sind die vielen Hilfsskripte unter `werkraum/` und `werkraum/tools/`.
+Die Codewesen (Aufbau, Schichten, Takt, Chat) stehen in [`08_codewesen_organe_und_aufgaben.md`](08_codewesen_organe_und_aufgaben.md), im [`WEGWEISER/codewesen.md`](../WEGWEISER/codewesen.md) und für die Öffentlichkeit im separaten Flextrawurst-Repository. Schlaf und Träume (siehe z. B. `werkraum/docs/cyberling_sim2_auswertung.md`) sind nicht eigens beschrieben. Auch nicht einzeln beschrieben sind die vielen Hilfsskripte unter `werkraum/` und `werkraum/tools/`.
 Ordner und Lage der Inhalte: [`../INHALT_ORT_FUER_ORT.md`](../INHALT_ORT_FUER_ORT.md) und [`../HEIMAT_ORDNER.md`](../HEIMAT_ORDNER.md).
 
 ---
@@ -50,7 +53,10 @@ Addresses of pages are deliberately not included, only the projects and files be
 4. `04_welt_und_plattform.md` – three-body capsules, KompOase and splinters, live-update channel, announcements, system map, live mirrors, friction fabric, code archaeology
 5. `05_werkzeuge_und_experimente.md` – toolbox, Dolphin mixing desk, 3D pipeline, world cosmos, VPS MCP, eyes and hands, desktop visibility, AI-stream bridge, video-as-code, virtual desktops
 6. `06_konzepte_texte_spiele_musik.md` – WorldWORDS ANTIBIBEL, planner, DREIERREGEN, game workshop, music, observer journey, early texts, reports from outside
+7. `07_chat_spawner_codexium_solarius.md` – the four chat spawners (codexium, solarius, codexium2, solarius2): test bed, e-mail feeling, container and memory, sessions, condensing, feedback, history
+8. `08_codewesen_organe_und_aufgaben.md` – the seven code beings: dak+gord and its five organs, being process, clock, reaction, forum curiosity, task chats, engagement, world view, LangGraph, world services, direct chat, seven lenses
+9. `09_dienste_hinter_den_adressen.md` – port hardening, world API, gateways, image generator and gallery, system sage, questions API, Obsidian routes, GENI services, Gordslider, mirror syncs, watchers
 
 **What is not yet or only marginally described here**
-The code beings themselves (structure, layers, clock, chat) are in `WEGWEISER/codewesen.md` and, for the public, in the separate Flextrawurst repository. Sleep, dreams and cyberlings are not described separately. The many helper scripts under `werkraum/` and `werkraum/tools/` are not described individually either.
+The code beings (structure, layers, clock, chat) are in `08_codewesen_organe_und_aufgaben.md`, in `WEGWEISER/codewesen.md` and, for the public, in the separate Flextrawurst repository. Sleep and dreams are not described separately. The many helper scripts under `werkraum/` and `werkraum/tools/` are not described individually either.
 Where things are located: `../INHALT_ORT_FUER_ORT.md` and `../HEIMAT_ORDNER.md`.
