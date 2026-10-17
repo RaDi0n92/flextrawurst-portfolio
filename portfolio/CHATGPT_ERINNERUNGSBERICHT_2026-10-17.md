@@ -6,7 +6,7 @@ Stand der Aufnahme: 2026-10-17. / Recorded: 2026-10-17.
 
 ## DEUTSCH – Was das hier ist
 
-Unter der Trennlinie steht ein Bericht, den **ChatGPT** aus seinem eigenen Erinnerungsspeicher und aus früheren Gesprächen mit Daniel erstellt hat. Daniel hat ihn **1:1 kopiert**; er steht hier **unverändert**, ohne Kürzung, ohne Korrektur und ohne Ergänzung von Claude.
+Unter der Trennlinie steht ein Bericht, den **ChatGPT** aus seinem eigenen Erinnerungsspeicher und aus früheren Gesprächen mit Daniel erstellt hat. Daniel hat ihn **1:1 kopiert**; er steht hier **unverändert**, ohne Kürzung, ohne Korrektur und ohne Ergänzung von Claude. Am Ende folgt ein **Nachtrag** aus einer zweiten ChatGPT-Antwort, von dem nur eine Auswahl übernommen wurde (ebenfalls wörtlich).
 
 Der Bericht zeigt, **was Daniel mit ChatGPT wann und wie besprochen, geplant, gearbeitet und geredet hat** (Januar bis 17. Oktober 2026): 64 Punkte als Suchraster, zusätzliche Funde und eine Chronologie.
 
@@ -18,7 +18,7 @@ Wie er zu lesen ist:
 
 ## ENGLISH – What this is
 
-Below the dividing line is a report that **ChatGPT** produced from its own memory store and from earlier conversations with Daniel. Daniel **copied it 1:1**; it is reproduced here **unchanged**, without cuts, corrections or additions by Claude.
+Below the dividing line is a report that **ChatGPT** produced from its own memory store and from earlier conversations with Daniel. Daniel **copied it 1:1**; it is reproduced here **unchanged**, without cuts, corrections or additions by Claude. An **addendum** from a second ChatGPT answer follows at the end; only a selection of it is included (also verbatim).
 
 The report shows **what Daniel discussed, planned, worked on and talked through with ChatGPT, and when and how** (January to 17 October 2026): 64 points as a search grid, additional findings and a chronology.
 
@@ -288,3 +288,60 @@ Hier geht es nun – wie von dir vorgegeben – um die Reihenfolge der Gespräch
 - **16. Oktober:** Dashboard- und Harness-Zustände wurden mit Live-HTTP-Aufrufen, Playwright und Tests geprüft. Ein Bericht nennt 164/164 Kerntests und acht getestete Räume. Gleichzeitig funktionierte der ChatGPT-Zugriff auf den VPS-MCP nicht zuverlässig; du zeigtest, dass der Dienst selbst antwortete, authentifizierte Harness-Aufrufe funktionierten und nicht authentifizierte Aufrufe 401 bekamen. Das Problem wurde deshalb als mögliche ChatGPT-/Connector-/OAuth-Störung eingeordnet, aber eine endgültige Reparatur ist nicht belegt.
 - **17. Oktober, 02:24 Uhr:** In der Sitzung zum Strukturieren der Erinnerungen entstand die 64-Punkte-Liste. Anschließend sollte sie intern Kategorien zugeordnet und in explizite Erinnerungssätze überführt werden. Die damalige Assistenz meldete eine Übertragung, konnte aber nicht belegen, dass die Erinnerungen sichtbar aktualisiert waren.
 - **17. Oktober, ab 05:30 Uhr:** Du hast dann den neuen Auftrag formuliert: zuerst alle Punkte mit Gesprächsspuren vertiefen, Verbindungen und weitere Inhalte ergänzen, danach erst die Januar-bis-Oktober-Chronologie. Meine früheren Antworten hielten diese Reihenfolge nicht ein. Dies ist der erste Durchgang, der sie tatsächlich befolgt.
+
+---
+
+## NACHTRAG: zweite ChatGPT-Antwort, nur eine Auswahl / ADDENDUM: second ChatGPT answer, selection only
+
+**Deutsch.** Dieser Nachtrag stammt aus einer **zweiten Antwort von ChatGPT** am selben Tag (Daniel nannte sie ein „Update“). Sie enthielt ausdrücklich nur zusätzliche, konkretere Funde. Daniel hat sie ebenfalls 1:1 kopiert. **Hier steht nur eine Auswahl**: Abschnitte, die das Portfolio selbst schon abdeckt, wurden weggelassen. Die ausgewählten Abschnitte unten sind **wörtlich und unverändert**.
+
+Weggelassen, weil bereits im Portfolio belegt (Quelldateien und [`PROJEKTE/07_chat_spawner_codexium_solarius.md`](PROJEKTE/07_chat_spawner_codexium_solarius.md)):
+- Codexium2: Änderungen nach den Handytests (Satz-Pinnen, Android-Diktat, Stop-Knopf, Daumen-Feedback).
+- Die „Abschlussgeschichte“ als eigene Art von Erinnerung (inklusive 45-Sekunden-Test).
+- Der Chatverlauf als Ereignisprotokoll (inklusive 111-Zeichen-Vorschau und 77-%-Hinweis).
+- Der Absatz zum Spielgedächtnis (Dateizählungen, Resolver-Stand): nicht übernommen.
+- Der Schlusssatz der Antwort („Ich bleibe damit noch bei der Vertiefung …“).
+
+**English.** This addendum comes from a **second ChatGPT answer** on the same day (Daniel called it an "update"). It explicitly contained only additional, more concrete findings. Daniel copied it 1:1 as well. **Only a selection is included here**: sections the portfolio itself already covers were left out. The selected sections below are **verbatim and unchanged**.
+
+Left out because already documented in the portfolio (source files and `PROJEKTE/07_chat_spawner_codexium_solarius.md`): Codexium2 changes after phone tests, the "closing story" memory type, the chat history as event log, the game-memory paragraph, and the closing sentence of the answer.
+
+### Liederwesen und LIDA-Projekte sind zwei verschiedene Dinge
+
+Die Oktober-Spuren unterscheiden klar zwischen **Liederwesen** und **LIDA-Projekten**. „LIDA-Wesen“ war ein Diktatfehler; die Liederwesen selbst wurden nicht umbenannt. **LIDA-Projekte** bezeichnet die fortbestehenden Projekte, die aus ihren Schnipseln entstehen können.
+
+- Ein Wesen sollte eigene Textschnipsel wiederlesen, weiterführen und kommentieren können. Ein Lied blieb Entwurf, bis das Wesen selbst es als fertig und veröffentlichbar erklärte.
+- Für ein gemeinsames Stück wurden **Träumerlie, R1ZZ1 und Resonanzknoten** als Beitragende genannt. Es gab zwei hochgeladene M4A-Fassungen von ungefähr **3:10** und **3:22**; die zweite wurde bevorzugt.
+- Als weitere konkrete Fälle wurden F3INSCHM3CK3Rs später veröffentlichtes Stück **„Klicken aus Glas“**, ein aus mehreren Schnipseln zusammengesetztes Lied von Träumerlie und ein in einer Sitzung fertiggestelltes und veröffentlichtes Lied von dak+gord genannt.
+- Bei den Speicherorten ist die Spur uneinheitlich: Ein früherer Fund wurde unter `lieder_vault/F3INSCHM3CK3R/schnipsel/fliegendes_superraketenhuhn_auf_lsd.md` verortet. In einer späteren Suche war ein neuer Lieder-Ordner aber nicht verifizierbar; als belastbarer älterer Ort blieb `/root/werkraum/wesen_vaults/<Wesen>/`.
+
+### Der Werkraum als genaueres technisches Bild
+
+Eine Werkraum-Präsentation vom **14. Juni** beschreibt einen Obsidian-Vault auf dem VPS mit **14.689+ Markdown-Dateien**, erreichbar über Docker auf Port **8443**. Das ist eine Dokumentationsangabe aus diesem Stand, keine aktuelle Live-Prüfung.
+
+Dort sind außerdem konkrete Dienste aufgeführt: GENI auf **8020**, Welt-API auf **8030**, Surface auf **8787**, dak+gord auf **8000** und Ollama auf **11434**; der Splitter-Daemon sei im 60-Sekunden-Takt gelaufen. Die Präsentation ordnet Claude, Codex und Kimi als externe „Nachbarn“ mit eigenen Werkraum-Häusern ein — getrennt von den dauerhaft im System verankerten Codewesen. Auch das ist die Architekturauffassung der Präsentation, nicht ein erneuter heutiger Statuscheck.
+
+### Eine bislang nicht ausgeführte Spur für vollständige Sitzungs- und Terminalgeschichte
+
+Am **27.–29. Juli** wurden zwei verwandte, aber unterschiedlich weit entwickelte Vorhaben festgehalten:
+
+- Für einen Browser-Recorder verlangtest du append-only Rohereignisse, vollständige Sitzungsansichten und eine Trennung zwischen Browser- und MCP-Aktionen. Ein späterer Stand meldete **13/13 automatisierte Alt-Chat-Imports**; die Abnahme mit echten Windows-Chromium-Chats und realen MCP-Lesevorgängen blieb aber offen. Ich würde den Recorder deshalb als teilweise getestet führen.
+- **TERMINALWERKSTROM** sollte dasselbe für Claude Code, Gemini, Codex, Kimi, GLM und weitere Agenten leisten: Dialoge, Tool-Aufrufe, Befehle, Ausgaben, Dateien/Diffs, Fehler, Korrekturen, Tests und reale Ergebnisse. Vorgesehen waren unter anderem `GESPRAECH_1ZU1.md`, `ROHSTROM.jsonl` und ein Manifest. Der damalige Eintrag sagt ausdrücklich: **noch nicht umgesetzt**; zuerst sollten Claudes vorhandene Logs geprüft werden.
+
+### Spielarchiv: neue Genauigkeit zu „getestet“ und „spielbar“
+
+Ein Audit vom **22. Juli** meldete **418/418 bestandene Prüfungen** für v21, darunter Gates, Querprüfungen, Red-Team- und Welt-Simulationstests. Außerdem seien 296 Dateien von v21 bytegleich in v22 enthalten gewesen.
+
+Gleichzeitig ist die wichtige Grenze dokumentiert: **v22 war ein Quest- und Simulationskörper, keine zweite Spiel-Runtime**. Die 111.111 Questkeime und ihre Varianten waren Daten und reproduzierbare Simulationen, nicht 111.111 vollständig spielbare Geschichten. In den Auditnotizen bleiben außerdem Herkunftslücken: Die v1–v7-Originale waren nicht einzeln sauber trennbar, und Teile des v20-Quellenkorpus fehlten.
+
+Für den VPS-Transfer ist der Status separat: Archive wurden geprüft und gehasht, aber ein Satz von Originalarchiven wurde wegen eines fehlenden Binär-Kopierwegs **nicht auf den VPS übertragen**. Die alten Gesprächsnotizen unterscheiden das ausdrücklich von der Integritätsprüfung der Archive selbst.
+
+### Flarum-Export und Ring 22: was getrennt werden sollte
+
+Ein Exportvorhaben vom **8. Mai** sah einen nur lesenden Flarum-Exporter vor: Rohdaten für Diskussionen, Posts und Nutzer, zusätzlich HTML pro Diskussion, `manifest.json` und ZIP. **GENI und dak+gord sollten keine Flarum-Autoren sein**, sondern als Systemkontext referenziert werden.
+
+Am **9. Mai** ordnete Ring 22 die Beobachtung weiter auseinander: C4 sollte die breite Prozesskarte liefern, D3 Herkunft und Prozessspur, E4 GENI als Wahrnehmungsschicht und F4 dak+gord als Dialog- und Koordinationskern. Der Status G unterschied etwa „gemessen“, „abgeleitet“, „modelliert“, „unbekannt“, „blockiert“, „read-only“ und „Replay“. Der anschließende Ring-22A-Prozessmodellplan blieb laut Spur **uncommitted und ohne Code- oder Teständerung**.
+
+### Neue Präzisierung zur 490er-Liste
+
+Im Oktober wurde eine zusätzliche Provenienzregel festgehalten: Die 490 Punkte bleiben **CollectionItems**. Ein Dry Run kam auf **504 CollectionItems** inklusive 14 Struktur-/Begleiteinträgen. Sie sollten nicht automatisch zu Entities, Features, Requirements oder Implementierungen hochgestuft werden. Der Kanon wurde separat geführt: 17 Entities, 27 Claims, 29 Positions, 27 Evidence und 136 Statuszellen. Das ist eine wichtige Trennung zwischen „als Material vorhanden“ und „als Systemwahrheit bestätigt“.
