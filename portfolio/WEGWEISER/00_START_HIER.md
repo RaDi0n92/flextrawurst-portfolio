@@ -15,6 +15,7 @@ und IPs sind geschwärzt (`[GESCHWAERZT]`, `[IP-GESCHWAERZT]` …).
 | Wie ist das alles entstanden, wer arbeitet wie? / How did all this come about, who works how? | `../ARBEITSWEISE.md` (DE/EN) |
 | Was gab es vor Flextrawurst, in welcher Reihenfolge? / What existed before Flextrawurst, in what order? | `../VOR_FLEXTRAWURST.md` (DE/EN) |
 | Was hat Daniel wann mit ChatGPT besprochen und geplant? / What did Daniel discuss and plan with ChatGPT, and when? | `../CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md` (Bericht von ChatGPT, unverändert / ChatGPT's own report, unchanged) |
+| Wie erinnert Daniel den Weg vom Systemweiser zum Programmharness? / How does Daniel recall the path from Systemweiser to program harness? | `../DANIEL_ROHTEXT_2026-10-18_VOM_SYSTEMWEISER_ZUM_PROGRAMMHARNESS.md` (Daniels Rohtext, unverändert / Daniel's raw text, unchanged) |
 | Wo liegen Spiegel, Notizen, Ideen, Konzepte, Doku, Wissen, Code? / Where are mirrors, notes, ideas, concepts, docs, knowledge, code? | `../INHALT_ORT_FUER_ORT.md` (DE/EN) |
 | Was liegt im Zuhause von Claude Code, Codex, Gemini, Kimi, ChatGPT …? / What is in the home of each AI stream? | `../HEIMAT_ORDNER.md` (DE/EN) |
 | Was wurde in den Projekten versucht, warum, welche Dateien gehören dazu? / What was attempted in the projects, why, which files belong to them? | `../PROJEKTE/README.md` (DE/EN) |
