@@ -299,12 +299,15 @@ Weggelassen, weil bereits im Portfolio belegt (Quelldateien und [`PROJEKTE/07_ch
 - Codexium2: Änderungen nach den Handytests (Satz-Pinnen, Android-Diktat, Stop-Knopf, Daumen-Feedback).
 - Die „Abschlussgeschichte“ als eigene Art von Erinnerung (inklusive 45-Sekunden-Test).
 - Der Chatverlauf als Ereignisprotokoll (inklusive 111-Zeichen-Vorschau und 77-%-Hinweis).
-- Der Absatz zum Spielgedächtnis (Dateizählungen, Resolver-Stand): nicht übernommen.
 - Der Schlusssatz der Antwort („Ich bleibe damit noch bei der Vertiefung …“).
 
 **English.** This addendum comes from a **second ChatGPT answer** on the same day (Daniel called it an "update"). It explicitly contained only additional, more concrete findings. Daniel copied it 1:1 as well. **Only a selection is included here**: sections the portfolio itself already covers were left out. The selected sections below are **verbatim and unchanged**.
 
-Left out because already documented in the portfolio (source files and `PROJEKTE/07_chat_spawner_codexium_solarius.md`): Codexium2 changes after phone tests, the "closing story" memory type, the chat history as event log, the game-memory paragraph, and the closing sentence of the answer.
+Left out because already documented in the portfolio (source files and `PROJEKTE/07_chat_spawner_codexium_solarius.md`): Codexium2 changes after phone tests, the "closing story" memory type, the chat history as event log, and the closing sentence of the answer.
+
+### Spielgedächtnis (auf Daniels Wunsch vom 2026-10-18 nachgetragen)
+
+Daneben gab es ein separates Mandat für ein lebendes Spielgedächtnis: frühere Sessions und externe Quellen mit Herkunft, Vault-first-Auflösung, sitzungsübergreifendem Zusammenhang und konfliktfestem Schreiben einbeziehen. Die vorhandenen Vorversuche wurden damals mit 2.920 Dateien, 2.176 Archivbestandteilen, zwei SQLite-Körpern und 1.337 Analyseschleifen beschrieben. Die zentrale Resolver-, Rückschreib- und Konfliktsicherheit war in diesem Stand ausdrücklich **nicht als gebaut bestätigt**.
 
 ### Liederwesen und LIDA-Projekte sind zwei verschiedene Dinge
 
