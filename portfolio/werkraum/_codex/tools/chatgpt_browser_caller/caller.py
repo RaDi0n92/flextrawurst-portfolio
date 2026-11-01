@@ -34,7 +34,7 @@ from urllib.request import urlopen
 
 DEFAULT_CDP_ENDPOINT = "http://127.0.0.1:9222"
 DEFAULT_STATE_PATH = Path(__file__).with_name("state") / "slots.json"
-CHATGPT_HOSTS = {"chatgpt.com", "www.chatgpt.com"}
+CHATGPT_HOSTS = {"chatgpt.com", "[Adresse entfernt]"}
 CHATGPT_PATH = re.compile(r"^/c/[A-Za-z0-9-]+(?:/)?$")
 
 
@@ -321,7 +321,7 @@ class ChatGPTBrowserCaller:
         candidates = []
         for context in browser.contexts:
             for page in context.pages:
-                if not page.url.startswith("https://chatgpt.com/"):
+                if not page.url.startswith("[Adresse entfernt]"):
                     continue
                 if self._page_target_id(context, page) != slot.target_id:
                     continue
@@ -400,7 +400,7 @@ class ChatGPTBrowserCaller:
                 raise CallerError("Chromium hat keinen nutzbaren Browser-Kontext")
             context = browser.contexts[0]
             page = context.new_page()
-            page.goto("https://chatgpt.com/", wait_until="domcontentloaded", timeout=30000)
+            page.goto("[Adresse entfernt]", wait_until="domcontentloaded", timeout=30000)
             if urlparse(page.url).hostname not in CHATGPT_HOSTS:
                 raise CallerError(f"Neuer Tab landete nicht auf chatgpt.com: {page.url}")
             target_id = self._page_target_id(context, page)

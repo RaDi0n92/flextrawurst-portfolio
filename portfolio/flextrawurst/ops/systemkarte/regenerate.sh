@@ -2,7 +2,7 @@
 # Erzeugt die zwoelf Systemkarte-Diagramme (6 x DE, 6 x EN) neu und legt sie in public/ ab.
 #
 # Voraussetzung: Archify (MIT) als Ordner, in dem bin/archify.mjs liegt:
-#   git clone https://github.com/tt-a1i/archify   (verwendet wurde Stand d5a1333, Ordner archify/archify)
+#   git clone [Adresse entfernt]   (verwendet wurde Stand d5a1333, Ordner archify/archify)
 #   ARCHIFY_DIR=/pfad/zu/archify/archify ./regenerate.sh
 #
 # Optional: TARGET_ROOT (Standard: der flextrawurst-Ordner dieses Repos) -- zum Probelauf in einer Kopie.

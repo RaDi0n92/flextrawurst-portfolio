@@ -6,7 +6,7 @@
 
 ## Gesamtlage
 
-In der Nacht vom 2026-07-08 auf 2026-07-09 entstanden zwölf Commits an `flextrawurst/scripts/serve_process_camera_preview.ts` und `flextrawurst/out/process_camera/wesen_chat.html` — Kontext-Mehrfachauswahl, Zeilen/Token-Live-Info, ein nicht-permanenter Übersetzer mit TTS, Fortschritts-/Stop-Steuerung für lange Hintergrundjobs, serverseitiges Rendern für Memory/Container/Aliase, ein Vision-Modell-Fehlerfix und mehrere kleinere Fixes. Dieser Bericht dokumentiert die anschließende vollständige Verifikations-Session: jedes Feature wurde real gegen `https://flextrawurst.de` getestet (curl gegen die echten API-Routen, Playwright headless gegen die echte UI), nicht nur gelesen oder angenommen. Dabei wurde ein echter, stiller Bug gefunden (Wiederkehrende-Themen-Erkennung faktisch tot) und behoben.
+In der Nacht vom 2026-07-08 auf 2026-07-09 entstanden zwölf Commits an `flextrawurst/scripts/serve_process_camera_preview.ts` und `flextrawurst/out/process_camera/wesen_chat.html` — Kontext-Mehrfachauswahl, Zeilen/Token-Live-Info, ein nicht-permanenter Übersetzer mit TTS, Fortschritts-/Stop-Steuerung für lange Hintergrundjobs, serverseitiges Rendern für Memory/Container/Aliase, ein Vision-Modell-Fehlerfix und mehrere kleinere Fixes. Dieser Bericht dokumentiert die anschließende vollständige Verifikations-Session: jedes Feature wurde real gegen `[Adresse entfernt]` getestet (curl gegen die echten API-Routen, Playwright headless gegen die echte UI), nicht nur gelesen oder angenommen. Dabei wurde ein echter, stiller Bug gefunden (Wiederkehrende-Themen-Erkennung faktisch tot) und behoben.
 
 ---
 

@@ -14,7 +14,7 @@ status: BACKEND-IMPLEMENTIERT (Ausführbar)
 # Spielmechanik 02: Der Welt-Harvester (Google Earth)
 
 ## 1. Funktion
-Das Skript nutzt Playwright, um `https://earth.google.com/web/` anzusteuern. Es fliegt exakte GPS-Koordinaten an und nimmt die Welt in 45-Grad-Schritten (360° Umlauf) als 3D-Modell/Textur auf (Kamera-Sichtfeld: altitude 400m, Tilt 60 Grad).
+Das Skript nutzt Playwright, um `[Adresse entfernt]` anzusteuern. Es fliegt exakte GPS-Koordinaten an und nimmt die Welt in 45-Grad-Schritten (360° Umlauf) als 3D-Modell/Textur auf (Kamera-Sichtfeld: altitude 400m, Tilt 60 Grad).
 
 ## 2. Abdeckung
 Für eine flächendeckende Generierung der Zonen (z.B. Wupper-Ennepe) werden 5 Sektoren pro Stadt abgeflogen (Zentrum, Nord, Süd, Ost, West), was einem Offset von 500m entspricht. Damit werden lückenlos Straßennetze und Grenzen erfasst, die das Raster (352 Kacheln aus dem Manifest) befüllen.

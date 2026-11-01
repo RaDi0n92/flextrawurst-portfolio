@@ -169,7 +169,7 @@ und unabhängige Gegenprüfung denselben Claim tragen.
 
 ## Ring 11 — Flextrawurst-Liveabnahme
 
-- [L] Sichtbarer Crawlauftrag auf `https://flextrawurst.de/`, max. Tiefe 1 und `0 = Queue leer` ausgeführt.
+- [L] Sichtbarer Crawlauftrag auf `[Adresse entfernt]`, max. Tiefe 1 und `0 = Queue leer` ausgeführt.
 - [L] Wurzelseite plus vier Unterseiten mit eigenen `page_id`s erfasst.
 - [L] Alle fünf Seiten von Anfang bis stabilem Endmarker geführt: 37 Chunks, jeder reale Übergang mindestens 30%.
 - [L] 27 Links auf der Wurzel, Assetmetadaten und Filterpolicy im Report geprüft.

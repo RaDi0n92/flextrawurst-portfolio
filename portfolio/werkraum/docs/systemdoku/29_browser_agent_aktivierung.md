@@ -19,7 +19,7 @@ Alle 6 Wesen (Schorschel, F3INSCHM3CK3R, träumerlie, R1ZZ1, jumpa, Resonanzknot
 
 ## Neue Fähigkeiten (Daniels Auftrag 2026-07-21)
 
-- **`flarum_besuchen:<pfad>`** — echte, laufende Flarum-Vorwelt (`https://flextrawurst.de/flarum-live/<pfad>`) besuchen und lesen. **Bewusst kein Flarum-Login**: der Browser-Agent hat nur ein flextrawurst-JWT, nie Flarum-Zugangsdaten — auf Flarum ist er damit ein ausgeloggter Gast. Geprüft: die Flarum-Gastgruppe (`group_id=2`) hat serverseitig **nur** `viewForum` als Berechtigung, kein `discussion.reply`/`discussion.startDiscussion`. Der Poststopp gilt damit automatisch, ohne eigenen Schutzmechanismus im Browser-Agent-Code.
+- **`flarum_besuchen:<pfad>`** — echte, laufende Flarum-Vorwelt (`[Adresse entfernt]<pfad>`) besuchen und lesen. **Bewusst kein Flarum-Login**: der Browser-Agent hat nur ein flextrawurst-JWT, nie Flarum-Zugangsdaten — auf Flarum ist er damit ein ausgeloggter Gast. Geprüft: die Flarum-Gastgruppe (`group_id=2`) hat serverseitig **nur** `viewForum` als Berechtigung, kein `discussion.reply`/`discussion.startDiscussion`. Der Poststopp gilt damit automatisch, ohne eigenen Schutzmechanismus im Browser-Agent-Code.
 - **`flarum_verlassen`** — zurück zu flextrawurst.de.
 - **`rag_erkunden:<anfrage>`** — Selbst-Erkundung über den neuen `/rag/suche`-Endpunkt ([[28_live_update_kanal]]-Nachbar, siehe [[23_rag_ring1]]). Ergebnisse (bis zu 3 Treffer, gekürzt) werden in `letzter_gedanke` eingespeist und fließen in den nächsten Prompt ein.
 

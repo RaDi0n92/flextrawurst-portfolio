@@ -168,7 +168,7 @@ npx playwright install chromium --with-deps
 Verwende Code mit Vorsicht.
 ⦁	Lokale KI starten (Beispiel mit Ollama für lokale Ausführung):
 bash
-curl -fsSL https://ollama.com | sh
+curl -fsSL [Adresse entfernt] | sh
 ollama run llama3
 Verwende Code mit Vorsicht.
 ⦁	Agenten-Skript starten: Sie schreiben ein kurzes Python- oder Node.js-Skript, das die Brücke zwischen Ollama (KI) und Playwright (Browser) schlägt, während rrweb den Code-Stream für die Zuschauer bereitstellt. [⦁	1, ⦁	2, ⦁	3, ⦁	4]
@@ -220,13 +220,13 @@ Verwende Code mit Vorsicht.
 Ollama ist die performanteste Methode, um das GGUF-Modell auf einer reinen CPU-Architektur via AVX2/AVX-512 optimal zu beschleunigen. [1]
 bash
 # Ollama installieren
-curl -fsSL https://ollama.com | sh
+curl -fsSL [Adresse entfernt] | sh
 
 # Ein eigenes Modelfile für Ihr Qwen-Hauhau-Modell erstellen
 mkdir -p ~/agent-ki && cd ~/agent-ki
 
 # Laden Sie Ihr Qwen3.6-35B Q6 GGUF von HuggingFace herunter (Beispielpfad anpassen falls nötig)
-wget -O qwen3.6-35b-hauhau.gguf "https://huggingface.co"
+wget -O qwen3.6-35b-hauhau.gguf "[Adresse entfernt]"
 Verwende Code mit Vorsicht.
 Erstellen Sie eine Textdatei namens Modelfile im selben Ordner: [1]
 dockerfile
@@ -279,7 +279,7 @@ async def run_agent():
         page = await browser.new_page()
         
         # IHRE ZIEL-WEBSITE HIER EINTRAGEN
-        await page.goto("https://ihre-eigene-website.de")
+        await page.goto("[Adresse entfernt]")
         await page.wait_for_load_state("networkidle")
         
         print("[System] Seite erfolgreich geladen. Starte KI-Analyse...")

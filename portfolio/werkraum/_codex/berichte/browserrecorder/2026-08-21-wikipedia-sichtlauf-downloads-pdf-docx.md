@@ -4,7 +4,7 @@ EVIDENCE_VERSION: 1
 
 Datum: 2026-08-21  
 Arbeitsfläche: Desktop 1 (`DISPLAY=:1`), sichtbares Chromium mit persistentem Playwright-Profil  
-Original: `https://de.wikipedia.org/wiki/Browser` → sichtbare Weiterleitung auf `https://de.wikipedia.org/wiki/Webbrowser`  
+Original: `[Adresse entfernt]` → sichtbare Weiterleitung auf `[Adresse entfernt]`  
 Belegwurzel: `/tmp/dak-wikipedia-live/`
 
 ## Sichtbare Laufkette

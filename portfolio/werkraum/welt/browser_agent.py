@@ -1711,7 +1711,7 @@ def fuehre_aktion_aus(page, entscheidung: str, entity_id: str, conn=None,
                     log.warning("thema_erstellen Fehler: %s", ex)
         elif e.startswith("flarum_besuchen:"):
             pfad = e[len("flarum_besuchen:"):].strip().lstrip("/")
-            url = f"https://flextrawurst.de/flarum-live/{pfad}"
+            url = f"[Adresse entfernt]"
             # Absichtlich KEIN Flarum-Login: der Browser-Agent hat nur ein flextrawurst-JWT,
             # nie Flarum-Zugangsdaten. Auf Flarum ist er damit ein ausgeloggter Gast -- die
             # Gast-Rechtegruppe hat serverseitig nur 'viewForum', kein Posten moeglich (2026-07-21
@@ -2839,7 +2839,7 @@ def diskurs_antworten_ohne_browser(entity_id: str, jwt: str, kurzform: str, antw
         return False
 
 
-_FLARUM_API_BASE = "https://flextrawurst.de/flarum-live/api"
+_FLARUM_API_BASE = "[Adresse entfernt]"
 _flarum_pfad_kurzform_map: dict[str, dict[str, str]] = {}  # entity_id -> {kurzform: "d/<id>"}
 
 

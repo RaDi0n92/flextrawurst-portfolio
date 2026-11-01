@@ -22,7 +22,7 @@ text = text.replace(
     '  #globus-canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }\n'
     '  #globus-labels { position:absolute; inset:0; pointer-events:none; overflow:hidden; }\n'
     '</style>\n'
-    '<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>\n</head>',
+    '<script src="[Adresse entfernt]"></script>\n</head>',
     1,
 )
 

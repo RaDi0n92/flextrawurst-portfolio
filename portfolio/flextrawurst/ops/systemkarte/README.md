@@ -15,7 +15,7 @@ Dieser Ordner enthält, woraus die Diagramme im Tab SYSTEMKARTE entstehen. Doku 
 ## Neu erzeugen
 
 ```bash
-git clone https://github.com/tt-a1i/archify     # MIT-Lizenz; verwendet wurde Stand d5a1333
+git clone [Adresse entfernt]     # MIT-Lizenz; verwendet wurde Stand d5a1333
 ARCHIFY_DIR=/pfad/zu/archify/archify ./regenerate.sh
 cd /root/flextrawurst && npx tsx scripts/build_surface.ts && npx tsx --test tests/surface_ring_23.test.ts
 ```

@@ -338,7 +338,7 @@ def main() -> None:
     server = ThreadingHTTPServer((args.bind, args.port), CockpitHandler)
     server.daemon_threads = True
     server.cockpit_config = vars(args)
-    print(f"AI-Strom-Brücke Cockpit auf http://{args.bind}:{args.port}", flush=True)
+    print(f"AI-Strom-Brücke Cockpit auf [Adresse entfernt]", flush=True)
     server.serve_forever()
 
 

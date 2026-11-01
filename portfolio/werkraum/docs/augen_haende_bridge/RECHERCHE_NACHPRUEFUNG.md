@@ -35,20 +35,20 @@ wurden nie allein als Beleg benutzt. Keine Aussage unten wurde ohne eigene Messu
 
 ## Quellen
 
-* https://github.com/Xpra-org/xpra/issues/5051
-* https://linux.die.net/man/3/xcompositenamewindowpixmap
-* https://bugzilla.mozilla.org/show_bug.cgi?id=1559011
-* https://learn.microsoft.com/en-us/windows/win32/api/windows.graphics.capture.interop/nf-windows-graphics-capture-interop-igraphicscaptureiteminterop-createforwindow
-* https://github.com/anthropics/claude-code/issues/95978
-* https://www.screenish.com/blog/how-to-detect-fake-keyboard-and-mouse-activity
-* https://learn.microsoft.com/en-us/previous-versions/windows/desktop/legacy/ms644986(v=vs.85)
-* https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/
-* https://jocheojeda.com/2026/08/22/at-spi-first-grounding/
-* https://zylos.ai/research/2026-02-08-computer-use-gui-agents/
-* https://wiki.archlinux.org/title/Multi-pointer_X
-* https://github.com/yannbouteiller/vgamepad
-* https://tesseract-ocr.github.io/tessdoc/ImproveQuality.html
-* https://github.com/isac322/kwin-mcp
-* https://github.com/trycua/cua/pull/2008
-* https://gist.github.com/Aetopia/1581b40f00cc0cadc93a0e8ccb65dc8c
-* https://learn.microsoft.com/fi-fi/windows/win32/api/winuser/nf-winuser-setforegroundwindow
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]
+* [Adresse entfernt]

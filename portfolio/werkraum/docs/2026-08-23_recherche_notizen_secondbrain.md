@@ -20,9 +20,9 @@ Funktioniert laut Quelle in fast jedem Werkzeug: in Notion als vier Datenbanken/
 in Obsidian als vier Ordner auf Vault-Wurzelebene, auf Google Drive oder Festplatte als vier
 Top-Level-Ordner. Direkt übertragbar auf eine reine Ordnerstruktur unter /megavault.
 
-Quellen: [The PARA Method — fortelabs.com](https://fortelabs.com/blog/para/),
-[The PARA Method — buildingasecondbrain.com](https://www.buildingasecondbrain.com/para),
-[The PARA Method: Organize Your Life in 2026 — taskade.com](https://www.taskade.com/blog/the-para-method)
+Quellen: The PARA Method — fortelabs.com,
+The PARA Method — buildingasecondbrain.com,
+The PARA Method: Organize Your Life in 2026 — taskade.com
 
 ## Zettelkasten als reine Markdown-Dateien
 
@@ -40,9 +40,9 @@ Verlinkung läuft über Ordner, Links und Tags gemeinsam. Neben Standard-Markdow
 unterstützen die meisten Editoren "Wikilink"/"Freelink"-Syntax (`[[link]]`). Git wird häufig
 zur Versionierung und Sicherung eingesetzt.
 
-Quellen: [Ithy — Plain Text Zettelkasten System](https://ithy.com/article/plain-text-zettelkasten-system-qcnqt95t),
-[Simple Markdown Zettelkasten — evantravers.com](https://evantravers.com/articles/2020/03/13/simple-markdown-zettelkasten/),
-[tools4zettelkasten — GitHub](https://github.com/rreben/tools4zettelkasten)
+Quellen: Ithy — Plain Text Zettelkasten System,
+Simple Markdown Zettelkasten — evantravers.com,
+tools4zettelkasten — GitHub
 
 ## Obsidian-Vault-Struktur 2026: Ordner vs. Tags vs. Links
 
@@ -56,8 +56,8 @@ eine kleine Menge Top-Level-Ordner für klar getrennte Lebensbereiche (oft direk
 Tags für Querschnitts-Themen (Status/Typ/Thema), Properties für strukturierte Daten. Tags
 sind billig zu setzen und zu ändern — großzügig verwenden.
 
-Quellen: [Tags vs. Folders in Obsidian — danholloran.me](https://danholloran.me/posts/tags-vs-folders-in-obsidian-how-to-organize-your-vault),
-[Obsidian Folder Structure 2026 — studio-obsidian.com](https://studio-obsidian.com/obsidian-folder-structure/)
+Quellen: Tags vs. Folders in Obsidian — danholloran.me,
+Obsidian Folder Structure 2026 — studio-obsidian.com
 
 ## Maps of Content (MOC) — Navigationsschicht statt tiefer Ordner
 
@@ -72,8 +72,8 @@ mit Suche und Tags genutzt, um tiefe Ordnerhierarchien überflüssig zu machen. 
 MOC-Layout: kurze Einleitung, nach Unterthema gruppierte Link-Listen, ein Abschnitt "als
 nächstes zu klären" am Ende.
 
-Quellen: [Maps of Content — dsebastien.net](https://www.dsebastien.net/2022-05-15-maps-of-content/),
-[Map of Content — natecue.com](https://www.natecue.com/en/learn/productivity/map-of-content/)
+Quellen: Maps of Content — dsebastien.net,
+Map of Content — natecue.com
 
 ## Logseq: block-basierte Alternative — was Nutzer daran vermissen
 
@@ -90,8 +90,8 @@ Plugin-Ökosystem als klarer Obsidian-Vorteil: 1500+ Community-Plugins gegenübe
 ~200 — Logseq gleicht das teilweise durch mehr fest eingebaute Kernfunktionen aus
 (Karteikarten, PDF-Annotation, Aufgabenverwaltung).
 
-Quellen: [Obsidian vs Logseq 2026 — atlasworkspace.ai](https://www.atlasworkspace.ai/blog/obsidian-vs-logseq),
-[Logseq vs Obsidian 2026 — ainotely.com](https://ainotely.com/blog/logseq-vs-obsidian/)
+Quellen: Obsidian vs Logseq 2026 — atlasworkspace.ai,
+Logseq vs Obsidian 2026 — ainotely.com
 
 ## Notion als Second Brain: wo geschlossene Apps an Grenzen stoßen
 
@@ -109,8 +109,8 @@ einen anderen Menschen mit einbezieht, während Obsidian das dauerhafte, persön
 bleibt — ein hybrider Ansatz, um die Grenzen von Notion zu umgehen, statt sich für eines von
 beiden zu entscheiden.
 
-Quellen: [16 Best Second Brain Apps 2026 — buildin.ai](https://buildin.ai/blog/best-second-brain-apps-2026),
-[7 Best Second Brain Apps 2026 — atlasworkspace.ai](https://www.atlasworkspace.ai/blog/best-second-brain-apps)
+Quellen: 16 Best Second Brain Apps 2026 — buildin.ai,
+7 Best Second Brain Apps 2026 — atlasworkspace.ai
 
 ## Bezug zu Daniels /megavault + /gesamtatlas (eigene Einordnung, kein Fund)
 

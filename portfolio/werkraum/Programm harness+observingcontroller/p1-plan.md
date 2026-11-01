@@ -1,6 +1,6 @@
-Ja. Ich würde `https://flextrawurst.de/os` als private Leitstelle für dein gesamtes Agentensystem bauen – als eigenes „Harness Operating System“, nicht nur als Log-Seite.
+Ja. Ich würde `[Adresse entfernt]` als private Leitstelle für dein gesamtes Agentensystem bauen – als eigenes „Harness Operating System“, nicht nur als Log-Seite.
 
-Die konkrete `/os`-Route ließ sich in meiner Textansicht nicht direkt öffnen. Die öffentliche Beschreibung von flextrawurst zeigt aber bereits eine sehr passende Grundlage: FastAPI, TypeScript-Frontend, PostgreSQL, systemd-Dienste, WebSocket-Ereignisse, eine append-only Event-Historie und GENI als Wahrnehmungsschicht. [Öffentliche Beschreibung von flextrawurst](https://flextrawurst.de/)
+Die konkrete `/os`-Route ließ sich in meiner Textansicht nicht direkt öffnen. Die öffentliche Beschreibung von flextrawurst zeigt aber bereits eine sehr passende Grundlage: FastAPI, TypeScript-Frontend, PostgreSQL, systemd-Dienste, WebSocket-Ereignisse, eine append-only Event-Historie und GENI als Wahrnehmungsschicht. Öffentliche Beschreibung von flextrawurst
 
 ## Die wichtigste Trennung
 
@@ -63,11 +63,11 @@ Anders gesagt:
 
 Claude Code, Codex und Gemini liefern unterschiedliche Informationen. Deshalb sollte jeder Anbieter einen eigenen Adapter bekommen, der seine Ereignisse in ein gemeinsames Format übersetzt.
 
-Claude Code kann strukturierte Streaming-Ausgabe, Hook-Ereignisse, partielle Nachrichten und Informationen von Unteragenten liefern. Es gibt außerdem Sitzungsfortsetzung und eine Remote-Control-Funktion. [Claude Code CLI-Referenz](https://code.claude.com/docs/en/cli-usage)
+Claude Code kann strukturierte Streaming-Ausgabe, Hook-Ereignisse, partielle Nachrichten und Informationen von Unteragenten liefern. Es gibt außerdem Sitzungsfortsetzung und eine Remote-Control-Funktion. Claude Code CLI-Referenz
 
-Codex lässt sich für einen tieferen Harness über den Codex App Server strukturiert steuern. Dabei werden Nachrichten und Turn-Zustände über einen JSON-basierten Kanal übertragen; Sitzungen können anhand ihrer Thread-ID fortgesetzt werden. [OpenAI-Dokumentation zum Codex App Server](https://developers.openai.com/siwc/token-sharing-open-source/codex-app-server)
+Codex lässt sich für einen tieferen Harness über den Codex App Server strukturiert steuern. Dabei werden Nachrichten und Turn-Zustände über einen JSON-basierten Kanal übertragen; Sitzungen können anhand ihrer Thread-ID fortgesetzt werden. OpenAI-Dokumentation zum Codex App Server
 
-Gemini CLI bietet einen Headless-Streaming-Modus mit Ereignissen für Sitzungsstart, Nachrichten, Tool-Aufrufe, Tool-Ergebnisse, Fehler und Endzustand. Die Hooks können vor oder nach Tools und Agentenläufen eingreifen und Aktionen ablehnen oder den Agentenlauf stoppen. [Gemini-CLI-Dokumentation zum Headless-Modus](https://geminicli.com/docs/cli/headless/), [Gemini-CLI-Hooks](https://geminicli.com/docs/hooks/reference/)
+Gemini CLI bietet einen Headless-Streaming-Modus mit Ereignissen für Sitzungsstart, Nachrichten, Tool-Aufrufe, Tool-Ergebnisse, Fehler und Endzustand. Die Hooks können vor oder nach Tools und Agentenläufen eingreifen und Aktionen ablehnen oder den Agentenlauf stoppen. Gemini-CLI-Dokumentation zum Headless-Modus, Gemini-CLI-Hooks
 
 Der Controller sollte intern nicht mehr fragen müssen: „Kommt dieses Ereignis von Claude oder Gemini?“ Er sollte nur noch verstehen:
 

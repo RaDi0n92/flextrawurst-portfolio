@@ -114,7 +114,7 @@ def main():
             "is_locked": bool(disc['is_locked']),
             "is_sticky": bool(disc['is_sticky']),
             "hidden": bool(disc['hidden_at']),
-            "url": f"http://[SERVER-IP]/d/{did}-{disc['slug']}",
+            "url": f"[Adresse entfernt]/d/{did}-{disc['slug']}",
             "posts": [
                 {
                     "n": p['number'],

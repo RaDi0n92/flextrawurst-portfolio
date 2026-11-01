@@ -387,22 +387,22 @@ Für tabweise Einzelansicht reicht zunächst ein lokales Bundle aus manifest.jso
 
 ## Externe Primärquellen
 
-- Chrome: Declare permissions — https://developer.chrome.com/docs/extensions/develop/concepts/declare-permissions
-- Chrome: chrome.debugger — https://developer.chrome.com/docs/extensions/reference/api/debugger
-- Chrome: chrome.downloads — https://developer.chrome.com/docs/extensions/reference/api/downloads
-- Chrome: chrome.storage — https://developer.chrome.com/docs/extensions/reference/api/storage
-- MDN: Using the Fetch API — https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-- MDN: AbortController — https://developer.mozilla.org/en-US/docs/Web/API/AbortController
-- OWASP: File Upload Cheat Sheet — https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html
-- OWASP: Logging Cheat Sheet — https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html
-- OWASP: SSRF Prevention Cheat Sheet — https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html
-- Webrecorder specifications — https://github.com/webrecorder/specs
-- Browsertrix documentation — https://docs.browsertrix.com/
-- Webrecorder project family — https://github.com/webrecorder
-- SingleFile — https://github.com/gildas-lormeau/SingleFile
-- ArchiveBox — https://github.com/ArchiveBox/ArchiveBox
-- ArchiveWeb.page — https://github.com/webrecorder/archiveweb.page
-- ReplayWeb.page — https://github.com/webrecorder/replayweb.page
+- Chrome: Declare permissions — [Adresse entfernt]
+- Chrome: chrome.debugger — [Adresse entfernt]
+- Chrome: chrome.downloads — [Adresse entfernt]
+- Chrome: chrome.storage — [Adresse entfernt]
+- MDN: Using the Fetch API — [Adresse entfernt]
+- MDN: AbortController — [Adresse entfernt]
+- OWASP: File Upload Cheat Sheet — [Adresse entfernt]
+- OWASP: Logging Cheat Sheet — [Adresse entfernt]
+- OWASP: SSRF Prevention Cheat Sheet — [Adresse entfernt]
+- Webrecorder specifications — [Adresse entfernt]
+- Browsertrix documentation — [Adresse entfernt]
+- Webrecorder project family — [Adresse entfernt]
+- SingleFile — [Adresse entfernt]
+- ArchiveBox — [Adresse entfernt]
+- ArchiveWeb.page — [Adresse entfernt]
+- ReplayWeb.page — [Adresse entfernt]
 
 ## Schlussbefund
 

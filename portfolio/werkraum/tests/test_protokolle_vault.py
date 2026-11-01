@@ -16,8 +16,8 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-ADRESSE_DOMAIN = "https://flextrawurst.de/protokolle/"
-ADRESSE_PORT = "https://[SERVER-IP]:8457/"
+ADRESSE_DOMAIN = "[Adresse entfernt]"
+ADRESSE_PORT = "[Adresse entfernt]"
 KENNUNG = {"username": "daniel", "password": "[GESCHWAERZT]"}
 VAULT = Path("/root/werkraum/protokolle")
 BELEGE = Path("/root/werkraum/tests/belege")

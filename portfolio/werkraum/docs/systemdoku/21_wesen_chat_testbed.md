@@ -273,7 +273,7 @@ knopfdruck quasi darunter eine anderes wesen triggern können darunter zu schrei
 zensi (Symposium-Funktion) ausdrücklich: nicht autonom wie dort — Daniel steuert jeden Zug manuell
 (analog zur bestehenden Entscheidung in `codewesen_speicher.py`: "ich will nicht das von zensi").
 
-**Neue Seite:** `https://flextrawurst.de/gruppenchat`, `auth_basic` mit demselben `daniel`-User wie
+**Neue Seite:** `[Adresse entfernt]`, `auth_basic` mit demselben `daniel`-User wie
 `/codewesen-chat/` (kein neuer htpasswd-Eintrag nötig, Passwort stimmte bereits).
 
 **Speicherung, Daniels Entscheidung "beides":** eine eigene Sitzungsdatei
@@ -813,7 +813,7 @@ Zusammenfassen/Automodus/Memory-Vorschläge, die jetzt alle `max_tokens=33333` n
 Soft-Ceiling-Logik (`laenge * 1.4`) erhalten, weil eine gewählte Kleinstgröße (111 Token) sonst
 unterlaufen würde.
 
-**Live end-to-end bewiesen — diesmal ausdrücklich über die echte `https://flextrawurst.de`-Domain,
+**Live end-to-end bewiesen — diesmal ausdrücklich über die echte `[Adresse entfernt]`-Domain,
 nicht nur direkt gegen den Backend-Port** (Daniels expliziter Auftrag: "du musst alles jeden bauabschnit
 mit playwright beweisen"). Zwei realistisch große Test-Sitzungen synthetisch erzeugt (30 Nachrichten,
 8 Teilnehmer, 13000-18000 Zeichen, vergleichbar mit Daniels echter Sitzung), System stand während der
@@ -996,7 +996,7 @@ anderen Fixes in diesem Nachtrag) — nächste Geschichten-Erstellung ist der ei
 
 ## Nachtrag 2026-09-25 — Spawner-Formular (`wesen_spawner.html`) zeigte immer Solarius2
 
-Daniel meldete: `https://flextrawurst.de/codexium2` zeigt das Solarius2-Formular, nicht das
+Daniel meldete: `[Adresse entfernt]` zeigt das Solarius2-Formular, nicht das
 Codexium2-Formular. Betrifft `flextrawurst/out/process_camera/wesen_spawner.html` — die
 Formularseite vor dem eigentlichen Chat (`wesen_chat.html` oben), noch nicht in dieser Doku
 erwähnt.
@@ -1088,7 +1088,7 @@ bereits neu gestartete `process-camera-preview.service` bedient alle vier Dateie
 
 **Nachtrag 2026-09-30 — über die öffentliche Domain war `/api/tts` trotzdem 404:**
 Daniel: "naja aber das tts klappt nicht leider". Alle bisherigen Tests liefen gegen
-`localhost:8787` — dort war der Endpunkt korrekt. Über `https://flextrawurst.de/api/tts` fing aber
+`localhost:8787` — dort war der Endpunkt korrekt. Über `[Adresse entfernt]` fing aber
 der allgemeine `location /api/`-Block in `/etc/nginx/sites-available/flextrawurst` die Anfrage ab
 und schickte sie an welt-api (Port 8030), die kein `/tts` kennt → 404.
 
@@ -1098,7 +1098,7 @@ dem flarumstyler-Kommentar. Die nginx-Änderung selbst war für diese Session ge
 Konfiguration). Deshalb hat Daniel sie über `/root/Desktop/tts-fix-anwenden.sh` auf dem Host
 ausgeführt (Backup `flextrawurst.backup-vor-api-tts-route-*`, `nginx -t`, `systemctl reload nginx`).
 
-**Verifiziert:** `curl -X POST https://flextrawurst.de/api/tts` → 200, echtes MP3 (11376 Byte).
+**Verifiziert:** `curl -X POST [Adresse entfernt]` → 200, echtes MP3 (11376 Byte).
 
 Für künftige neue `/api/…`-Routen auf Port 8787: immer auch über die öffentliche Domain testen,
 nicht nur gegen localhost — der allgemeine `/api/`-Block leitet sonst still an 8030 um.
@@ -1108,7 +1108,7 @@ hatte nur eine Stelle mit `fetch('/tts/speak', …)` (Zeile 1472). Umgestellt au
 eigener Endpunkt in `zensi/server.py` war nicht nötig: die Seite liegt auf derselben Domain, und
 `/api/tts` wird seit der nginx-Route (siehe oben) an Port 8787 geleitet. `index.html` wird pro
 Request frisch gelesen, kein Neustart. Backup: `zensi/index.html.vor-tts-api-fix-*`.
-Verifiziert: `https://flextrawurst.de/zensi/` liefert den neuen Pfad aus (kein `/tts/speak` mehr).
+Verifiziert: `[Adresse entfernt]` liefert den neuen Pfad aus (kein `/tts/speak` mehr).
 Ob der Ton im Browser wirklich abgespielt wird, hat Daniel noch nicht bestätigt.
 
 *Weiter: [[10_dakgord]] | [[52_codewesen_chat_kontextfenster]] | [[06_flarum]] | [[11_geni]]*

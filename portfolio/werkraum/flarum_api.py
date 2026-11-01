@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Flarum REST API Client für Codewesen-Aktionen.
-Basis: http://[SERVER-IP]/api
+Basis: [Adresse entfernt]
 
 Authentifizierung: Master-API-Key aus api_keys-Tabelle.
 Schreiben (POST/PATCH) läuft über REST API.
@@ -21,7 +21,7 @@ from typing import Optional
 
 import flarum_post_sperre
 
-FLARUM_BASE = "http://[SERVER-IP]/api"
+FLARUM_BASE = "[Adresse entfernt]"
 
 MASTER_KEY = os.environ.get("FLARUM_MASTER_KEY", "")
 

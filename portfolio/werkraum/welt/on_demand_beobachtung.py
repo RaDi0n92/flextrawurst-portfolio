@@ -93,7 +93,7 @@ def hole_echte_url(conn, entity_id: str) -> str:
     roh = (row["url"] if row else "") or ""
     match = re.match(r"^flarum:(d/\d+)?", roh)
     pfad = match.group(1) if (match and match.group(1)) else ""
-    return f"https://flextrawurst.de/flarum-live/{pfad}"
+    return f"[Adresse entfernt]"
 
 
 def haupt_loop():

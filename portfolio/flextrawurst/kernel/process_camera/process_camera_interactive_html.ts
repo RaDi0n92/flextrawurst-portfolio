@@ -528,7 +528,7 @@ export function buildProcessCameraInteractiveHtml(
   ${layerBtns}
 </div>
 <div id="main">
-  <svg id="main-svg" viewBox="0 0 ${layout.viewbox_width} ${layout.viewbox_height}" xmlns="http://www.w3.org/2000/svg">
+  <svg id="main-svg" viewBox="0 0 ${layout.viewbox_width} ${layout.viewbox_height}" xmlns="[Adresse entfernt]">
     ${svgDefs}
     <g id="world">
       ${geniField}

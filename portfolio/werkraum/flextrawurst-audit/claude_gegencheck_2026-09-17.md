@@ -104,7 +104,7 @@ Ergebnis stimmt trotzdem exakt überein.)
 Behauptung: die live ausgelieferte Public-Surface hat 43 Navigationstabs mit
 43 eindeutigen Ziel-Views.
 
-Prüfung: `curl https://flextrawurst.de/` und Zählung der `data-view="..."`-
+Prüfung: `curl [Adresse entfernt]` und Zählung der `data-view="..."`-
 Attribute im tatsächlich ausgelieferten HTML.
 
 Ergebnis: 43 eindeutige `data-view`-Einträge. Exakt wie behauptet. (Erster
@@ -189,7 +189,7 @@ rekonstruiert.
 Prüfung: `systemctl show geni-web.service` → `NRestarts=0`, `ActiveState=active`,
 `SubState=running`. `dialog.py` ist jetzt 2718 Zeilen lang und endet mit einem
 vollständigen `uvicorn.run(...)`-Aufruf, nicht mitten im HTML. Live-Check
-`curl https://flextrawurst.de/zensi/` → `HTTP 200`.
+`curl [Adresse entfernt]` → `HTTP 200`.
 
 Auffällig: derselbe Fehlermuster-Typ (Datei mitten im Schreiben abgeschnitten,
 Crashloop mit fünf- bis sechsstelligen Neustartzahlen), den ich unabhängig
@@ -268,7 +268,7 @@ Behauptung: 134 Sitemap-URLs, alle erreichbar, keine kaputt.
 
 Unabhängig geprüft (nicht nur die Audit-eigene `seo_geo_validation_2026-09-17.json`
 gelesen, sondern die echte, live ausgelieferte `sitemap.xml` abgerufen):
-`curl https://flextrawurst.de/sitemap.xml` → 134 `<loc>`-Einträge, 134
+`curl [Adresse entfernt]` → 134 `<loc>`-Einträge, 134
 eindeutig. Stichprobe von 8 zufällig gezogenen URLs quer durchs Sitemap
 (`/wesen/...`, `/wissen/...`) einzeln per `curl` abgerufen — alle 8 mit
 HTTP 200.

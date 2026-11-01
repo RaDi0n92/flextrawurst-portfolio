@@ -129,8 +129,8 @@ Diese Unterscheidung folgt der offiziellen MCP-Transportdokumentation: Die
 aktuelle Spezifikationsentwicklung beschreibt den stateless Protokollkern und
 entfernt in der Revision `2026-07-28` sogar Handshake und
 `Mcp-Session-Id`; die Legacy-Varianten dürfen weiterhin stateful oder stateless
-betrieben werden. Siehe [MCP Specification Release Candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)
-und [MCP Specification Changelog](https://modelcontextprotocol.io/specification/draft/changelog).
+betrieben werden. Siehe MCP Specification Release Candidate
+und MCP Specification Changelog.
 
 Das Anti-Terminal ist genau dafür wichtig: Ein alter Codex-Fehler darf nicht
 wieder jahrelang unsichtbar bleiben, während Dokumente behaupten, der Anschluss

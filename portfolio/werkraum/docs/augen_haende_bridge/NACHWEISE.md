@@ -76,10 +76,10 @@ Der Witness nutzt die wiederholenden Assertions von Playwright für sichtbare Zu
 
 Die offiziellen Bezugspunkte sind:
 
-- Fixtures und isolierte Testumgebungen: https://playwright.dev/docs/test-fixtures
-- Web-first Assertions und Screenshot- und ARIA-Beweise: https://playwright.dev/docs/test-assertions
-- Tracing mit Screenshots und Snapshots: https://playwright.dev/docs/api/class-tracing
-- stabile Screenshot-Vergleiche: https://playwright.dev/docs/api/class-pageassertions
+- Fixtures und isolierte Testumgebungen: [Adresse entfernt]
+- Web-first Assertions und Screenshot- und ARIA-Beweise: [Adresse entfernt]
+- Tracing mit Screenshots und Snapshots: [Adresse entfernt]
+- stabile Screenshot-Vergleiche: [Adresse entfernt]
 
 ### Die harte Grenze
 

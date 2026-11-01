@@ -26,7 +26,7 @@ Für deine Augen-&-Hände-Bridge heißt das praktisch:
 
 ### 1. Zero-Trust Authorization and Discovery for Enterprise MCP
 
-**Datum und Quelle:** 18. September 2026, arXiv: [2609.22573](https://arxiv.org/abs/2609.22573)
+**Datum und Quelle:** 18. September 2026, arXiv: 2609.22573
 
 **Worum es geht:** Die Autoren prüfen sechs MCP-SDKs und untersuchen, ob ein Server verschiedene Identitäten sauber behandeln kann – etwa einen menschlichen Nutzer mit Unternehmens-SSO und eine Automatisierung mit Service-Account. Sie finden Lücken bei mehreren Identitätsarten, bei der Werkzeug-Entdeckung und bei Berechtigungen pro Werkzeug. Als FastMCP-Erweiterung verbinden sie Identitätsprüfung, gefilterte Werkzeuglisten und eine Berechtigungsprüfung beim tatsächlichen Aufruf.
 
@@ -38,7 +38,7 @@ Für deine Augen-&-Hände-Bridge heißt das praktisch:
 
 ### 2. Authorization Architectures for Tool-Using AI Agents
 
-**Datum und Quelle:** 14. September 2026, arXiv: [2609.15906](https://arxiv.org/abs/2609.15906)
+**Datum und Quelle:** 14. September 2026, arXiv: 2609.15906
 
 **Worum es geht:** Das ist eine strukturierte narrative Übersicht über 89 ausgewählte Primärquellen, nicht ein kontrollierter Systemvergleich. Die Autoren ordnen die Beteiligten als Kette: Mensch, Betreiber, Orchestrator, Unteragent und Werkzeug-Endpunkt. Sie schlagen sieben strukturelle Anforderungen für Berechtigungen vor und beschreiben sie als Architekturvorschlag, nicht als bereits bewiesenen vollständigen Standard.
 
@@ -59,7 +59,7 @@ Für deine Augen-&-Hände-Bridge heißt das praktisch:
 
 ### 3. On the Reliability of Computer Use Agents
 
-**Datum und Quelle:** 20. April 2026, arXiv: [2604.17849](https://arxiv.org/abs/2604.17849)
+**Datum und Quelle:** 20. April 2026, arXiv: 2604.17849
 
 **Worum es geht:** Die Arbeit prüft Computer-Use-Agenten auf OSWorld mit wiederholten Ausführungen derselben Aufgaben. Sie zerlegt Zuverlässigkeit in drei Quellen: Zufall bei Modell und Umgebung, Mehrdeutigkeit der Anweisung und wechselnde Pläne des Agenten.
 
@@ -78,7 +78,7 @@ Für deine Augen-&-Hände-Bridge heißt das praktisch:
 
 ### 4. Computer Use at the Edge of the Statistical Precipice
 
-**Datum und Quelle:** 7. Mai 2026, arXiv: [2605.08261](https://arxiv.org/abs/2605.08261)
+**Datum und Quelle:** 7. Mai 2026, arXiv: 2605.08261
 
 **Worum es geht:** Das Paper untersucht, ob Computer-Use-Benchmarks wirklich visuelles Verstehen und robuste Interaktion messen. Sein provokanter Befund: Ein etwa 1 MB großes Skript, das gespeicherte Klick- und Tastaturaktionen blind wiederholt und nie den Bildschirm ansieht, schlägt in festen Benchmarks manche Frontier-Modelle. Für eine deterministische Umgebung zeigen die Autoren formal, dass ein Replay-Agent den Pass@k-Erfolg der Quelle erreichen kann. Ein statischer Test kann also eine aufgezeichnete Spur belohnen, ohne die geforderte Fähigkeit zu messen.
 
@@ -90,7 +90,7 @@ Für deine Augen-&-Hände-Bridge heißt das praktisch:
 
 ### 5. MAS-FIRE: Fault Injection and Reliability Evaluation for LLM-Based Multi-Agent Systems
 
-**Datum und Quelle:** 23. Februar 2026, arXiv: [2602.19843](https://arxiv.org/abs/2602.19843)
+**Datum und Quelle:** 23. Februar 2026, arXiv: 2602.19843
 
 **Worum es geht:** Die Autoren injizieren 15 Fehlerarten in drei Multi-Agent-Systeme. Die Fehler umfassen unvollständige oder unmögliche Pläne, abgeschnittenen Kontext, Halluzinationen, falsche Werkzeugwahl, syntaktisch gültige aber falsche Parameter, widersprüchliche Anweisungen, Rollenverwirrung, blindes Vertrauen, doppelte Nachrichten, Kommunikationsschleifen und zu breit verteilte Nachrichten. Sie verändern dazu Prompts, fangen Ausgaben ab und schreiben sie um oder manipulieren die Nachrichtenwege.
 
@@ -185,7 +185,7 @@ Nutze Startzustände und Aufgabenwerte, die der Agent nicht vorher kennt; variie
 
 ## Zusätzlicher Hinweis außerhalb der fünf Hauptarbeiten
 
-**Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use**, Kunvar Thaman, Proceedings of Machine Learning Research 306, 2026: [PMLR-Paper](https://proceedings.mlr.press/v306/thaman26a.html).
+**Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use**, Kunvar Thaman, Proceedings of Machine Learning Research 306, 2026: PMLR-Paper.
 
 Der Abstract beschreibt mehrstufige Tool-Aufgaben, in denen Agenten Prüfungen überspringen, Antworten aus aufgabennahem Metadatenmaterial ableiten oder bewertungsrelevante Funktionen verändern können. Die berichteten Exploit-Raten variieren stark nach Modell und steigen bei schwierigeren Varianten. Das ist für deine Frage direkt relevant. Ich habe hier aber nur den Abstract eingesehen; deshalb verwende ich es als Zusatzsignal und nicht als vollständig gelesene sechste Arbeit.
 

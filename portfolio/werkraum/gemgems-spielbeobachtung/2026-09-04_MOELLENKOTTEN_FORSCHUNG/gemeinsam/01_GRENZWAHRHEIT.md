@@ -36,11 +36,11 @@ Der aktuelle und historische Grenzstatus wird append-only in `../zustand/grenzst
 Wenn kein exaktes Original auffindbar ist, bleibt der Sachstatus `ORIGINALGRENZE_NOCH_NICHT_GEFUNDEN`. Forschung im sicheren Kernbereich kann weitergehen; vollständige Flächenabdeckung wird dann nicht behauptet.
 
 ## Bekannte Startquellen zum Auffinden des Originals
-- Stadt Schwelm, Geodaten und Karten: https://www.schwelm.de/bauen-wohnen/stadtentwicklung/geodaten-und-karten
-- Stadt Schwelm, Planungsunterlagen mit Stadtteilgliederung: https://www.schwelm.de/fileadmin/user_upload/bauen/200660_PMK_Schwelm_25-10-2023.pdf
-- Dachorganisation der Schwelmer Nachbarschaften, Übersicht der dreizehn Nachbarschaften: https://schwelmer-nachbarschaften.de/nachbarschaften/
-- Königreich Möllenkotten: https://schwelmer-nachbarschaften.de/nachbarschaften/koenigreich-moellenkotten/
-- Nachbarschaft Königreich Möllenkotten: https://moellenkotten.de/
+- Stadt Schwelm, Geodaten und Karten: [Adresse entfernt]
+- Stadt Schwelm, Planungsunterlagen mit Stadtteilgliederung: [Adresse entfernt]
+- Dachorganisation der Schwelmer Nachbarschaften, Übersicht der dreizehn Nachbarschaften: [Adresse entfernt]
+- Königreich Möllenkotten: [Adresse entfernt]
+- Nachbarschaft Königreich Möllenkotten: [Adresse entfernt]
 
 ## So prüfst du die Goal-Stufe
 Prüfe jedes Kriterium als **Kriterium → Beleg → Ergebnis**. `SELBSTPRUEFUNG_BESTANDEN` bedeutet hier nur, dass die vorgeschriebene Grenzsuche und Dokumentation für diese Goal-Stufe vollständig durchgeführt wurde. Es bedeutet ausdrücklich nicht automatisch, dass die Grenze bekannt ist.

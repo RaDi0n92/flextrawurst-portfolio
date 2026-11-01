@@ -1,7 +1,7 @@
 Ja, genau. Dann ist die klare Trennung:
 
 - Die Skills und Bauverträge dienen dem Entwickeln und Prüfen der Bridge.
-- Das eigentliche operative Harnessprogramm der Bridge gehört auf `https://flextrawurst.de/os`.
+- Das eigentliche operative Harnessprogramm der Bridge gehört auf `[Adresse entfernt]`.
 - Die Windows-/KDE-Komponente läuft als lokaler Bridge-Körper auf den jeweiligen Desktops.
 - `/os` ist die zentrale Regie-, Beobachtungs- und Kontrollschicht.
 

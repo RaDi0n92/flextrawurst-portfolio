@@ -2,7 +2,7 @@
 
 **Ziel:** Ein lokal gebauter, regelmäßig aktualisierter und vollständig zipbarer Gesamtatlas für externe Menschen und LLMs.
 
-**Kein öffentlicher Gesamtatlas:** Die frühere Route `https://flextrawurst.de/gesamtatlas/` wurde nach Daniels ausdrücklicher Korrektur entfernt und antwortet mit HTTP 404. Der zugehörige Webkörper bleibt lediglich als historische Fehlspur im Atlas erhalten.
+**Kein öffentlicher Gesamtatlas:** Die frühere Route `[Adresse entfernt]` wurde nach Daniels ausdrücklicher Korrektur entfernt und antwortet mit HTTP 404. Der zugehörige Webkörper bleibt lediglich als historische Fehlspur im Atlas erhalten.
 
 ## Aktuelle Ergebnisse
 

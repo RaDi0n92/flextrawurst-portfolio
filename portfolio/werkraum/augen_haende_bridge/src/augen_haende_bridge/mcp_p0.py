@@ -56,25 +56,25 @@ class MCPProviderProfile:
 MCP_PROVIDER_PROFILES: dict[str, MCPProviderProfile] = {
     "chatgpt": MCPProviderProfile(
         "chatgpt",
-        "https://flextrawurst.de/werkzeugkoerper-[PFAD-GESCHWAERZT]",
+        "[Adresse entfernt]",
         "vps-mcp-chatgpt",
         "mcp_chatgpt_web",
     ),
     "codex": MCPProviderProfile(
         "codex",
-        "https://flextrawurst.de/werkzeugkoerper-codex-[REDACTED]",
+        "[Adresse entfernt]",
         "vps-mcp-codex",
         "mcp_provider",
     ),
     "claude": MCPProviderProfile(
         "claude",
-        "https://flextrawurst.de/werkzeugkoerper-geteilt-[REDACTED]",
+        "[Adresse entfernt]",
         "vps-mcp-claude",
         "mcp_provider",
     ),
     "gemini": MCPProviderProfile(
         "gemini",
-        "https://flextrawurst.de/werkzeugkoerper-gemini-[REDACTED]",
+        "[Adresse entfernt]",
         "vps-mcp-gemini",
         "mcp_provider",
     ),

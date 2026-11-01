@@ -35,7 +35,7 @@ def main():
         return 2
     html = open(sys.argv[1], encoding="utf-8", errors="replace").read()
     marker = sys.argv[2]
-    basis = "https://www.apple.com"
+    basis = "[Adresse entfernt]"
     i = html.find(marker)
     if i < 0:
         print(f"Marker nicht gefunden: {marker}")
@@ -48,7 +48,7 @@ def main():
         paare = [(b, b) for b in re.findall(r'/thumb/([^/]+)/1250x\d+sr\.jpg', seg)]
     print(f"karten gefunden: {len(paare)}")
 
-    base = "https://is1-ssl.mzstatic.com/image/thumb"
+    base = "[Adresse entfernt]"
     for n, (bg, lg) in enumerate(paare, 1):
         b = hol(f"{base}/{bg}/1250x668sr.jpg", f"{ZIEL}/{n}.jpg")
         hol(f"{base}/{lg}/440x109.png", f"{ZIEL}/{n}logo.png", mindest=500)

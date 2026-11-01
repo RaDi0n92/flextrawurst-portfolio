@@ -5,9 +5,9 @@ const config: CapacitorConfig = {
   appName: "Flextrawurst Pro",
   webDir: "out",
   // Wenn die App auf dem Gerät läuft, verbindet sie sich mit dem Live-Server
-  // Für Produktion: server.url auf https://pro.flextrawurst.de setzen
+  // Für Produktion: server.url auf [Adresse entfernt] setzen
   server: {
-    url: "https://pro.flextrawurst.de",
+    url: "[Adresse entfernt]",
     cleartext: false,
     androidScheme: "https",
   },

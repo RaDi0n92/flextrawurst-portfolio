@@ -48,7 +48,7 @@ def render_ui(root: Path, stage: int) -> dict[str, Any]:
         _card('Reaktiver Atlas', reactive.get('finding_count', '–'), 'Lücken und Widersprüche als Arbeitsimpulse.', 'reaktion.html'),
         _card('Kleine Kapsel', capsule.get('zip_bytes', '–'), 'Facettenvollständig, nicht detailvollständig.', 'kapsel.html'),
     ]
-    body = f'''<section class="hero"><p class="muted">Bauabschnitt {stage} von 7 · Playwright-Abnahme vor jedem Weiterbau</p><h1>Ein schmaler Atlas, der <span style="color:var(--accent)">überallhin führt.</span></h1><p>Originale bleiben an ihren Orten. Der Atlas verbindet Herkunft, Gespräche, AI-Häuser, Terminalarbeit, Fehler, Beziehungen und gezielte Explorationskörper.</p></section><section class="grid">{''.join(cards)}</section><section class="notice"><strong>Keine öffentliche Website:</strong> <code>https://flextrawurst.de/gesamtatlas/</code> bleibt absichtlich nicht ausgeliefert.</section>'''
+    body = f'''<section class="hero"><p class="muted">Bauabschnitt {stage} von 7 · Playwright-Abnahme vor jedem Weiterbau</p><h1>Ein schmaler Atlas, der <span style="color:var(--accent)">überallhin führt.</span></h1><p>Originale bleiben an ihren Orten. Der Atlas verbindet Herkunft, Gespräche, AI-Häuser, Terminalarbeit, Fehler, Beziehungen und gezielte Explorationskörper.</p></section><section class="grid">{''.join(cards)}</section><section class="notice"><strong>Keine öffentliche Website:</strong> <code>[Adresse entfernt]</code> bleibt absichtlich nicht ausgeliefert.</section>'''
     (ui / 'index.html').write_text(page('Start', body), encoding='utf-8')
 
     core_body = '<section class="hero"><h1>Schmaler Kern</h1><p>Vollständige Erreichbarkeit ohne vollständige Vervielfältigung.</p></section>'

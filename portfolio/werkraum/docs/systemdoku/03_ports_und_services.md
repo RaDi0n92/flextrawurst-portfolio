@@ -230,7 +230,7 @@ schonen. 3h Twitch in voller Qualität haben trotzdem 8 GB seiner Hotspot-Leitun
 
 **Ursache:** Der Streaming-Layer im Container ist Selkies (WebRTC, `SELKIES_ENCODER=x264enc,jpeg`),
 nicht VNC/MJPEG. Selkies lief mit Werksdefaults: 8000 kbps Video-Bitrate-Obergrenze, 60 fps
-Ziel-Framerate (offiziell dokumentiert: [Selkies Streaming Architecture](https://zread.ai/linuxserver/docker-webtop/9-selkies-streaming-architecture)).
+Ziel-Framerate (offiziell dokumentiert: Selkies Streaming Architecture).
 8 Mbit/s × 3h ≈ 10,5 GB Obergrenze — die gemessenen 8 GB passen fast exakt dazu. Kein Bug,
 sondern die Bild-Pixel eines Vollbild-60fps-Streams müssen so oder so über die tatsächliche
 Internetleitung des Betrachters — unabhängig vom Protokoll (WebRTC, RDP, RustDesk). Ein

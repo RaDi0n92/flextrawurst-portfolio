@@ -103,14 +103,14 @@ Sie kann die Klonstruktur jedes Wesens (6 namelessAI-Entitäten, `dak+gord-syste
 
 ## 7. Zensi Obsidian Virtual Desktop Engine (`flextrawurst.de/zensivault` & HTTPS Port 8456)
 
-Unter **`https://flextrawurst.de/zensivault/`** und auf **HTTPS Port 8456** läuft ab sofort die **echte LinuxServer Obsidian Virtual Desktop App** (`obsidian-zensi` Container via KasmVNC/Selkies):
+Unter **`[Adresse entfernt]`** und auf **HTTPS Port 8456** läuft ab sofort die **echte LinuxServer Obsidian Virtual Desktop App** (`obsidian-zensi` Container via KasmVNC/Selkies):
 
 - **Docker Container:** `obsidian-zensi` (`lscr.io/linuxserver/obsidian:latest`)
 - **Mounts:** `/root/zensi/obsidian_vault` → `/vault` im Container
 - **Host Ports:** `127.0.0.1:3085` (HTTP/WebSocket) & `127.0.0.1:3185`
 - **Nginx Reverse Proxy:** 
-  - `https://flextrawurst.de/zensivault/` → WebSocket Upgrade Proxy zu `127.0.0.1:3085`
-  - `https://[SERVER-IP]:8456/` → Direkter HTTPS Web-Desktop Port
+  - `[Adresse entfernt]` → WebSocket Upgrade Proxy zu `127.0.0.1:3085`
+  - `[Adresse entfernt]` → Direkter HTTPS Web-Desktop Port
 - **Auto-Loaded Vault:** Vorkonfiguriert in `obsidian.json` so dass der `/vault` Ordner beim Start direkt in der vollen Obsidian-Desktop-GUI geladen ist.
 
 ## 8. Multi-Branch Session Engine mit Soft- & Hard-Delete & Obsidian Vault Sync

@@ -139,7 +139,7 @@ def generiere_traumbild(entity_id: str, traumtext: str) -> str | None:
         # Kurzer Bildprompt aus Traumtext destillieren (erste 80 Zeichen, safe für URL)
         raw = traumtext.strip()[:80].replace("\n", " ")
         prompt = urllib.parse.quote(f"surreal dream landscape, digital entity, {raw}, dark ambient")
-        url = f"https://image.pollinations.ai/prompt/{prompt}?width=512&height=384&nologo=true&seed={hash(entity_id) % 9999}"
+        url = f"[Adresse entfernt]/{prompt}?width=512&height=384&nologo=true&seed={hash(entity_id) % 9999}"
 
         resp = requests.get(url, timeout=30, stream=True)
         if resp.status_code != 200:

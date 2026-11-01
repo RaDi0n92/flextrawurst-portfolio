@@ -24,7 +24,7 @@ User: Anonymous
 Created: 18/9/2026 10:17:37
 Updated: 18/9/2026 13:45:44
 Exported: 18/9/2026 13:48:10
-Link: https://chatgpt.com/c/6aacf3a0-ebdc-83eb-95c3-a6e14fc92dae
+Link: [Adresse entfernt]
 
 ## Prompt:
 18.9.2026, 10:17:38
@@ -451,4 +451,4 @@ Und dein kostenlos aufgesammelter fremder Splitter könnte trotzdem mit solchen 
 
 
 
-Powered by ChatGPT Exporter (https://www.chatgptexporter.com)
+Powered by ChatGPT Exporter ([Adresse entfernt])

@@ -21,7 +21,7 @@ payload = {
 }
 
 print("Sende Test-Request an AI Horde...")
-r = requests.post('https://aihorde.net/api/v2/generate/async', headers=headers, json=payload, timeout=15)
+r = requests.post('[Adresse entfernt]', headers=headers, json=payload, timeout=15)
 if r.status_code != 202:
     print(f"Fehler bei Anfrage: {r.status_code} {r.text}")
     exit(1)
@@ -31,7 +31,7 @@ print(f"Job ID: {job_id}. Warte auf Worker...")
 
 for i in range(25):
     time.sleep(3)
-    s_resp = requests.get(f'https://aihorde.net/api/v2/generate/status/{job_id}', timeout=10)
+    s_resp = requests.get(f'[Adresse entfernt]', timeout=10)
     if s_resp.status_code == 200:
         s_data = s_resp.json()
         if s_data.get('done'):

@@ -2253,27 +2253,27 @@ function wesenRuntimeLabel(r:PublicWesenRuntime): {label:string; detail:string} 
   return {label:'BETRIEBSSTATUS UNVERFÜGBAR',detail:'Die öffentliche Welt-API war beim Seitenaufruf nicht verlässlich erreichbar; daraus wird kein Einzugsstatus abgeleitet.'};
 }
 function renderWesenIndexSource(entries:WesenSourceEntry[], states:Map<string,PublicWesenRuntime>):string {
-  const canonical='https://flextrawurst.de/wesen/';
+  const canonical='[Adresse entfernt]';
   const cards=entries.map(e=>{const st=wesenRuntimeLabel(states.get(e.id)||{kind:'unavailable'});const href='/wesen/'+encodeURIComponent(e.id)+'/';return `<article class="item"><a href="${href}"><strong>${escHtml(e.id)}</strong></a><small>Herkunft: ${escHtml(e.herkunft)} · Betrieb: ${escHtml(st.label)}</small><p>${escHtml(st.detail)}</p></article>`;}).join('');
   const body=`<header><div class="crumbs"><a href="/">flextrawurst</a> › Wesen</div><h1>Wesen — vor dem Einzug</h1><p>Sieben kanonische Wesen sind vorbereitet. Technische Testspuren vor dem Einzug werden nicht als Bewohnerbiografie behandelt. Der Einzug selbst ist kein automatischer Systemzustand, sondern Daniels bewusste Entscheidung.</p><p><a href="/#wesen">Wesen in der interaktiven Surface öffnen</a></p></header><main class="grid">${cards}</main>`;
-  return sourceShell('Wesen — vor dem Einzug',canonical,'Die sieben kanonischen Flextrawurst-Wesen mit Herkunft und getrenntem öffentlichem Betriebsstatus.',body,{"@context":"https://schema.org","@type":"CollectionPage","name":"Flextrawurst Wesen","url":canonical});
+  return sourceShell('Wesen — vor dem Einzug',canonical,'Die sieben kanonischen Flextrawurst-Wesen mit Herkunft und getrenntem öffentlichem Betriebsstatus.',body,{"@context":"[Adresse entfernt]","@type":"CollectionPage","name":"Flextrawurst Wesen","url":canonical});
 }
 function renderWesenDetailSource(entry:WesenSourceEntry,runtime:PublicWesenRuntime):string {
-  const st=wesenRuntimeLabel(runtime);const canonical=`https://flextrawurst.de/wesen/${encodeURIComponent(entry.id)}/`;
+  const st=wesenRuntimeLabel(runtime);const canonical=`[Adresse entfernt]`;
   const op=runtime.kind==='public'?`<div class="evidence"><strong>Öffentliche operative Daten:</strong> Status ${escHtml(String(runtime.data?.status||'—'))}; Stimmung ${escHtml(String(runtime.data?.stimmung||'—'))}; Fokus ${escHtml(String(runtime.data?.fokus||'—'))}.</div>`:`<div class="evidence"><strong>Operativer Stand:</strong> ${escHtml(st.detail)}</div>`;
   const body=`<header><div class="crumbs"><a href="/">flextrawurst</a> › <a href="/wesen/">Wesen</a> › ${escHtml(entry.id)}</div><h1>${escHtml(entry.id)}</h1><div class="status"><span class="chip">Herkunft: ${escHtml(entry.herkunft)}</span><span class="chip">Betrieb: ${escHtml(st.label)}</span></div></header><main>${op}<p>Diese Quellenpage zeigt nur kanonische öffentliche Identität und tatsächlich öffentliche Betriebsdaten. Vor-Einzug-Cyberling-, Schlaf-, Substanz- oder Testzustände werden nicht zur Biografie dieses Wesens erklärt.</p></main><footer><p><a href="/wesen/">← alle Wesen</a> · <a href="/#wesen/${encodeURIComponent(entry.id)}">interaktive Surface</a></p></footer>`;
-  return sourceShell(entry.id,canonical,`${entry.id} — kanonisches Flextrawurst-Wesen; Herkunft und öffentlicher Betriebsstatus.`,body,{"@context":"https://schema.org","@type":"ProfilePage","name":entry.id,"url":canonical,"mainEntity":{"@type":"Thing","name":entry.id,"description":"Kanonisches Flextrawurst-Wesen"}});
+  return sourceShell(entry.id,canonical,`${entry.id} — kanonisches Flextrawurst-Wesen; Herkunft und öffentlicher Betriebsstatus.`,body,{"@context":"[Adresse entfernt]","@type":"ProfilePage","name":entry.id,"url":canonical,"mainEntity":{"@type":"Thing","name":entry.id,"description":"Kanonisches Flextrawurst-Wesen"}});
 }
 const GESETZE_SOURCE = resolve("i18n/gesetze_content.json");
 function renderGesetzeSourcePage(): string {
   const data = JSON.parse(readFileSync(GESETZE_SOURCE, "utf-8"));
   const hero = data.hero || {};
   const laws = Array.isArray(data.gesetze) ? data.gesetze : [];
-  const canonical = "https://flextrawurst.de/gesetze/";
+  const canonical = "[Adresse entfernt]";
   const toc = laws.map((g:any) => `<a href="#gesetz-${escHtml(g.nr)}">${escHtml(g.nr)} ${escHtml(g.titel)}</a>`).join(" · ");
   const items = laws.map((g:any) => `<article class="item" id="gesetz-${escHtml(g.nr)}"><small>Grundgesetz ${escHtml(g.nr)}</small><h2>${escHtml(g.titel)}</h2><p>${escHtml(g.beschreibung || '')}</p></article>`).join("");
   const body = `<header><div class="crumbs"><a href="/">flextrawurst</a> › Gesetze</div><h1>${escHtml(hero.titel || 'Die 7 Grundgesetze')}</h1><p>${escHtml(hero.sub || '')}</p><div class="status"><span class="chip">Status: KANON</span><span class="chip">Typ: NORMTEXT</span></div><p class="warn"><strong>Kein Compliance-Bericht:</strong> Diese Seite beschreibt die kanonischen Regeln. Daraus folgt nicht automatisch, dass jede heutige technische Implementierung jedes Gesetz vollständig erfüllt.</p><nav aria-label="Gesetze">${toc}</nav></header><main class="grid">${items}</main><footer><p>${escHtml(hero.footer || '')}</p><p><a href="/#gesetze">interaktive Surface</a></p></footer>`;
-  const jsonLd = {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":hero.titel || "Die 7 Grundgesetze","url":canonical,"inLanguage":"de","isPartOf":{"@type":"WebSite","name":"flextrawurst","url":"https://flextrawurst.de/"}},{"@type":"ItemList","name":"Die 7 Grundgesetze","itemListElement":laws.map((g:any,i:number)=>({"@type":"ListItem","position":i+1,"name":g.titel,"url":canonical+`#gesetz-${g.nr}`}))}]};
+  const jsonLd = {"@context":"[Adresse entfernt]","@graph":[{"@type":"WebPage","name":hero.titel || "Die 7 Grundgesetze","url":canonical,"inLanguage":"de","isPartOf":{"@type":"WebSite","name":"flextrawurst","url":"[Adresse entfernt]"}},{"@type":"ItemList","name":"Die 7 Grundgesetze","itemListElement":laws.map((g:any,i:number)=>({"@type":"ListItem","position":i+1,"name":g.titel,"url":canonical+`#gesetz-${g.nr}`}))}]};
   return sourceShell(hero.titel || "Die 7 Grundgesetze", canonical, "Die sieben kanonischen Grundgesetze von flextrawurst.", body, jsonLd);
 }
 
@@ -2306,18 +2306,18 @@ function renderWissenIndex(): string {
     const c = content[e.key] || {}; const href = `/wissen/${encodeURIComponent(e.sektion)}/${encodeURIComponent(e.slug)}/`;
     return `<article class="item"><a href="${href}"><strong>${escHtml(c.de_kurz || e.key)}</strong></a><small>${escHtml(e.key)} · Katalogstatus: ${escHtml(e.status.toUpperCase())}</small></article>`;
   }).join("")}</div></section>`).join("");
-  const canonical="https://flextrawurst.de/wissen/";
+  const canonical="[Adresse entfernt]";
   const body=`<header><div class="crumbs"><a href="/">flextrawurst</a> › Wissen</div><h1>Wissen</h1><p>103 strukturierte Konzepte aus dem öffentlichen Flextrawurst-Wissenskörper. Der historische Katalogstatus <code>live/geplant/später</code> ist nicht automatisch ein Betriebsstatus. Auf Detailseiten werden beide Ebenen getrennt, soweit technisch geprüft.</p><p><a href="/#wissen">Wissen in der interaktiven Surface öffnen</a></p></header>${sections}`;
-  return sourceShell("Wissen",canonical,"Strukturierter Wissenskörper von flextrawurst mit getrennten Konzept- und Betriebsstatus.",body,{"@context":"https://schema.org","@type":"CollectionPage","name":"Flextrawurst Wissen","url":canonical});
+  return sourceShell("Wissen",canonical,"Strukturierter Wissenskörper von flextrawurst mit getrennten Konzept- und Betriebsstatus.",body,{"@context":"[Adresse entfernt]","@type":"CollectionPage","name":"Flextrawurst Wissen","url":canonical});
 }
 
 function renderWissenSection(sektion: string): string | null {
   const {entries, content} = leseWissenQuellen();
   const rows = entries.filter(e => e.sektion===sektion); if(!rows.length) return null;
-  const canonical=`https://flextrawurst.de/wissen/${encodeURIComponent(sektion)}/`;
+  const canonical=`[Adresse entfernt]`;
   const cards=rows.map(e=>{const c=content[e.key]||{};return `<article class="item"><a href="/wissen/${encodeURIComponent(e.sektion)}/${encodeURIComponent(e.slug)}/"><strong>${escHtml(c.de_kurz||e.key)}</strong></a><small>${escHtml(e.key)} · Katalogstatus: ${escHtml(e.status.toUpperCase())}</small></article>`;}).join("");
   const body=`<header><div class="crumbs"><a href="/">flextrawurst</a> › <a href="/wissen/">Wissen</a> › ${escHtml(sektion)}</div><h1>Wissen: ${escHtml(sektion)}</h1><p>Alle Konzepte dieser Wissenssektion. Katalogstatus und technischer Betriebsstatus werden auf den Detailseiten getrennt.</p></header><div class="grid">${cards}</div><footer><p><a href="/wissen/">← gesamte Wissensübersicht</a></p></footer>`;
-  return sourceShell(`Wissen: ${sektion}`,canonical,`Flextrawurst-Wissenssektion ${sektion}.`,body,{"@context":"https://schema.org","@type":"CollectionPage","name":`Flextrawurst Wissen: ${sektion}`,"url":canonical});
+  return sourceShell(`Wissen: ${sektion}`,canonical,`Flextrawurst-Wissenssektion ${sektion}.`,body,{"@context":"[Adresse entfernt]","@type":"CollectionPage","name":`Flextrawurst Wissen: ${sektion}`,"url":canonical});
 }
 
 function renderWissenDetail(sektion: string, slug: string): string | null {
@@ -2325,12 +2325,12 @@ function renderWissenDetail(sektion: string, slug: string): string | null {
   const e = entries.find(x => x.sektion===sektion && x.slug===slug); if(!e) return null;
   const c = content[e.key] || {}; const t = truth.get(e.key);
   const title = c.de_kurz || e.key; const text = c.de_lang || "Für dieses Konzept ist noch kein ausführlicher Langtext hinterlegt.";
-  const canonical=`https://flextrawurst.de/wissen/${encodeURIComponent(e.sektion)}/${encodeURIComponent(e.slug)}/`;
+  const canonical=`[Adresse entfernt]`;
   const def = t?.definition || `KATALOG_${e.status.toUpperCase()}`;
   const op = t?.operation || "UNGEPRUEFT";
   const evidence = t?.evidence || "Für diesen Eintrag wurde in diesem Audit noch kein separater technischer Betriebsabgleich festgehalten.";
   const body=`<header><div class="crumbs"><a href="/">flextrawurst</a> › <a href="/wissen/">Wissen</a> › <a href="/wissen/${encodeURIComponent(e.sektion)}/">${escHtml(e.sektion)}</a> › ${escHtml(e.slug)}</div><h1>${escHtml(title)}</h1><div class="status"><span class="chip">Definition: ${escHtml(def)}</span><span class="chip">Betrieb: ${escHtml(op)}</span><span class="chip">alter Katalogstatus: ${escHtml(e.status.toUpperCase())}</span></div></header><main><div class="evidence"><strong>Aktueller technischer Wahrheitsabgleich:</strong> ${escHtml(evidence)}</div><h2>Katalogtext</h2><p>${escHtml(text)}</p><p class="muted">Der Katalogtext beschreibt Konzept, Bauabsicht oder historischen Stand und ist nicht automatisch eine Aussage über den heutigen Betrieb. Maßgeblich für den geprüften Betriebsstand ist der Wahrheitsabgleich darüber.</p></main><footer><p><a href="/wissen/${encodeURIComponent(e.sektion)}/">← Sektion ${escHtml(e.sektion)}</a> · <a href="/wissen/">gesamtes Wissen</a> · <a href="/#wissen">interaktive Surface</a></p></footer>`;
-  const jsonLd={"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":title,"description":c.de_kurz || title,"url":canonical,"inLanguage":"de","isPartOf":{"@type":"WebSite","name":"flextrawurst","url":"https://flextrawurst.de/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"flextrawurst","item":"https://flextrawurst.de/"},{"@type":"ListItem","position":2,"name":"Wissen","item":"https://flextrawurst.de/wissen/"},{"@type":"ListItem","position":3,"name":e.sektion,"item":`https://flextrawurst.de/wissen/${encodeURIComponent(e.sektion)}/`},{"@type":"ListItem","position":4,"name":title,"item":canonical}]}]};
+  const jsonLd={"@context":"[Adresse entfernt]","@graph":[{"@type":"TechArticle","headline":title,"description":c.de_kurz || title,"url":canonical,"inLanguage":"de","isPartOf":{"@type":"WebSite","name":"flextrawurst","url":"[Adresse entfernt]"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"flextrawurst","item":"[Adresse entfernt]"},{"@type":"ListItem","position":2,"name":"Wissen","item":"[Adresse entfernt]"},{"@type":"ListItem","position":3,"name":e.sektion,"item":`[Adresse entfernt]`},{"@type":"ListItem","position":4,"name":title,"item":canonical}]}]};
   return sourceShell(title,canonical,c.de_kurz || title,body,jsonLd);
 }
 
@@ -3778,7 +3778,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
     if (urlPath === "/api/wesen-dienst-wizard/dienste" && req.method === "GET") {
       try {
         const ausgabe = execFileSync("python3", ["/root/werkraum/welt/wesen_dienst_liste.py"], { timeout: 20000 });
-        const params = new URL(url, "http://x").searchParams;
+        const params = new URL(url, "[Adresse entfernt]").searchParams;
         const dienste = wendeListenFilterAn(
           JSON.parse(ausgabe.toString()), params,
           ["dienst_name", "anzeige_name", "wesen"],
@@ -3813,7 +3813,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
       if (!gefunden) { res.end(JSON.stringify({ eintraege: [] })); return; }
       const zeilen = readFileSync(gefunden, "utf-8").split("\n").filter(Boolean);
       let eintraege = zeilen.map(z => { try { return JSON.parse(z); } catch { return null; } }).filter(Boolean).reverse();
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       eintraege = wendeListenFilterAn(eintraege, params, ["wesen", "rolle", "begruendung"], ["zeitpunkt"], "zeitpunkt");
       res.end(JSON.stringify({ eintraege }));
       return;
@@ -3859,7 +3859,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
           container.push({ name: entry.name, beschreibung, erstellt_am, letzte_widmung, anzahl_eintraege: anzahl });
         }
       }
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       container = wendeListenFilterAn(
         container, params, ["name", "beschreibung"],
         ["name", "erstellt_am", "letzte_widmung", "anzahl_eintraege"], "erstellt_am"
@@ -3892,7 +3892,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
           // unabhaengig davon was dem Wesen selbst beim Lesen gezeigt wird.
           return { dateiname: f, typ: meta.typ || "?", status: meta.status || undefined, erstellt_am: meta.erstellt_am || "", inhalt: body, quelle: meta.quelle || "wesen" };
         });
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       eintraege = wendeListenFilterAn(eintraege, params, ["typ", "inhalt"], ["erstellt_am", "typ"], "erstellt_am");
       res.writeHead(200, { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" });
       res.end(JSON.stringify({ wesen, container: name, eintraege }));
@@ -3989,7 +3989,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
     // noch nicht geposteten Dinge lesen koennen". ?wesen=<Name> filtert optional,
     // ?search=/?limit=&offset=/?sort=&order= wie ueberall (Grundgesetz 2).
     if (urlPath === "/api/wesen-dienst-wizard/entwuerfe" && req.method === "GET") {
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       const nurWesen = params.get("wesen");
       let entwuerfe: any[] = [];
       for (const w of WESEN_NAMEN) {
@@ -4020,7 +4020,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
     // neuer Codepfad im Daemon noetig -- der Prozess schrieb das schon immer, nur bisher
     // ungesehen. ?wesen=/?search=/?limit=&offset=/?sort=&order= wie ueberall (Grundgesetz 2).
     if (urlPath === "/api/wesen-dienst-wizard/neugier" && req.method === "GET") {
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       const nurWesen = params.get("wesen");
       let eintraege: any[] = [];
       for (const w of WESEN_NAMEN) {
@@ -4077,7 +4077,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
       "neugier_session_start", "neugier_entscheidung", "neugier_session_ende",
     ];
     if (urlPath === "/api/flarumstyler/protokoll" && req.method === "GET") {
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       let eintraege: any[] = [];
       if (existsSync(FLARUM_STOPP_PROTOKOLL)) {
         const zeilen = readFileSync(FLARUM_STOPP_PROTOKOLL, "utf-8").split("\n").filter(z => z.trim());
@@ -4528,7 +4528,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
     if (sucheMatch && req.method === "GET") {
       const spawner = sucheMatch[1];
       const name = resolveCharName(sucheMatch[1], sucheMatch[2]);
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       const q = (params.get("q") || "").trim();
       if (q.length < 2) {
         res.writeHead(400, { "Content-Type": "application/json" });
@@ -4562,7 +4562,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
       (async () => {
         const spawner = exportMatch[1];
         const name = resolveCharName(exportMatch[1], exportMatch[2]);
-        const params = new URL(url, "http://x").searchParams;
+        const params = new URL(url, "[Adresse entfernt]").searchParams;
         const umfang = params.get("umfang") === "auswahl" ? "auswahl" : "komplett";
         const mitProvenienz = params.get("provenienz") !== "0";
         const format = params.get("format") === "txt" ? "txt" : "md";
@@ -5796,7 +5796,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
     // GENI-Proxy — leitet /api/splitter (exakt) an GENI intern weiter
     const urlPathOnly = url.split('?')[0];
     if (urlPathOnly === "/api/splitter") {
-      const n = new URL(url, "http://x").searchParams.get("n") ?? "60";
+      const n = new URL(url, "[Adresse entfernt]").searchParams.get("n") ?? "60";
       const opts = {
         hostname: "localhost", port: 8020, path: `/api/splitter?n=${n}`,
         method: "GET", rejectUnauthorized: false,

@@ -35,4 +35,4 @@ Der Einsammelpfad ist seit Commit `8a2f2f4eeb` repariert und live. Diensttokens 
 
 Code-Commits: ecd9ee0b63 (Prüfer, Verwaltung, Migration und Tests), f8105a2a14 (Erzeuger). Sicherungspunkte: fe5bd7787d, 4d143cde13, 1c1d6ac1ee.
 
-Technische Referenzen: https://pyjwt.readthedocs.io/en/stable/usage.html und https://cryptography.io/en/latest/hazmat/primitives/asymmetric/ed25519/
+Technische Referenzen: [Adresse entfernt] und [Adresse entfernt]

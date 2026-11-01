@@ -44,7 +44,7 @@ from terminal import build_terminal, search_terminal
 from ui import render_ui
 
 TOOL_ROOT = Path(__file__).resolve().parent
-PUBLIC_URL = 'https://flextrawurst.de/gesamtatlas/'
+PUBLIC_URL = '[Adresse entfernt]'
 
 
 def fingerprint() -> str:

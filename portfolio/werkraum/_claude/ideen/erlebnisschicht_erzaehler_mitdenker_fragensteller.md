@@ -175,12 +175,12 @@ Aus der Recherche: *"Juice is about amplifying player actions through sensory fe
 
 ### Quellen der Recherche
 
-- [AIRI: Complete Guide to Building Your Own AI VTuber Like Neuro-sama](https://explainx.ai/blog/airi-ai-vtuber-neuro-sama-guide-2026)
-- [Stop building reactive agents: Why your architecture needs a System 1 and System 2](https://dev.to/an0nymus/stop-building-reactive-agents-why-your-architecture-needs-a-system-1-and-system-2-4b6p)
-- [Agents Thinking Fast and Slow: A Talker-Reasoner Architecture](https://arxiv.org/html/2410.08328)
-- [Leveraging Dual Process Theory in Language Agent Framework for Real-time Simultaneous Human-AI Collaboration](https://arxiv.org/html/2502.11882v3)
-- [Game Feel: A Beginner's Guide](https://gamedesignskills.com/game-design/game-feel/)
-- [The "Juice" Factor: Designing Game Feel](https://hackread.com/the-juice-factor-designing-game-feel/)
+- AIRI: Complete Guide to Building Your Own AI VTuber Like Neuro-sama
+- Stop building reactive agents: Why your architecture needs a System 1 and System 2
+- Agents Thinking Fast and Slow: A Talker-Reasoner Architecture
+- Leveraging Dual Process Theory in Language Agent Framework for Real-time Simultaneous Human-AI Collaboration
+- Game Feel: A Beginner's Guide
+- The "Juice" Factor: Designing Game Feel
 
 ### Daniels Reaktion darauf, roh — wichtig genug um wörtlich festzuhalten
 
@@ -233,11 +233,11 @@ Das ist im Kern exakt die Ich-Stimme/Erzähler/Denkstream-Auszüge-Idee von weit
 
 ### Quellen dieser zweiten, gezielten Recherche
 
-- [human-cursor GitHub (CloverLabsAI)](https://github.com/CloverLabsAI/human-cursor)
-- [shy-mouse-playwright GitHub](https://github.com/AB6162/shy-mouse-playwright)
-- [ghost-cursor-playwright GitHub (DKprofile)](https://github.com/DKprofile/ghost-cursor-playwright/)
-- [AI UX Patterns — Stream of Thought, ShapeofAI.com](https://www.shapeof.ai/patterns/stream-of-thought)
-- [AG-UI Overview: A Lightweight Protocol for Agent-User Interaction, DataCamp](https://www.datacamp.com/tutorial/ag-ui)
+- human-cursor GitHub (CloverLabsAI)
+- shy-mouse-playwright GitHub
+- ghost-cursor-playwright GitHub (DKprofile)
+- AI UX Patterns — Stream of Thought, ShapeofAI.com
+- AG-UI Overview: A Lightweight Protocol for Agent-User Interaction, DataCamp
 
 ### Stand danach
 
@@ -339,10 +339,10 @@ Scroll-Fix (B2) zuerst und unabhängig vom Rest — echter Bug, sofort baubar, k
 **Zu H/G — natürliche Bruchstellen, wissenschaftlich belegt statt selbst erfunden:** CHI-2026-Paper *"Just-in-Time Tokens: Adaptive Token Pacing for Cognitive-Friendly LLM Streaming"*, wörtlich: *"Tokens are buffered until a readable unit is completed and then released as a coherent chunk; crucially, resource switching is constrained to unit boundaries, so any pauses occur at linguistically meaningful points rather than arbitrary mid-sentence positions. [...] Simple requests are streamed in larger units with minimal pauses for a fast feel, while complex requests are delivered in smaller units with controlled pauses to support step-by-step comprehension."* Das ist die publizierte Bestätigung für "Bruchstellen statt Zeitraster" UND löst den H-Widerspruch aus dem Red-Team direkt auf: demand-aware Pacing statt starrem Deckel.
 
 Quellen:
-- [Chrome DevTools Protocol - Page domain](https://chromedevtools.github.io/devtools-protocol/tot/Page/)
-- [Use Chrome DevTools to debug your user's browser remotely with BrowserRemote (Kenneth Auchenberg)](https://kenneth.io/post/use-chrome-devtools-to-debug-your-users-browser-remotely-with-browserremote)
-- [Screen recording with Playwright - DEV Community](https://dev.to/headlesstesting/screen-recording-with-playwright-5dm0)
-- [Just-in-Time Tokens: Adaptive Token Pacing for Cognitive-Friendly LLM Streaming — CHI 2026](https://dl.acm.org/doi/10.1145/3772363.3798936)
+- Chrome DevTools Protocol - Page domain
+- Use Chrome DevTools to debug your user's browser remotely with BrowserRemote (Kenneth Auchenberg)
+- Screen recording with Playwright - DEV Community
+- Just-in-Time Tokens: Adaptive Token Pacing for Cognitive-Friendly LLM Streaming — CHI 2026
 
 ### Stand danach
 
@@ -366,13 +366,13 @@ Direkt im Anschluss, Daniel: *"wir nehmen jetzt alles was du da hast und die gan
 
 ### Quellen
 
-- [GitHub - Open-LLM-VTuber/Open-LLM-VTuber](https://github.com/Open-LLM-VTuber/Open-LLM-VTuber)
-- [Project Overview | Open LLM Vtuber](http://docs.llmvtuber.com/en/docs/intro/)
-- [AI Agent Observability Platforms 2026 — getmaxim.ai](https://www.getmaxim.ai/articles/top-5-ai-agent-observability-platforms-in-2026/)
-- [Agentic AI Observability: A 2026 Playbook — arthur.ai](https://www.arthur.ai/column/agentic-ai-observability-playbook-2026)
-- [Lyfe Agents: Generative agents for low-cost real-time social interactions (arXiv)](https://arxiv.org/pdf/2310.02172)
-- [Best 30+ Open Source Web Agents in 2026 — aimultiple.com](https://aimultiple.com/open-source-web-agents)
-- [GitHub - AgriciDaniel/claude-obsidian](https://github.com/AgriciDaniel/claude-obsidian)
+- GitHub - Open-LLM-VTuber/Open-LLM-VTuber
+- Project Overview | Open LLM Vtuber
+- AI Agent Observability Platforms 2026 — getmaxim.ai
+- Agentic AI Observability: A 2026 Playbook — arthur.ai
+- Lyfe Agents: Generative agents for low-cost real-time social interactions (arXiv)
+- Best 30+ Open Source Web Agents in 2026 — aimultiple.com
+- GitHub - AgriciDaniel/claude-obsidian
 
 ### Stand danach
 

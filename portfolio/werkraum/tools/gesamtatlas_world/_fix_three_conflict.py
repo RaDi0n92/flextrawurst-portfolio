@@ -1,7 +1,7 @@
 from pathlib import Path
 APP = Path("/root/werkraum/tools/gesamtatlas_world/app.py")
 text = APP.read_text(encoding="utf-8")
-old = '<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>\n</head>'
+old = '<script src="[Adresse entfernt]"></script>\n</head>'
 n = text.count(old)
 print("anchor:", n)
 if n != 1:

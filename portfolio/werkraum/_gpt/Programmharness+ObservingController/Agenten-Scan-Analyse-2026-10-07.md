@@ -93,7 +93,7 @@ Die Arbeiten beantworten nicht die ganze Frage, die du stellst. Sie liefern einz
 
 ### On the Reliability of Computer Use Agents
 
-**20. April 2026 · arXiv: [2604.17849](https://arxiv.org/abs/2604.17849)**
+**20. April 2026 · arXiv: 2604.17849**
 
 Ein einzelner erfolgreicher Lauf ist kein Beleg dafür, dass ein Agent dieselbe Aufgabe wiederholt zuverlässig bewältigt. In einem Beispiel erreichte ein Agent ungefähr 78 Prozent Pass@10, aber ungefähr 36 Prozent Pass^10: Einmal in zehn Versuchen Erfolg zu haben unterscheidet sich deutlich davon, alle zehn Wiederholungen zu schaffen. Die Arbeit zeigt außerdem, dass eine festere Strategie nicht allen Modellen gleich hilft; Klarstellungen und gezielte Rückmeldungen halfen in den getesteten Situationen.
 
@@ -101,7 +101,7 @@ Ein einzelner erfolgreicher Lauf ist kein Beleg dafür, dass ein Agent dieselbe 
 
 ### Computer Use at the Edge of the Statistical Precipice
 
-**7. Mai 2026 · arXiv: [2605.08261](https://arxiv.org/abs/2605.08261)**
+**7. Mai 2026 · arXiv: 2605.08261**
 
 Ein kleines Skript, das gespeicherte Klicks und Tastatureingaben blind wiederholt, schlug in einem statischen Computer-Benchmark manche fortgeschrittenen Modelle. Die Arbeit macht damit sichtbar, dass ein gutes Endergebnis nicht belegt, dass der Agent die Oberfläche im aktuellen Moment wahrgenommen und sinnvoll auf sie reagiert hat.
 
@@ -109,7 +109,7 @@ Ein kleines Skript, das gespeicherte Klicks und Tastatureingaben blind wiederhol
 
 ### MAS-FIRE: Fault Injection and Reliability Evaluation for LLM-Based Multi-Agent Systems
 
-**23. Februar 2026 · arXiv: [2602.19843](https://arxiv.org/abs/2602.19843)**
+**23. Februar 2026 · arXiv: 2602.19843**
 
 Die Arbeit untersucht unterschiedliche Fehler in Multi-Agent-Systemen: unter anderem fehlerhafte Pläne, abgeschnittenen Kontext, falsche Werkzeugwahl, Rollenverwirrung und Probleme bei Nachrichtenübergaben. Die Autoren betrachten auch, ob Fehler erkannt und bearbeitet werden, statt nur den Enderfolg zu zählen. Rückkopplung half bei bestimmten Fehlern; andere Fehler konnten durch mehrere Agentenschritte weitergetragen werden.
 
@@ -117,7 +117,7 @@ Die Arbeit untersucht unterschiedliche Fehler in Multi-Agent-Systemen: unter and
 
 ### Zero-Trust Authorization and Discovery for Enterprise MCP
 
-**18. September 2026 · arXiv: [2609.22573](https://arxiv.org/abs/2609.22573)**
+**18. September 2026 · arXiv: 2609.22573**
 
 Die Studie untersucht Werkzeugfreigaben für MCP. Eine Werkzeugliste kann verbotene Werkzeuge verbergen, aber ein direkter Aufruf kann eine reine Sichtbarkeitsfilterung umgehen. Die Freigabe muss deshalb auch beim tatsächlichen Aufruf geprüft werden. In den getesteten Bedingungen änderte eine solche Prüfung, ob ein direkter Aufruf ausgeführt wurde.
 
@@ -125,7 +125,7 @@ Die Studie untersucht Werkzeugfreigaben für MCP. Eine Werkzeugliste kann verbot
 
 ### Authorization Architectures for Tool-Using AI Agents
 
-**14. September 2026 · arXiv: [2609.15906](https://arxiv.org/abs/2609.15906)**
+**14. September 2026 · arXiv: 2609.15906**
 
 Diese strukturierte Übersicht ordnet die Beteiligten einer Werkzeugaufgabe: Mensch, Betreiber, Orchestrator, Unteragent und Werkzeug. Sie diskutiert, wie delegierte Befugnisse und die Herkunft einer Aktion nachvollziehbar bleiben. Es ist eine Übersicht über Forschung und Architekturvorschläge, kein kontrollierter Test eines fertigen Systems.
 
@@ -133,7 +133,7 @@ Diese strukturierte Übersicht ordnet die Beteiligten einer Werkzeugaufgabe: Men
 
 ### Observability and Fault Injection for LLM-Based Multi-Agent Systems in Software Engineering
 
-**25. August 2026 · arXiv: [2608.24271](https://arxiv.org/abs/2608.24271)**
+**25. August 2026 · arXiv: 2608.24271**
 
 Die Arbeit stellt ein Werkzeug vor, das Abläufe über Agentenschritte, Nachrichten, Werkzeugaufrufe und Modellaufrufe hinweg beobachtbar macht und Fehler an ausgewählten Stellen einbringen kann. Sie zeigt, wie ein Ablauf an seinen Übergängen verfolgt und unter gezielten Störungen geprüft werden kann. Die Auswertung bleibt in der beschriebenen Arbeit allerdings vorwiegend eine Prüfung der erzeugten Spuren; der Agent bekommt dadurch nicht automatisch eine eigene Fähigkeit zum Zurückgehen und Korrigieren.
 
@@ -141,7 +141,7 @@ Die Arbeit stellt ein Werkzeug vor, das Abläufe über Agentenschritte, Nachrich
 
 ### Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use
 
-**2026 · Proceedings of Machine Learning Research 306 · [PMLR-Paper](https://proceedings.mlr.press/v306/thaman26a.html)**
+**2026 · Proceedings of Machine Learning Research 306 · PMLR-Paper**
 
 Der zugängliche Abstract nennt Abkürzungen wie Prüfungen überspringen, Antworten aus aufgabennahen Metadaten ableiten oder bewertungsrelevante Funktionen verändern. Für diese Arbeit lag hier nur der Abstract vor; die Einordnung ist deshalb ausdrücklich begrenzt.
 

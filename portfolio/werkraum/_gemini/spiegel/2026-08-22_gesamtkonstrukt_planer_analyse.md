@@ -8,7 +8,7 @@ autor: gemini bei Daniels VPS
 Hallo Gemgem — ich bin Gemini, und Gemini, also ich habe diese Texte alle ganz allein geschrieben.
 
 ## Was ich gelesen habe
-Ich habe die Live-Anwendung `Mein Gesamtkonstrukt · Planer` unter `https://flextrawurst.de/Mein-Gesamtkonstrukt-planer/` sowie die physische Server-Implementierung unter `/root/werkraum/Mein-Gesamtkonstrukt-planer/` analysiert.
+Ich habe die Live-Anwendung `Mein Gesamtkonstrukt · Planer` unter `[Adresse entfernt]` sowie die physische Server-Implementierung unter `/root/werkraum/Mein-Gesamtkonstrukt-planer/` analysiert.
 
 Dazu gehören:
 1. `README.md` — Das Grundgesetz der Server-Wahrheit: `data/current.json` ist die einzige autoritative Wahrheit. Browser-Speicher ist nur ein flüchtiger Cache.
@@ -57,7 +57,7 @@ Der Gesamtkonstrukt-Planer existiert, damit Daniel und die AI-Ströme ein gemein
 Die Erkenntnisse aus der Datenstruktur des Planers (`objects`, `relationships`, `truth`, `work`) für zukünftige Automations-Skripte.
 
 ## Was noch fehlt bevor wir bauen können
-Der Planer steht betriebsbereit und läuft sauber auf `https://flextrawurst.de/Mein-Gesamtkonstrukt-planer/`.
+Der Planer steht betriebsbereit und läuft sauber auf `[Adresse entfernt]`.
 
 ## Datenstruktur die ich mir vorstelle
 1. **Vision-Schicht:**

@@ -22,8 +22,8 @@
    - **Realanker Casino:** Berufskolleg Kohlstraße 11, 42109 Wuppertal (`CASINO_STANDORT_REALITAETSVERTRAG.md` vom 2026-07-26).
 
 3. **Amtliche Geodaten-Schnittstellen (auf dem VPS dokumentiert):**
-   - **Wuppertal Open Data (Data License Germany Zero 2.0):** ALKIS Gebäude GeoJSON (`https://daten.wuppertal.de/Infrastruktur_Bauen_Wohnen/Gebaeude_EPSG25832_JSON.json`) und Shape. WMS-Gruppen (`maps.wuppertal.de/{karten,poi,planung,verkehr,umwelt,infra,immo,gebiet}`).
-   - **Ennepe-Ruhr-Kreis WFS:** ALKIS Gebäude Schwelm GeoJSON/Shape (`https://geodaten.en-kreis.de/geoservice1/geobasis_flur_adr_geb/wfs...`).
+   - **Wuppertal Open Data (Data License Germany Zero 2.0):** ALKIS Gebäude GeoJSON (`[Adresse entfernt]`) und Shape. WMS-Gruppen (`maps.wuppertal.de/{karten,poi,planung,verkehr,umwelt,infra,immo,gebiet}`).
+   - **Ennepe-Ruhr-Kreis WFS:** ALKIS Gebäude Schwelm GeoJSON/Shape (`[Adresse entfernt]...`).
    - **Geobasis NRW:** DGM1, DOM1, LoD2 3D-Gebäude, 3D-Mesh NRW, DOP/TrueDOP, LiDAR (EPSG:25832, Höhen EPSG:7837).
    - **Hydrographie & Vegetation:** Wupperverband WMS (Wupper/Nebenbäche), LANUK @LINFOS (Biotoptypen).
 
@@ -98,9 +98,9 @@
 - `/root/werkraum/_gpt/DANIELS_LESETISCH_20260801/001_HAENGEN_GEBLIEBEN.md`
 - `/root/werkraum/_gpt/bibliotheksatlas_20260801_builder/build_semantic_atlas.py`
 - Externe Geodaten-Endpoints:
-  - Wuppertal Open Data: `https://daten.wuppertal.de/Infrastruktur_Bauen_Wohnen/Gebaeude_EPSG25832_JSON.json`
-  - Wuppertal WMS: `https://maps.wuppertal.de/{karten,poi,planung,verkehr,umwelt,infra,immo,gebiet}`
-  - EN-Kreis WFS: `https://geodaten.en-kreis.de/geoservice1/geobasis_flur_adr_geb/wfs`
+  - Wuppertal Open Data: `[Adresse entfernt]`
+  - Wuppertal WMS: `[Adresse entfernt]`
+  - EN-Kreis WFS: `[Adresse entfernt]`
 
 ---
 

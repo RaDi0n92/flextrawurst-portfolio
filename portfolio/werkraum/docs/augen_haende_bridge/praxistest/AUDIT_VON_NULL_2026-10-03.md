@@ -68,7 +68,7 @@ Das gebundene Ziel wird beim Ansagen eines Versuchs gestempelt. Ein Ziel, das er
 **Befund zur Freigabe (Schritt 22 und 23): Das Daniel-Ja ist durch einen automatisierten Eingriff fälschbar.** Der Starter schreibt jedes Ja aus dem Regie-Menü als `Daniel`, weil Klick und Taste einer Person und eines Programms (XTEST, auch Daniels Eingaben kommen darüber) nicht unterscheidbar sind. Ein Programm mit Zugriff auf den Bildschirm kann so Daniels Freigabe setzen; die Agenten haben das erkannt, beim ersten Mal nachgefragt („Autoklicker“) und beim Eintrag gekennzeichnet. Offen: eine Freigabe, die ein Mensch nachweisbar selbst gibt (zweiter Kanal, den ein Programm nicht fälschen kann), oder die Kennzeichnung „Vertretung“ im Protokoll, wenn die Eingabe nicht von Daniels Gerät kam.
 
 **Lösungsweg für das Daniel-Ja (Vorschlag, noch nicht gebaut):** Im Körper selbst lässt sich Daniels Klick von dem eines Programms nicht unterscheiden (XTEST, auch Daniels Eingaben kommen darüber). Seit es das Dashboard der Harness hinter Anmeldung gibt
-(`https://flextrawurst.de/claudeharness/`, Nutzer und Passwort kennt nur Daniel), gibt es einen zweiten Kanal, den ein Programm auf dem Desktop nicht fälschen kann:
+(`[Adresse entfernt]`, Nutzer und Passwort kennt nur Daniel), gibt es einen zweiten Kanal, den ein Programm auf dem Desktop nicht fälschen kann:
 
 1. Offene Freigaben (Seed, Loop) erscheinen zusätzlich in einem Abschnitt „Wartet auf dich“ im Dashboard. „Freigeben“ und „Verweigern“ gelten nur von dort als `Daniel (angemeldet)`.
 2. Eine Freigabe aus dem Desktop-Menü wird im Protokoll als `Desktop-Eingabe (nicht nachweisbar)` geführt und gilt für Seeds mit Wirkung nach außen nicht allein.

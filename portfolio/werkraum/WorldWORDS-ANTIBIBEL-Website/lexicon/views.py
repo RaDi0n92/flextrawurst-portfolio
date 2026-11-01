@@ -830,14 +830,14 @@ def term_to_dict(term, include_detail=True):
 def robots(request, lang):
     require_language(lang)
     prefix = settings.FORCE_SCRIPT_NAME
-    return HttpResponse(f"User-agent: *\nAllow: {prefix}/\nDisallow: {prefix}/admin/\nDisallow: {prefix}/de/kuratorium/\nSitemap: https://flextrawurst.de{prefix}/de/sitemap.xml\n", content_type="text/plain")
+    return HttpResponse(f"User-agent: *\nAllow: {prefix}/\nDisallow: {prefix}/admin/\nDisallow: {prefix}/de/kuratorium/\nSitemap: [Adresse entfernt]\n", content_type="text/plain")
 
 
 @require_GET
 def sitemap(request, lang):
     require_language(lang)
-    base = f"https://flextrawurst.de{settings.FORCE_SCRIPT_NAME}"
+    base = f"[Adresse entfernt]"
     urls = [f"{base}/{lang}/", f"{base}/{lang}/woerter/", f"{base}/{lang}/wege/", f"{base}/{lang}/mitwirkende/"]
     urls += [f"{base}{term.get_absolute_url(lang).replace(settings.FORCE_SCRIPT_NAME, '')}" for term in public_terms().only("slug")]
-    body = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + "".join(f"<url><loc>{url}</loc></url>" for url in urls) + "</urlset>"
+    body = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="[Adresse entfernt]">' + "".join(f"<url><loc>{url}</loc></url>" for url in urls) + "</urlset>"
     return HttpResponse(body, content_type="application/xml")

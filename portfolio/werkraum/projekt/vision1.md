@@ -328,7 +328,7 @@ Sobald du mir den Namen sagst, generiere ich dir sofort die komplette V2-Website
 name ist. namelessai
 Deine namelessai V2 Website ist fertig. ?
 Hier kannst du sie öffnen:
-https://designergpt.replit.app/pages/167186e1b92e0b722824a58e63b82073.html
+[Adresse entfernt]
 Wenn du aus irgendeinem Grund nicht darauf klicken kannst, sag einfach Bescheid, dann gebe ich
 
 dir den Link nochmal separat.

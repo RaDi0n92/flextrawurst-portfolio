@@ -515,12 +515,12 @@ Für reine Kernetappen wird eine Proof-Surface aus dem neuen Kern gebaut. Sie da
 
 Die folgenden Primärquellen sind für die Architektur relevant und werden bei den betroffenen Etappen erneut geprüft:
 
-- Python-WebSockets-Dokumentation: https://websockets.readthedocs.io/en/stable/
-- Microsoft `SendInput` und UIPI: https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendinput
-- Microsoft Windows Keyboard Input: https://learn.microsoft.com/en-us/windows/win32/inputdev/about-keyboard-input
-- MCP-Architektur und Sicherheitsgrenzen: https://modelcontextprotocol.io/specification/2025-03-26/architecture/index
-- MCP-Autorisierung und die aktuellen Spezifikationsänderungen: https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
-- Android `AccessibilityService`: https://developer.android.com/reference/android/accessibilityservice/AccessibilityService
+- Python-WebSockets-Dokumentation: [Adresse entfernt]
+- Microsoft `SendInput` und UIPI: [Adresse entfernt]
+- Microsoft Windows Keyboard Input: [Adresse entfernt]
+- MCP-Architektur und Sicherheitsgrenzen: [Adresse entfernt]
+- MCP-Autorisierung und die aktuellen Spezifikationsänderungen: [Adresse entfernt]
+- Android `AccessibilityService`: [Adresse entfernt]
 
 Daraus folgen für den Bauplan insbesondere:
 

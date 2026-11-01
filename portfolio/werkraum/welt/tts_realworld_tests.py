@@ -255,7 +255,7 @@ def main() -> int:
 
         try:
             snap = http_json("POST", "/webarchive/snapshots", {
-                "url": "https://flextrawurst.de/",
+                "url": "[Adresse entfernt]",
                 "title": "realworld-flextrawurst-deep",
                 "max_pages": 20,
                 "render_mode": "http",

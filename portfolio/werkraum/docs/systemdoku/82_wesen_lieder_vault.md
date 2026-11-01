@@ -94,7 +94,7 @@ der Code erzwingt sie nicht.
 
 ## Öffentlicher Zugang
 
-`https://flextrawurst.de/liederwesen/` und (weiter) `/vault-lieder/` führen auf denselben Obsidian-Container
+`[Adresse entfernt]` und (weiter) `/vault-lieder/` führen auf denselben Obsidian-Container
 (`obsidian-liedervault`, Port 3104, Login `daniel`). nginx: `sites-available/flextrawurst`.
 
 ## Getrennte Ticks: Nachholen und Weiterarbeiten (2026-10-03)

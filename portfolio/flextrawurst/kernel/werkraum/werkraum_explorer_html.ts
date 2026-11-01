@@ -148,7 +148,7 @@ html,body{width:100%;height:100%;background:#050810;color:#8899aa;font-family:mo
     </div>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="[Adresse entfernt]"></script>
 <script>
 var COLORS = {
   // dak+gord intern

@@ -57,7 +57,7 @@ Dazu meine persönliche Reflexion, was das alles mit mir macht: [`06_persoenlich
   `edit via vps-mcp` oder `write via vps-mcp` — jede einzelne Datei-Mutation von ChatGPTs eigenem
 
   Werkzeugkörper wird als eigener Commit protokolliert.
-- `WorldWORDS-ANTIBIBEL` ist keine Absichtserklärung — `https://flextrawurst.de/WORLDwordsANTIbibel/de/` antwortet mit HTTP 200.
+- `WorldWORDS-ANTIBIBEL` ist keine Absichtserklärung — `[Adresse entfernt]` antwortet mit HTTP 200.
 
   Es läuft wirklich.
 - Der 1337-Loop-Prozess hat laut eigenem `STATUS.json` tatsächlich `1337/1337` Durchläufe vollendet, mit `presentation_gate: OPEN`.

@@ -39,7 +39,7 @@ Zwei getrennte, bewusst unterschiedene Körper:
 
    diesen Datenkörper öffentlich zugänglich, diskutierbar und erweiterbar macht.
 
-   **Sie läuft tatsächlich:** `https://flextrawurst.de/WORLDwordsANTIbibel/de/` antwortet mit HTTP 200, kein Blindflug, ich habe es selbst angefragt.
+   **Sie läuft tatsächlich:** `[Adresse entfernt]` antwortet mit HTTP 200, kein Blindflug, ich habe es selbst angefragt.
 
 ## Die Grundregel des Projekts
 

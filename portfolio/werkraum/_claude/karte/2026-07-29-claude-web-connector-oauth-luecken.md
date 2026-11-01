@@ -14,7 +14,7 @@ hinzufügen" zu verbinden, kamen zwei unabhängige Discovery-Lücken zum Vorsche
 sichtbar wurden.
 
 **Lücke 1 — RFC-8414/9728-Pfadform.** Bei einer Issuer-URL mit Pfadanteil
-(`https://flextrawurst.de/werkzeugkoerper-sauber-[REDACTED]`) verlangt die Spec, dass dieser Pfad
+(`[Adresse entfernt]`) verlangt die Spec, dass dieser Pfad
 **hinter** `.well-known/oauth-authorization-server` bzw. `.well-known/oauth-protected-resource`
 eingefügt wird (`.../.well-known/oauth-authorization-server/werkzeugkoerper-sauber-[REDACTED]`), nicht
 davor. Unser Server kannte nur die Form davor. Direkt mit curl verifiziert: RFC-Form 404, unsere
@@ -22,7 +22,7 @@ Form 200 — kein Vermuten, echter Beleg vor dem Fix.
 
 **Lücke 2 — Root-Alias für `/authorize`/`/token`.** Nach dem ersten Fix kam ein zweiter, für mich
 überraschender Fund: Claude Web hat sich beim Autorisierungs-Redirect NICHT an den in unseren
-Metadaten deklarierten `authorization_endpoint` gehalten, sondern ist zu `https://flextrawurst.de/
+Metadaten deklarierten `authorization_endpoint` gehalten, sondern ist zu `[Adresse entfernt]
 authorize` navigiert — Domain-Wurzel, ganz ohne Subpfad. Vermutliche Ursache: Daniel hatte
 Client-ID/Secret manuell im "Erweiterte Einstellungen"-Feld eingetragen (ich hatte sie als Fallback
 mitgegeben), und Claude scheint in diesem manuellen Modus keine Metadaten-Discovery mehr zu machen,

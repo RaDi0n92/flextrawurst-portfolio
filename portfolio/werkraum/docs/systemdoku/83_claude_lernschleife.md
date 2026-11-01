@@ -94,7 +94,7 @@ mehr Substanz je Schritt; und keine Aufpasser-Sperren („kein Babysitting“).
 - **Verlauf** zeigt unten „Als Nächstes“ und „Bewusst später“ aus dem Bauplan; die Hilfe erklärt den Austausch.
 - **Geprüft:** `test_austausch.py` (31 Tests), `test_schalter.py`, `test_bauplan.py` (zusammen 94) und Playwright (Kommentar, Zustellung, Antwort live, Vorschlag annehmen und ablehnen, Anfrage erlauben, Archiv, Dokument, Eingabe-Erhalt, Handy).
 
-## Veröffentlichung unter https://flextrawurst.de/claudeharness/ (2026-10-04)
+## Veröffentlichung unter [Adresse entfernt] (2026-10-04)
 
 Das Dashboard ist für Daniel auch über die Domain erreichbar, geschützt mit Nutzer `daniel` und einem Passwort. Gespeichert ist nur der Hash.
 

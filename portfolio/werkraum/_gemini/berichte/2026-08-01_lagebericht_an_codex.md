@@ -48,7 +48,7 @@ importable: false
 
 * **Welt-API / MegaVault Backend:**
   * Pfad: `/root/werkraum/tools/gesamtatlas_world/app.py`
-  * Dienst: `gesamtatlas-world.service` (Port 18108, proxy via Nginx auf `https://flextrawurst.de/gesamtatlas/api/megavault/...`).
+  * Dienst: `gesamtatlas-world.service` (Port 18108, proxy via Nginx auf `[Adresse entfernt]...`).
   * Endpunkte: RAG-Suche (`GET /api/megavault/search`), Dateileser/Editor (`GET/POST /api/megavault/file`), Soft/Hard-Delete (`POST /api/megavault/file/delete`), Filter (`GET /api/megavault/filters`) und Beziehungs-Graph (`GET /api/megavault/relationships`).
 * **Beziehungsregister & History-Split:**
   * Register: `/root/werkraum/_gpt/gesamtatlas/BEZIEHUNGSREGISTER.sqlite` (1.009 Knoten, 2.155 Kanten, davon 1.632 mit ISO-Zeitstempeln `first_utc`/`last_utc`).

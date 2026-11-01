@@ -137,7 +137,7 @@
 * **SCHRITT 1: RAG-Hybrid-Search API (`GET /api/megavault/search`) — ✅ ABGESCHLOSSEN**
   * Verknüpft SQLite FTS5 (BM25) + ChromaDB Vektorsuche + RRF-Fusion.
   * Parameter: `q`, `stream`, `typ`, `projekt`, `limit`.
-  * Verifiziert auf Port 18108 und über Nginx `https://flextrawurst.de/gesamtatlas/api/megavault/search`.
+  * Verifiziert auf Port 18108 und über Nginx `[Adresse entfernt]`.
 
 * **SCHRITT 2: Datei-Leser & In-App-Editor Backend (`/api/megavault/file` & `/save`) — ⏳ IN VORBEREITUNG**
   * `GET /api/megavault/file?pfad=...`: Liest echten Text/Code zeilenweise mit Metadaten.
@@ -151,7 +151,7 @@
   * Bindet die 2.018 Beziehungskanten aus `BEZIEHUNGSREGISTER.sqlite` ein.
   * Macht den Abgleich zwischen Grundstand `r4751` und Live-Nachlauf `r4918` abrufbar.
 
-* **SCHRITT 5: Die Visuelle MegaVault Standalone WebApp (`https://flextrawurst.de/megavault`)**
+* **SCHRITT 5: Die Visuelle MegaVault Standalone WebApp (`[Adresse entfernt]`)**
   * Mega-Suchbox mit RAG-Filter-Badges.
   * Echtes Graph-Canvas für Knoten & Kanten.
   * Split-View Code/Markdown Live-Editor mit Soft/Hard Delete Buttons.

@@ -56,12 +56,12 @@ Stand der Recherche: 2026-10-02.
 
 ## 6. Quellen
 
-- mgechev, Skills Best Practices — https://github.com/mgechev/skills-best-practices
-- Agent Skills, Beschreibungen — https://agentskills.io/skill-creation/optimizing-descriptions
-- Agent Skills, Best practices — https://agentskills.io/skill-creation/best-practices
-- PostHog, What nobody tells you about writing agent skills — https://posthog.com/newsletter/writing-agent-skills
-- Addy Osmani, Agent Skills — https://github.com/addyosmani/agent-skills
-- Developers Digest, Exit criteria — https://www.developersdigest.tech/blog/agent-skills-production-checklist
-- PolicyGuide (Workflow-Graph, gezielte Abhilfe) — https://arxiv.org/html/2608.19861v1
-- Agentic Workflow Orchestration — https://medium.com/@lamhot.siagian/agentic-workflow-orchestration-taming-llms-with-graphs-state-and-control-loops-0688f018b99f
+- mgechev, Skills Best Practices — [Adresse entfernt]
+- Agent Skills, Beschreibungen — [Adresse entfernt]
+- Agent Skills, Best practices — [Adresse entfernt]
+- PostHog, What nobody tells you about writing agent skills — [Adresse entfernt]
+- Addy Osmani, Agent Skills — [Adresse entfernt]
+- Developers Digest, Exit criteria — [Adresse entfernt]
+- PolicyGuide (Workflow-Graph, gezielte Abhilfe) — [Adresse entfernt]
+- Agentic Workflow Orchestration — [Adresse entfernt]
 - Skill-Creator-Anleitung, lokal: in `marketplace-cache/*/plugins/skill-creator/skills/skill-creator/`

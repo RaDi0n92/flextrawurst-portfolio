@@ -4,7 +4,7 @@ EVIDENCE_VERSION: 1
 
 ## Aktion
 
-Der bereits vorhandene allgemeine Webadapter mit `http://*/*` und `https://*/*` blieb unverändert. Seine VPS-Projektion und Seitenleiste wurden additiv um vollständiges Seiten-JSON, CSV und TXT ergänzt. Die bisherigen Formate MD, HTML und Links-JSON bleiben erhalten.
+Der bereits vorhandene allgemeine Webadapter mit `[Adresse entfernt]` und `[Adresse entfernt]` blieb unverändert. Seine VPS-Projektion und Seitenleiste wurden additiv um vollständiges Seiten-JSON, CSV und TXT ergänzt. Die bisherigen Formate MD, HTML und Links-JSON bleiben erhalten.
 
 ## Sichtbar
 

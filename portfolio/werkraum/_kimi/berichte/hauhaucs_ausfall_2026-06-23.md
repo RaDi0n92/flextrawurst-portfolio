@@ -8,7 +8,7 @@ autor: kimi
 
 ## Ausgangslage
 
-- Chat: https://flextrawurst.de/dolphin → Session `2026-06-23T11-19-18`
+- Chat: [Adresse entfernt] → Session `2026-06-23T11-19-18`
 - Session-Datei: `/root/werkraum/dolphin_mischpult/sessions/2026-06-23T11-19-18.jsonl`
 - Verwendetes Modell: `fredrezones55/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive:IQ4_XS`
 - Backend: `/root/flextrawurst/scripts/serve_process_camera_preview.ts` (Port 8787)

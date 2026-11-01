@@ -52,7 +52,7 @@ def generate_scenes(scenes_list, frames_dir, block_name):
         }
         for attempt in range(3):
             try:
-                r = requests.post('https://aihorde.net/api/v2/generate/async', headers=HEADERS, json=payload, timeout=15)
+                r = requests.post('[Adresse entfernt]', headers=HEADERS, json=payload, timeout=15)
                 if r.status_code == 202:
                     jid = r.json().get('id')
                     active_jobs[sc['id']] = jid
@@ -69,7 +69,7 @@ def generate_scenes(scenes_list, frames_dir, block_name):
         done_ids = []
         for sc_id, jid in list(active_jobs.items()):
             try:
-                res = requests.get(f'https://aihorde.net/api/v2/generate/status/{jid}', timeout=10)
+                res = requests.get(f'[Adresse entfernt]', timeout=10)
                 if res.status_code == 200:
                     d = res.json()
                     if d.get('done') and d.get('generations'):

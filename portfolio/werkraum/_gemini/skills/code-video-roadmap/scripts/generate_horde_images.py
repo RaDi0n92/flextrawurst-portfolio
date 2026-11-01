@@ -31,7 +31,7 @@ def generate_via_horde(prompt, models):
         'models': models
     }
     try:
-        r = requests.post('https://aihorde.net/api/v2/generate/async', headers=headers, json=payload, timeout=15)
+        r = requests.post('[Adresse entfernt]', headers=headers, json=payload, timeout=15)
         if r.status_code != 202:
             return None
         job_id = r.json().get('id')
@@ -40,7 +40,7 @@ def generate_via_horde(prompt, models):
             
         for _ in range(12):
             time.sleep(5)
-            s_resp = requests.get(f'https://aihorde.net/api/v2/generate/status/{job_id}', timeout=10)
+            s_resp = requests.get(f'[Adresse entfernt]', timeout=10)
             if s_resp.status_code == 200:
                 s_data = s_resp.json()
                 if s_data.get('done'):
@@ -53,7 +53,7 @@ def generate_via_horde(prompt, models):
 
 def generate_via_pollinations(prompt):
     encoded = urllib.parse.quote(prompt)
-    url = f"https://image.pollinations.ai/prompt/{encoded}?width=1024&height=576&nologo=true"
+    url = f"[Adresse entfernt]"
     try:
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req, timeout=25) as resp:

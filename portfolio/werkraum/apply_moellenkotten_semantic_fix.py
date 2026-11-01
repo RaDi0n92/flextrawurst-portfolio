@@ -111,7 +111,7 @@ boundary_event={'type':'object','properties':boundary_props,'required':list(boun
 message_props={'schema_version':{'const':2},'nachricht_id':message_id,'sender':session,'recipient':session,'created_at':rfc3339,'subject':{'type':'string','minLength':1},'related_ids':{'type':'array','items':{'type':'string'},'uniqueItems':True},'finding':{'type':'string','minLength':1},'why_relevant':{'type':'string','minLength':1},'evidence_ids':{'type':'array','items':{'type':'string'},'uniqueItems':True},'requested_check':{'type':'string','minLength':1}}
 message={'type':'object','properties':message_props,'required':list(message_props),'additionalProperties':False}
 
-schema={'$schema':'https://json-schema.org/draft/2020-12/schema','$id':'flextrawurst://moellenkotten/DATENSCHEMA.json','title':'Möllenkotten Forschungsdaten','schema_version':2,'$defs':{'geometry':geometry,'measurement':measurement,'control_point':control_point,'source_event':source_event,'finding_event':finding_event,'route_event':route_event,'object_event':object_event,'approval_event':approval_event,'boundary_event':boundary_event,'message':message}}
+schema={'$schema':'[Adresse entfernt]','$id':'flextrawurst://moellenkotten/DATENSCHEMA.json','title':'Möllenkotten Forschungsdaten','schema_version':2,'$defs':{'geometry':geometry,'measurement':measurement,'control_point':control_point,'source_event':source_event,'finding_event':finding_event,'route_event':route_event,'object_event':object_event,'approval_event':approval_event,'boundary_event':boundary_event,'message':message}}
 w('maschinenvertrag/DATENSCHEMA.json',json.dumps(schema,ensure_ascii=False,indent=2))
 
 # New canonical stores / snapshot roots. Existing JSONL are empty, so no migration is required.

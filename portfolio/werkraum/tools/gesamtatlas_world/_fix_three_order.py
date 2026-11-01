@@ -1,14 +1,14 @@
 from pathlib import Path
 APP = Path("/root/werkraum/tools/gesamtatlas_world/app.py")
 text = APP.read_text(encoding="utf-8")
-old = '<script src="https://cdn.jsdelivr.net/npm/3d-force-graph"></script>'
+old = '<script src="[Adresse entfernt]"></script>'
 n = text.count(old)
 print("anchor:", n)
 if n != 1:
     raise SystemExit("abbruch")
 text = text.replace(
     old,
-    old + '\n<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>',
+    old + '\n<script src="[Adresse entfernt]"></script>',
     1,
 )
 APP.write_text(text, encoding="utf-8")

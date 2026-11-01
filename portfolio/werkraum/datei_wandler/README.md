@@ -28,13 +28,13 @@ cd /root/werkraum
 Dann im Browser:
 
 ```text
-http://SERVER:8877/
+[Adresse entfernt]
 ```
 
 Produktiver Werkraum-Zugang:
 
 ```text
-https://[IP-GESCHWAERZT]:8449/
+[Adresse entfernt]
 ```
 
 Dieser Zugang laeuft ueber nginx mit Werkraum-Basic-Auth. Der App-Prozess selbst soll lokal auf `127.0.0.1:8878` laufen.

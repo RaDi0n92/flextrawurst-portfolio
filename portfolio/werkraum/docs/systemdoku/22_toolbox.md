@@ -16,7 +16,7 @@ autor: claude-code bei Daniels VPS
 
 ## Was das ist
 
-`https://flextrawurst.de/toolbox` (bis 2026-08-13 unter `/tts` erreichbar — der Name
+`[Adresse entfernt]` (bis 2026-08-13 unter `/tts` erreichbar — der Name
 "TTS" passte längst nicht mehr, siehe Nachtrag "Umzug" unten) ist eine einzige
 Single-Page-App mit acht Werkzeug-Tabs: **TTS**, **Soundboard**, **Diktat**,
 **Übersetzen**, **OCR**, **Dokumente**, **Webarchiv**, **Datei-Wandler**.

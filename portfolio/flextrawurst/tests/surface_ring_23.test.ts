@@ -752,7 +752,7 @@ describe("SYSTEMKARTE-Tab (2026-10-01)", () => {
     for (const sl of SLUGS) for (const l of ["de", "en"]) {
       const f = `systemkarte-${sl}-${l}.html`;
       assert.ok(existsSync(new URL(`../public/${f}`, import.meta.url)), `public/${f} fehlt`);
-      assert.ok(sitemap.includes(`https://flextrawurst.de/${f}`), `${f} fehlt in der Sitemap`);
+      assert.ok(sitemap.includes(`[Adresse entfernt]`), `${f} fehlt in der Sitemap`);
     }
   });
   it("Tab steht auch in der öffentlichen Variante (kein ARCHGATE)", () => {

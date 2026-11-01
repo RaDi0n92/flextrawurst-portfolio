@@ -140,7 +140,7 @@ def main():
     server = ThreadingHTTPServer((args.bind, args.port), HarnessHandler)
     server.daemon_threads = True
     server.harness = NativeHarness(args.ledger)
-    print(f"Native harness auf http://{args.bind}:{args.port}", flush=True)
+    print(f"Native harness auf [Adresse entfernt]", flush=True)
     server.serve_forever()
 
 

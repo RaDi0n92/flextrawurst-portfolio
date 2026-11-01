@@ -6,7 +6,7 @@ import vm from "node:vm";
 function setup() {
   const calls: any[] = [];
   const ctx = {
-    window: { location: {href:"https://site.example/solarius/synthetic", origin:"https://site.example"},
+    window: { location: {href:"[Adresse entfernt]", origin:"[Adresse entfernt]"},
       fetch: async (input: any, init: any) => { calls.push({input, init}); return new Response("{}"); } },
     localStorage: {getItem: () => "synthetic-token" as string | null},
     URL, Request, Response, Headers, document: {body: null},
@@ -25,7 +25,7 @@ test("existing platform login authenticates writes without changing body", async
 
 test("no token is added to external origins or public reads; logout takes effect", async () => {
   const {ctx, calls} = setup();
-  await ctx.window.fetch("https://external.example/wesen/save", {method:"POST"});
+  await ctx.window.fetch("[Adresse entfernt]", {method:"POST"});
   assert.equal(calls[0].init.headers, undefined);
   await ctx.window.fetch("/wesen/solarius/synthetic/data", undefined);
   assert.equal(calls[1].init, undefined);
@@ -36,7 +36,7 @@ test("no token is added to external origins or public reads; logout takes effect
 
 test("explicit Request credentials retained; private Flarumstyler reads get token", async () => {
   const {ctx, calls} = setup();
-  await ctx.window.fetch(new Request("https://site.example/wesen/save", {method:"POST", body:"{}", headers:{Authorization:"Bearer explicit"}}), undefined);
+  await ctx.window.fetch(new Request("[Adresse entfernt]", {method:"POST", body:"{}", headers:{Authorization:"Bearer explicit"}}), undefined);
   assert.equal(calls[0].init.headers.get("Authorization"), "Bearer explicit");
   await ctx.window.fetch("/api/flarumstyler_verlauf", undefined);
   assert.equal(calls[1].init.headers.get("Authorization"), "Bearer synthetic-token");

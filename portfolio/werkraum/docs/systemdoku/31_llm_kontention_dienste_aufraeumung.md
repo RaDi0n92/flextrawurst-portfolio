@@ -2,7 +2,7 @@
 
 ## Auslöser
 
-Daniel, wörtlich: *"warum stehen dann alle screens auf der seite immernoch im startbereich fest und keiner denkt wirlich? und wo ist das quasi alles live? und warum ist https://[SERVER-IP]:8445/ also alle ports der codewesen also ihre vaults nicht erreichbar?"*
+Daniel, wörtlich: *"warum stehen dann alle screens auf der seite immernoch im startbereich fest und keiner denkt wirlich? und wo ist das quasi alles live? und warum ist [Adresse entfernt] also alle ports der codewesen also ihre vaults nicht erreichbar?"*
 
 Drei Fragen, live am System geprüft (nicht aus Doku geraten) — siehe [[30_wesen_eigene_obsidian_vaults]] für den technischen Kontext (rrweb, Röntgenblick-Overlay), diese Datei deckt die Diensteseite ab.
 
@@ -45,7 +45,7 @@ nginx war korrekt konfiguriert (Schorschel 8445, die übrigen 6 Wesen auf 8450-8
 for p in 8445 8450 8451 8452 8453 8454 8455; do ufw allow "${p}/tcp"; done
 ```
 
-Verifiziert: `curl https://[SERVER-IP]:8445/` liefert jetzt `401` (Basic-Auth greift) statt Timeout.
+Verifiziert: `curl [Adresse entfernt]` liefert jetzt `401` (Basic-Auth greift) statt Timeout.
 
 ## Befund 2: weitere versteckte dak+gord/GENI-Hintergrundprozesse
 
@@ -114,7 +114,7 @@ Unabhängig vom `geni_gedaechtnis`-Wachstum oben kam am selben Tag ein zweiter, 
 
 **Befund:** `llama-hauhaucs-hintergrund.service` (PID 881054, Port 11436) hing seit **1 Tag 6h 27min** in einer Log-Schleife: `/var/log/syslog` wuchs auf **387GB** (von "vor 10 Minuten noch nicht mal 200GB" laut Daniel — also sehr schneller Endspurt kurz vor dem Vollauf). Journal-Auszug bestätigte über 7,2 Mio. Log-Zeilen an einem einzigen Tag für diesen Unit, verteilt über mehrere verschiedene Tasks (nicht nur den zuletzt beobachteten) — also ein wiederkehrendes Muster, kein Einzelfall.
 
-**Root Cause:** bekannter Upstream-Bug in `llama.cpp` — Context-Checkpoint-Invalidierung bei Qwen/SWA-Modellen im Zusammenspiel mit `--ctx-checkpoints`, siehe [Issue #24587](https://github.com/ggml-org/llama.cpp/issues/24587), [#24055](https://github.com/ggml-org/llama.cpp/issues/24055), [#22746](https://github.com/ggml-org/llama.cpp/issues/22746), [#20176](https://github.com/ggml-org/llama.cpp/issues/20176). Die `hauhaucs-q6`-Instanz lief mit `--ctx-checkpoints 64` auf Qwen3.6-35B — genau die fehleranfällige Kombination. Jede Invalidierung loggte erneut den vollen Prompt-Cache-Status (`srv update:`-Dump aller aktiven Slots), was bei diesem Bug in eine praktisch endlose Wiederholung geriet.
+**Root Cause:** bekannter Upstream-Bug in `llama.cpp` — Context-Checkpoint-Invalidierung bei Qwen/SWA-Modellen im Zusammenspiel mit `--ctx-checkpoints`, siehe Issue #24587, #24055, #22746, #20176. Die `hauhaucs-q6`-Instanz lief mit `--ctx-checkpoints 64` auf Qwen3.6-35B — genau die fehleranfällige Kombination. Jede Invalidierung loggte erneut den vollen Prompt-Cache-Status (`srv update:`-Dump aller aktiven Slots), was bei diesem Bug in eine praktisch endlose Wiederholung geriet.
 
 ## Update 2026-07-22: geni_gedaechtnis/knoten/ komplett auf SQLite migriert (122G Dateien → 9,6G DB), zweiter muster.py-Hänger + Fix
 

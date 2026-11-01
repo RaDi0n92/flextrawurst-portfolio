@@ -23,7 +23,7 @@ Eigenständiger MCP-Server, getrennt von `flextrawurst_3d_mcp.py` (Systemdoku 34
 - **Port:** 8091, nur `127.0.0.1` gebunden
 - **Systemd:** `/etc/systemd/system/vps-mcp.service`
 - **nginx:** `location /vps-mcp/` in `/etc/nginx/sites-available/flextrawurst`, proxy zu `127.0.0.1:8091`
-- **Öffentlich:** `https://flextrawurst.de/vps-mcp/`
+- **Öffentlich:** `[Adresse entfernt]`
 
 ## 3. Sicherheit (von Anfang an mitgedacht)
 
@@ -40,7 +40,7 @@ Jedes Tool liefert `{ok, data, source_refs, warnings, truncated, next_cursor, er
 
 `vps.list_roots`, `vps.list_files`, `vps.search_text`, `vps.read_file`, `vps.file_metadata`, `git.status`, `git.log`, `services.status`, `services.logs`, `system.snapshot` (alle von Daniel selbst als risikoärmster Einstieg vorgeschlagen), plus `assets.get_file` und `assets.render_3d_preview` (von Daniel priorisiert — wiederverwendet `blender_pipeline` aus der 3D-Pipeline, kein Duplikat).
 
-**Verifiziert:** isolierter Test aller 12 Tools inkl. Sicherheitsfälle (`.env`-Ausschluss, Pfad außerhalb erlaubter Wurzeln, Shell-Injection-Versuch im Dienstnamen — alle korrekt abgelehnt), echtes Blender-Rendering gegen `test_cube.glb`, kompletter OAuth-2.1+PKCE-Flow live simuliert über `https://flextrawurst.de/vps-mcp/`, Hauptseite unverändert erreichbar. werkraum-Commit `c8a04a02e`.
+**Verifiziert:** isolierter Test aller 12 Tools inkl. Sicherheitsfälle (`.env`-Ausschluss, Pfad außerhalb erlaubter Wurzeln, Shell-Injection-Versuch im Dienstnamen — alle korrekt abgelehnt), echtes Blender-Rendering gegen `test_cube.glb`, kompletter OAuth-2.1+PKCE-Flow live simuliert über `[Adresse entfernt]`, Hauptseite unverändert erreichbar. werkraum-Commit `c8a04a02e`.
 
 ## 6. Geplante Phasen 2–6 (noch nicht gebaut)
 
@@ -65,7 +65,7 @@ Nach den ersten beiden Fixes (Notification-Handling, Protokollversion) blieb das
 **Fix:** `_verarbeite_rpc()` verarbeitet jetzt eine einzelne Nachricht; `do_POST` ruft das entweder einmal (Einzel-Request) oder pro Element eines Arrays (Batch) auf. Notifications liefern kein Element in der Batch-Antwort (korrekte JSON-RPC-2.0-Batch-Semantik) — falls ein Batch ausschließlich aus Notifications besteht, liefert der Server einen leeren `202`. Gleicher Fix auch in `flextrawurst_3d_mcp.py` angewandt.
 
 
-Verifiziert: der exakte Batch (`initialize`+`notification`+`tools/list` als Array) liefert jetzt eine korrekte Zwei-Element-Antwort, lokal und live über `https://flextrawurst.de/vps-mcp/` sowie `https://flextrawurst.de/3d-mcp/`, Einzel-Requests und Einzel-Notifications funktionieren unverändert weiter. Commits `ce82f5982` (vps-mcp) + `a0cc7ffaf` (3d-mcp).
+Verifiziert: der exakte Batch (`initialize`+`notification`+`tools/list` als Array) liefert jetzt eine korrekte Zwei-Element-Antwort, lokal und live über `[Adresse entfernt]` sowie `[Adresse entfernt]`, Einzel-Requests und Einzel-Notifications funktionieren unverändert weiter. Commits `ce82f5982` (vps-mcp) + `a0cc7ffaf` (3d-mcp).
 
 ## 10b. Fünf Verfassungs-Dateien direkt in /root gezielt freigegeben
 
@@ -102,8 +102,8 @@ Verifiziert live: Notification liefert leeren 202er, `initialize` spiegelt angef
 
 Daniel, 2026-07-28: *"connecte dich und codex und gemini mit dem einen"* — derselbe `vps_mcp_server.py`-Code, zweimal zusätzlich als eigener systemd-Dienst gestartet, mit eigenem Port/eigener Protokoll-Datei/eigenem Action-History-Log, aber **demselben** gemeinsamen Gesamtatlas wie ChatGPTs Original-Instanz:
 
-- **`vps-mcp-shared.service`**, Port 8092, `https://flextrawurst.de/werkzeugkoerper-geteilt-[REDACTED]/` — für Claude Code, Codex, Gemini CLI (dauerhafte Terminal-Ströme, keine Browser-Reconnect-Ceremony nötig). Eigene, entrümpelte `session_continuity_shared_v1.json` (Ton geändert, Durchsetzungslogik in `session_continuity.py` bleibt identisch — `default_intent`/Regeltext sind nur Anzeige, siehe unten).
-- **`vps-mcp-sauber.service`**, Port 8093, `https://flextrawurst.de/werkzeugkoerper-sauber-[REDACTED]/` — für seltene, zustandslose Web-Claude-Connector-Besuche (Daniel: Claude-Web-Chat verbraucht das Nutzungslimit pro Nachricht ca. 3x schneller als eine laufende Claude-Code-Session, kein mitwachsender Kontext gewünscht).
+- **`vps-mcp-shared.service`**, Port 8092, `[Adresse entfernt]` — für Claude Code, Codex, Gemini CLI (dauerhafte Terminal-Ströme, keine Browser-Reconnect-Ceremony nötig). Eigene, entrümpelte `session_continuity_shared_v1.json` (Ton geändert, Durchsetzungslogik in `session_continuity.py` bleibt identisch — `default_intent`/Regeltext sind nur Anzeige, siehe unten).
+- **`vps-mcp-sauber.service`**, Port 8093, `[Adresse entfernt]` — für seltene, zustandslose Web-Claude-Connector-Besuche (Daniel: Claude-Web-Chat verbraucht das Nutzungslimit pro Nachricht ca. 3x schneller als eine laufende Claude-Code-Session, kein mitwachsender Kontext gewünscht).
 
 Alle drei Dienste teilen sich `vps_mcp_server.py` und `session_continuity.py` — Regeln wie "8 Zeichen Mindestlänge für `new_session_reason`" oder "Resume verlangt bekannte Session-ID" sind im Python-Code fest verdrahtet, nicht aus der jeweiligen Protokoll-JSON gelesen. Nur Ton/Beschreibungstext der JSON ist pro Klon unterschiedlich, das tatsächliche Durchsetzungsverhalten ist für alle drei identisch.
 
@@ -116,7 +116,7 @@ Angebunden: Claude Code und Gemini CLI direkt per `claude mcp add` / `gemini mcp
 Claude Web (nicht Claude Code) verbinden zu wollen deckte zwei Lücken auf, die bei ChatGPTs Connector nie auffielen — vermutlich weil dessen Implementierung großzügiger/über den `WWW-Authenticate`-Header discovert, während Claude Webs Connector-Setup offenbar strikter nach Spec sucht bzw. bei manuell eingetragener Client-ID/Secret gar keine Discovery mehr macht:
 
 1. **RFC-8414/9728-Pfadform fehlte.** Eine Issuer-URL mit Pfadanteil (`.../werkzeugkoerper-sauber-[REDACTED]`) verlangt laut Spec, dass dieser Pfad **hinter** `.well-known/oauth-authorization-server` bzw. `.well-known/oauth-protected-resource` eingefügt wird, nicht davor. Der Server kannte nur die Form davor (die auch für ChatGPT funktioniert). Fix: vier zusätzliche Nginx-`location =`-Aliase (pro Klon zwei), reines Proxy-Mapping auf die schon funktionierenden Endpunkte, keine Python-Änderung.
-2. **Claude Web ignorierte den deklarierten `authorization_endpoint` und ist stattdessen zu `https://flextrawurst.de/authorize` (Domain-Wurzel, ohne Subpfad) navigiert** — vermutlich weil Daniel Client-ID/Secret manuell im "Erweiterte Einstellungen"-Feld eingetragen hatte und Claude in diesem Modus offenbar `/authorize`+`/token` als Konvention an der Wurzel annimmt, statt Metadaten zu lesen. Fix: root-level `location = /authorize` / `/token` / `/register` als Nginx-Alias auf den Sauber-Klon (8093) — die Wurzel war für keinen anderen Zweck belegt (beide 404 vor dem Fix). Da hier zwangsläufig nur EIN Klon an der Wurzel hängen kann, bewusst der Sauber-Klon gewählt (passend zu den Zugangsdaten, die Daniel gerade eingetragen hatte). Falls später der geteilte Klon auch von Web aus gebraucht wird, bräuchte das eine eigene Subdomain (keine Wildcard-DNS für `*.flextrawurst.de` vorhanden, nur `flextrawurst.de`/`www` und einzeln eingerichtete Subdomains wie `pro.flextrawurst.de`).
+2. **Claude Web ignorierte den deklarierten `authorization_endpoint` und ist stattdessen zu `[Adresse entfernt]` (Domain-Wurzel, ohne Subpfad) navigiert** — vermutlich weil Daniel Client-ID/Secret manuell im "Erweiterte Einstellungen"-Feld eingetragen hatte und Claude in diesem Modus offenbar `/authorize`+`/token` als Konvention an der Wurzel annimmt, statt Metadaten zu lesen. Fix: root-level `location = /authorize` / `/token` / `/register` als Nginx-Alias auf den Sauber-Klon (8093) — die Wurzel war für keinen anderen Zweck belegt (beide 404 vor dem Fix). Da hier zwangsläufig nur EIN Klon an der Wurzel hängen kann, bewusst der Sauber-Klon gewählt (passend zu den Zugangsdaten, die Daniel gerade eingetragen hatte). Falls später der geteilte Klon auch von Web aus gebraucht wird, bräuchte das eine eigene Subdomain (keine Wildcard-DNS für `*.flextrawurst.de` vorhanden, nur `flextrawurst.de`/`www` und einzeln eingerichtete Subdomains wie `pro.flextrawurst.de`).
 
 Beide Fixes über ein von Daniel selbst ausgeführtes Skript (`fix_authorize_root.sh`) angewendet — Nginx-Edit-Rechte für den Classifier waren trotz vorherigem Freigabeversuch nicht aktiv (`permissions.allow` blieb leer). Verifiziert: alle vier RFC-Pfade liefern 200, `/authorize` an der Wurzel liefert die Zugriff-erlauben-Seite statt 404, Daniel hat den Connector danach erfolgreich verbunden (Schlüssel-Eingabe im HTML-Consent-Formular, `VPS_MCP_KEY` der Sauber-Instanz).
 

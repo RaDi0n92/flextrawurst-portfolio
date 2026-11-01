@@ -101,7 +101,7 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
         _, rejected = await self.login("desktop")
         self.assertEqual(rejected["reason"], "session_already_connected")
         with self.assertRaises(InvalidStatus):
-            async with connect(self.url, origin="https://untrusted.invalid"):
+            async with connect(self.url, origin="[Adresse entfernt]"):
                 pass
 
     async def test_auth_timeout(self):

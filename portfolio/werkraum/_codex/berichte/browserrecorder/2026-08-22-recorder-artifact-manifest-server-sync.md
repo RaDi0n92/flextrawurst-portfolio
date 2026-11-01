@@ -14,7 +14,7 @@ GET-Readback-Endpunkt.
 
 Kein neuer Live-Browserlauf in dieser Teilstufe; der UI-Status unterscheidet nun
 `Servermanifest synchronisiert` von `Servermanifest offen (...)`. Die URL ist im
-Code als `https://flextrawurst.de/chatgpt-browser-recorder/api/v1/collections`
+Code als `[Adresse entfernt]`
 konfiguriert. Ein sichtbarer Serverlauf ist wegen fehlender FastAPI-Abhängigkeit
 in dieser Shell nicht behauptet.
 

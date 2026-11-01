@@ -24,7 +24,7 @@ wachsender Story schnell unübersichtlich. Professionelle interaktive-Fiction-Au
 wandern für kommerzielle Projekte meist zu Ink weiter, weil Twine an dieser Stelle an
 seine Grenzen kommt.
 
-Quellen: [Twine offiziell](https://twinery.org/), [Best Interactive Story Software 2026 — gitnux](https://gitnux.org/best/interactive-story-software/), [What Do Professional Interactive Fiction Writers Use in 2026 — Scribeist](https://scribeist.com/blog/what-do-professional-interactive-fiction-writers-use-2026/)
+Quellen: Twine offiziell, Best Interactive Story Software 2026 — gitnux, What Do Professional Interactive Fiction Writers Use in 2026 — Scribeist
 
 ## articy:draft X — der Enterprise-Standard für komplette Content-Datenbanken
 
@@ -42,7 +42,7 @@ Preislich: ab 6,99 EUR/Monat Einzelplatz, 56 EUR/Monat für 2 Sitze; kostenlose 
 700 Objekten pro Projekt gedeckelt. War lange Windows-exklusiv, Mac-Version erst seit
 April 2025.
 
-Quellen: [articy:draft Feature-Liste](https://www.articy.com/en/articydraft/feature-list/), [Game Narrative Design Software — Update-Meldung](https://curatedtechnologynews.substack.com/p/002dcbe89bddf6764da2916c7459a5dc), [Top 10 tools for narrative design — Arcweave-Blog](https://blog.arcweave.com/top-10-tools-for-narrative-design)
+Quellen: articy:draft Feature-Liste, Game Narrative Design Software — Update-Meldung, Top 10 tools for narrative design — Arcweave-Blog
 
 ## Arcweave — browserbasiert, Team-Echtzeit-Zusammenarbeit
 
@@ -57,7 +57,7 @@ Nachteile laut Quellen: kostenpflichtig, für kleine Projekte eventuell überdim
 braucht durchgehende Internetverbindung, eingeschränkte Offline-Fähigkeit, gewisse
 Lernkurve.
 
-Quellen: [Twine vs Arcweave — SaaSHub](https://www.saashub.com/compare-twine-vs-arcweave), [Top 10 tools for narrative design](https://blog.arcweave.com/top-10-tools-for-narrative-design)
+Quellen: Twine vs Arcweave — SaaSHub, Top 10 tools for narrative design
 
 ## Miro/FigJam als Story-Maps
 
@@ -76,7 +76,7 @@ kostenpflichtige Lizenzen auslösen, verschleierte Rückerstattungswege — rein
 probleme, kein inhaltliches Limit. Bei großen, inhaltsreichen Boards zusätzlich
 Performance-Einbußen und Unübersichtlichkeit.
 
-Quellen: [FigJam vs Miro 2026](https://startup-house.com/blog/figjam-vs-miro), [Miro Review 2026 — 15 echte Nutzerbewertungen](https://hackceleration.com/labs/review/miro), [FigJam Board-Navigation Feature-Wunsch — Figma-Forum](https://forum.figma.com/suggest-a-feature-11/figjam-enhanced-board-navigation-with-draggable-map-15778)
+Quellen: FigJam vs Miro 2026, Miro Review 2026 — 15 echte Nutzerbewertungen, FigJam Board-Navigation Feature-Wunsch — Figma-Forum
 
 ## Notion/Trello — Fortschritts-/Quest-Tracking statt Story-Struktur
 
@@ -92,7 +92,7 @@ Praxis bei Indie-Teams (Beispiel Ooblets-Entwickler zitiert): Kombination beider
 Trello für den reinen Kanban-Fortschritt, Notion für Design-Dokumente, Lore und Notizen.
 Keins der beiden deckt beides gleichzeitig gut ab.
 
-Quellen: [Trello für Game-Projektmanagement — Guide](https://multigamedev.blogspot.com/2025/06/game-project-management-trello-indie-guide.html), [Jira vs Trello für Indie-Fortschritt — Wayline](https://www.wayline.io/blog/jira-trello-indie-game-progress)
+Quellen: Trello für Game-Projektmanagement — Guide, Jira vs Trello für Indie-Fortschritt — Wayline
 
 ## Obsidian-Vault-basierte Worldbuilding-Systeme
 
@@ -117,7 +117,7 @@ generisch.
 Zur konkreten Reddit-Diskussion über Lücken in dieser Kategorie lieferte die Suche keine
 verwertbaren Treffer — offene Frage, nicht recherchiert, [status: offen].
 
-Quellen: [Worldbuilding Starter Vault](https://prattdesign.itch.io/worldbuilding-starter-vault), [Worldbuilding Websites and Apps — AlternativeTo](https://alternativeto.net/lists/26985/worldbuilding-websites), [ChronoGrapher — AlternativeTo](https://alternativeto.net/software/chronographer)
+Quellen: Worldbuilding Starter Vault, Worldbuilding Websites and Apps — AlternativeTo, ChronoGrapher — AlternativeTo
 
 ## Einordnung für den Gesamtkonstrukt-Planer
 

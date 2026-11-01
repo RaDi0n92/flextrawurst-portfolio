@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Mapping
 
 
-GOOGLE_EARTH_WEB_URL = "https://earth.google.com/web/"
+GOOGLE_EARTH_WEB_URL = "[Adresse entfernt]"
 
 
 def classify_google_earth_web_snapshot(snapshot: Mapping[str, Any]) -> dict[str, Any]:

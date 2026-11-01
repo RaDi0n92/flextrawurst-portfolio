@@ -226,12 +226,12 @@ daran — weniger Treffer, dafür weniger Erfundenes.
 
 Quellen:
 
-- https://arxiv.org/html/2606.06036v1 — Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents
-- https://arxiv.org/html/2606.04990v1 — From Agent Traces to Trust: Evidence Tracing and Execution Provenance
-- https://arxiv.org/pdf/2602.17930 — MIRA: Memory-Integrated Reinforcement Learning Agent
-- https://vadim.blog/knowledge-graph-agent-memory/ — The Graph as Agent Memory
-- https://blog.getzep.com/how-zep-tracks-provenance-in-agent-memory/ — How Zep tracks provenance
-- https://hidekazu-konishi.com/entry/ai_agent_memory_design_guide.html — Forgetting and staleness management
+- [Adresse entfernt] — Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents
+- [Adresse entfernt] — From Agent Traces to Trust: Evidence Tracing and Execution Provenance
+- [Adresse entfernt] — MIRA: Memory-Integrated Reinforcement Learning Agent
+- [Adresse entfernt] — The Graph as Agent Memory
+- [Adresse entfernt] — How Zep tracks provenance
+- [Adresse entfernt] — Forgetting and staleness management
 
 **Zur Netzsuche selbst:** dass sie überhaupt stattfand, geht auf eine Regeländerung derselben Nacht
 zurück. Daniel, 2026-08-03, jetzt wörtlich in `/root/CLAUDE.md` (Commit `450307b8f1f`):

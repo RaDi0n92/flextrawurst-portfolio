@@ -21,7 +21,7 @@
 
 ## Erreichbar unter
 - Intern: http://localhost:3010
-- Extern: http://[SERVER-IP]:3011
+- Extern: [Adresse entfernt]
 
 ## Nächste Phase (Phase 3)
 - [ ] Echtzeit-WebSocket (Socket.io) für Weltstrom

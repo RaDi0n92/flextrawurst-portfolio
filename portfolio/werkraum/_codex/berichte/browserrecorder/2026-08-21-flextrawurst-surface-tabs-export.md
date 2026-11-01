@@ -3,7 +3,7 @@ EVIDENCE_VERSION: 1
 # flextrawurst Surface — Tab-Export
 
 Datum: 2026-08-21  
-Quelle: `https://flextrawurst.de/`  
+Quelle: `[Adresse entfernt]`  
 Desktop: sichtbares Chromium auf `DISPLAY=:1`  
 Belegwurzel: `/tmp/flextrawurst-surface-export-v7/`
 

@@ -10,7 +10,7 @@ import json, os, sys, time, re, pathlib, pymysql, httpx
 sys.path.insert(0, "/root/werkraum")
 import hauhau_client
 
-FLARUM_URL    = "http://[SERVER-IP]"
+FLARUM_URL    = "[Adresse entfernt]"
 FLARUM_TOKEN  = "[TOKEN-GESCHWAERZT]"
 FLARUM_UID    = 10
 OLLAMA_MODELL = "hauhaucs-q6"

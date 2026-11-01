@@ -2,7 +2,7 @@
 
 EVIDENCE_VERSION: 1
 DATE: 2026-08-22
-SOURCE: `https://de.wikipedia.org/wiki/Wikipedia:Hauptseite`
+SOURCE: `[Adresse entfernt]`
 COLLECTION: `collection-2026-08-22T154635287Z-1d97f70f`
 
 ## Aktion

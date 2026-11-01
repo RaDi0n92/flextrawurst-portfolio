@@ -77,7 +77,7 @@ scripts/build_and_serve_process_camera.ts
 
 Der Server bindet auf `0.0.0.0:8787`.
 
-Externe URL: `http://[SERVER-IP]:8787/`
+Externe URL: `[Adresse entfernt]`
 
 Firewall-Freigabe (einmalig):
 ```bash

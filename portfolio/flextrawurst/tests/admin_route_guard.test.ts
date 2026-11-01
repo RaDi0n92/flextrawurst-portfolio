@@ -22,15 +22,15 @@ test("public reads and unrelated platform routes remain unchanged", () => {
 });
 
 test("rejects foreign, opaque, malformed and sibling-site browser origins", () => {
-  for (const value of ["https://foreign.example", "null", "not a URL", "https://site.example/path"]) {
+  for (const value of ["[Adresse entfernt]", "null", "not a URL", "[Adresse entfernt]"]) {
     assert.equal(origin({ host: "site.example", origin: value }), false);
   }
-  assert.equal(origin({host: "site.example", origin: "https://site.example", "sec-fetch-site": "cross-site"}), false);
+  assert.equal(origin({host: "site.example", origin: "[Adresse entfernt]", "sec-fetch-site": "cross-site"}), false);
   assert.equal(origin({host: "site.example", "sec-fetch-site": "same-site"}), false);
 });
 
 test("allows same-origin browsers and explicit non-browser authentication path", () => {
-  assert.equal(origin({host: "site.example", origin: "https://site.example", "sec-fetch-site": "same-origin"}), true);
+  assert.equal(origin({host: "site.example", origin: "[Adresse entfernt]", "sec-fetch-site": "same-origin"}), true);
   assert.equal(origin({host: "127.0.0.1:8787"}), true);
   assert.equal(needs("/wesen/save", "POST"), true); // no local-address auth bypass
 });

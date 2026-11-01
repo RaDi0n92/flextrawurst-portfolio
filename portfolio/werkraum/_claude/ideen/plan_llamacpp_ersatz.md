@@ -96,13 +96,13 @@ Das ist das hauhaucs IQ4_XS GGUF — 19.6 GB, direkt nutzbar.
 Option A — Release-Binary (schnell, kein Build):
 ```bash
 # Aktuelle Release-Version von github.com/ggml-org/llama.cpp/releases
-wget https://github.com/ggml-org/llama.cpp/releases/latest/download/llama-[version]-bin-ubuntu-x64.zip
+wget [Adresse entfernt]
 unzip ... && cp llama-server /usr/local/bin/
 ```
 
 Option B — Build aus Source (dauert ~10–15 Min auf 8 Kernen, gibt optimierten AVX2-Build):
 ```bash
-git clone https://github.com/ggml-org/llama.cpp
+git clone [Adresse entfernt]
 cd llama.cpp
 cmake -B build -DLLAMA_NATIVE=ON
 cmake --build build --config Release -j8

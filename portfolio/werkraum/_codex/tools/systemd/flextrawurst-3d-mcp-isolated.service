@@ -8,7 +8,7 @@ User=root
 WorkingDirectory=/root/werkraum/tools/3d_pipeline
 EnvironmentFile=/root/werkraum/.agent/flextrawurst-3d-mcp.env
 Environment=FLEXTRAWURST_3D_MCP_PORT=8090
-Environment=FLEXTRAWURST_3D_MCP_PUBLIC_URL=https://flextrawurst.de/3d-mcp
+Environment=FLEXTRAWURST_3D_MCP_PUBLIC_URL=[Adresse entfernt]
 ExecStart=/usr/bin/python3 /root/werkraum/tools/3d_pipeline/flextrawurst_3d_mcp.py
 Restart=always
 RestartSec=3

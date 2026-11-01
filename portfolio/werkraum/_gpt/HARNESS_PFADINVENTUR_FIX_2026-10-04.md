@@ -73,7 +73,7 @@ Ergebnis: **23/23 Tests grün**.
 
 Die öffentliche OpenAPI des laufenden MCP-Servers wurde gelesen:
 
-`https://flextrawurst.de/werkzeugkoerper-[PFAD-GESCHWAERZT]/openapi.json`
+`[Adresse entfernt]`
 
 Dabei wurde bestätigt:
 
@@ -302,7 +302,7 @@ Ergebnis:
 - Darin sind unter anderem Layer-Steuerung, Full-Activate, Lease-Grant/Revoke, Feedback und Layer-Erzeugung mit Actor `DANIEL_DASHBOARD` implementiert.
 - Der HTTP-Handler wurde gelesen.
 - Zum Zeitpunkt der Prüfung gab es in `do_GET()` und `do_POST()` keinen verdrahteten `/chatgptharness`-Route-Branch.
-- Externe Aufrufe von `https://flextrawurst.de/chatgptharness` lieferten entsprechend HTTP 404.
+- Externe Aufrufe von `[Adresse entfernt]` lieferten entsprechend HTTP 404.
 - Dieser Dashboard-Routing-Strang wurde in dieser Session nicht verändert, weil parallel eine andere Session daran arbeitete.
 
 ## 16. Dokumentationsauftrag

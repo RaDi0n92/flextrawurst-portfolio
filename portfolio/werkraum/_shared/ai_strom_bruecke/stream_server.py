@@ -152,7 +152,7 @@ def main():
     server = ThreadingHTTPServer((args.bind, args.port), PushHandler)
     server.daemon_threads = True
     server.push_config = {"frame": args.frame, "ledger": args.ledger, "state": args.state}
-    print(f"AI-Strom-Brücke push feed listening on http://{args.bind}:{args.port}", flush=True)
+    print(f"AI-Strom-Brücke push feed listening on [Adresse entfernt]", flush=True)
     server.serve_forever()
 
 

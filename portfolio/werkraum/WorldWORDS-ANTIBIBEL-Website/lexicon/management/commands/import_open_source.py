@@ -132,7 +132,7 @@ class Command(BaseCommand):
             daniel.set_password(password)
             credentials_path.write_text(
                 "WorldWORDS ANTIBIBEL – initialer Adminzugang\n"
-                "URL: https://flextrawurst.de/WORLDwordsANTIbibel/de/login/\n"
+                "URL: [Adresse entfernt]\n"
                 "Benutzername: daniel\n"
                 f"Passwort: {password}\n"
                 "Nach der ersten Anmeldung im Adminbereich ändern.\n",

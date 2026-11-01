@@ -6,7 +6,7 @@ Snapshot: `crawl-2026-08-15T052548876Z-e24f0e29`
 
 ## Was mein Auge verglichen hat
 
-Ich habe das aktuelle Original `https://flextrawurst.de/` und den exakt
+Ich habe das aktuelle Original `[Adresse entfernt]` und den exakt
 gespeicherten Snapshot als getrennte Bilder angesehen. Der sichtbare Aufbau,
 die Navigation, der große `flextrawurst`-Titel, die drei Pfadkarten und der
 sichtbare Text stimmen überein.

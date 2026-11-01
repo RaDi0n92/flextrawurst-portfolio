@@ -184,7 +184,7 @@ def extract_docx_text(raw: bytes) -> str:
         raise ValueError("Ungueltige oder beschaedigte DOCX-Datei.") from exc
 
     root = ET.fromstring(document)
-    namespace = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+    namespace = "{[Adresse entfernt]}"
     paragraphs: list[str] = []
     for paragraph in root.iter(f"{namespace}p"):
         text = "".join(node.text or "" for node in paragraph.iter(f"{namespace}t")).strip()

@@ -467,7 +467,7 @@ export function buildKompOaseVorformHtml(): string {
 <div id="viewport">
 
   <div id="world">
-    <svg width="${WW}" height="${WH}" xmlns="http://www.w3.org/2000/svg">
+    <svg width="${WW}" height="${WH}" xmlns="[Adresse entfernt]">
       <defs>
         <linearGradient id="sky-g" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%"   stop-color="#020408"/>

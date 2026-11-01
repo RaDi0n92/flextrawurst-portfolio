@@ -9,7 +9,7 @@ Snapshot: `crawl-2026-08-15T100949025Z-e24f0e29`
 
 | Schritt | Sichtbarer Befund | Rücklese / Gegenbeleg | Status |
 |---|---|---|---|
-| Flextrawurst sichtbar aktivieren | echter Browser-Tab zeigte `Was ist das? — flextrawurst` | `chrome.tabs.query(active:true,currentWindow:true)` meldete exakt `https://flextrawurst.de/` | gesehen + gelesen |
+| Flextrawurst sichtbar aktivieren | echter Browser-Tab zeigte `Was ist das? — flextrawurst` | `chrome.tabs.query(active:true,currentWindow:true)` meldete exakt `[Adresse entfernt]` | gesehen + gelesen |
 | Aufnahme klicken | genau ein sichtbarer Start im Universalmodus | `source_mode: active_visible_tab`, `trigger: explicit_user_start`, `status: complete`, `top: 0`, `max_top: 5875`, `scroll_height: 6312`, `text_length: 16844` | gesehen + gelesen |
 | Workspace öffnen | Screenshot oben lesbar; Ausgaben kompakt darunter; HTML standardmäßig optional | Collection blieb bei zwei Snapshots; Rohstatus blieb `Rohdaten unverändert` | gesehen + gelesen |
 | Markdown herunterladen | sichtbarer Button `Markdown herunterladen` | 20.389 Bytes; Titel, `KI-Wesen und echte Menschen.`, `Welt-API aktiv`, `LEITSTAND ÖFFNEN` und Grenze gegen automatische Ergänzung enthalten | gesehen + gelesen |

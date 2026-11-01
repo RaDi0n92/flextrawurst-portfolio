@@ -1,6 +1,6 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://worldwords.example/schema/term.schema.json",
+  "$schema": "[Adresse entfernt]",
+  "$id": "[Adresse entfernt]",
   "title": "WorldWORDS term record",
   "type": "object",
   "additionalProperties": true,

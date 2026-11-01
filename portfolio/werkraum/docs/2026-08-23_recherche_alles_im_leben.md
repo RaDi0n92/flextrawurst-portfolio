@@ -26,13 +26,13 @@ Viele dieser Templates folgen PARA (Projects/Areas/Resources/Archive), einem Fra
 von Tiago Forte — eine Vier-Kategorien-Struktur, die zwischen "hat ein Enddatum"
 (Projekte) und "läuft dauerhaft weiter" (Areas) unterscheidet.
 
-Quellen: [2026 Life OS Template — Notion Marketplace](https://www.notion.com/templates/2026-life-os-cl),
-[15 Best Notion Life OS Templates 2026 — PathPages](https://pathpages.com/blog/notion-life-os),
-[Life OS All-in-one — Notion Marketplace](https://www.notion.com/templates/life-os-all-in-one-productivity-system),
-[20 Best Notion Life OS Templates — notion4management](https://www.notion4management.com/blog/best-notion-life-templates),
-[Life OS in Notion — maray.ai](https://www.maray.ai/posts/life-os),
-[Notion Life OS Template Guide — Tools Without Code](https://www.toolswithoutcode.com/notion-life-os-template/),
-[Setup Life OS in Notion — osdashboardhq](https://www.osdashboardhq.com/blog/setup-life-os-notion-step-by-step/)
+Quellen: 2026 Life OS Template — Notion Marketplace,
+15 Best Notion Life OS Templates 2026 — PathPages,
+Life OS All-in-one — Notion Marketplace,
+20 Best Notion Life OS Templates — notion4management,
+Life OS in Notion — maray.ai,
+Notion Life OS Template Guide — Tools Without Code,
+Setup Life OS in Notion — osdashboardhq
 
 ## Wo Notion-Life-OS-Systeme scheitern — die eigentlich interessante Gegenseite
 
@@ -58,8 +58,8 @@ Verwaltungsarbeit anzufühlen, während die anderen Bereiche (Ideen, Konzepte, G
 sich spielerisch/kreativ anfühlen sollen. Eine klare Trennung der Interaktionsform
 (schnelles Ablegen vs. Struktur-Arbeit) scheint wichtiger als eine gemeinsame Oberfläche.
 
-Quellen: [Notion Life OS — severinschuetz.gumroad.com](https://severinschuetz.gumroad.com/l/lifeos2),
-[Notion Life OS Ultimate Second Brain — heyhash.gumroad.com](https://heyhash.gumroad.com/l/notion-life-os)
+Quellen: Notion Life OS — severinschuetz.gumroad.com,
+Notion Life OS Ultimate Second Brain — heyhash.gumroad.com
 
 ## Airtable als Vorbild für "Alles sonst im Leben"
 
@@ -78,11 +78,11 @@ Schwächen: steile Lernkurve beim Aufbau eines wirklich relationalen Datenmodell
 Preismodell wird bei mehr Nutzern schnell teurer; der eingebaute Interface-Designer für
 eigene Oberflächen ist im Vergleich zu dedizierten App-Buildern eher einfach gehalten.
 
-Quellen: [Airtable Review — Blaze](https://www.blaze.tech/post/airtable-review),
-[Airtable Pros and Cons — Tech Decoded](https://www.techdecoded.org/airtable-review),
-[Airtable Review — Baserow](https://baserow.io/blog/airtable-review),
-[Airtable Review 2026 — Zite](https://www.zite.com/blog/airtable-reviews),
-[personaldatabase — parrotox.gumroad.com](https://parrotox.gumroad.com/l/personaldatabase)
+Quellen: Airtable Review — Blaze,
+Airtable Pros and Cons — Tech Decoded,
+Airtable Review — Baserow,
+Airtable Review 2026 — Zite,
+personaldatabase — parrotox.gumroad.com
 
 ## Habit-/Kalender-/Erinnerungs-Systeme — Design-Prinzipien
 
@@ -106,12 +106,12 @@ Moderner Trend: Gewohnheits-Tracking und Tages-Kalender verschmelzen zu einer
 durchgehenden Zeitleiste, sodass Ziele neben Terminen und Routinen sitzen — nicht als
 getrennte Systeme nebeneinander.
 
-Quellen: [Habit Tracker Template — Stackby](https://stackby.com/templates/habit-tracker),
-[12 best habit tracking apps 2026 — 2sync](https://2sync.com/blog/best-habit-tracker-apps),
-[15 Best Free Habit Tracker Apps — TimeTackle](https://www.timetackle.com/best-free-habit-tracker-app/),
-[10 Best Habit Tracker Apps 2026 — Reclaim](https://reclaim.ai/blog/habit-tracker-apps),
-[Daily Habit Tracker Template — organize.io](https://www.organize.io/daily-habit-tracker-template/),
-[Habit Tracker Calendar Design — RapidNative](https://www.rapidnative.com/blogs/habit-tracker-calendar)
+Quellen: Habit Tracker Template — Stackby,
+12 best habit tracking apps 2026 — 2sync,
+15 Best Free Habit Tracker Apps — TimeTackle,
+10 Best Habit Tracker Apps 2026 — Reclaim,
+Daily Habit Tracker Template — organize.io,
+Habit Tracker Calendar Design — RapidNative
 
 ## Zusammenfassender Rohbefund (keine eigene Bewertung, nur Musterbeschreibung)
 

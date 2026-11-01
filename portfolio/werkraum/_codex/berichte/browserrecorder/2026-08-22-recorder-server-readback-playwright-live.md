@@ -15,7 +15,7 @@ EVIDENCE_VERSION: 1
 ## Live-Rücklese
 
 - Der Browser führte den echten GET aus:
-  `https://flextrawurst.de/chatgpt-browser-recorder/api/v1/collections/playwright-live-readback-20260822T101539Z/artifact-manifests?limit=100`
+  `[Adresse entfernt]`
 - Serverantwort: HTTP `200`, `status: read_back`, `1 Manifest(e)`.
 - Das DOM zeigte danach sichtbar: `Live HTTPS Readback: HTTP 200 · 1 Manifest(e) · Serverantwort sichtbar rückgelesen`.
 - Das sichtbare Ergebnis liegt in `2026-08-22-server-readback-playwright-live-v5/07-after-server-readback.png`.

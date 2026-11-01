@@ -47,7 +47,7 @@ Auswirkung: Geschützte Routen vertrauen weiterhin den alten Rechten; incident-r
 
 Beleg: Die Funktionen `_require_auth` und `_require_admin` wurden per AST isoliert, ohne Modulimport, mit synthetischem Tokenprüfer ausgeführt. Admin-Claims wurden ohne irgendeinen Kontostatus-Provider akzeptiert. Dies testet den Kontrollfluss, nicht die kryptografische Tokenvalidierung. Die echte Tokenvalidierung wurde separat im Quelltext gelesen.
 
-Empfehlung: Aktuellen Kontostatus und Berechtigungen prüfen, serverseitige Session-/Tokenversion oder Widerrufsmechanismus einführen; Sperren und Rollenwechsel müssen vorhandene Sessions entwerten. Referenz: https://github.com/OWASP/ASVS/blob/master/5.0/en/0x16-V7-Session-Management.md (7.4.2).
+Empfehlung: Aktuellen Kontostatus und Berechtigungen prüfen, serverseitige Session-/Tokenversion oder Widerrufsmechanismus einführen; Sperren und Rollenwechsel müssen vorhandene Sessions entwerten. Referenz: [Adresse entfernt] (7.4.2).
 
 ## SEC-002 — Moderationsstatus schützt hochgeladene Bilder nicht vor direktem Abruf
 
@@ -64,7 +64,7 @@ Angriffsbedingung: Registrierter Uploader kennt seine zurückgegebene Avatar-URL
 
 Auswirkung: Ungeprüfte oder abgelehnte Inhalte bleiben auf Anwendungsebene über direkte URLs abrufbar, obwohl Listen/Moderationsoberflächen den Status berücksichtigen. Das ist keine nachgewiesene Codeausführung oder XSS.
 
-Empfehlung: Wartende/abgelehnte Dateien außerhalb des öffentlichen Webverzeichnisses halten oder jeden Abruf über einen statusgeprüften Handler führen. Herkunft und Moderationshistorie erhalten, nicht still löschen. Referenz: https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html.
+Empfehlung: Wartende/abgelehnte Dateien außerhalb des öffentlichen Webverzeichnisses halten oder jeden Abruf über einen statusgeprüften Handler führen. Herkunft und Moderationshistorie erhalten, nicht still löschen. Referenz: [Adresse entfernt].
 
 ## SEC-003 — Globales Body-Limit prüft nur die deklarierte Größe
 
@@ -364,7 +364,7 @@ Dienst-/Paketzuordnung:
 - `/vps_root/werkraum_venv2/lib/python3.12/site-packages/starlette/requests.py:295`: URL-kodierte Formulare werden an `FormParser` übergeben, ohne `max_fields` oder `max_part_size` weiterzugeben.
 - `/vps_root/werkraum_venv2/lib/python3.12/site-packages/starlette/formparsers.py:120`: Felder werden ohne entsprechende Anzahlprüfung gesammelt.
 
-Herstellerquelle: [GHSA-82w8-qh3p-5jfq / CVE-2026-54283](https://github.com/Kludex/starlette/security/advisories/GHSA-82w8-qh3p-5jfq). Laut Advisory betroffen ab 0.4.1 bis vor 1.3.1, behoben in 1.3.1. Der gelesene Stand 1.0.0 liegt darin. Das Advisory beschreibt CPU-/Speicherbelastung durch ignorierte Formularlimits; ein Gesamt-Body-Limit reduziert, beseitigt aber nicht alle Folgen.
+Herstellerquelle: GHSA-82w8-qh3p-5jfq / CVE-2026-54283. Laut Advisory betroffen ab 0.4.1 bis vor 1.3.1, behoben in 1.3.1. Der gelesene Stand 1.0.0 liegt darin. Das Advisory beschreibt CPU-/Speicherbelastung durch ignorierte Formularlimits; ein Gesamt-Body-Limit reduziert, beseitigt aber nicht alle Folgen.
 
 Anwendungskontext: `/root/werkraum/welt/api.py:791` und weitere Upload-Routen nutzen Form-/File-Parameter. Ob der aktive Request-Pfad ein URL-kodiertes Formular vor der erwarteten File-Validierung verarbeitet, ist noch gegen die tatsächliche FastAPI-Laufzeitkette zu prüfen. Keine produktive Formularanfrage und kein Lasttest durchgeführt.
 
@@ -374,7 +374,7 @@ Behebungsrichtung: Kompatibles, gepatchtes Abhängigkeitsset testen und reproduz
 
 `/root/werkraum/requirements.txt` deklariert FastAPI 0.115.0, uvicorn 0.30.6 und Pydantic 2.9.2. Im zugeordneten virtuellen Environment liegen dagegen unter anderem FastAPI 0.136.0, uvicorn 0.45.0, Starlette 1.0.0 und python-multipart 0.0.29. Ein Audit nur dieser Requirements-Datei würde daher falsche Aussagen über das vorhandene Environment erzeugen. Die im laufenden Prozess bereits importierten Versionen sind damit noch nicht bewiesen.
 
-Die älteren Starlette-Advisories [GHSA-f96h-pmfr-66vw](https://github.com/Kludex/starlette/security/advisories/GHSA-f96h-pmfr-66vw) und [GHSA-7f5h-v6xp-fcq8](https://github.com/Kludex/starlette/security/advisories/GHSA-7f5h-v6xp-fcq8) werden NICHT als Befund gegen diesen installierten 1.0.0-Stand gezählt: Ihre angegebenen betroffenen Versionsbereiche liegen darunter. Kein pauschales „alte Requirements = produktiv verwundbar“.
+Die älteren Starlette-Advisories GHSA-f96h-pmfr-66vw und GHSA-7f5h-v6xp-fcq8 werden NICHT als Befund gegen diesen installierten 1.0.0-Stand gezählt: Ihre angegebenen betroffenen Versionsbereiche liegen darunter. Kein pauschales „alte Requirements = produktiv verwundbar“.
 
 Zusätzlich inventarisiert: `/vps_root/flextrawurst/package.json` und `/vps_root/flextrawurst/package-lock.json`; Playwright im Lockfile 1.61.1. Kein vollständiger npm-/Python-Advisoryscan durchgeführt und kein negatives Gesamturteil aus fehlenden Einzelbefunden abgeleitet.
 

@@ -17,13 +17,13 @@ class _FakeVisualSession:
             (),
             {
                 "context_id": "ctx",
-                "url": "https://earth.google.com/web/",
+                "url": "[Adresse entfernt]",
                 "title": "Google Earth",
             },
         )()
 
     def inspect_google_earth(self, context_id):
-        return {"url": "https://earth.google.com/web/", "title": "Google Earth", "canvases": []}
+        return {"url": "[Adresse entfernt]", "title": "Google Earth", "canvases": []}
 
     def capture_screenshot(self, context_id):
         self.index += 1

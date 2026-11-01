@@ -151,7 +151,7 @@ class FensterZustandTests(BrowserFall):
     def test_minimiert_wird_gemessen_und_ehrlich_gemeldet(self):
         """Mit Fensterverwaltung (openbox, leere Konfiguration) wird das Fenster wirklich minimiert; gemessen: der Browser liefert sein Seitenbild trotzdem (er rendert die Seite selbst)."""
         rc = Path(tempfile.mkdtemp()) / "rc.xml"
-        rc.write_text('<openbox_config xmlns="http://openbox.org/3.4/rc"><applications/></openbox_config>')
+        rc.write_text('<openbox_config xmlns="[Adresse entfernt]"><applications/></openbox_config>')
         wm = subprocess.Popen(["openbox", "--config-file", str(rc)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         try:
             time.sleep(1.0)

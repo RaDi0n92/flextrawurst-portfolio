@@ -1344,7 +1344,7 @@ def _google_translate_chunk(text: str, source_lang: str, target_lang: str) -> di
         "dt": "t",
         "q": text,
     })
-    url = "https://translate.googleapis.com/translate_a/single?" + params
+    url = "[Adresse entfernt]?" + params
     req = urllib.request.Request(url, headers={"User-Agent": "flextrawurst-tts/1.0"})
     with urllib.request.urlopen(req, timeout=12) as resp:
         data = json.loads(resp.read().decode("utf-8"))

@@ -11,7 +11,7 @@ Zwei Spuren nebeneinander, absichtlich doppelt:
   - menschlich: diese Markdown-Dateien -- lesbar, ohne Werkzeug, im Vault aufschlagbar
 
 Ablage: /root/werkraum/protokolle/<entitaet>/DD-MM-YYYY_HHMM_<anlass>.md
-Erreichbar unter https://flextrawurst.de/protokolle/ (eigener Zugang) und als eigener
+Erreichbar unter [Adresse entfernt] (eigener Zugang) und als eigener
 Obsidian-Vault (Container obsidian-protokolle).
 
 Datumsformat: DD-MM-YYYY im Dateinamen, DD.MM.YYYY im Text. Daniel, 2026-08-03:

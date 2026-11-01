@@ -3125,7 +3125,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
     if (urlPath === "/api/wesen-dienst-wizard/dienste" && req.method === "GET") {
       try {
         const ausgabe = execFileSync("python3", ["/root/werkraum/welt/wesen_dienst_liste.py"], { timeout: 20000 });
-        const params = new URL(url, "http://x").searchParams;
+        const params = new URL(url, "[Adresse entfernt]").searchParams;
         const dienste = wendeListenFilterAn(
           JSON.parse(ausgabe.toString()), params,
           ["dienst_name", "anzeige_name", "wesen"],
@@ -3160,7 +3160,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
       if (!gefunden) { res.end(JSON.stringify({ eintraege: [] })); return; }
       const zeilen = readFileSync(gefunden, "utf-8").split("\n").filter(Boolean);
       let eintraege = zeilen.map(z => { try { return JSON.parse(z); } catch { return null; } }).filter(Boolean).reverse();
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       eintraege = wendeListenFilterAn(eintraege, params, ["wesen", "rolle", "begruendung"], ["zeitpunkt"], "zeitpunkt");
       res.end(JSON.stringify({ eintraege }));
       return;
@@ -3206,7 +3206,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
           container.push({ name: entry.name, beschreibung, erstellt_am, letzte_widmung, anzahl_eintraege: anzahl });
         }
       }
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       container = wendeListenFilterAn(
         container, params, ["name", "beschreibung"],
         ["name", "erstellt_am", "letzte_widmung", "anzahl_eintraege"], "erstellt_am"
@@ -3235,7 +3235,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
           const { meta, body } = parseFrontmatterDatei(join(ordner, f));
           return { dateiname: f, typ: meta.typ || "?", status: meta.status || undefined, erstellt_am: meta.erstellt_am || "", inhalt: body };
         });
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       eintraege = wendeListenFilterAn(eintraege, params, ["typ", "inhalt"], ["erstellt_am", "typ"], "erstellt_am");
       res.writeHead(200, { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" });
       res.end(JSON.stringify({ wesen, container: name, eintraege }));
@@ -3283,7 +3283,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
     // noch nicht geposteten Dinge lesen koennen". ?wesen=<Name> filtert optional,
     // ?search=/?limit=&offset=/?sort=&order= wie ueberall (Grundgesetz 2).
     if (urlPath === "/api/wesen-dienst-wizard/entwuerfe" && req.method === "GET") {
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       const nurWesen = params.get("wesen");
       let entwuerfe: any[] = [];
       for (const w of WESEN_NAMEN) {
@@ -3314,7 +3314,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
     // neuer Codepfad im Daemon noetig -- der Prozess schrieb das schon immer, nur bisher
     // ungesehen. ?wesen=/?search=/?limit=&offset=/?sort=&order= wie ueberall (Grundgesetz 2).
     if (urlPath === "/api/wesen-dienst-wizard/neugier" && req.method === "GET") {
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       const nurWesen = params.get("wesen");
       let eintraege: any[] = [];
       for (const w of WESEN_NAMEN) {
@@ -3371,7 +3371,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
       "neugier_session_start", "neugier_entscheidung", "neugier_session_ende",
     ];
     if (urlPath === "/api/flarumstyler/protokoll" && req.method === "GET") {
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       let eintraege: any[] = [];
       if (existsSync(FLARUM_STOPP_PROTOKOLL)) {
         const zeilen = readFileSync(FLARUM_STOPP_PROTOKOLL, "utf-8").split("\n").filter(z => z.trim());
@@ -3798,7 +3798,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
     if (sucheMatch && req.method === "GET") {
       const spawner = sucheMatch[1];
       const name = resolveCharName(sucheMatch[1], sucheMatch[2]);
-      const params = new URL(url, "http://x").searchParams;
+      const params = new URL(url, "[Adresse entfernt]").searchParams;
       const q = (params.get("q") || "").trim();
       if (q.length < 2) {
         res.writeHead(400, { "Content-Type": "application/json" });
@@ -3832,7 +3832,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
       (async () => {
         const spawner = exportMatch[1];
         const name = resolveCharName(exportMatch[1], exportMatch[2]);
-        const params = new URL(url, "http://x").searchParams;
+        const params = new URL(url, "[Adresse entfernt]").searchParams;
         const umfang = params.get("umfang") === "auswahl" ? "auswahl" : "komplett";
         const mitProvenienz = params.get("provenienz") !== "0";
         const format = params.get("format") === "txt" ? "txt" : "md";
@@ -5008,7 +5008,7 @@ fertigen Text zum Kopieren -- kein JSON, keine Rueckfragen-Kaskade, kein Intervi
     // GENI-Proxy — leitet /api/splitter (exakt) an GENI intern weiter
     const urlPathOnly = url.split('?')[0];
     if (urlPathOnly === "/api/splitter") {
-      const n = new URL(url, "http://x").searchParams.get("n") ?? "60";
+      const n = new URL(url, "[Adresse entfernt]").searchParams.get("n") ?? "60";
       const opts = {
         hostname: "localhost", port: 8020, path: `/api/splitter?n=${n}`,
         method: "GET", rejectUnauthorized: false,

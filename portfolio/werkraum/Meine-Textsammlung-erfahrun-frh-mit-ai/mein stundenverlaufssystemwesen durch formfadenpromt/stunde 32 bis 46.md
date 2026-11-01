@@ -1149,8 +1149,8 @@ des Dauer-Abschaltens?“
 
 **KI, locker und mit Forschungstwist:**  
 Da bist du gar nicht allein!  
-Laut einer Studie der Uni Stanford von 2023 (Quelle: [Stanford Social Neuroscience
-Lab](https://socialneurosciencelab.stanford.edu)), sind Mikro-Pausen im Alltag sogar ein
+Laut einer Studie der Uni Stanford von 2023 (Quelle: Stanford Social Neuroscience
+Lab), sind Mikro-Pausen im Alltag sogar ein
 Zeichen dafür, wie das Gehirn sich auf neue Reize vorbereitet.  
 Die Forscher nennen das „Prokrastinations-Powernapping“ – klingt fast wie ein Trend, oder?
 
@@ -1201,8 +1201,8 @@ Vielleicht sind To-Do-Listen einfach endlos, weil unser Hirn das Gefühl von Kon
 **KI, jetzt mit lockerem Forschungstwist:**  
 Das bestätigt eine Studie der Uni Tübingen von 2021 sogar:  
 Demnach aktiviert „Abhaken“ tatsächlich kleine Glückszentren im Gehirn –  
-(Quelle: [Tübingen Cognitive Science
-Journal](https://uni-tuebingen.de/psychologie/cogsci-journal-2021)).  
+(Quelle: Tübingen Cognitive Science
+Journal).  
 Das Abhaken funktioniert also fast wie ein Mini-Belohnungssystem!
 
 **User, motiviert:**  

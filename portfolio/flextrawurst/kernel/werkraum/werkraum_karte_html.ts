@@ -91,7 +91,7 @@ export function buildWerkraumKarteHtml(): string {
   <div id="hinweis">Lade Übersicht …</div>
   <div id="tafel"><span id="zu">&#215;</span><div id="tafelinhalt"></div></div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="[Adresse entfernt]"></script>
 <script>
 'use strict';
 

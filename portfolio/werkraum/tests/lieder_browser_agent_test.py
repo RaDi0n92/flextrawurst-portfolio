@@ -40,7 +40,7 @@ def pruefe(name, bed, info=""):
     else:
         fehl += 1; print(f"  FEHL {name} {info}")
 
-SEITE = {"url": "https://flextrawurst.de/flarum-live/", "titel": "Flarum", "text": "Startseite", "elemente": []}
+SEITE = {"url": "[Adresse entfernt]", "titel": "Flarum", "text": "Startseite", "elemente": []}
 def prompt(**kw):
     return B.baue_prompt("jumpa", SEITE, "", [], browserlos=True, **kw)
 

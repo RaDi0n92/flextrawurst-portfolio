@@ -12,7 +12,7 @@
 ```bash
 systemctl status worldwords-antibibel.service
 journalctl -u worldwords-antibibel.service -n 100 --no-pager
-curl -fsS https://flextrawurst.de/WORLDwordsANTIbibel/health/
+curl -fsS [Adresse entfernt]
 
 sudo -u worldwords .venv/bin/python manage.py migrate
 sudo -u worldwords .venv/bin/python manage.py collectstatic --noinput

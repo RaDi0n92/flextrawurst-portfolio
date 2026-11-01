@@ -45,8 +45,8 @@ Andockpunkt, einen Beobachtungskanal und kontrollierte Fähigkeiten.
 
 Zu Beginn wurden zwei vorhandene URLs untersucht:
 
-- `https://flextrawurst.de/virtuellerdesktop1/`
-- `https://flextrawurst.de/virtuellerdesktop2/`
+- `[Adresse entfernt]`
+- `[Adresse entfernt]`
 
 Die technische Gegenüberstellung sah ungefähr so aus:
 
@@ -1465,9 +1465,9 @@ Howto mit drei Provenienzschichten:
 
 Zur offiziellen Prüfung wurden diese Google-Seiten gelesen:
 
-- [Keyboard shortcuts](https://support.google.com/earth/answer/148115?hl=en)
-- [Coordinates](https://support.google.com/earth/answer/148068?hl=en)
-- [Ground-level/Street View](https://support.google.com/earth/answer/1067429?hl=en)
+- Keyboard shortcuts
+- Coordinates
+- Ground-level/Street View
 
 Das Ergebnis wurde in `GOOGLE_EARTH_STEUERUNG.md` geschrieben. Die Datei
 umfasst 297 Zeilen und enthält linke/rechte/mittlere Taste, Rad, Zoomanker,
@@ -4041,7 +4041,7 @@ Der Testbericht erzielte im isolierten headless Firefox:
 
 ```text
 EARTH_DOM {
-  url: "https://earth.google.com/web/",
+  url: "[Adresse entfernt]",
   title: "",
   dom_controls: [{
     tag: "flt-semantics-placeholder",

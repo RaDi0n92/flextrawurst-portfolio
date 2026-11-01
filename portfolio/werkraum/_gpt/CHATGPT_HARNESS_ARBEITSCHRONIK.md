@@ -884,7 +884,7 @@ VPS-Dateischreiben über vps.write_file und vps.edit_file ist pfadunabhängig au
 
 Die direkten Dateiwerkzeuge verwenden dafür eine VPS-weite Pfadprüfung. Geheimnis- und Pseudo-Dateisystem-Sperren bleiben bestehen.
 
-Das ChatGPT-Harness-Dashboard ist öffentlich unter https://flextrawurst.de/chatgptharness/ erreichbar, durch Anmeldung geschützt und sekundengenau an den kanonischen PostgreSQL-Zustand angebunden.
+Das ChatGPT-Harness-Dashboard ist öffentlich unter [Adresse entfernt] erreichbar, durch Anmeldung geschützt und sekundengenau an den kanonischen PostgreSQL-Zustand angebunden.
 
 Pause/Aktivieren eines einzelnen Layers wurde über den öffentlichen HTTPS-Weg erfolgreich end-to-end geprüft.
 

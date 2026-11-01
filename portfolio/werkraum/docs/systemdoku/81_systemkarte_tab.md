@@ -41,7 +41,7 @@ Die Diagramme sind Momentaufnahmen, Stand 2026-10-01, und im Tab auch so beschri
 
 ## Wie die Diagramme entstehen
 
-Erzeugt mit Archify (MIT, https://github.com/tt-a1i/archify), Befehl `finalize`, Qualität
+Erzeugt mit Archify (MIT, [Adresse entfernt]), Befehl `finalize`, Qualität
 `showcase`. Die Quelle sind Python-Skripte mit je einer deutschen und englischen Fassung,
 abgelegt unter `flextrawurst/ops/systemkarte/` (siehe Abschnitt "Neu erzeugen").
 

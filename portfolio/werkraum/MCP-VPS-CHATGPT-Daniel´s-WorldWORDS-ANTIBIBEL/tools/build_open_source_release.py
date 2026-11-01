@@ -773,7 +773,7 @@ Unless a file or quoted contribution states otherwise, documentation, term recor
 
 **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**
 
-Canonical license reference: `https://creativecommons.org/licenses/by-sa/4.0/`
+Canonical license reference: `[Adresse entfernt]`
 
 You may share and adapt the material, including commercially, provided that you give appropriate attribution, indicate changes and distribute adaptations under the same license.
 
@@ -858,8 +858,8 @@ for c in contributors:
 # Schemas
 # ---------------------------------------------------------------------------
 write_json(TARGET / 'data/schema/term.schema.json', {
- '$schema':'https://json-schema.org/draft/2020-12/schema',
- '$id':'https://worldwords.example/schema/term.schema.json',
+ '$schema':'[Adresse entfernt]',
+ '$id':'[Adresse entfernt]',
  'title':'WorldWORDS term record','type':'object','additionalProperties':True,
  'required':['schema_version','id','canonical_form','raw_form_policy','status','origin','definitions','approval'],
  'properties':{
@@ -872,7 +872,7 @@ write_json(TARGET / 'data/schema/term.schema.json', {
  }
 })
 write_json(TARGET / 'data/schema/proposal.schema.json', {
- '$schema':'https://json-schema.org/draft/2020-12/schema','title':'WorldWORDS proposal','type':'object','additionalProperties':True,
+ '$schema':'[Adresse entfernt]','title':'WorldWORDS proposal','type':'object','additionalProperties':True,
  'required':['schema_version','id','raw_form','status','submitted_by','authorship_status','first_seen','exact_input','source_ref','definitions'],
  'properties':{
   'id':{'type':'string','pattern':'^[a-z0-9][a-z0-9-]*$'},'raw_form':{'type':'string','minLength':1},
@@ -880,7 +880,7 @@ write_json(TARGET / 'data/schema/proposal.schema.json', {
  }
 })
 write_json(TARGET / 'data/schema/approval.schema.json', {
- '$schema':'https://json-schema.org/draft/2020-12/schema','title':'Daniel admission decision','type':'object','additionalProperties':False,
+ '$schema':'[Adresse entfernt]','title':'Daniel admission decision','type':'object','additionalProperties':False,
  'required':['schema_version','id','term_id','decision','decided_by','decision_date','rationale','evidence_refs'],
  'properties':{
   'schema_version':{'type':'string'},'id':{'type':'string'},'term_id':{'type':'string'},
@@ -889,12 +889,12 @@ write_json(TARGET / 'data/schema/approval.schema.json', {
  }
 })
 write_json(TARGET / 'data/schema/contributor.schema.json', {
- '$schema':'https://json-schema.org/draft/2020-12/schema','title':'Contributor','type':'object','additionalProperties':True,
+ '$schema':'[Adresse entfernt]','title':'Contributor','type':'object','additionalProperties':True,
  'required':['id','display_name','type','roles','can_accept_official_terms'],
  'properties':{'type':{'enum':['human','ai-system','organization','unresolved']}}
 })
 write_json(TARGET / 'data/schema/provenance-event.schema.json', {
- '$schema':'https://json-schema.org/draft/2020-12/schema','title':'Provenance event','type':'object','additionalProperties':True,
+ '$schema':'[Adresse entfernt]','title':'Provenance event','type':'object','additionalProperties':True,
  'required':['event_id','term_id','event_type','event_date','contributors','statement','source_ref'],
  'properties':{'event_type':{'enum':['first-use','transmission','interpretation','translation','correction','retraction','embodiment','admission','status-change']}}
 })

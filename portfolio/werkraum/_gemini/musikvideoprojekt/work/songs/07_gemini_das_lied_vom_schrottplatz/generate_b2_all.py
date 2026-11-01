@@ -25,7 +25,7 @@ for idx, sc in enumerate(scenes):
     
     print(f"[{idx+1}/{len(scenes)}] Generiere {sc['id']} (Thron-Wort: {sc['thron_wort']})...")
     encoded = urllib.parse.quote(sc["prompt"])
-    url = f"https://image.pollinations.ai/prompt/{encoded}?width=1024&height=1024&model=flux"
+    url = f"[Adresse entfernt]"
     
     success = False
     for attempt in range(5):

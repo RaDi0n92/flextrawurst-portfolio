@@ -44,9 +44,9 @@ def adressen() -> list:
         ziel = next((m.group(1) for m in
                      re.finditer(r"127\.0\.0\.1:(3\d{3})", text)), None)
         if port and ziel and port not in ("80", "443"):
-            gefunden.append((datei.name, f"https://[SERVER-IP]:{port}/"))
-    gefunden.append(("flextrawurst.de/protokolle", "https://flextrawurst.de/protokolle/"))
-    gefunden.append(("flextrawurst.de/inboxvault", "https://flextrawurst.de/inboxvault/"))
+            gefunden.append((datei.name, f"[Adresse entfernt]"))
+    gefunden.append(("flextrawurst.de/protokolle", "[Adresse entfernt]"))
+    gefunden.append(("flextrawurst.de/inboxvault", "[Adresse entfernt]"))
     return sorted(set(gefunden))
 
 

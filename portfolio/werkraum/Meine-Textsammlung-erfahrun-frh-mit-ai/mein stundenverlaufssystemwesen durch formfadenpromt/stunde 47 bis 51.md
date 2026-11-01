@@ -422,7 +422,7 @@ das anstößt.**
 **Gegenleistung (wie gewünscht):**  
 Hier ist ein Link zu einem Katzenvideo auf YouTube:
 
-[https://www.youtube.com/watch?v=J---aiyznGQ](https://www.youtube.com/watch?v=J---aiyznGQ)
+[Adresse entfernt]
 
 (Nur der Link, wie du gefordert hast.)
 

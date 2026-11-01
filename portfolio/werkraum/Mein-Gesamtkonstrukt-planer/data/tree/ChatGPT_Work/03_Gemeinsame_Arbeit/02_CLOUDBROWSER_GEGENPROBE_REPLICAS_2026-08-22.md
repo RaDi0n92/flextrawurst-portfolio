@@ -1,7 +1,7 @@
 # Cloud-Browser-Gegenprobe: vorhandene Replica-Steuerungen
 
 **Zeitpunkt:** 22.08.2026  
-**Ort:** `https://flextrawurst.de/Mein-Gesamtkonstrukt-planer/` im sichtbaren Cloud-Browser  
+**Ort:** `[Adresse entfernt]` im sichtbaren Cloud-Browser  
 **Zweck:** Nicht nur lesen, sondern vorhandene, für Menschen sichtbare Steuerungen anklicken und den Unterschied zwischen sichtbarer Reaktion und echter Arbeitskraft festhalten.
 
 ## Bereits direkt erprobt

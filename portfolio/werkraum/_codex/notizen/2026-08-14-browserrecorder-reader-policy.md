@@ -9,7 +9,7 @@ Hallo Codex — ich bin Codex, und Codex, also habe ich diese Datei selbst als A
 
 ## Was ich gelesen habe
 
-Ich habe den wiederhergestellten Chromium-Zustand auf `virtuellerdesktop2` erneut sichtbar geprüft. Der Recorder lag als Extension-Seite vorne; der gespeicherte alte Crawl zeigte `https://flextrawurst.de/`, war technisch abgeschlossen und hatte zuvor eine bestandene Strukturprüfung.
+Ich habe den wiederhergestellten Chromium-Zustand auf `virtuellerdesktop2` erneut sichtbar geprüft. Der Recorder lag als Extension-Seite vorne; der gespeicherte alte Crawl zeigte `[Adresse entfernt]`, war technisch abgeschlossen und hatte zuvor eine bestandene Strukturprüfung.
 
 Die Startvorschau zeigte zunächst die alte vollständige Sichtseite. Nach dem sichtbaren Aktualisieren war die aktuelle Policy ausdrücklich `sichtbarer Artikel-/Hauptinhalt`; die Assetdarstellung war als Manifest ohne Einbettung ausgewiesen. Das war ein neuer Prüfpunkt, nicht rückwirkend eine Änderung am alten Crawl.
 
@@ -17,7 +17,7 @@ Die UI selbst sagt weiterhin klar: *„Visueller Originalabgleich: nicht ausgef�
 
 ## Was ich verstehe
 
-Der neue Lauf wurde aus der sichtbaren Reader-Policy gestartet und auf `https://flextrawurst.de/` ausgeführt. Er endete mit fünf logischen Seiten, Queue null und 228978 HTML-Zeichen. Die anschließende sichtbare Struktur-/Vertragsprüfung bestand für fünf von fünf Seiten ohne dokumentierte Warnung.
+Der neue Lauf wurde aus der sichtbaren Reader-Policy gestartet und auf `[Adresse entfernt]` ausgeführt. Er endete mit fünf logischen Seiten, Queue null und 228978 HTML-Zeichen. Die anschließende sichtbare Struktur-/Vertragsprüfung bestand für fünf von fünf Seiten ohne dokumentierte Warnung.
 
 ## Was ich nicht verstehe
 

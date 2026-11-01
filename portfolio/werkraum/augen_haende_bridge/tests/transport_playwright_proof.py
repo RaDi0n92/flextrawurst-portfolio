@@ -75,7 +75,7 @@ async def run():
             # Use the same loopback origin as the relay. Chromium blocks a
             # synthetic public origin reaching 127.0.0.1 via Local Network
             # Access Checks before the WebSocket handshake starts.
-            async with relay.listen(origins=[None, re.compile(r"http://127\.0\.0\.1(?::[0-9]+)?")]) as server:
+            async with relay.listen(origins=[None, re.compile(r"[Adresse entfernt]\.0\.0\.1(?::[0-9]+)?")]) as server:
                 url = f"ws://127.0.0.1:{server.sockets[0].getsockname()[1]}"
                 async with BridgeClient(url, agent_token) as agent, async_playwright() as pw:
                     binary = os.environ.get("PLAYWRIGHT_CHROMIUM_EXECUTABLE") or shutil.which("chromium")

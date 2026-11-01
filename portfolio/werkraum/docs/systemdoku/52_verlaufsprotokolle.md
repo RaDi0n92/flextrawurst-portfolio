@@ -62,8 +62,8 @@ ein fehlendes Protokoll darf nie einen Vorgang abbrechen.
 
 | Weg | Adresse |
 |---|---|
-| Browser | `https://flextrawurst.de/protokolle/` |
-| eigener Port | `https://[SERVER-IP]:8457/` |
+| Browser | `[Adresse entfernt]` |
+| eigener Port | `[Adresse entfernt]` |
 | Container | `obsidian-protokolle`, Vault ist `/root/werkraum/protokolle` |
 
 Eigener Zugang über `/etc/nginx/.htpasswd_protokolle`, **nicht** die gemeinsame

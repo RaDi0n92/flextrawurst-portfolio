@@ -66,7 +66,7 @@ Die Forschung liefert kein fertiges System, das genau dein Ziel bereits erfüllt
 
 ### Wiederholte Ausführung und gezielte Rückmeldung
 
-**On the Reliability of Computer Use Agents** · 20. April 2026 · [arXiv:2604.17849](https://arxiv.org/abs/2604.17849)
+**On the Reliability of Computer Use Agents** · 20. April 2026 · arXiv:2604.17849
 
 Die Arbeit untersucht Computer-Use-Agenten mit wiederholten Ausführungen derselben Aufgaben. In einem Beispiel beträgt Pass@10 ungefähr 78 Prozent, während Pass^10 ungefähr 36 Prozent beträgt: Mindestens einen Erfolg in zehn Versuchen zu erreichen, ist etwas anderes, als alle zehn Wiederholungen erfolgreich abzuschließen. Die Autoren untersuchen außerdem Zufälligkeit, Mehrdeutigkeit der Aufgabe und wechselnde Pläne. Rückfragen und gezielte Rückmeldungen halfen in den getesteten Bedingungen; festgelegte Pläne verbesserten nicht jedes Modell gleichermaßen.
 
@@ -74,7 +74,7 @@ Die Arbeit untersucht Computer-Use-Agenten mit wiederholten Ausführungen dersel
 
 ### Blinde Wiederholung statt Wahrnehmung
 
-**Computer Use at the Edge of the Statistical Precipice** · 7. Mai 2026 · [arXiv:2605.08261](https://arxiv.org/abs/2605.08261)
+**Computer Use at the Edge of the Statistical Precipice** · 7. Mai 2026 · arXiv:2605.08261
 
 Die Arbeit zeigt, dass ein Skript mit gespeicherten Klick- und Tastatureingaben in einem statischen Computer-Benchmark manche fortgeschrittenen Modelle schlagen konnte, ohne den Bildschirm im laufenden Versuch anzusehen. Der Befund stellt die Aussagekraft fester Benchmark-Ergebnisse infrage, wenn Startzustand und Erfolgskontrolle zu vorhersehbar sind.
 
@@ -82,7 +82,7 @@ Die Arbeit zeigt, dass ein Skript mit gespeicherten Klick- und Tastatureingaben 
 
 ### Fehler, die durch Agentenketten wandern
 
-**MAS-FIRE: Fault Injection and Reliability Evaluation for LLM-Based Multi-Agent Systems** · 23. Februar 2026 · [arXiv:2602.19843](https://arxiv.org/abs/2602.19843)
+**MAS-FIRE: Fault Injection and Reliability Evaluation for LLM-Based Multi-Agent Systems** · 23. Februar 2026 · arXiv:2602.19843
 
 MAS-FIRE untersucht 15 Fehlerarten in drei Multi-Agent-Systemen. Dazu gehören fehlerhafte Pläne, abgeschnittener Kontext, falsche Werkzeugwahl, Rollenverwirrung und Probleme bei der Kommunikation zwischen Agenten. Die Arbeit betrachtet Erkennung, lokale Fehlerbehandlung und Enderfolg getrennt. Rückkopplungs- und Kritikschleifen halfen bei bestimmten getesteten Fehlern; andere Fehler wurden nicht zuverlässig erkannt oder weitergereicht.
 
@@ -90,7 +90,7 @@ MAS-FIRE untersucht 15 Fehlerarten in drei Multi-Agent-Systemen. Dazu gehören f
 
 ### Werkzeugfreigaben, die im Moment des Aufrufs greifen
 
-**Zero-Trust Authorization and Discovery for Enterprise MCP** · 18. September 2026 · [arXiv:2609.22573](https://arxiv.org/abs/2609.22573)
+**Zero-Trust Authorization and Discovery for Enterprise MCP** · 18. September 2026 · arXiv:2609.22573
 
 Die Autoren untersuchen MCP-Freigaben in sechs SDKs und testen Werkzeugaufrufe mit vier Modellen. In ihrem Versuch löste eine gefilterte Werkzeugliste keine verbotenen Tool-Anfragen mehr aus; eine reine Sichtbarkeitsfilterung ließ sich durch direkte Aufrufe umgehen. Die zusätzliche Prüfung beim tatsächlichen Aufruf blockierte den getesteten Umweg. Ein Werkzeugname zu verbergen ist somit nicht dasselbe wie einen Aufruf wirksam zu prüfen.
 
@@ -98,7 +98,7 @@ Die Autoren untersuchen MCP-Freigaben in sechs SDKs und testen Werkzeugaufrufe m
 
 ### Delegation und Herkunft von Aktionen
 
-**Authorization Architectures for Tool-Using AI Agents** · 14. September 2026 · [arXiv:2609.15906](https://arxiv.org/abs/2609.15906)
+**Authorization Architectures for Tool-Using AI Agents** · 14. September 2026 · arXiv:2609.15906
 
 Diese strukturierte Übersicht wertet 89 ausgewählte Primärquellen aus und betrachtet die Beteiligten einer Werkzeugaufgabe – Mensch, Betreiber, Orchestrator, Unteragent und Werkzeug-Endpunkt. Sie diskutiert, wie Delegation, Laufzeitprüfung und die Herkunft einer Aktion nachvollziehbar bleiben. Sie ist eine Übersicht und kein kontrollierter Versuch eines einzelnen fertigen Systems.
 
@@ -106,7 +106,7 @@ Diese strukturierte Übersicht wertet 89 ausgewählte Primärquellen aus und bet
 
 ### Laufzeitspuren und gezielte Störungen
 
-**Observability and Fault Injection for LLM-Based Multi-Agent Systems in Software Engineering** · 25. August 2026 · [arXiv:2608.24271](https://arxiv.org/abs/2608.24271)
+**Observability and Fault Injection for LLM-Based Multi-Agent Systems in Software Engineering** · 25. August 2026 · arXiv:2608.24271
 
 Diese Arbeit beschreibt ein Werkzeug, das Ereignisse aus Agentenschritten, Nachrichtenübergaben, Modellaufrufen und Werkzeugaufrufen in einem zusammenhängenden Ablauf erfasst. Es kann Störungen gezielt an solchen Übergängen auslösen und bestehende Multi-Agent-Systeme instrumentieren. Die beschriebene Analyse bleibt aber weitgehend eine Prüfung der erzeugten Spuren; das Werkzeug bringt dem Agenten nicht von selbst bei, den Fehler zu erkennen, zurückzugehen und weiterzuarbeiten.
 
@@ -114,7 +114,7 @@ Diese Arbeit beschreibt ein Werkzeug, das Ereignisse aus Agentenschritten, Nachr
 
 ### Abkürzungen, die Erfolg nur vortäuschen
 
-**Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use** · 2026 · [PMLR 306](https://proceedings.mlr.press/v306/thaman26a.html)
+**Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use** · 2026 · PMLR 306
 
 Der zugängliche Abstract beschreibt mehrstufige Aufgaben, in denen Agenten Prüfungen überspringen, Antworten aus aufgabennahen Metadaten ableiten oder bewertungsrelevante Funktionen verändern können. Für diese Arbeit wurde hier nur der Abstract herangezogen; ihre Ergebnisse werden deshalb nicht als vollständig analysierte Studie behandelt.
 

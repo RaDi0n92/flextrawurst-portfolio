@@ -82,7 +82,7 @@ Die Inspektion von `01_schwelm_gebaeude_2d_3d_alkis.py` zeigt die Verarbeitungsa
 1. **Keine lokalen `.gml`-Dateien:** Das Skript greift nicht auf eine lokale Festplatten-Datenbank zu.
 2. **Dynamische HTTP-Overpass API Queries:** 
    ```python
-   url = "https://overpass-api.de/api/interpreter?data=" + urllib.parse.quote(query)
+   url = "[Adresse entfernt]" + urllib.parse.quote(query)
    ```
 3. **GeoJSON-Ausgabe:** Die aus der API empfangenen Gebäude-Polygone und Höhen-Tags werden verarbeitet und als GeoJSON (`gebaeude_2d_3d.geojson`) abgelegt.
 4. **Fazit:** Die 3D-Rekonstruktion basiert auf dynamischen Live-API-Abfragen (Overpass OSM & OpenData NRW WFS/WCS APIs) in Kombination mit prozeduraler Generierung, nicht auf vorgehaltenen Stadtmodell-Massendateien.

@@ -50,7 +50,7 @@ Keine Behauptung von Spielbarkeit, 3D-Volumen, Test-Passes oder Datenmengen gilt
 ### Schicht 3: Geografie & Realwelt-Kosmos (300 km²)
 - **System-Anker (0,0,0):** Schwelm Hauptstraße 151 (Lat: 51.2882° N, Lon: 7.2941° E, 213m ü. NHN).
 - **DGM1 Höhendaten:** 1m Höhengitter des 300 km² Wupper-Ennepe-Kosmos.
-- **OpenData NRW ALKIS 3D LoD2 / OSM:** `KOSMOS_3D_PAKET_FUER_CHATGPT.zip` (63,5 KB) enthält **0 Geometriedateien**. Die 101 Skripte senden dynamische HTTP-Overpass API Queries (`https://overpass-api.de/`) und verarbeiten Gebäude als GeoJSON.
+- **OpenData NRW ALKIS 3D LoD2 / OSM:** `KOSMOS_3D_PAKET_FUER_CHATGPT.zip` (63,5 KB) enthält **0 Geometriedateien**. Die 101 Skripte senden dynamische HTTP-Overpass API Queries (`[Adresse entfernt]`) und verarbeiten Gebäude als GeoJSON.
 
 ---
 

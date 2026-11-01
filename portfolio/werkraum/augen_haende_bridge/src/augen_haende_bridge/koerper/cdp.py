@@ -51,7 +51,7 @@ class Knoten:
 
 def _http(host: str, port: int, pfad: str, timeout: float):
     try:
-        with urllib.request.urlopen(f"http://{host}:{port}{pfad}", timeout=timeout) as antwort:
+        with urllib.request.urlopen(f"[Adresse entfernt]", timeout=timeout) as antwort:
             return json.loads(antwort.read().decode("utf-8"))
     except (urllib.error.URLError, OSError, ValueError) as fehler:
         raise CdpFehler(f"kein Debug-Anschluss auf {host}:{port} ({fehler.__class__.__name__})") from None

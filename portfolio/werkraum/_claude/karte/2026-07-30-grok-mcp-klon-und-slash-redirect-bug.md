@@ -12,7 +12,7 @@ aber ohne vorgefertigtes Zuhause -- Grok soll sich selbst etwas aufbauen. Umgese
 etablierten Muster (ein gemeinsamer `vps_mcp_server.py`-Kern, neue Env-Vars, neue
 systemd-Unit `vps-mcp-grok.service`, Port 8096, neue nginx-Locations):
 
-- URL: `https://flextrawurst.de/werkzeugkoerper-grok-[REDACTED]/`
+- URL: `[Adresse entfernt]`
 - Client ID: `vps-mcp-grok-[REDACTED]`
 - Zuhause bewusst leer: `_grok/MANIFEST.json` mit `{"sections": {}}`, `_grok/protokoll/
   grok_zuhause_v1.json` beschreibt nur die Startbedingung ("leer, offen, selbst zu

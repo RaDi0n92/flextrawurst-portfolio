@@ -42,11 +42,11 @@ geschützte Login-Verhalten besitzt.
 ## Nachprüfung: sichtbaren Tab wirklich gewechselt
 
 Nach dem `example.com`-Klick wurde im echten Chromium sichtbar auf den bereits
-offenen Tab `https://flextrawurst.de/` gewechselt. Vor dem nächsten Klick zeigte
+offenen Tab `[Adresse entfernt]` gewechselt. Vor dem nächsten Klick zeigte
 die Seitenleiste noch die vorige Quelle; genau deshalb wurde nicht der sichtbare
 Text übernommen, sondern erneut der eine Aufnahmebutton betätigt.
 
-Danach zeigte die Seitenleiste `Quelle: https://flextrawurst.de` und der
+Danach zeigte die Seitenleiste `Quelle: [Adresse entfernt]` und der
 Workspace zwei getrennte Snapshots: zuerst `Example Domain`, danach
 `Was ist das? — flextrawurst`. Die Runtime-/IndexedDB-Rücklese bestätigte für
 beide `source_mode: active_visible_tab`, `trigger: explicit_user_start` und
@@ -67,13 +67,13 @@ Snapshot.
 
 ## Nachprüfung: lange beliebige Seite an manueller Scrollposition
 
-Als weiterer unabhängiger Live-Fall wurde `https://www.rfc-editor.org/` sichtbar
+Als weiterer unabhängiger Live-Fall wurde `[Adresse entfernt]` sichtbar
 geöffnet. Die Seite wurde mit einem menschlichen `Page Down` auf Position
 `481/1036` bewegt. Das Vorherbild zeigte den RFC-Editor-Ausschnitt mit den
 Bereichen `Learn about RFCs` und `Browse RFCs`.
 
 Danach wurde genau einmal `Aktuelle sichtbare Seite aufnehmen` geklickt. Der
-Workspace zeigte `RFC Editor · https://www.rfc-editor.org/ · sichtbare Position
+Workspace zeigte `RFC Editor · [Adresse entfernt] · sichtbare Position
 481/1036` und den passenden Screenshot. Die persistente Rücklese bestätigte:
 `source_mode: active_visible_tab`, `trigger: explicit_user_start`,
 `snapshot: true`, `reached_end: false`, `chunk_count: 1`, `scroll_height: 1585`,

@@ -93,10 +93,10 @@ Daniels Auftrag: den Server für ChatGPT erreichbar machen (Custom-GPT-Actions v
 - **`initialize`-Methode fehlte** im JSON-RPC-Handler — das offizielle MCP-Protokoll erwartet diesen Handshake vor `tools/list`/`tools/call`, sonst brechen konforme Clients (ChatGPTs nativer MCP-Connector) die Verbindung ab. Ergänzt.
 - **OpenAPI-`servers`-URL** war hart auf `http://127.0.0.1:8090` gesetzt — jetzt über `FLEXTRAWURST_3D_MCP_PUBLIC_URL` konfigurierbar.
 
-**Öffentlich erreichbar unter:** `https://flextrawurst.de/3d-mcp/` (nginx-Location in `/etc/nginx/sites-available/flextrawurst`, proxy zu weiterhin nur auf `127.0.0.1:8090` gebundenem Server — kein neuer offener Port). Schlüssel liegt in der systemd-Unit (`Environment=FLEXTRAWURST_3D_MCP_KEY=...`), nicht im Git-Repo.
+**Öffentlich erreichbar unter:** `[Adresse entfernt]` (nginx-Location in `/etc/nginx/sites-available/flextrawurst`, proxy zu weiterhin nur auf `127.0.0.1:8090` gebundenem Server — kein neuer offener Port). Schlüssel liegt in der systemd-Unit (`Environment=FLEXTRAWURST_3D_MCP_KEY=...`), nicht im Git-Repo.
 
-- OpenAPI-Schema für Custom GPT Actions: `https://flextrawurst.de/3d-mcp/openapi.json`
-- MCP-JSON-RPC-Endpunkt: `https://flextrawurst.de/3d-mcp/mcp`
+- OpenAPI-Schema für Custom GPT Actions: `[Adresse entfernt]`
+- MCP-JSON-RPC-Endpunkt: `[Adresse entfernt]`
 - Beide erfordern `Authorization: Bearer <FLEXTRAWURST_3D_MCP_KEY>`
 
 Verifiziert: lokal (401 ohne Key, 200 mit Key, `initialize`-Antwort korrekt formt), live über die echte Domain nach nginx-Reload, Hauptseite + Flarum-Embed danach weiterhin unverändert erreichbar. werkraum-Commit `f1789f12a`.
@@ -110,13 +110,13 @@ Der einfache Bearer-Key reicht für ChatGPTs nativen MCP-Connector nicht — der
 - Client Secret: liegt in `FLEXTRAWURST_3D_MCP_CLIENT_SECRET`
 - API-Key (für den Zustimmungs-Schritt): liegt in `FLEXTRAWURST_3D_MCP_KEY`
 
-Verifiziert: kompletter Flow lokal simuliert (authorize → Redirect mit Code → Token-Tausch → Bearer-Aufruf gegen `/mcp` erfolgreich), Discovery + DCR + Konsens-Formular auch live über `https://flextrawurst.de/3d-mcp/` getestet. werkraum-Commit `02b5c568e`.
+Verifiziert: kompletter Flow lokal simuliert (authorize → Redirect mit Code → Token-Tausch → Bearer-Aufruf gegen `/mcp` erfolgreich), Discovery + DCR + Konsens-Formular auch live über `[Adresse entfernt]` getestet. werkraum-Commit `02b5c568e`.
 
 ### 5c. Zwei Nachbesserungen beim echten Verbinden in ChatGPT
 
 1. **"doesn't support RFC 7591 Dynamic Client Registration"** — `/oauth/register` fehlte das laut RFC 7591 §3.2.1 Pflichtfeld `client_secret_expires_at` (verpflichtend sobald ein `client_secret` ausgegeben wird). Ergänzt (`0` = läuft nie ab), `grant_types`/`response_types` werden jetzt zusätzlich aus dem Request gespiegelt. Commit `a7007b8c5`.
 2. **"MCP server ... does not implement OAuth"** — der 401-Antwort auf `/mcp` fehlte der `WWW-Authenticate`-Header (RFC 9728/RFC 6750 §3), der einem konformen Client sagt, wo die Protected-Resource-Metadaten liegen. Zusätzlich beantworteten `/.well-known/oauth-protected-resource` und `/.well-known/oauth-authorization-server` bislang fälschlich dasselbe Dokument, obwohl sie laut RFC 9728 vs. RFC 8414 unterschiedliche Felder brauchen — jetzt korrekt getrennt. Commit `a1f633a3b`.
 
-Beide live über `https://flextrawurst.de/3d-mcp/` nachverifiziert.
+Beide live über `[Adresse entfernt]` nachverifiziert.
 
 3. **"3 validation errors for ListToolsResult ... inputSchema Field required"** — `tools/list` lieferte pro Tool nur `name`+`description`, die MCP-Spezifikation verlangt zusätzlich ein `inputSchema` (JSON Schema der Parameter), ChatGPTs Pydantic-Client validiert strikt dagegen. Ergänzt für alle drei Tools (dieselben Felder wie im OpenAPI-Schema, nur im JSON-Schema-Format). Commit `957322716`, live verifiziert.

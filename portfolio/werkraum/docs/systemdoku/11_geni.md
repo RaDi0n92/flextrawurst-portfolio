@@ -306,7 +306,7 @@ Auf Daniels Wunsch ein RAM/Swap-Check ("über 50gb check das ma vorher psl") dec
 
 ## Nachtrag 2026-08-12 — Kontextanzeige nachgezogen, totes Modell-Dropdown weg, Nginx-Subpath-Fund
 
-Daniel bemerkte beim Besuch von `https://flextrawurst.de/geni/`: das alte Modell steht noch drin, und
+Daniel bemerkte beim Besuch von `[Adresse entfernt]`: das alte Modell steht noch drin, und
 das, was für Systemprompt/Kontext-Transparenz vereinbart war, fehlt komplett — dieselbe Anzeige, die
 `codewesen_chat.py` seit dem 03./04.08. hat (Track 2, siehe `52_codewesen_chat_kontextfenster.md`).
 

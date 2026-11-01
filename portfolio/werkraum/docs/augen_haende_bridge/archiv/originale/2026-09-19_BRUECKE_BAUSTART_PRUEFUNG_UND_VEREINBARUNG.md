@@ -63,10 +63,10 @@ Ein Abtastraster von 10 Hz garantiert keine lückenlose Beobachtung. KDE-Arbeits
 
 ## Technische Recherche: Konsequenzen, keine Zauberrezepte
 
-- PyInstaller ist kein allgemeiner Cross-Compiler. Der Windows-Build braucht eine passende Windows-Umgebung; Wine kann untersucht werden, ersetzt aber keine native Abnahme. Quelle: https://pyinstaller.org/en/stable/ und https://www.pyinstaller.org/en/stable/usage.html
-- Bei Win32-Layered-Windows hängen Hit-Tests von Form/Transparenz und Fensterstilen ab. Ein pauschal transparentes Fenster ist nicht gleichbedeutend mit »Buttons bedienbar, Zwischenräume durchlässig«. Das muss als native Probe entschieden werden. Quelle: https://learn.microsoft.com/en-us/windows/win32/winmsg/window-features
-- `PostMessage` stellt Nachrichten in eine Queue; UIPI begrenzt den Zugriff. Erfolg beim Absenden ist kein Zustandsbeweis im Ziel. Quelle: https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-postmessagew
-- Python `pty` ist Unix-spezifisch. Terminaltransport und Darstellung dürfen nicht ungeprüft mit dem Linux-Probeprozess gleichgesetzt werden. Quelle: https://docs.python.org/3/library/pty.html
+- PyInstaller ist kein allgemeiner Cross-Compiler. Der Windows-Build braucht eine passende Windows-Umgebung; Wine kann untersucht werden, ersetzt aber keine native Abnahme. Quelle: [Adresse entfernt] und [Adresse entfernt]
+- Bei Win32-Layered-Windows hängen Hit-Tests von Form/Transparenz und Fensterstilen ab. Ein pauschal transparentes Fenster ist nicht gleichbedeutend mit »Buttons bedienbar, Zwischenräume durchlässig«. Das muss als native Probe entschieden werden. Quelle: [Adresse entfernt]
+- `PostMessage` stellt Nachrichten in eine Queue; UIPI begrenzt den Zugriff. Erfolg beim Absenden ist kein Zustandsbeweis im Ziel. Quelle: [Adresse entfernt]
+- Python `pty` ist Unix-spezifisch. Terminaltransport und Darstellung dürfen nicht ungeprüft mit dem Linux-Probeprozess gleichgesetzt werden. Quelle: [Adresse entfernt]
 
 Abruf: 2026-09-19. Daraus folgt keine bereits abgeschlossene Wahl eines neuen UI-Frameworks. Erst ein kleiner nativer Fähigkeitsbeweis entscheidet, ob der gewählte leichte Stack Transparenz, Fokus, DPI und Terminaldarstellung ausreichend trägt.
 

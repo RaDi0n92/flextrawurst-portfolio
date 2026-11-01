@@ -64,7 +64,7 @@ app = FastAPI(title="Welt-API", version="0.1.0")
 # CORS auf bekannte Origins beschränkt (C-007/Kimi-04). Die Surface läuft same-origin
 # über nginx; zusätzliche Origins via FLEXTRAWURST_CORS_ORIGINS (kommagetrennt) überschreibbar.
 _default_origins = [
-    "https://flextrawurst.de", "https://www.flextrawurst.de",
+    "[Adresse entfernt]", "[Adresse entfernt]",
     "http://localhost:8787", "http://127.0.0.1:8787",
 ]
 _cors_env = _os.environ.get("FLEXTRAWURST_CORS_ORIGINS", "")
@@ -11813,7 +11813,7 @@ def translate_texts(body: TranslateBody):
             }).encode()
 
             req = urllib.request.Request(
-                "https://api.anthropic.com/v1/messages",
+                "[Adresse entfernt]",
                 data=payload,
                 headers={
                     "Content-Type": "application/json",
@@ -15587,7 +15587,7 @@ def guardianstyle_verzeichnisbaum():
 # wird -- deshalb hier auf "?" umgestellt, damit der kopierte Link ab der
 # Quelle schon fuer jedes Modell/Tool funktioniert, nicht nur fuer
 # Browser-faehige.
-CRAWLSCHLUESSEL_URL_PRAEFIX = "https://flextrawurst.de/flextrawurst_surface.html?crawlschluessel="
+CRAWLSCHLUESSEL_URL_PRAEFIX = "[Adresse entfernt]"
 
 
 from crawlkey_client import CrawlKey
@@ -15642,7 +15642,7 @@ def crawlschluessel_rotieren(authorization: str | None = Header(default=None)):
 # der beiden Kreislaeufe meinst du gerade".
 # Claude Code(20-08-2026): gleicher Grund/gleiche Umstellung wie bei
 # CRAWLSCHLUESSEL_URL_PRAEFIX direkt oberhalb -- siehe Kommentar dort.
-ARCHKEY_URL_PRAEFIX = "https://flextrawurst.de/flextrawurst_surface.html?archkey="
+ARCHKEY_URL_PRAEFIX = "[Adresse entfernt]"
 
 
 def _archkey_lesen() -> dict:
@@ -15713,7 +15713,7 @@ def livecrawl_rotieren(system: str, authorization: str | None = Header(default=N
 def toolboxcrawl_aktuell(authorization: str | None = Header(default=None)):
     _require_admin(authorization)
     schluessel = _TOOLBOX_CRAWLKEY.read()
-    return {"schluessel": schluessel, "crawl_url": f"https://flextrawurst.de/toolbox/?key={schluessel}"}
+    return {"schluessel": schluessel, "crawl_url": f"[Adresse entfernt]"}
 
 
 @app.post("/toolboxcrawl/rotieren")
@@ -15723,7 +15723,7 @@ def toolboxcrawl_rotieren(authorization: str | None = Header(default=None)):
         neuer_schluessel = _TOOLBOX_CRAWLKEY.rotate()
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"Toolbox-Rotation fehlgeschlagen: {e}")
-    return {"schluessel": neuer_schluessel, "crawl_url": f"https://flextrawurst.de/toolbox/?key={neuer_schluessel}"}
+    return {"schluessel": neuer_schluessel, "crawl_url": f"[Adresse entfernt]"}
 
 
 @app.get("/guardianstyle/zeitschichten", dependencies=[Depends(_require_archive_access)])

@@ -269,7 +269,7 @@ Dieses Cache-Problem existiert vermutlich unabhängig von der ctx-size-Wahl
 je größer die erlaubte Historie, desto teurer wird jeder Cache-Miss. **Deshalb
 zurückgesetzt auf `--ctx-size 48884` (24576/Slot)**, bis das Cache-Problem
 separat untersucht ist (siehe verlinkter GitHub-Kommentar im Log:
-https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055).
+[Adresse entfernt]).
 Client-seitige `NUM_CTX`/`INTERACTIVE_NUM_CTX`-Anzeigen wurden entsprechend
 mit zurückgesetzt.
 

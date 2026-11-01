@@ -19,7 +19,7 @@ class CallerTests(unittest.TestCase):
                     "id": "chat-2",
                     "type": "page",
                     "title": "Chat B",
-                    "url": "https://chatgpt.com/c/bbbbbbbb-2222",
+                    "url": "[Adresse entfernt]",
                 },
                 {
                     "id": "other-page",
@@ -31,13 +31,13 @@ class CallerTests(unittest.TestCase):
                     "id": "chat-not-page",
                     "type": "background_page",
                     "title": "Chat background",
-                    "url": "https://chatgpt.com/c/cccccccc-3333",
+                    "url": "[Adresse entfernt]",
                 },
                 {
                     "id": "chat-1",
                     "type": "page",
                     "title": "Chat A",
-                    "url": "https://chatgpt.com/c/aaaaaaaa-1111",
+                    "url": "[Adresse entfernt]",
                 },
             ]
         )
@@ -57,7 +57,7 @@ class CallerTests(unittest.TestCase):
                         "id": "target-1",
                         "type": "page",
                         "title": "Dedicated test chat",
-                        "url": "https://chatgpt.com/c/test-1",
+                        "url": "[Adresse entfernt]",
                     }
                 ]
             )

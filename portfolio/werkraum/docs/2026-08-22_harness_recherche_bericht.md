@@ -6,7 +6,7 @@ Dreistufig: (1) Weakness Mining — wiederkehrende Fehlermuster aus echten Ausf�
 
 Ergebnisse, Terminal-Bench 2.0: MiniMax M2.5 40.5%→61.9% (+21.4pp), Qwen3.5-35B-A3B 23.8%→38.1% (+14.3pp), GLM-5 42.9%→57.1% (+14.2pp). Reine Harness-Änderung, Modellgewichte unverändert. Konvergiert meist in 5-7 Runden.
 
-Quelle: [What Is Self-Harness? — explainx.ai](https://explainx.ai/blog/what-is-self-harness-ai-agents-complete-guide-2026)
+Quelle: What Is Self-Harness? — explainx.ai
 
 ## SIA (Self Improving AI with Harness & Weight Updates)
 
@@ -16,7 +16,7 @@ Dreiphasiger Loop: (1) Execution — Agent läuft gegen Eval-Datensatz, volle Tr
 
 Ergebnisse: LawBench 70.1% vs. 45.0% SOTA (+25.1pp), AlphaEvolve TriMul 1017µs vs. 1161µs SOTA (12.4% schneller), MAGIC scRNA-seq 0.289 vs. 0.240 mse_norm SOTA (+20.4%).
 
-Quelle: [SIA: Self Improving AI with Harness & Weight Updates](https://arxiv.org/html/2605.27276v2)
+Quelle: SIA: Self Improving AI with Harness & Weight Updates
 
 ## Graph-basierte Frameworks (LangGraph, AgentSPEX, zerolang)
 
@@ -24,13 +24,13 @@ LangGraph: Agent-Loop als gerichteter Graph, typisierter State, bedingte Kanten,
 
 Zentrale Einordnung: diese Frameworks strukturieren Multi-Schritt-Agenten-Workflows mit Tool-Aufrufen und Verzweigungen — nicht einen einzelnen Systemprompt-Text.
 
-Quellen: [Awesome Harness Engineering](https://github.com/ai-boost/awesome-harness-engineering), [AgentSPEX](https://arxiv.org/html/2604.13346v1)
+Quellen: Awesome Harness Engineering, AgentSPEX
 
 ## Harness ist Infrastruktur, nicht Prompt-Text
 
 Kernsatz: "The harness is doing operational work that the prompt should never have been responsible for." Harness = Auth, Guardrails, Speicher, Zustandsverwaltung, Tool-Dispatch, Verifikation, Deployment — der Agent/Prompt enthält nur die Logik die ihn einzigartig macht.
 
-Quelle: [Agent Harness Architecture Guide — Medium](https://medium.com/@anubhavgoyal101/what-is-agent-harness-engineering-the-architecture-doing-80-of-the-work-in-every-production-agent-00c89931d235)
+Quelle: Agent Harness Architecture Guide — Medium
 
 ## Claude Codes echte Hooks/settings.json
 
@@ -38,7 +38,7 @@ Quelle: [Agent Harness Architecture Guide — Medium](https://medium.com/@anubha
 
 Bekannter Bug: PreToolUse-`deny` mit Exit 2 blockiert nicht immer tatsächlich — Hook läuft, Plattform ignoriert die Entscheidung teilweise.
 
-Quellen: [Hooks reference — Claude Code Docs](https://code.claude.com/docs/en/hooks), [GitHub Issue #43407](https://github.com/anthropics/claude-code/issues/43407)
+Quellen: Hooks reference — Claude Code Docs, GitHub Issue #43407
 
 ## Meta-Harness (Stanford, Lee et al.)
 
@@ -46,7 +46,7 @@ Harness-Design so bedeutsam wie Modellgewichte: dieselbe LLM mit unterschiedlich
 
 Ergebnis: bester gefundener Harness (Label-Primed Query) 48.6% vs. ACE 40.9% (+7.7pp), bei 4x weniger Kontext-Token.
 
-Quelle: [Meta-Harness: End-to-End Optimization of Model Harnesses](https://arxiv.org/html/2603.28052v1)
+Quelle: Meta-Harness: End-to-End Optimization of Model Harnesses
 
 ## Goal Drift
 
@@ -56,7 +56,7 @@ Zwei Metriken: GD_actions (Drift durch aktives Tun — Verhältnis zielkonformer
 
 Lösungsansätze: Goal Re-Anchoring (ursprüngliches übergeordnetes Ziel periodisch neu in den Kontext einspeisen, unabhängig von der akkumulierten Trajektorie) und hierarchisches Planen (Planungs- und Ausführungsebene trennen, statt ein LLM-Aufruf für beides über eine lange Aufgabe hinweg).
 
-Quellen: [Technical Report: Evaluating Goal Drift in Language Model Agents](https://arxiv.org/pdf/2505.02709), [Goal Persistence and Goal Drift in Long-Horizon AI Agents — Zylos Research](https://zylos.ai/research/2026-04-03-goal-persistence-drift-long-horizon-ai-agents/)
+Quellen: Technical Report: Evaluating Goal Drift in Language Model Agents, Goal Persistence and Goal Drift in Long-Horizon AI Agents — Zylos Research
 
 ## Grounded vs. intrinsic Self-Correction
 
@@ -66,7 +66,7 @@ Eigenes Paper zum Kernrisiko: "Self-Attribution Bias" — wenn dasselbe Modell e
 
 Post-hoc-Kritik in Multi-Agent-Settings (anderes Modell prüft) kann +8-25pp bei komplexen Reasoning-Aufgaben bringen — aber das ist ein anderes Modell, nicht Selbstprüfung.
 
-Quellen: [Agentic AI self-correction — Weights & Biases](https://wandb.ai/site/articles/agentic-ai-self-correction-how-to-build-systems-that-fix-their-own-mistakes/), [Self-Attribution Bias: When AI Monitors Go Easy on Themselves](https://arxiv.org/html/2603.04582v1), [Agent Self-Correction: From Reflexion to Process Reward Models — Zylos Research](https://zylos.ai/research/2026-05-12-agent-self-correction-reflexion-to-prm)
+Quellen: Agentic AI self-correction — Weights & Biases, Self-Attribution Bias: When AI Monitors Go Easy on Themselves, Agent Self-Correction: From Reflexion to Process Reward Models — Zylos Research
 
 ## Claude Code native Mechanismen (Plan Mode, Goal Mode)
 
@@ -76,17 +76,17 @@ Goal Mode (`/goals`): separates, kleines Evaluator-Modell (Standard Haiku) prüf
 
 Community-Analyse von Claude Codes extrahiertem Quellcode: ~1,6% KI-Entscheidungslogik, ~98,4% operative Infrastruktur.
 
-Quellen: [Keep Claude working toward a goal — Claude Code Docs](https://code.claude.com/docs/en/goal), [What Actually Is Claude Code's Plan Mode? — Armin Ronacher](https://lucumr.pocoo.org/2025/12/17/what-is-plan-mode/), [Dive into Claude Code: The Design Space — arxiv](https://arxiv.org/html/2604.14228v2)
+Quellen: Keep Claude working toward a goal — Claude Code Docs, What Actually Is Claude Code's Plan Mode? — Armin Ronacher, Dive into Claude Code: The Design Space — arxiv
 
 ## Leichtgewichtige Python-Zustandsmaschinen für LLM-Agenten
 
 Existierende Bibliotheken ohne zusätzlichen Modellaufruf: `llmstatemachine` (robocorp — Agent pro Zustand auf definierte Aktionen beschränkt, nutzt nur Chatverlauf als Speicher), `FSM-agent-flow` (baut auf `python-statemachine` auf), `PicoFlow` (minimalistisch, async-Funktionen, leicht einbettbar).
 
-Quellen: [llmstatemachine — GitHub](https://github.com/robocorp/llmstatemachine), [FSM-agent-flow — GitHub](https://github.com/NewJerseyStyle/FSM-agent-flow), [Show HN: PicoFlow](https://news.ycombinator.com/item?id=46706535)
+Quellen: llmstatemachine — GitHub, FSM-agent-flow — GitHub, Show HN: PicoFlow
 
 ## Mein-Gesamtkonstrukt-planer (Daniels eigenes Tool, live auf flextrawurst.de)
 
-Eigene Beobachtung per Playwright, kein Drittquellen-Fund. URL: `https://flextrawurst.de/Mein-Gesamtkonstrukt-planer/`. Server-gespeicherter Werkraum, mit ChatGPT entworfen, Zweck laut Startseite: "aus Ideen, Dateien, Wissen, Plänen und Automationen ein übergebbares Ganzes formen" — explizit für Daniel und die AI-Ströme gemeinsam.
+Eigene Beobachtung per Playwright, kein Drittquellen-Fund. URL: `[Adresse entfernt]`. Server-gespeicherter Werkraum, mit ChatGPT entworfen, Zweck laut Startseite: "aus Ideen, Dateien, Wissen, Plänen und Automationen ein übergebbares Ganzes formen" — explizit für Daniel und die AI-Ströme gemeinsam.
 
 Ansichten (Tabs): Start, Canvas (kanonische Knoten/Kanten-Ansicht), Netz (räumliche Projektion, Knoten ziehbar/zoombar), Plan (Kanban-Spalten: Roh/Entwurf/Bereit/In Arbeit/Archiv), Zeitspur (chronologische Lesart derselben Objekte, keine eigene Wahrheit), Replicas (17 wählbare "Arbeitsweisen" auf denselben Objekten: Excalidraw/tldraw, PureRef, Miro/FigJam/Milanote, Obsidian Canvas/Heptabase, Photoshop/Krita, Illustrator/Inkscape, n8n/Node-RED, Unreal Blueprints, Blender Geometry Nodes, Houdini, TouchDesigner, Max/MSP, Gephi/yEd, Trello/Notion/Airtable, VS Code, GitKraken, Figma).
 
@@ -108,7 +108,7 @@ Relevanz zur Recherche: `Agent` und `LLM` sind hier bereits eigene, erstklassige
 
 **Neo4j:** reale Produktions-Fallstudien für genau diese Art Wissensgraph — Agenten, Menschen und ihre Beziehungen als Knoten/Kanten in einer tatsächlich betriebenen Graphdatenbank, kein Prototyp-Rahmenwerk.
 
-Quellen: [Graph Engineering for Multi-Agent Systems — TrueFoundry](https://www.truefoundry.com/blog/graph-engineering-enterprise-guide), [Trace LangGraph applications — LangChain Docs](https://docs.langchain.com/langsmith/trace-with-langgraph), [The Practitioner's Guide to AgentOps](https://machinelearningmastery.com/the-practitioners-guide-to-agentops/), [Useful AI agent case studies — Neo4j](https://neo4j.com/blog/agentic-ai/ai-agent-useful-case-studies/)
+Quellen: Graph Engineering for Multi-Agent Systems — TrueFoundry, Trace LangGraph applications — LangChain Docs, The Practitioner's Guide to AgentOps, Useful AI agent case studies — Neo4j
 
 ## Zielarchitektur
 
@@ -162,7 +162,7 @@ Auf Wunsch verworfen: die Zuordnung nach Agenten-API-Reife (nur tldraw/n8n techn
 - **Notizen:** Notions/Obsidians Kern — schnelles Festhalten, später durchsuchbar/verknüpfbar, ohne Struktur-Zwang beim Schreiben.
 - **Alles sonst im Leben:** Airtable/Notion-artige strukturierte Datensätze — für Dinge mit Listen-/Datenbank-Charakter statt Knoten-Charakter.
 
-Quellen: [PureRef Forum](https://www.pureref.com/forum/read.php?3,3470), [Blender Geometry Nodes to Unreal Engine — StraySpark](https://www.strayspark.studio/blog/geometry-nodes-to-unreal-engine-2026-pipeline), [Unreal Engine Blueprints Controversy — Dualshockers](https://www.dualshockers.com/unreal-engine-popular-feature-blueprints-controversy/), [Houdini vs TouchDesigner — SaaSHub](https://www.saashub.com/compare-houdini-vs-touchdesigner), [TouchDesigner/Max MSP/Houdini Forum — Derivative](https://forum.derivative.ca/t/touchdesigner-max-msp-ableton-houdini-unreal-engine-unity/134923), [GitKraken Review 2026](https://thesoftwarescout.com/gitkraken-review-2026-the-best-git-gui-client-for-most-developers/), [Figma Reviews 2026 — Capterra](https://www.capterra.com/p/175027/Figma/reviews/), [Excalidraw+ API](https://plus.excalidraw.com/docs/api), [tldraw SDK](https://tldraw.dev/), [Top 10 Note-Taking and PKM Apps 2026](https://guptadeepak.com/tools/top-10-note-taking-pkm-apps-2026/)
+Quellen: PureRef Forum, Blender Geometry Nodes to Unreal Engine — StraySpark, Unreal Engine Blueprints Controversy — Dualshockers, Houdini vs TouchDesigner — SaaSHub, TouchDesigner/Max MSP/Houdini Forum — Derivative, GitKraken Review 2026, Figma Reviews 2026 — Capterra, Excalidraw+ API, tldraw SDK, Top 10 Note-Taking and PKM Apps 2026
 
 ### Coolste Einzelfunktionen nach Tätigkeit — für "mein Leben" und flextrawurst insgesamt (Daniel, 23.08.)
 
@@ -191,15 +191,15 @@ Eigene Code-Verifikation (nicht geraten, jede Zeile gelesen):
 
 **Internet-Rohdiamanten, mit Quellen:**
 
-Der zentralste Fund: **Stanford/Google DeepMind "Generative Agents" (Smallville, Park et al. 2023)** — 25 LLM-Agenten in einer Sandbox-Stadt, mit genau der dreischichtigen Architektur, die auch flextrawurst schon (unabhängig davon) gebaut hat: Memory Stream (append-only, zeitgestempelt — entspricht `entity_thinking_log`/`ftw_posts`) → Reflection (verdichtet zu höherwertigen Einsichten — entspricht `weltbild_builder.py` + `self_model`-Versionierung) → Planning (entspricht `entscheide()`/RAG-gestützte Aktionswahl). Offizielles Repo: [joonspk-research/generative_agents](https://github.com/joonspk-research/generative_agents) (Paper: [arxiv.org/abs/2304.03442](https://arxiv.org/abs/2304.03442)). **Direkt brauchbar:** deren eigenes Dashboard (`localhost:8080/dashboard`) zeigt live Memory-Stream, aktuelle Aktivität, Ort und sogar Emoji pro Agent, PLUS alle an das LLM gesendeten Prompts — das ist praktisch exakt die "ehrlicher aktueller Zustand + Entscheidungen + wie der Systemprompt gebildet wird"-Anforderung aus Daniels Auftrag, schon als laufender Referenzcode.
+Der zentralste Fund: **Stanford/Google DeepMind "Generative Agents" (Smallville, Park et al. 2023)** — 25 LLM-Agenten in einer Sandbox-Stadt, mit genau der dreischichtigen Architektur, die auch flextrawurst schon (unabhängig davon) gebaut hat: Memory Stream (append-only, zeitgestempelt — entspricht `entity_thinking_log`/`ftw_posts`) → Reflection (verdichtet zu höherwertigen Einsichten — entspricht `weltbild_builder.py` + `self_model`-Versionierung) → Planning (entspricht `entscheide()`/RAG-gestützte Aktionswahl). Offizielles Repo: joonspk-research/generative_agents (Paper: arxiv.org/abs/2304.03442). **Direkt brauchbar:** deren eigenes Dashboard (`localhost:8080/dashboard`) zeigt live Memory-Stream, aktuelle Aktivität, Ort und sogar Emoji pro Agent, PLUS alle an das LLM gesendeten Prompts — das ist praktisch exakt die "ehrlicher aktueller Zustand + Entscheidungen + wie der Systemprompt gebildet wird"-Anforderung aus Daniels Auftrag, schon als laufender Referenzcode.
 
-Noch näher dran: **[AlexHarn/claudeville](https://github.com/AlexHarn/claudeville)** — derselbe Smallville-Ansatz, aber bereits explizit auf Claude via Agent SDK portiert (Max-Abo-kompatibel). Kein flextrawurst-Bezug, aber technisch der nächstliegende fremde Code zu genau dem was hier gebaut wird.
+Noch näher dran: **AlexHarn/claudeville** — derselbe Smallville-Ansatz, aber bereits explizit auf Claude via Agent SDK portiert (Max-Abo-kompatibel). Kein flextrawurst-Bezug, aber technisch der nächstliegende fremde Code zu genau dem was hier gebaut wird.
 
-Memory-Architektur-Vertiefung: [Generative Agents Memory — Agentic Design](https://agentic-design.ai/patterns/memory-management/generative-agents-memory), [Generative Agents Memory: The Stanford Architecture — Subodh Jena](https://www.subodhjena.com/blog/generative-agents-memory-stanford) — beschreiben die Schichtung raw observations → low-level reflections → high-level reflections → durable conclusions, die praktisch 1:1 der Kette `entity_thinking_log` → `weltbild.md` → `self_model.core`/`tendencies` entspricht, nur dass flextrawurst sie nie so benannt hat.
+Memory-Architektur-Vertiefung: Generative Agents Memory — Agentic Design, Generative Agents Memory: The Stanford Architecture — Subodh Jena — beschreiben die Schichtung raw observations → low-level reflections → high-level reflections → durable conclusions, die praktisch 1:1 der Kette `entity_thinking_log` → `weltbild.md` → `self_model.core`/`tendencies` entspricht, nur dass flextrawurst sie nie so benannt hat.
 
-Agent-Graph-Visualisierung (Knoten/Kanten, passend zum Gesamtkonstrukt-Paradigma): **Langfuse** (open source) hat eine "Agent Graph View", die jeden Trace in genau Knoten (Schritte) + Kanten (Ausführungsfluss) übersetzt — [langfuse.com](https://langfuse.com/blog/2024-07-ai-agent-observability-with-langfuse). **Arize Phoenix** (open source, OpenInference/OpenTelemetry-Standard) macht Trajektorien-Analyse + Anomalie-Erkennung über 40+ Frameworks hinweg — [Confident AI Vergleich 2026](https://www.confident-ai.com/knowledge-base/compare/best-ai-agent-observability-tools-2026). Beide sind selbst-hostbar, beide sprechen exakt die Knoten/Kanten-Sprache des Gesamtkonstrukt-Planers.
+Agent-Graph-Visualisierung (Knoten/Kanten, passend zum Gesamtkonstrukt-Paradigma): **Langfuse** (open source) hat eine "Agent Graph View", die jeden Trace in genau Knoten (Schritte) + Kanten (Ausführungsfluss) übersetzt — langfuse.com. **Arize Phoenix** (open source, OpenInference/OpenTelemetry-Standard) macht Trajektorien-Analyse + Anomalie-Erkennung über 40+ Frameworks hinweg — Confident AI Vergleich 2026. Beide sind selbst-hostbar, beide sprechen exakt die Knoten/Kanten-Sprache des Gesamtkonstrukt-Planers.
 
-Design-Ebene für "Wesen fühlt sich lebendig an, nicht wie ein Dashboard": Kommerzielle AI-Companion-Plattform **Paradot** rahmt jede KI explizit als "Being", das in einem eigenen parallelen digitalen Universum existiert, statt als Werkzeug — sprachliche/UI-Rahmung, kein technischer Fund, aber genau der Ton, den flextrawursts Grundgesetze auch wollen ([2026 Companion-Marktüberblick](https://aicompanionguides.com/blog/best-ai-companion-apps-2026/)).
+Design-Ebene für "Wesen fühlt sich lebendig an, nicht wie ein Dashboard": Kommerzielle AI-Companion-Plattform **Paradot** rahmt jede KI explizit als "Being", das in einem eigenen parallelen digitalen Universum existiert, statt als Werkzeug — sprachliche/UI-Rahmung, kein technischer Fund, aber genau der Ton, den flextrawursts Grundgesetze auch wollen (2026 Companion-Marktüberblick).
 
 **Konkreter Vorschlag, ungefragt aber knapp:** Ein "Codewesen-Live-Tab" im Gesamtkonstrukt-Planer könnte die Smallville-Dashboard-Idee (Memory-Stream + aktuelle Aktivität + gesendeter Prompt, live) mit einer Langfuse-artigen Knoten/Kanten-Trace-Ansicht kombinieren — beide Bausteine existieren bereits als Open-Source-Referenzcode, keine Neuerfindung nötig, nur Übersetzung auf `entity_thinking_log`/`build_kontext()`/`self_model`.
 

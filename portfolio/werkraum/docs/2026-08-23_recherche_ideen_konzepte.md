@@ -31,9 +31,9 @@ ZBrush/Photoshop arbeitet — Referenzen bleiben sichtbar, ohne Fenster wechseln
 müssen. Für Daniels Tool relevant als Muster: ein Modus, der bewusst NICHT sofort
 Struktur erzwingt, sondern Nebeneinanderstellen und späteres Kuratieren erlaubt.
 
-Quellen: [Make PureRef Part of Your Creative Workflow — Pablander Academy](https://www.pablander.academy/tutorials/make-pureref-part-of-your-creative-workflow),
-[How to Keep Your PureRef Mood Board Organized — MakeUseOf](https://www.makeuseof.com/pureref-mood-board-organize-tips/),
-[How to organise a creative moodboard — Théo Gohier](https://inspirant.substack.com/p/how-to-organize-a-creative-moodboard)
+Quellen: Make PureRef Part of Your Creative Workflow — Pablander Academy,
+How to Keep Your PureRef Mood Board Organized — MakeUseOf,
+How to organise a creative moodboard — Théo Gohier
 
 ---
 
@@ -53,7 +53,7 @@ Verlinkungsebenen, die nicht zwangsläufig übereinstimmen — die Canvas-Strukt
 etwas anderes behaupten als die Notiz-zu-Notiz-Links. Nur sinnvoll, wenn die Canvas
 selbst einen klaren, abgegrenzten Zweck hat statt "alles zeigen zu wollen".
 
-Quelle: [Obsidian Help — Canvas Plugin (Mirror)](https://huggingface.co/spaces/anpigon/obsidian-qa-bot/blob/e272fa2f2c33a981360ec7e29f42e93f75fd504f/docs/obsidian-help/Plugins/Canvas.md)
+Quelle: Obsidian Help — Canvas Plugin (Mirror)
 
 ---
 
@@ -84,7 +84,7 @@ abschließen, wenn man weiß, wann die Idee selbst fertig gedacht ist:
 > "You only can decide when you are done with the note, when you know when you are
 > done with the idea"
 
-Quelle: [Fleeting to Permanent notes — Zettelkasten Forum](https://forum.zettelkasten.de/discussion/3142/fleeting-to-permanent-notes)
+Quelle: Fleeting to Permanent notes — Zettelkasten Forum
 
 Und aus der allgemeineren Zettelkasten-Recherche dazu, als methodischer Kern (nicht
 Einzelzitat, sondern wiederkehrendes Prinzip über mehrere Forumsbeiträge): Erfassen
@@ -94,9 +94,9 @@ sonst entstehen keine brauchbaren Notizen. Wer beide Schritte vermischt, bekommt
 entweder gar nichts erfasst (zu viel Aufwand) oder eine Sammlung roher, unbearbeiteter
 Fetzen.
 
-Quellen: [Fleeting to Permanent notes — Zettelkasten Forum](https://forum.zettelkasten.de/discussion/3142/fleeting-to-permanent-notes),
-[Storing fleeting and literature notes — Zettelkasten Forum](https://forum.zettelkasten.de/discussion/2399/storing-fleeting-and-literature-notes),
-[Separate fleeting notes from permanent notes — IX Coach](https://www.ixcoach.com/practices/zettelkasten/fleeting-vs-permanent)
+Quellen: Fleeting to Permanent notes — Zettelkasten Forum,
+Storing fleeting and literature notes — Zettelkasten Forum,
+Separate fleeting notes from permanent notes — IX Coach
 
 ---
 
@@ -118,8 +118,8 @@ Für Daniels Tool relevant: Ideen (loses Fragment) und Konzepte (verknüpfter Kn
 sind evtl. gar keine Stufen desselben Objekts, sondern zwei unterschiedliche
 Denkmodi, die nebeneinander bestehen müssten, statt dass eins ins andere "reifen" muss.
 
-Quellen: [Tana vs. Heptabase — Glasp](https://glasp.co/hatch/tomhaus/p/mVGMY6yZdVXxt7kuag9G),
-[Tana vs. Heptabase: Which One Is Right for Busy Professionals? — DataDrivenInvestor](https://medium.datadriveninvestor.com/tana-vs-heptabase-which-one-is-right-for-busy-professionals-26a057c7a06b)
+Quellen: Tana vs. Heptabase — Glasp,
+Tana vs. Heptabase: Which One Is Right for Busy Professionals? — DataDrivenInvestor
 
 ---
 

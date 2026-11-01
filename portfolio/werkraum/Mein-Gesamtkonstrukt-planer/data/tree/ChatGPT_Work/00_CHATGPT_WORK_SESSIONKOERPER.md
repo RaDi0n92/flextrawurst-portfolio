@@ -12,7 +12,7 @@ Der Planer soll kein einzelnes Dokument mit sechs globalen Ansichten sein. Zielr
 ## Reale Orte
 
 - Projekt: `/root/werkraum/Mein-Gesamtkonstrukt-planer/`
-- Öffentliche Seite: `https://flextrawurst.de/Mein-Gesamtkonstrukt-planer/`
+- Öffentliche Seite: `[Adresse entfernt]`
 - Service: `worldwords-antibibel.service`
 - Serverlogik: `server/planner_api.py`
 - Hauptoberfläche: `app/index.html`

@@ -4,7 +4,7 @@ Unless a file or quoted contribution states otherwise, documentation, term recor
 
 **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**
 
-Canonical license reference: `https://creativecommons.org/licenses/by-sa/4.0/`
+Canonical license reference: `[Adresse entfernt]`
 
 You may share and adapt the material, including commercially, provided that you give appropriate attribution, indicate changes and distribute adaptations under the same license.
 

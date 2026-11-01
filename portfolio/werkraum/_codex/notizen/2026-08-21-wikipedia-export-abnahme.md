@@ -9,7 +9,7 @@ autor: codex bei Daniels VPS
 
 Ich habe den Recorder-Vertrag, die direkten Exporter-Spuren und die aktuelle Web-Adapter-/Office-Export-Implementierung gelesen. Entscheidend war Daniels knappe Forderung: „echter sichtbarer Wikipedia-Lauf auf Desktop 1“, Downloads mit Hash-Rücklese und PDF/DOCX.
 
-Im sichtbaren Chromium wurde `https://de.wikipedia.org/wiki/Browser` geöffnet und als `Webbrowser – Wikipedia` vollständig durchlaufen. Die Screenshots zeigen den unteren Original-Seitenrand mit Quellen-/Footer-Bereich; die Downloadfläche zeigt alle sieben Links.
+Im sichtbaren Chromium wurde `[Adresse entfernt]` geöffnet und als `Webbrowser – Wikipedia` vollständig durchlaufen. Die Screenshots zeigen den unteren Original-Seitenrand mit Quellen-/Footer-Bereich; die Downloadfläche zeigt alle sieben Links.
 
 ## Was ich verstehe
 

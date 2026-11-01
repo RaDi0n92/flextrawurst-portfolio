@@ -249,7 +249,7 @@ async function fetchSplitter() {
   
   // LIVE-MODUS: holt echte Splitter von deinem System
   try {
-    const res = await fetch("http://[SERVER-IP]:8020/api/splitter");
+    const res = await fetch("[Adresse entfernt]");
     return await res.json();
   } catch(e) {
     console.warn("Keine Live-Daten, warte...");

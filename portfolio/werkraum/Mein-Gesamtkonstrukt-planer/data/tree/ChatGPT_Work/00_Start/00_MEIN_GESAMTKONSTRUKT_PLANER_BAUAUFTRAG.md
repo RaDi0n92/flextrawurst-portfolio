@@ -23,7 +23,7 @@ Nicht behaupten, eine Funktion existiere, wenn sie nur dekorativ aussieht. Nicht
 
 | Zweck | Reale Stelle |
 |---|---|
-| Öffentliche Planer-URL | `https://flextrawurst.de/Mein-Gesamtkonstrukt-planer/` |
+| Öffentliche Planer-URL | `[Adresse entfernt]` |
 | VPS-Arbeitswurzel | `/root/werkraum/Mein-Gesamtkonstrukt-planer/` |
 | Kanonischer Planerzustand | `data/current.json` |
 | Menschlich sichtbare Dateien und Ordner | `data/tree/` |
@@ -193,7 +193,7 @@ Ein Punkt ist erst abgeschlossen, wenn im Spurenraum oder Feedback nachvollziehb
 
 ## Startprompt für einen neuen ausführenden Agenten
 
-> Lies `00_MEIN_GESAMTKONSTRUKT_PLANER_BAUAUFTRAG.md` vollständig. Prüfe zuerst den echten aktuellen Stand unter `https://flextrawurst.de/Mein-Gesamtkonstrukt-planer/` und den zugehörigen VPS-Arbeitsbaum. Wähle genau ein offenes eigenes Feedback. Baue nur dessen kleinsten vollständigen Fix. Prüfe die reale Nutzerhandlung mit Playwright, führe anschließend drei Sokrates-/Redteam-Runden aus, speichere die Folgefrage als neues Feedback und hinterlasse eine nachvollziehbare AI-Spur. Markiere erst dann den bearbeiteten Punkt als erledigt. Behaupte keine Replica-Funktion als vorhanden, wenn ihre Kernhandlung nicht existiert und geprüft wurde.
+> Lies `00_MEIN_GESAMTKONSTRUKT_PLANER_BAUAUFTRAG.md` vollständig. Prüfe zuerst den echten aktuellen Stand unter `[Adresse entfernt]` und den zugehörigen VPS-Arbeitsbaum. Wähle genau ein offenes eigenes Feedback. Baue nur dessen kleinsten vollständigen Fix. Prüfe die reale Nutzerhandlung mit Playwright, führe anschließend drei Sokrates-/Redteam-Runden aus, speichere die Folgefrage als neues Feedback und hinterlasse eine nachvollziehbare AI-Spur. Markiere erst dann den bearbeiteten Punkt als erledigt. Behaupte keine Replica-Funktion als vorhanden, wenn ihre Kernhandlung nicht existiert und geprüft wurde.
 
 ## Übergabeformat nach einem Arbeitsschritt
 

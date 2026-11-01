@@ -19,7 +19,7 @@ bei Erfolg wird Anzahl der gelesenen Manifeste und die lokale Ergänzung angezei
 - `node --check background.js collection_workspace.js` — PASS.
 - `python3 -m py_compile browser_capture.py app.py` — PASS.
 - Vertragsgate — PASS (10 Marker).
-- Echter HTTPS-Probe gegen `https://flextrawurst.de/chatgpt-browser-recorder/api/v1/collections/test-collection/artifact-manifests` mit ungültigem Testtoken: HTTP 404, Body `{"detail":"Not Found"}`.
+- Echter HTTPS-Probe gegen `[Adresse entfernt]` mit ungültigem Testtoken: HTTP 404, Body `{"detail":"Not Found"}`.
 - Gesundheitsprobe derselben Domain: HTTP 200, aber Serverversion `1.3.2`; der lokale Quellstand mit Readback ist dort noch nicht deployed.
 
 ## Offen/Unbekannt

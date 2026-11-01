@@ -298,7 +298,7 @@ denen keiner zu einem echten Vault passt. Reines Setup-Versäumnis von der
 Vault-Nacht. Daniel hatte die Ports bereits manuell bei Strato (Provider-Firewall)
 freigegeben, die lokale `ufw`-Lücke war der verbleibende Blocker. Mit
 `ufw allow <port>/tcp` für 8445 und 8450–8455 geschlossen (v4+v6), live verifiziert
-(`curl https://[SERVER-IP]:8445/` liefert jetzt `401` statt Timeout — Basic-Auth
+(`curl [Adresse entfernt]` liefert jetzt `401` statt Timeout — Basic-Auth
 greift wie vorgesehen, kein offenes Scheunentor).
 
 ## Nachtrag 2026-07-21: AUGE-Button — rrweb-Wiedergabe im Surface fertig
@@ -372,7 +372,7 @@ der FastAPI-Endpunkte steuert das). Das erklärt vermutlich auch, warum frühere
 Preview-Tests von dom-events/denkstream nie einen echten Streaming-Fehler gezeigt hätten,
 selbst wenn einer bestünde — nur der Weg über die echte Domain ist aussagekräftig.
 
-End-to-End mit Playwright gegen `https://flextrawurst.de` verifiziert: DB-Insert →
+End-to-End mit Playwright gegen `[Adresse entfernt]` verifiziert: DB-Insert →
 NOTIFY → SSE → Rahmen+Blase erscheinen korrekt positioniert und gestylt, kein
 Regressionsschaden am bestehenden AUGE-Feature (Screenshot-Vergleich vorher/nachher).
 

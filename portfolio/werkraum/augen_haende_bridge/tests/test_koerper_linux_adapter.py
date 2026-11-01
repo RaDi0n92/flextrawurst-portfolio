@@ -433,7 +433,7 @@ class FensterverwalterTests(XFall):
         super().setUpClass()
         # eigene, leere Einstellungen: die mitgelieferte Regel „Fenster maximieren“ dieses Containers würde sonst jedes Fenster auf Bildschirmgröße ziehen
         cls.rc = tempfile.NamedTemporaryFile("w", suffix=".xml", delete=False)
-        cls.rc.write('<?xml version="1.0"?><openbox_config xmlns="http://openbox.org/3.4/rc"><applications/></openbox_config>')
+        cls.rc.write('<?xml version="1.0"?><openbox_config xmlns="[Adresse entfernt]"><applications/></openbox_config>')
         cls.rc.close()
         cls.wm = subprocess.Popen(["openbox", "--sm-disable", "--config-file", cls.rc.name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         time.sleep(1.0)

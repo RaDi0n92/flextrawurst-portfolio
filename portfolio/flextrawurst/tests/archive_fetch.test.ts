@@ -29,7 +29,7 @@ test('archive fetch forwards current credentials only to same-origin archive rou
   await context.archiveFetch('/api/guardianstyle/eintraege');
   assert.equal(calls[1][1].headers.has('Authorization'), false);
   assert.equal(calls[1][1].headers.get('X-Crawl-Key'), 'synthetic-crawl');
-  assert.throws(() => context.archiveFetch('https://other.test/api/codegeil/eintraege'));
+  assert.throws(() => context.archiveFetch('[Adresse entfernt]'));
   assert.throws(() => context.archiveFetch('/api/me'));
   assert.equal(calls.length, 2);
 });

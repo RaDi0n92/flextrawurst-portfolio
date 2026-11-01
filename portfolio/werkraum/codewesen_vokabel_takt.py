@@ -47,7 +47,7 @@ BASE        = Path("/root/werkraum/codewesen")
 TOKENS_FILE = BASE / "_api_tokens.json"
 ZUSTAND     = BASE / "_vokabel_zustand.json"
 MODELL      = "hauhaucs-q6"
-FLARUM_BASE = "http://[SERVER-IP]/api"
+FLARUM_BASE = "[Adresse entfernt]"
 MASTER_KEY  = os.environ.get("FLARUM_MASTER_KEY", "")
 
 TAG_VOKABEL   = 37   # "Vokabeln und ihre Synonyme" — primär

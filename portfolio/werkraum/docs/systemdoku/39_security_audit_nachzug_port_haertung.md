@@ -33,16 +33,16 @@ Basic-Auth gelegt oder (b) komplett ohne Ersatzweg geschlossen.
 
 | Port | Dienst | Direkt genutzt? | Aktion | Neuer Weg |
 |---|---|---|---|---|
-| 7777 | `galerie_server.py` (Bilder-Galerie), systemd `bilder-galerie.service` | Ja | Proxy + Bind-Fix im Code (`HTTPServer(('0.0.0.0'...` → `'127.0.0.1'`) | `https://flextrawurst.de/galerie/` |
-| 8000 | `web_chat.py`, `dak-gord-web.service` | Ja | Proxy + Bind-Fix im Code | `https://flextrawurst.de/dakgord-chat/` |
-| 8001 | `werkraum-api.service` ("Flextrawurst Agent Gateway", `/files /read /write /run /git/*` — bereits eigener `require_api_token`-Schutz auf allen kritischen Routen) | Ja | Proxy + Bind-Fix in der systemd-Unit (`--host 0.0.0.0` → `--host 127.0.0.1`) | `https://flextrawurst.de/werkraum-api/` |
-| 8002 | `codewesen_chat.py`, `codewesen-chat.service` | Ja | Proxy + Bind-Fix im Code | `https://flextrawurst.de/codewesen-chat/` |
+| 7777 | `galerie_server.py` (Bilder-Galerie), systemd `bilder-galerie.service` | Ja | Proxy + Bind-Fix im Code (`HTTPServer(('0.0.0.0'...` → `'127.0.0.1'`) | `[Adresse entfernt]` |
+| 8000 | `web_chat.py`, `dak-gord-web.service` | Ja | Proxy + Bind-Fix im Code | `[Adresse entfernt]` |
+| 8001 | `werkraum-api.service` ("Flextrawurst Agent Gateway", `/files /read /write /run /git/*` — bereits eigener `require_api_token`-Schutz auf allen kritischen Routen) | Ja | Proxy + Bind-Fix in der systemd-Unit (`--host 0.0.0.0` → `--host 127.0.0.1`) | `[Adresse entfernt]` |
+| 8002 | `codewesen_chat.py`, `codewesen-chat.service` | Ja | Proxy + Bind-Fix im Code | `[Adresse entfernt]` |
 | 8010 | `flextrawurst-gateway.service` (zweite Instanz derselben Agent-Gateway-App, mit `AGENT_ALLOWED_COMMAND_PREFIXES`-Whitelist) | **Nein, "noch nie"** | Nur Bind-Fix in der systemd-Unit + UFW zu, **kein** Nginx-Weg | Keiner (bewusst) |
-| 8020 | GENI (`geni/dialog.py`), `geni-web.service` — terminiert selbst schon HTTPS mit selbstsigniertem Zertifikat | Ja | Proxy (mit `proxy_ssl_verify off` wegen self-signed Backend) + Bind-Fix im Code (2 Stellen) | `https://flextrawurst.de/geni/` |
+| 8020 | GENI (`geni/dialog.py`), `geni-web.service` — terminiert selbst schon HTTPS mit selbstsigniertem Zertifikat | Ja | Proxy (mit `proxy_ssl_verify off` wegen self-signed Backend) + Bind-Fix im Code (2 Stellen) | `[Adresse entfernt]` |
 | 8030 | `welt/api.py`, `welt-api.service` — hatte schon `/api/*`+WebSocket-Proxy | **Nein, "noch nie geöffnet"** | Nur Bind-Fix im Code + UFW zu, bestehende `/api/*`-Routen unverändert nutzbar | Bestehender `/api/*`-Weg bleibt, kein neuer Direktweg |
 | 8060 | `obsidian_api.py`, `obsidian-api.service` — terminiert selbst HTTPS (selbstsigniert) | **Nein, "noch nie"** | Nur Bind-Fix im Code, UFW hatte hierfür **überraschend gar keine Regel** (Fund: war schon vorher firewall-seitig nicht erreichbar, nur die Bindung war offen) | Keiner (bewusst) |
 | 8787 | Flextrawurst-Frontend (`serve_process_camera_preview.ts`), `process-camera-preview.service` — hatte schon Domain-Root-Proxy | **Nein, "eig nicht genutzt"** | Nur Bind-Fix im Code (`const HOST = "0.0.0.0"` → `"127.0.0.1"`) + UFW zu | Bestehender `/`-Weg bleibt |
-| 8900 | `kompoase/server.py`, `kompoase.service` | Ja, gelegentlich | Proxy + Bind-Fix im Code | `https://flextrawurst.de/zusatz-kompoase/` (Name explizit von Daniel gewählt, nicht `/kompoase/`) |
+| 8900 | `kompoase/server.py`, `kompoase.service` | Ja, gelegentlich | Proxy + Bind-Fix im Code | `[Adresse entfernt]` (Name explizit von Daniel gewählt, nicht `/kompoase/`) |
 
 **Gemeinsames Muster pro Port:** Backup-Commit vor jeder Code-Änderung (jeweils im
 zuständigen Repo — `/root`, `/root/werkraum`, `/root/flextrawurst`, `/root/kompoase`, je
@@ -81,7 +81,7 @@ ss -tlnp | grep -E ":7777 |:8000 |:8001 |:8002 |:8010 |:8020 |:8030 |:8060 |:878
 ```
 
 Für jeden Port zusätzlich einzeln getestet: direkter externer Zugriff über
-`http://[SERVER-IP]:<port>/` → `HTTP 000`/Timeout (nicht erreichbar). Wo ein Nginx-Weg
+`[Adresse entfernt]:<port>/` → `HTTP 000`/Timeout (nicht erreichbar). Wo ein Nginx-Weg
 angelegt wurde: ohne Auth → `401`, mit Daniels Login → `200`. Bestehende Funktionalität
 (`flextrawurst.de/`, `/api/*`) nach den Neustarts von `welt-api.service` und
 `process-camera-preview.service` erneut live gegengeprüft, unverändert funktionsfähig.
@@ -117,15 +117,15 @@ Der eigentliche Fund lag eine Ebene tiefer, wie bei der `history_startup()`-Anek
 Backend-Prozess selbst (`tts_service.py`, `tts-service.service`, Port 8035) lief auf
 `host="0.0.0.0"` statt `127.0.0.1` — dieser Port fehlte in der 10-Port-Liste aus Abschnitt 3,
 vermutlich weil der Dienst beim Mai-Audit noch nicht existierte oder unter anderem Namen lief.
-Folge: `http://[SERVER-IP]:8035/` lieferte direkt Inhalt aus, komplett am Nginx-Basic-Auth
+Folge: `[Adresse entfernt]` lieferte direkt Inhalt aus, komplett am Nginx-Basic-Auth
 vorbei — mit `WebFetch` von außen bestätigt (`WRONG_VERSION_NUMBER`-SSL-Fehler = TCP-Verbindung
 kam durch, Server antwortete mit Klartext-HTTP).
 
 Fix identisch zum Muster aus Abschnitt 3: Backup-Commit in `/root/werkraum`, dann
 `host="0.0.0.0"` → `host="127.0.0.1"` in `welt/tts_service.py` Zeile 2193, `systemctl restart
 tts-service.service`. Verifikation: `ss -tlnp` zeigt jetzt `127.0.0.1:8035`; externer Zugriff
-über `WebFetch` auf `http://[SERVER-IP]:8035/` liefert `ECONNREFUSED`; Nginx-Weg
-`https://flextrawurst.de/toolbox/` weiterhin `401` ohne / `200` mit Login. Port 8035 war in UFW
+über `WebFetch` auf `[Adresse entfernt]` liefert `ECONNREFUSED`; Nginx-Weg
+`[Adresse entfernt]` weiterhin `401` ohne / `200` mit Login. Port 8035 war in UFW
 nie explizit freigegeben (Fehler lag rein an der Bindung, nicht an der Firewall-Regel) — kein
 `ufw delete` nötig.
 

@@ -22,7 +22,7 @@ EVIDENCE_VERSION: 1
 
 ## Externer Gegencheck
 
-- Der separate Produktionsprobe gegen `https://flextrawurst.de/chatgpt-browser-recorder/api/v1/health` antwortete mit Version `1.3.2`; der neue Manifest-Endpunkt antwortete dort mit HTTP 404.
+- Der separate Produktionsprobe gegen `[Adresse entfernt]` antwortete mit Version `1.3.2`; der neue Manifest-Endpunkt antwortete dort mit HTTP 404.
 - Damit ist der lokale UI-Lauf nachgewiesen, die VPS-Deployment-Lücke aber weiterhin sichtbar offen.
 
 - REC-GATE-001: PASS — `python3 /root/werkraum/_codex/tools/check_recorder_skill_gates.py contracts` meldete 10 geprüfte Marker/Skills.

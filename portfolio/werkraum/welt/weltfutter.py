@@ -63,32 +63,32 @@ TIMEOUT = 15
 # Ausgefallen und deshalb nicht aufgenommen: News24 (ZA, DNS), TRT (TR, 404),
 # El Universal (MX, 404). Wer hier etwas ergaenzt: vorher wirklich abrufen, nicht raten.
 RSS_FEEDS = [
-    ("DE", "tagesschau", "https://www.tagesschau.de/index~rss2.xml"),
-    ("UK", "BBC World", "https://feeds.bbci.co.uk/news/world/rss.xml"),
-    ("FR", "Le Monde", "https://www.lemonde.fr/rss/une.xml"),
-    ("QA", "Al Jazeera", "https://www.aljazeera.com/xml/rss/all.xml"),
-    ("JP", "NHK", "https://www3.nhk.or.jp/rss/news/cat0.xml"),
-    ("ES", "El País", "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada"),
-    ("IN", "The Hindu", "https://www.thehindu.com/news/international/feeder/default.rss"),
-    ("BR", "Folha de S.Paulo", "https://feeds.folha.uol.com.br/mundo/rss091.xml"),
-    ("RU", "Meduza", "https://meduza.io/rss/all"),
-    ("AU", "ABC News", "https://www.abc.net.au/news/feed/51120/rss.xml"),
-    ("IT", "ANSA", "https://www.ansa.it/sito/ansait_rss.xml"),
-    ("CN", "Xinhua", "http://www.xinhuanet.com/english/rss/worldrss.xml"),
+    ("DE", "tagesschau", "[Adresse entfernt]"),
+    ("UK", "BBC World", "[Adresse entfernt]"),
+    ("FR", "Le Monde", "[Adresse entfernt]"),
+    ("QA", "Al Jazeera", "[Adresse entfernt]"),
+    ("JP", "NHK", "[Adresse entfernt]"),
+    ("ES", "El País", "[Adresse entfernt]"),
+    ("IN", "The Hindu", "[Adresse entfernt]"),
+    ("BR", "Folha de S.Paulo", "[Adresse entfernt]"),
+    ("RU", "Meduza", "[Adresse entfernt]"),
+    ("AU", "ABC News", "[Adresse entfernt]"),
+    ("IT", "ANSA", "[Adresse entfernt]"),
+    ("CN", "Xinhua", "[Adresse entfernt]"),
 ]
 
 # Rotierende Wikipedia-Sprachversionen -- derselbe Grund wie bei den RSS-Feeds:
 # ein einzelnes de.wikipedia waere wieder nur ein deutschsprachiger Spiegel.
 WIKI_SPRACHEN = ["de", "en", "fr", "es", "it", "ja", "ru", "pl", "sv", "nl", "pt", "fi"]
 
-USGS_FEED = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+USGS_FEED = "[Adresse entfernt]"
 
 # GDELT: NICHT die DOC-API (api.gdeltproject.org) -- die antwortet reproduzierbar mit
 # HTTP 429 "limit requests to one every 5 seconds", getestet 2026-08-01, zwei Versuche
 # je ~10s. Die statischen Viertelstunden-Exporte haben kein Rate-Limit (0,14s, 901
 # Ereignisse pro Datei). Sie liefern keine Schlagzeile, aber genau das, wofuer sie hier
 # da sind: Ereignisorte, die in keinem der 12 RSS-Feeds vorkommen.
-GDELT_LASTUPDATE = "http://data.gdeltproject.org/gdeltv2/lastupdate.txt"
+GDELT_LASTUPDATE = "[Adresse entfernt]"
 GDELT_SPALTE_DATUM = 1
 GDELT_SPALTE_ORT = 52
 GDELT_SPALTE_QUELLE = 60
@@ -148,7 +148,7 @@ def sammle_ereignisse(bereits: set, n: int) -> list[dict]:
         except Exception as ex:
             print(f"  RSS {quelle} ({land}) fehlgeschlagen: {type(ex).__name__}: {ex}")
             continue
-        items = wurzel.findall(".//item") or wurzel.findall(".//{http://www.w3.org/2005/Atom}entry")
+        items = wurzel.findall(".//item") or wurzel.findall(".//{[Adresse entfernt]")
         random.shuffle(items)
         for item in items:
             titel = (item.findtext("title") or "").strip()
@@ -161,7 +161,7 @@ def sammle_ereignisse(bereits: set, n: int) -> list[dict]:
             origin_id = f"rss:{land}:{link}"[:400]
             if origin_id in bereits:
                 continue
-            datum = _datum(item.findtext("pubDate") or item.findtext("{http://purl.org/dc/elements/1.1/}date"))
+            datum = _datum(item.findtext("pubDate") or item.findtext("{[Adresse entfernt]"))
             beschreibung = (item.findtext("description") or "").strip()
             ergebnis.append({
                 "sorte": "ereignis",
@@ -303,7 +303,7 @@ def sammle_fundstuecke(bereits: set, n: int) -> list[dict]:
         if len(ergebnis) >= n:
             break
         try:
-            d = _hole(f"https://{sprache}.wikipedia.org/api/rest_v1/page/random/summary").json()
+            d = _hole(f"[Adresse entfernt]").json()
         except Exception as ex:
             print(f"  Wikipedia ({sprache}) fehlgeschlagen: {type(ex).__name__}: {ex}")
             continue

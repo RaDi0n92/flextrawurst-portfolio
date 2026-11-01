@@ -280,11 +280,11 @@ describe("Ring 22D-H — HTML Export", () => {
     assert.ok(!buildProcessCameraHtml(model()).toLowerCase().includes("vite"));
   });
 
-  it("HTML enthält keine externe URL (http://)", () => {
+  it("HTML enthält keine externe URL ([Adresse entfernt])", () => {
     assert.ok(!buildProcessCameraHtml(model()).includes("http://"));
   });
 
-  it("HTML enthält keine externe URL (https://)", () => {
+  it("HTML enthält keine externe URL ([Adresse entfernt])", () => {
     assert.ok(!buildProcessCameraHtml(model()).includes("https://"));
   });
 

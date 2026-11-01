@@ -139,7 +139,7 @@ Der Recorder-Zugangsschlüssel wurde ausschließlich über das sichtbare Panel g
 
 **Nachtrag zum Claude-Test:**
 
-Auf `https://claude.ai/login` wurde zunächst fälschlich `provider_id: web` sichtbar. Der breite Web-Bootstrap konnte den globalen Boot-Marker vor dem Claude-Bootstrap setzen; zusätzlich antwortete ein älterer `content.js` parallel. Der Web-Bootstrap ignoriert bekannte AI-Hosts nun, und der alte Claude-Livepfad läuft nur noch als Fallback, wenn der moderne Kern fehlt.
+Auf `[Adresse entfernt]` wurde zunächst fälschlich `provider_id: web` sichtbar. Der breite Web-Bootstrap konnte den globalen Boot-Marker vor dem Claude-Bootstrap setzen; zusätzlich antwortete ein älterer `content.js` parallel. Der Web-Bootstrap ignoriert bekannte AI-Hosts nun, und der alte Claude-Livepfad läuft nur noch als Fallback, wenn der moderne Kern fehlt.
 
 Nach Extension-Reload und Playwright-Neuladen liefert derselbe Login-Tab jetzt `provider_id: claude`, Adapter `1.0.1`, `conversation_id: null` und `authorized: false` wegen `provider_disabled`. Das ist der korrekte Blocker: Ohne Claude-Login und Conversation kein Inhaltstest, kein erfundener Erfolg.
 **Nachtrag zur Beweisketten-Schärfung:**
@@ -174,7 +174,7 @@ Die getestete Geometrie wurde in `tools/chatgpt_browser_recorder/extension/` nac
 
 **AI-Fallback-Fortsetzung:**
 
-Gemini wurde nach Extension-Reload sichtbar als generische Webseite aufgenommen. Die Seitenleiste war an `https://gemini.google.com/app` gebunden; der kurze Import speicherte 2 Bereiche und der Webexport erzeugte 29 Links sowie MD/HTML/LINKS/Manifest. Der Lauf wurde sichtbar beendet und blieb wegen der kurzen Probe korrekt unvollständig.
+Gemini wurde nach Extension-Reload sichtbar als generische Webseite aufgenommen. Die Seitenleiste war an `[Adresse entfernt]` gebunden; der kurze Import speicherte 2 Bereiche und der Webexport erzeugte 29 Links sowie MD/HTML/LINKS/Manifest. Der Lauf wurde sichtbar beendet und blieb wegen der kurzen Probe korrekt unvollständig.
 
 Für Gemini, Kimi, Meta AI und Copilot liefert `providerForUrl()` nun bewusst den generischen Webprovider, solange kein eigener Adapter gebaut ist. ChatGPT und Claude bleiben spezialisiert; `grok.com` bleibt als eigener Sonderpfad markiert. Playwright bestätigte bei Kimi, Meta AI, Copilot und Grok den geladenen Recorderkern und generische Adaptererkennung auf den erreichbaren Oberflächen. Das ist Fallback-Funktion, kein behaupteter semantischer Provideradapter.
 
@@ -311,7 +311,7 @@ Prüfung mit synthetischem Medienmanifest war für HTML, Markdown und JSON grün
 
 **Vom Webseitenabbild zum Crawlrecorder:**
 
-Daniel wollte den Recorder für `https://flextrawurst.de/` zu einem Crawlrecorder
+Daniel wollte den Recorder für `[Adresse entfernt]` zu einem Crawlrecorder
 erweitern: nicht nur ein Chatfragment, sondern die UI, Texte, gerenderten Styles,
 Links und sichtbaren Medien einer Website sollen als Offline-HTML mitgetragen
 werden. Ich habe den Auftrag als benutzer gestarteten same-origin Browser-Crawl

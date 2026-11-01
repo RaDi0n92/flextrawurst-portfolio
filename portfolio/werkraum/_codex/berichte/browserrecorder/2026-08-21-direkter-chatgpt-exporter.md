@@ -8,7 +8,7 @@ Die Chrome-Web-Store-Erweiterung `ilmdofdhpnhffldihboadndccenlnfll` wurde als or
 
 ## Sichtbar
 
-Vor der lokalen Popup-Ansicht öffnete die Erweiterung selbstständig `https://www.chatgptexporter.com/de/welcome`. Danach wurde als einzelne sichtbare Adressleistenaktion `chrome-extension://jocghakjggbgfjhhncamlhajkhajgbdm/popup.html` geöffnet. Screenshots: `/tmp/direct-chatgpt-welcome.png` und `/tmp/direct-chatgpt-popup.png`. Titel: `ChatGPT Exporter`.
+Vor der lokalen Popup-Ansicht öffnete die Erweiterung selbstständig `[Adresse entfernt]`. Danach wurde als einzelne sichtbare Adressleistenaktion `chrome-extension://jocghakjggbgfjhhncamlhajkhajgbdm/popup.html` geöffnet. Screenshots: `/tmp/direct-chatgpt-welcome.png` und `/tmp/direct-chatgpt-popup.png`. Titel: `ChatGPT Exporter`.
 
 ## Rücklese
 

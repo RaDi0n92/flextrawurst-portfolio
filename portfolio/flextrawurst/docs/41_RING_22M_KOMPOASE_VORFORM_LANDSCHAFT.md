@@ -63,4 +63,4 @@ namelessAI-Knoten sind die einzige Zone mit echter Quell-Referenz
 - Zoom/Pan: CSS transform auf #world-Container
 - Kein fetch, kein WebSocket, keine externen Bibliotheken
 
-URL: `http://[SERVER-IP]:8787/kompOase_vorform.html`
+URL: `[Adresse entfernt]`

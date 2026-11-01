@@ -59,7 +59,7 @@ for r in raw:
 res={'scope':'43 Surface tabs; semantic role + truth + crawl + primary-source value','count':len(out),'tabs':out,
      'global_findings':[
        '43/43 Tabs use fragment hrefs (#view); none has a standalone tab URL.',
-       'Root has one canonical URL https://flextrawurst.de/ and one WebApplication JSON-LD object for the whole monolith.',
+       'Root has one canonical URL [Adresse entfernt] and one WebApplication JSON-LD object for the whole monolith.',
        'Current sitemap lists root plus a small set of static public pages, not the 43 tab bodies or their entities/concepts/posts.',
        'High-value primary-source bodies already exist in WISSEN, GESETZE, CODE-ARCHAEOLOGIE, SYSTEME, RAEUME, WAS IST DAS, FORSCHUNG and FLARUM-AKTIVITAET.',
        'Protected/private app views and public knowledge currently coexist in one monolithic HTML architecture; a naive server-side strip breaks post-load browser login.',

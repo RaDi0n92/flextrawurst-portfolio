@@ -30,7 +30,7 @@ for filename, prompt in prompts:
         continue
     
     encoded = urllib.parse.quote(prompt)
-    url = f"https://image.pollinations.ai/prompt/{encoded}?width=1024&height=576&nologo=true"
+    url = f"[Adresse entfernt]"
     print(f"  Generiere: {filename}...")
     try:
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})

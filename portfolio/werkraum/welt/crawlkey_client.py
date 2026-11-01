@@ -48,7 +48,7 @@ class CrawlKey:
             return ""
 
     def crawl_url(self, host: str) -> str:
-        return f"https://{host}{self.url_prefix}?key={self.read()}"
+        return f"[Adresse entfernt]"
 
     def rotate(self) -> str:
         return self._request("rotate")

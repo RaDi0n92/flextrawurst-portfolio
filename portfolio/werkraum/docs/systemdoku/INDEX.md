@@ -123,5 +123,5 @@ Surface:         http://localhost:8787
 GENI:            https://localhost:8020 (HTTPS)
 dak+gord:        http://localhost:8000
 Codewesen-Chat:  http://localhost:8002
-Obsidian:        https://[VPS]:8443
+Obsidian:        [Adresse entfernt]
 ```

@@ -6,17 +6,17 @@ Der wichtigste Fund: Der Fensterscanner ist nicht ein UI-Feature, sondern der ze
 
 ## Was die Hinterhöfe zeigen
 
-`agent-desktop-harness` kommt unserer Idee erstaunlich nahe: native Windows-Fenster-/Display-Erkennung, UI-Automation, Screenshots, stabile UI-Referenzen, Beobachtungsschutz vor Aktionen und eine zusammenhängende Evidence-Kette aus Events, UI-Tree und Bild. Besonders wichtig: Koordinaten werden nicht einfach blind benutzt, sondern erst nach einer aktuellen Beobachtung freigegeben. Genau das brauchen unsere Fensterbindungen. [Agent Desktop Harness](https://github.com/xuyw1997/agent-desktop-harness)
+`agent-desktop-harness` kommt unserer Idee erstaunlich nahe: native Windows-Fenster-/Display-Erkennung, UI-Automation, Screenshots, stabile UI-Referenzen, Beobachtungsschutz vor Aktionen und eine zusammenhängende Evidence-Kette aus Events, UI-Tree und Bild. Besonders wichtig: Koordinaten werden nicht einfach blind benutzt, sondern erst nach einer aktuellen Beobachtung freigegeben. Genau das brauchen unsere Fensterbindungen. Agent Desktop Harness
 
-`agent-desktop` arbeitet mit Snapshot-IDs und qualifizierten Elementreferenzen statt mit „klick mal bei x=438/y=290“. Eine Aktion bezieht sich dadurch auf genau den zuvor beobachteten Zustand. Texte und Timer gelten dort nicht als stabile Identität — Fenster, Rolle, Pfad und Geometrie sind wichtiger. Genau das brauchen unsere Fensterbindungen. [agent-desktop](https://github.com/lahfir/agent-desktop)
+`agent-desktop` arbeitet mit Snapshot-IDs und qualifizierten Elementreferenzen statt mit „klick mal bei x=438/y=290“. Eine Aktion bezieht sich dadurch auf genau den zuvor beobachteten Zustand. Texte und Timer gelten dort nicht als stabile Identität — Fenster, Rolle, Pfad und Geometrie sind wichtiger. Genau das brauchen unsere Fensterbindungen. agent-desktop
 
-`windows-mcp-server` geht noch härter in Richtung Sicherheits-Harness: Aktionen werden an Gerätezustand, Policy, Auditkette und Live-Zustand gekoppelt. Das ist interessant für uns, weil der Fensterscanner damit zum Ursprung einer überprüfbaren Aktion wird, nicht bloß zum Lieferanten eines Screenshots. [windows-mcp-server](https://github.com/deploymenttheory/windows-mcp-server)
+`windows-mcp-server` geht noch härter in Richtung Sicherheits-Harness: Aktionen werden an Gerätezustand, Policy, Auditkette und Live-Zustand gekoppelt. Das ist interessant für uns, weil der Fensterscanner damit zum Ursprung einer überprüfbaren Aktion wird, nicht bloß zum Lieferanten eines Screenshots. windows-mcp-server
 
-Für KDE/Wayland ist `kwin-mcp` besonders wertvoll: Es verbindet Screenshot, KWin-Fensterrechtecke, AT-SPI-Accessibility-Tree, virtuelle Sessions und EIS-Eingabe. Vor allem zeigt es, dass strukturierte Fensterdaten und Bilder gemeinsam an einen Agenten geliefert werden können — getrennt vom tatsächlichen Eingaberecht. [kwin-mcp](https://github.com/isac322/kwin-mcp)
+Für KDE/Wayland ist `kwin-mcp` besonders wertvoll: Es verbindet Screenshot, KWin-Fensterrechtecke, AT-SPI-Accessibility-Tree, virtuelle Sessions und EIS-Eingabe. Vor allem zeigt es, dass strukturierte Fensterdaten und Bilder gemeinsam an einen Agenten geliefert werden können — getrennt vom tatsächlichen Eingaberecht. kwin-mcp
 
-UFO2 bestätigt architektonisch ebenfalls deine Mehragentenidee: zentraler Host-Agent, spezialisierte App-Agenten, UIA plus Vision und isolierte PiP-/Desktop-Arbeitsräume. Das ist im Grunde eine wissenschaftlich beschriebene Variante deines „mehrere Wesen in unterschiedlichen Gates“. [UFO2](https://arxiv.org/abs/2504.14603)
+UFO2 bestätigt architektonisch ebenfalls deine Mehragentenidee: zentraler Host-Agent, spezialisierte App-Agenten, UIA plus Vision und isolierte PiP-/Desktop-Arbeitsräume. Das ist im Grunde eine wissenschaftlich beschriebene Variante deines „mehrere Wesen in unterschiedlichen Gates“. UFO2
 
-Und dann der unangenehme Hai: Eine aktuelle Arbeit beschreibt den Abstand zwischen Beobachtung und Aktion als TOCTOU-Problem. Fensterfokus oder Overlay können sich nach dem Screenshot ändern, bevor der Agent handelt. Die vorgeschlagene Verteidigung prüft unmittelbar vor jeder Aktion Pixel, globalen Screenshot und strukturellen Fensterzustand erneut. [Temporal UI State Inconsistency](https://arxiv.org/abs/2604.18860)
+Und dann der unangenehme Hai: Eine aktuelle Arbeit beschreibt den Abstand zwischen Beobachtung und Aktion als TOCTOU-Problem. Fensterfokus oder Overlay können sich nach dem Screenshot ändern, bevor der Agent handelt. Die vorgeschlagene Verteidigung prüft unmittelbar vor jeder Aktion Pixel, globalen Screenshot und strukturellen Fensterzustand erneut. Temporal UI State Inconsistency
 
 ## Was das für unsere Bridge bedeutet
 

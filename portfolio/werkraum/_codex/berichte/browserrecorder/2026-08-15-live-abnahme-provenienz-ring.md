@@ -4,13 +4,13 @@ Datum: 2026-08-15, ca. 06:13–06:15 +0200
 Ort: echter `virtuellerdesktop2`-Chromium  
 Collection: `collection-2026-08-15T041300230Z-ab03126e`  
 Crawl: `crawl-2026-08-15T041300230Z-e24f0e29`  
-Quelle: `https://flextrawurst.de/`
+Quelle: `[Adresse entfernt]`
 
 ## Klick- und Gegenprüfkette
 
 | Schritt | Sichtbarer Befund | Persistente Rücklese | Status |
 |---|---|---|---|
-| Zielseite öffnen | Flextrawurst, Tab „Was ist das?“, sichtbare Surface mit Hero, Tabs und Statuszeile | aktive URL `https://flextrawurst.de/` | gesehen |
+| Zielseite öffnen | Flextrawurst, Tab „Was ist das?“, sichtbare Surface mit Hero, Tabs und Statuszeile | aktive URL `[Adresse entfernt]` | gesehen |
 | `Aktuelle sichtbare Seite aufnehmen` klicken | Workspace öffnet mit 1 Snapshot, Screenshot der sichtbaren Surface, Position `0/5875` | `source_mode: active_visible_tab`, `universal_visible_page: true`, `seen: pass`, drei Capture-SHA-256 vorhanden | gesehen + gelesen |
 | Workspace vor Rücklese ansehen | Karte zeigt `gesehen bestanden`, `rückgelesen offen`, `geprüft offen`, `visueller Originalabgleich offen`; Rücklese aktiv, Rohdatenprüfung deaktiviert | HTML-, Lesetext- und Screenshot-Baseline im Workspace sichtbar | gesehen + gelesen |
 | `Rücklese bestätigen` klicken | sichtbarer Status: „Rücklese gespeichert · nächste Stufe bleibt eine eigene Prüfung.“; Rücklese grün, Prüfung weiterhin offen | `read_back: pass`; Beobachtungshashes entsprechen der Capture-Baseline | gesehen + rückgelesen |

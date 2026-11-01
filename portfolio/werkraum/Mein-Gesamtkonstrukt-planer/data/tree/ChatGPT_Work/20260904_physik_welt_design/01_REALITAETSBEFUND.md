@@ -6,7 +6,7 @@ Die hier genannten Streamoptionen/Labels beschreiben an mehreren Stellen nur die
 
 ## Bestätigt · Live-Planer über Playwright/CDP
 
-Echte laufende URL: `https://flextrawurst.de/Mein-Gesamtkonstrukt-planer/`
+Echte laufende URL: `[Adresse entfernt]`
 
 Playwright hing sich read-only an den bereits offenen Chromium über CDP `127.0.0.1:9222` und las den echten vorhandenen Planer-Tab. Kein statischer HTML-Ersatz.
 

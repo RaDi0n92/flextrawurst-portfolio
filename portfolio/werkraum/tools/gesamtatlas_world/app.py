@@ -1469,8 +1469,8 @@ def megavault_3d():
   <div id="detail" class="panel"></div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/3d-force-graph"></script>
-<script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
+<script src="[Adresse entfernt]"></script>
+<script src="[Adresse entfernt]"></script>
 <script type="module">
 // Sicherheitsfix 2026-08-13 (Claude Web): statische Importe hier blockierten
 // FRUEHER das komplette restliche Skript, wenn beim Laden/Ausfuehren dieser
@@ -2422,9 +2422,9 @@ def megasuche_page(q: str = Query("", max_length=300), facet: str = Query("all")
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MEGASUCHE & MEGAVAULT - VPS-Baum & Live-Gedächtnis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="[Adresse entfernt]">
+  <link rel="preconnect" href="[Adresse entfernt]" crossorigin>
+  <link href="[Adresse entfernt]" rel="stylesheet">
   <style>
     :root {{
       --bg: #090c15;
@@ -4136,7 +4136,7 @@ def capsule():
 
 @app.get(f"{BASE}/robots.txt", include_in_schema=False)
 def robots():
-    return PlainTextResponse(f"User-agent: *\nAllow: {PUBLIC_BASE}/\nSitemap: https://flextrawurst.de{PUBLIC_BASE}/sitemap.xml\n")
+    return PlainTextResponse(f"User-agent: *\nAllow: {PUBLIC_BASE}/\nSitemap: [Adresse entfernt]\n")
 
 
 @app.get(f"{BASE}/sitemap.xml", include_in_schema=False)
@@ -4144,8 +4144,8 @@ def sitemap():
     urls = ["/", "/kind", "/reise?schritt=1", "/erkunden", "/suche", "/projekte", "/beziehungen", "/versionen", "/dateien", "/dokumente", "/dienste", "/sitzungen", "/zuhause", "/browser", "/terminal", "/luecken", "/maschine", "/kapsel/mensch.md", "/kapsel/kind.md", "/kapsel/maschine.json"]
     urls.extend(f'/projekt/{quote(str(row.get("project_id")))}' for row in project_rows()[:100])
     urls.extend(f'/zuhause/{key}' for key in AI_HOMES)
-    body = "".join(f"<url><loc>https://flextrawurst.de{PUBLIC_BASE}{esc(path)}</loc></url>" for path in urls)
-    return Response(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>', media_type="application/xml")
+    body = "".join(f"<url><loc>[Adresse entfernt]</loc></url>" for path in urls)
+    return Response(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="[Adresse entfernt]">{body}</urlset>', media_type="application/xml")
 
 
 

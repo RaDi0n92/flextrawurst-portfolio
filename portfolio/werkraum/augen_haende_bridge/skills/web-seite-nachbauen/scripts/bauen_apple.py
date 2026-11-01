@@ -196,7 +196,7 @@ def gallery_html():
 HTML = f"""<!DOCTYPE html>
 <html lang="de"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nachbau — gemessen von https://www.apple.com/de/</title><style>{CSS}</style></head><body>
+<title>Nachbau — gemessen von [Adresse entfernt]</title><style>{CSS}</style></head><body>
 
 <div class="band"><nav>
 <a class="logo" href="#">&#63743;</a>

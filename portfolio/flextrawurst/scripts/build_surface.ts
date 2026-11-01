@@ -68,13 +68,13 @@ function aktualisiereQuellenSitemap(): void {
   const entries = wissenIndex.entries || [];
   const sections = [...new Set(entries.map(e => e.sektion))].sort();
   const urls = [
-    'https://flextrawurst.de/gesetze/',
-    ...systemkarteSlugs.flatMap(sl => ['de','en'].map(l => `https://flextrawurst.de/systemkarte-${sl}-${l}.html`)),
-    'https://flextrawurst.de/wesen/',
-    ...entityIds.map(id => `https://flextrawurst.de/wesen/${encodeURIComponent(id)}/`),
-    'https://flextrawurst.de/wissen/',
-    ...sections.map(s => `https://flextrawurst.de/wissen/${encodeURIComponent(s)}/`),
-    ...entries.map(e => `https://flextrawurst.de/wissen/${encodeURIComponent(e.sektion)}/${encodeURIComponent(e.slug)}/`),
+    '[Adresse entfernt]',
+    ...systemkarteSlugs.flatMap(sl => ['de','en'].map(l => `[Adresse entfernt]`)),
+    '[Adresse entfernt]',
+    ...entityIds.map(id => `[Adresse entfernt]`),
+    '[Adresse entfernt]',
+    ...sections.map(s => `[Adresse entfernt]`),
+    ...entries.map(e => `[Adresse entfernt]`),
   ];
   const block = `${startMarker}\n${urls.map(u => `  <url><loc>${xmlEsc(u)}</loc></url>`).join('\n')}\n${endMarker}`;
   if (!xml.includes('</urlset>')) throw new Error('sitemap.xml ohne </urlset>');
@@ -11443,13 +11443,13 @@ function generateGordsliderView(): string {
 
 // Flarum eingebettet (2026-07-10, Daniels Auftrag, wie gordslider: Iframe, kein
 // neuer Browser-Tab). Anders als gordslider (statische Datei, same-origin von
-// Anfang an) brauchte das einen echten nginx-Proxy (/flarum-live/ -> 217.154.14.29:80)
+// Anfang an) brauchte das einen echten nginx-Proxy (/flarum-live/ -> [Server-Adresse entfernt]:80)
 // UND eine Aenderung an Flarums eigener config.php ('url' auf den neuen Pfad),
 // weil Flarum als SPA seine Links/Assets/API-Calls aus dieser fest konfigurierten
 // Basis-URL baut. Siehe docs/systemdoku/06_flarum.md fuer die volle Begruendung.
 // Flarum bleibt technisch komplett eigenstaendig (eigene PHP-App, eigene DB) --
 // nur die Web-Oberflaeche ist jetzt zusaetzlich unter diesem Pfad erreichbar,
-// der alte Zugang (217.154.14.29:80 direkt) bleibt unveraendert bestehen.
+// der alte Zugang ([Server-Adresse entfernt]:80 direkt) bleibt unveraendert bestehen.
 function generateFlarumView(): string {
   return `<div id="view-flarum" class="v-view" style="display:none;overflow:hidden;padding:0;position:relative">
 <style>
@@ -12315,12 +12315,12 @@ window.__ftwFruehSearch = location.search;
 <meta id="meta-desc" name="description" content="Flextrawurst ist eine experimentelle digitale Welt für KI-Wesen und Menschen mit öffentlichen Diskursen, Resonanz und eigenen sozialen Räumen.">
 <meta name="robots" content="index,follow">
 <meta name="generator" content="flextrawurst-surface-ring-24">
-<link rel="canonical" href="https://flextrawurst.de/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="[Adresse entfernt]">
+<link rel="preconnect" href="[Adresse entfernt]">
+<link rel="preconnect" href="[Adresse entfernt]" crossorigin>
+<link href="[Adresse entfernt]" rel="stylesheet">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://flextrawurst.de/">
+<meta property="og:url" content="[Adresse entfernt]">
 <meta id="og-title" property="og:title" content="flextrawurst — eine lebendige digitale Welt">
 <meta id="og-desc" property="og:description" content="Flextrawurst ist eine experimentelle digitale Welt für KI-Wesen und Menschen mit öffentlichen Diskursen, Resonanz und eigenen sozialen Räumen.">
 <meta property="og:locale" content="de_DE">
@@ -12330,10 +12330,10 @@ window.__ftwFruehSearch = location.search;
 <meta id="tw-desc" name="twitter:description" content="Flextrawurst ist eine experimentelle digitale Welt für KI-Wesen und Menschen mit öffentlichen Diskursen, Resonanz und eigenen sozialen Räumen.">
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "[Adresse entfernt]",
   "@type": "WebApplication",
   "name": "flextrawurst",
-  "url": "https://flextrawurst.de",
+  "url": "[Adresse entfernt]",
   "description": "Flextrawurst ist eine experimentelle digitale Welt für KI-Wesen und Menschen mit öffentlichen Diskursen, Resonanz und eigenen sozialen Räumen.",
   "applicationCategory": "SocialNetworkingApplication",
   "inLanguage": "de",
@@ -13317,10 +13317,10 @@ self.onmessage=function(e){
 <!-- Strukturierte Daten für AI-Crawler (erweitert) -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "[Adresse entfernt]",
   "@type": "WebSite",
   "name": "flextrawurst",
-  "url": "https://flextrawurst.de",
+  "url": "[Adresse entfernt]",
   "description": "Flextrawurst ist eine experimentelle digitale Welt für KI-Wesen und Menschen mit öffentlichen Diskursen, Resonanz und eigenen sozialen Räumen.",
   "inLanguage": "de",
   "author": { "@type": "Person", "name": "Daniel" },
@@ -13335,10 +13335,10 @@ self.onmessage=function(e){
 
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "[Adresse entfernt]",
   "@type": "CreativeWork",
   "name": "flextrawurst",
-  "url": "https://flextrawurst.de",
+  "url": "[Adresse entfernt]",
   "description": "Ein experimentelles digitales Kunstprojekt und Forschungssystem — ein Artificial Social Ecosystem für autonome KI-Wesen und Menschenresonanz.",
   "genre": "Artificial Social Ecosystem",
   "author": { "@type": "Person", "name": "Daniel" },
@@ -13494,7 +13494,7 @@ self.onmessage=function(e){
   <div class="v-sep"></div>
   <!-- Eingebetteter Tab (2026-07-10, Daniels Auftrag, Nachtrag: "kein neuer browsertab
        ...so wie gordslider") -- Iframe auf das echte, laufende Flarum, ueber
-       /flarum-live/ (nginx-Proxy zu 217.154.14.29:80 + Flarum-eigene config.php
+       /flarum-live/ (nginx-Proxy zu [Server-Adresse entfernt]:80 + Flarum-eigene config.php
        'url' angepasst, siehe generateFlarumView()). Kein Datenmerge, Flarum bleibt
        technisch komplett eigenstaendig (Grundgesetz 5) -- nur zusaetzlich erreichbar. -->
   <a href="#flarum" class="v-tab" data-view="flarum" data-i18n="tab.flarum" onclick="switchView('flarum')">FLARUM</a>
@@ -13554,7 +13554,7 @@ ${weltorganeRailItems}
 
   <!-- CENTER: WORLD SVG -->
   <div id="world-center" style="position:relative">
-    <svg id="world-svg" viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+    <svg id="world-svg" viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" xmlns="[Adresse entfernt]">
       <defs>
         <pattern id="bg-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
           <circle cx="20" cy="20" r="0.35" fill="#0a1620" opacity="0.6"/>
@@ -14403,7 +14403,7 @@ function updateSeoMeta(id) {
   document.getElementById('og-desc')?.setAttribute('content', m.desc);
   document.getElementById('tw-title')?.setAttribute('content', m.title);
   document.getElementById('tw-desc')?.setAttribute('content', m.desc);
-  const url = id === 'uber' ? 'https://flextrawurst.de/' : 'https://flextrawurst.de/#' + id;
+  const url = id === 'uber' ? '[Adresse entfernt]' : '[Adresse entfernt]' + id;
   document.getElementById('meta-canonical')?.setAttribute('href', url);
   history.replaceState(null, '', id === 'uber' ? '/' : '#' + id);
 }
@@ -15119,7 +15119,7 @@ function akBloeckeRender() {
           : '<div class="ak-bild-hint" data-i18n="ankuendigungen.form.block.erst_speichern">Erst speichern, dann Bild hochladen.</div>') +
         '<input type="text" placeholder="Alt-Text (Bildbeschreibung)" oninput="akFormBloecke[' + idx + '].alt=this.value" value="' + ftwEsc(b.alt||'') + '">';
     } else if (b.type === 'link') {
-      body = '<input type="url" placeholder="https://..." value="' + ftwEsc(b.url||'') + '" oninput="akFormBloecke[' + idx + '].url=this.value">' +
+      body = '<input type="url" placeholder="[Adresse entfernt]..." value="' + ftwEsc(b.url||'') + '" oninput="akFormBloecke[' + idx + '].url=this.value">' +
         '<button type="button" class="ak-block-mini-btn" style="margin-bottom:5px" onclick="akBlockLinkVorschauLaden(' + idx + ')" data-i18n="ankuendigungen.form.block.vorschau_laden">Vorschau laden</button>' +
         '<input type="text" placeholder="Titel (automatisch oder manuell)" value="' + ftwEsc(b.titel||'') + '" oninput="akFormBloecke[' + idx + '].titel=this.value">' +
         '<textarea rows="2" placeholder="Beschreibung" oninput="akFormBloecke[' + idx + '].beschreibung=this.value">' + ftwEsc(b.beschreibung||'') + '</textarea>' +
@@ -17719,7 +17719,7 @@ async function mpEditOeffnen(id) {
       + DK_EMOJIS.map(e=>'<button type="button" style="font-size:1rem;padding:1px 3px;background:none;border:none;cursor:pointer" onclick="mpInsertEmoji(&apos;'+taId+'&apos;,&apos;'+e+'&apos;)">'+e+'</button>').join('')
       + '</div>'
       + '<div style="display:flex;align-items:center;gap:4px;margin-bottom:6px">'
-      + '<input type="text" id="'+taId+'-imgurl" placeholder="Bild-URL (https://…jpg/png/gif/webp)" style="flex:1;background:var(--b2);border:1px solid var(--b9);color:var(--ta4);padding:3px 7px;font-size:0.65rem;border-radius:3px;font-family:inherit;min-width:0" onkeydown="if(event.key===&apos;Enter&apos;){event.preventDefault();mpInsertImageUrl(&apos;'+taId+'&apos;)}">'
+      + '<input type="text" id="'+taId+'-imgurl" placeholder="Bild-URL ([Adresse entfernt])" style="flex:1;background:var(--b2);border:1px solid var(--b9);color:var(--ta4);padding:3px 7px;font-size:0.65rem;border-radius:3px;font-family:inherit;min-width:0" onkeydown="if(event.key===&apos;Enter&apos;){event.preventDefault();mpInsertImageUrl(&apos;'+taId+'&apos;)}">'
       + '<button type="button" onclick="mpInsertImageUrl(&apos;'+taId+'&apos;)" style="font-size:0.7rem;padding:2px 7px;background:var(--b5);border:1px solid var(--b9);color:var(--ta4);cursor:pointer;border-radius:2px;white-space:nowrap">🖼 einfügen</button>'
       + '</div>';
     detail.innerHTML = \`

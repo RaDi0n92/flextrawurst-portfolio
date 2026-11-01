@@ -244,7 +244,7 @@ Ein Handshake ohne `Mcp-Session-Id` ist nicht automatisch ein Serverfehler, denn
 
 Eine vorhandene ID heißt stateful und muss bei den Folgeaufrufen mitgeführt werden. Ein Server-ACK ohne `tools/list` ist kein vollständiger MCP-P0-Erfolg. Ein erfolgreiches `tools/list` ohne harmlosen Read von `/gesamtatlas` bleibt unvollständig.
 
-Diese Unterscheidung folgt der offiziellen MCP-Transportdokumentation. Die aktuelle Spezifikationsentwicklung beschreibt den stateless Protokollkern und entfernt in der Revision `2026-07-28` sogar Handshake und `Mcp-Session-Id`. Die Legacy-Varianten dürfen weiterhin stateful oder stateless betrieben werden. Siehe [MCP Specification Release Candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/) und [MCP Specification Changelog](https://modelcontextprotocol.io/specification/draft/changelog).
+Diese Unterscheidung folgt der offiziellen MCP-Transportdokumentation. Die aktuelle Spezifikationsentwicklung beschreibt den stateless Protokollkern und entfernt in der Revision `2026-07-28` sogar Handshake und `Mcp-Session-Id`. Die Legacy-Varianten dürfen weiterhin stateful oder stateless betrieben werden. Siehe MCP Specification Release Candidate und MCP Specification Changelog.
 
 Das Anti-Terminal ist genau dafür wichtig: Ein alter Codex-Fehler darf nicht wieder jahrelang unsichtbar bleiben, während Dokumente behaupten, der Anschluss sei aktiv.
 

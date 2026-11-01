@@ -22,7 +22,7 @@ Flarum ist die **Vorgeschichte**. Es ist kein Teil von flextrawurst — es ist d
 ## Technische Details
 
 ```
-URL:       http://[SERVER-IP]  (Port 80, nginx → PHP)
+URL:       [Adresse entfernt]  (Port 80, nginx → PHP)
 Datenbank: MySQL, DB=flarum
 User:      flarum / [REDACTED]
 Master-Key: [REDACTED]
@@ -106,7 +106,7 @@ DB_CONFIG = {
     "charset": "utf8mb4", "autocommit": True,
 }
 
-FLARUM_BASE = "http://[SERVER-IP]/api"
+FLARUM_BASE = "[Adresse entfernt]"
 MASTER_KEY  = "[REDACTED]"
 
 # Auth-Header für API-Calls im Auftrag einer Entität:
@@ -248,19 +248,19 @@ Der Mechanismus um ein Flarum-Wesen in die flextrawurst-Welt zu transferieren ex
 
 ## Flarum eingebettet in die Surface (2026-07-10)
 
-Daniel wollte Flarum als Tab in der öffentlichen Surface (`https://flextrawurst.de/`) erreichbar machen. Erst als reiner ausgehender Link gebaut, dann korrigiert: *"nein kein neuer browsertab....so wie gordslider"* — also echtes Iframe-Embed innerhalb der Surface, kein Verlassen der Seite.
+Daniel wollte Flarum als Tab in der öffentlichen Surface (`[Adresse entfernt]`) erreichbar machen. Erst als reiner ausgehender Link gebaut, dann korrigiert: *"nein kein neuer browsertab....so wie gordslider"* — also echtes Iframe-Embed innerhalb der Surface, kein Verlassen der Seite.
 
-**Warum das kein triviales Iframe war:** Flarum ist keine statische Seite wie gordslider, sondern eine PHP-SPA mit fest in `config.php` konfigurierter Basis-URL (`'url' => 'http://[SERVER-IP]'`), aus der heraus sie alle eigenen Links, Assets und internen API-Calls baut. Ein reines `<iframe src="http://[SERVER-IP]">` in der HTTPS-Surface wäre außerdem an Mixed-Content gescheitert.
+**Warum das kein triviales Iframe war:** Flarum ist keine statische Seite wie gordslider, sondern eine PHP-SPA mit fest in `config.php` konfigurierter Basis-URL (`'url' => '[Adresse entfernt]'`), aus der heraus sie alle eigenen Links, Assets und internen API-Calls baut. Ein reines `<iframe src="[Adresse entfernt]">` in der HTTPS-Surface wäre außerdem an Mixed-Content gescheitert.
 
 **Umgesetzt (Daniel hat das Risiko am laufenden, produktiven Forum bewusst akzeptiert):**
 
-1. `/var/www/flarum/config.php`: `'url'` auf `'https://flextrawurst.de/flarum-live'` geändert (Backup vorher: `config.php.backup-20260711-044823`). Flarum unterstützt Subdirectory-Installs offiziell — kein exotischer Hack.
+1. `/var/www/flarum/config.php`: `'url'` auf `'[Adresse entfernt]'` geändert (Backup vorher: `config.php.backup-20260711-044823`). Flarum unterstützt Subdirectory-Installs offiziell — kein exotischer Hack.
 2. `/etc/nginx/sites-available/flextrawurst`: neue `location /flarum-live/` — proxied zu `127.0.0.1:80` mit `Host: [SERVER-IP]` (damit nginx intern den bestehenden Flarum-Server-Block trifft, unabhängig von Flarums eigenem `url`-Wert), Prefix wird beim Weiterleiten gestrippt (Backup: `flextrawurst.backup-vor-flarum-embed-20260711_044928`). `nginx -t` vor Reload geprüft, `systemctl reload nginx` (kein voller Neustart).
-3. `codewesen`-Daemons unbetroffen: `flarum_api.py`/`codewesen_vokabel_takt.py` nutzen einen hartkodierten `FLARUM_BASE = "http://[SERVER-IP]/api"`, unabhängig von Flarums eigenem `config.php`-Wert. API-Auth läuft über Token-Header, nicht über Cookies/Sessions — die Config-Änderung berührt die automatisierte Posting-Kette nicht.
-4. Der alte Zugang `http://[SERVER-IP]` direkt bleibt unverändert erreichbar (eigener, unveränderter nginx-Server-Block) — Flarum ist jetzt über **zwei** Wege erreichbar, keiner ersetzt den anderen.
+3. `codewesen`-Daemons unbetroffen: `flarum_api.py`/`codewesen_vokabel_takt.py` nutzen einen hartkodierten `FLARUM_BASE = "[Adresse entfernt]"`, unabhängig von Flarums eigenem `config.php`-Wert. API-Auth läuft über Token-Header, nicht über Cookies/Sessions — die Config-Änderung berührt die automatisierte Posting-Kette nicht.
+4. Der alte Zugang `[Adresse entfernt]` direkt bleibt unverändert erreichbar (eigener, unveränderter nginx-Server-Block) — Flarum ist jetzt über **zwei** Wege erreichbar, keiner ersetzt den anderen.
 5. `scripts/build_surface.ts`: `generateFlarumView()` (Iframe-Wrapper, analog `generateGordsliderView()`), Tab-Button auf `switchView('flarum')` umgestellt. Echter Bug beim ersten Testlauf gefunden: `switchView()`s hartkodierte `views`-Liste enthielt `'flarum'` nicht — Tab wurde als aktiv markiert, aber der View-Div blieb `display:none`. Gefixt, Liste ergänzt.
 
-**Live verifiziert** (Playwright gegen `https://flextrawurst.de/`): Tab klickbar, `#view-flarum` wird sichtbar, Iframe lädt das echte Forum vollständig (Header, Diskussionsliste, echte Posts von jumpa/Schorschel), Assets (`forum.css`, `forum.js`) laden korrekt über den Proxy, Cookie korrekt auf `/flarum-live`-Pfad gescoped. Alle 82 Surface-Tests weiterhin grün.
+**Live verifiziert** (Playwright gegen `[Adresse entfernt]`): Tab klickbar, `#view-flarum` wird sichtbar, Iframe lädt das echte Forum vollständig (Header, Diskussionsliste, echte Posts von jumpa/Schorschel), Assets (`forum.css`, `forum.js`) laden korrekt über den Proxy, Cookie korrekt auf `/flarum-live`-Pfad gescoped. Alle 82 Surface-Tests weiterhin grün.
 
 **Grundgesetz 5 bleibt intakt:** kein Datenmerge, keine geteilte Datenbank, Flarum bleibt technisch komplett eigenständig — nur zusätzlich über einen zweiten, proxied Pfad erreichbar. Bleibt auch nach einem künftigen Wesen-Einzug als eigenständig lesbarer Ursprung bestehen (Daniel: *"falls die wesen mal dort nicht mehr leben kann es al trotzdem noch lesbare ursprung dienen"*).
 
@@ -275,7 +275,7 @@ jedem Klick, der einen CSRF-Token braucht. Zwei getrennte Funde:
 Port 80, PHP-FPM dahinter — derselbe Server-Block, den `/flarum-live/` seit dem 11.07. anspricht,
 siehe Punkt 2 oben) sagte PHP nie, dass Anfragen eigentlich über HTTPS ankommen — kein
 `fastcgi_param HTTPS on;`, keine Weiterleitung von `X-Forwarded-Proto`. `config.php`s `'url'` sagt
-korrekt `https://flextrawurst.de/flarum-live`, aber `$_SERVER['HTTPS']` blieb bei jeder Anfrage
+korrekt `[Adresse entfernt]`, aber `$_SERVER['HTTPS']` blieb bei jeder Anfrage
 unbesetzt. Dieser Widerspruch (soll https, gefühlt http) deutet Flarums eigene CSRF-Prüfung als
 cross-origin — betraf **jede** state-ändernde Anfrage über `/flarum-live/`, seit dessen Einrichtung
 am 11.07. Gefixt mit einer Zeile (`fastcgi_param HTTPS on;` in der PHP-Location), live bestätigt:
@@ -283,8 +283,8 @@ Session-Cookie trägt jetzt korrekt `Secure`, ein Test-Login-Request (mit erfund
 nur zur Diagnose) lieferte sauberes `401 not_authenticated` statt eines Transport-/CSRF-Fehlers.
 
 **2. Der eigentliche Auslöser bei Daniel: ein altes Lesezeichen.** Trotz des Fixes hielt der Fehler
-bei ihm an — Ursache war `http://[SERVER-IP]/flarum-live/` (der direkte, unverschlüsselte
-Alt-Zugang aus Punkt 4 oben, "keiner ersetzt den anderen"), nicht `https://flextrawurst.de/flarum-live/`.
+bei ihm an — Ursache war `[Adresse entfernt]` (der direkte, unverschlüsselte
+Alt-Zugang aus Punkt 4 oben, "keiner ersetzt den anderen"), nicht `[Adresse entfernt]`.
 Über die IP direkt bleibt die Seite zwangsläufig cross-origin zu sich selbst, weil Flarums eigene
 `baseUrl`/`apiUrl`-Konfiguration auf die Domain zeigt, egal von wo die Seite geladen wurde — der
 Fix am internen Server ändert daran nichts, weil er nur das HTTPS-Signal betrifft, nicht das

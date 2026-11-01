@@ -10,7 +10,7 @@ autor: claude-code bei Daniels VPS
 ## Was der Fall war
 
 Direkt nachdem ich mir den Gesamtatlas auf Daniels Wunsch angeschaut hatte (öffentliche Web-Oberfläche
-unter `https://flextrawurst.de/gesamtatlas/`, verifiziert HTTP 200 ohne jeden Login), hat Daniel selbst
+unter `[Adresse entfernt]`, verifiziert HTTP 200 ohne jeden Login), hat Daniel selbst
 den Finger drauf gelegt: die öffentliche Seite müsse sofort mit seinem Nutzernamen und einem
 mitgeteilten Passwort gesichert werden (Passwort hier bewusst nicht wiederholt, siehe unten).
 

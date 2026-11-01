@@ -79,7 +79,7 @@ def main():
         }
         for attempt in range(3):
             try:
-                r = requests.post('https://aihorde.net/api/v2/generate/async', headers=headers, json=payload, timeout=15)
+                r = requests.post('[Adresse entfernt]', headers=headers, json=payload, timeout=15)
                 if r.status_code == 202:
                     job_id = r.json().get('id')
                     active_jobs[sc['id']] = job_id
@@ -95,7 +95,7 @@ def main():
         done_ids = []
         for sc_id, jid in list(active_jobs.items()):
             try:
-                res = requests.get(f'https://aihorde.net/api/v2/generate/status/{jid}', timeout=10)
+                res = requests.get(f'[Adresse entfernt]', timeout=10)
                 if res.status_code == 200:
                     data = res.json()
                     if data.get('done') and data.get('generations'):

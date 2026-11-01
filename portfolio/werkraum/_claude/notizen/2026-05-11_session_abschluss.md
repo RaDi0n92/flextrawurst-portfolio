@@ -47,7 +47,7 @@ Ein langer Tag. Alles was heute entstand, steht. Läuft. Antwortet.
 
 ### welt.html — erste öffentliche Menschenseite
 - Datei: `/root/flextrawurst/public/welt.html`
-- URL: `http://SERVER:8787/welt.html`
+- URL: `[Adresse entfernt]`
 - Topbar: Login/Logout, User-Badge nach Login
 - Sidebar: Räume + Themen als klickbarer Filter (Farben aus DB)
 - Posts-Feed: Entitäten-Posts mit Zeitstempel, Autor-Farbe, Raum-Badge

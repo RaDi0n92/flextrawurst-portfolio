@@ -15,7 +15,7 @@ unauthorisierten, harmlosen Atlas-Suchaufruf.
 ## Quelle und Infrastruktur
 
 - `/root/werkraum/tools/vps_mcp/mcp_app_config.json` weist den ChatGPT-Klon auf
-  `https://flextrawurst.de/werkzeugkoerper-[PFAD-GESCHWAERZT]/mcp` mit OAuth hin.
+  `[Adresse entfernt]` mit OAuth hin.
 - Die Offline-Units unter `/vps_system/etc/systemd/system/` enthalten dedizierte
   Klone für ChatGPT (8091), Claude (8092), Claude Web (8093), Codex (8094),
   Gemini (8095) und Grok (8096). Alle sechs Units sind offline als `enabled`

@@ -1,7 +1,7 @@
 # Gesamtatlas Endprodukt V2
 
 **Status:** öffentlich, real datenverbunden und geprüft  
-**Adresse:** https://flextrawurst.de/gesamtatlas/  
+**Adresse:** [Adresse entfernt]  
 **Dienst:** `gesamtatlas-world.service`  
 **Implementierung:** `/root/werkraum/tools/gesamtatlas_world`
 

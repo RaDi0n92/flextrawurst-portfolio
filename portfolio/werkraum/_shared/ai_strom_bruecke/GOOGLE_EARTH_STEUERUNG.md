@@ -148,6 +148,6 @@ erlaubten Kanal belegt“ und nicht ein geratenes Quest-Ergebnis.
 - Lokaler Adapter: `firefox_dom.py`
 - Web-Testadapter: `web_earth_adapter.py`
 - Tests: `tests/test_firefox_dom.py`, `tests/test_web_earth_adapter.py`
-- Google: [keyboard shortcuts](https://support.google.com/earth/answer/148115?hl=en)
-- Google: [coordinates](https://support.google.com/earth/answer/148068?hl=en)
-- Google: [ground-level/Street View](https://support.google.com/earth/answer/1067429?hl=en)
+- Google: keyboard shortcuts
+- Google: coordinates
+- Google: ground-level/Street View

@@ -51,7 +51,7 @@ def registriere_kosmos_fundstueck(daten: dict) -> dict:
         "6_kurze_beschreibung": daten.get("kurze_beschreibung", ""),
         "7_ausfuehrliche_beschreibung": daten.get("ausfuehrliche_beschreibung", ""),
         "8_quelle": daten.get("quelle", "Flextrawurst Open Data Repository"),
-        "9_direkte_quelladresse": daten.get("direkte_quelladresse", "https://flextrawurst.de/assets"),
+        "9_direkte_quelladresse": daten.get("direkte_quelladresse", "[Adresse entfernt]"),
         "10_autor_organisation": daten.get("autor_organisation", "Flextrawurst Kollektiv"),
         "11_lizenz": daten.get("lizenz", "CC0 1.0 Universal"),
         "12_kommerziell_nutzbar": daten.get("kommerziell_nutzbar", True),

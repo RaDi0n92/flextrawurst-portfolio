@@ -33,8 +33,8 @@ class FirefoxDomTarget:
 def discover_websocket_url(host: str = "127.0.0.1", port: int = 9222) -> str:
     """Discover Firefox's BiDi WebSocket URL, with its documented fallback."""
     candidates = (
-        f"http://{host}:{port}/json/version",
-        f"http://{host}:{port}/json",
+        f"[Adresse entfernt]",
+        f"[Adresse entfernt]",
     )
     for endpoint in candidates:
         try:
