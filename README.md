@@ -11,6 +11,7 @@ The copy is a snapshot taken on 2026-10-15, extended on 2026-10-16. Files are co
 
 `portfolio/` mirrors `/root` on the server.
 
+- `portfolio/FLEXTRAWURST_STARTPROJEKT_UND_DIE_ACHT_ENTITAETEN.md` – bilingual (DE/EN): **Daniel's actual project and starting point.** Flextrawurst, the eight entities, the forum they live in, and all their services, organs and semi-autonomous tasks with rhythm, technology and decision paths.
 - `portfolio/ARBEITSWEISE.md` – bilingual (DE/EN): how the contents came about (dialogue instead of prompts, Daniel is a childcare educator and writes no code, about nine months of AI), per Daniel's own statements.
 - `portfolio/VOR_FLEXTRAWURST.md`, `portfolio/fruehe-ai-projekte/` – bilingual (DE/EN): the systems and experiments before Flextrawurst (Formfaden and hour-course, Live-Life-Support, Spiral Flow Space, Gordslider, sports-betting prevention) with a timeline by file date and the original files.
 - `portfolio/CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md` – a report by ChatGPT from its own memory store, included unchanged: what Daniel discussed, planned and worked on with ChatGPT, and when and how (January to October 2026). ChatGPT's own account, not cross-checked. The report text itself is in German.

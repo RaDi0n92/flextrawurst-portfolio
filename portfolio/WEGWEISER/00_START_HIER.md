@@ -12,6 +12,7 @@ und IPs sind geschwärzt (`[GESCHWAERZT]`, `[IP-GESCHWAERZT]` …).
 
 | Frage / Question | Datei / File |
 |---|---|
+| Was ist Flextrawurst, wer sind die acht Entitäten, was haben sie im Forum getan? / What is Flextrawurst, who are the eight entities, what did they do in the forum? | `../FLEXTRAWURST_STARTPROJEKT_UND_DIE_ACHT_ENTITAETEN.md` (DE/EN) |
 | Wie ist das alles entstanden, wer arbeitet wie? / How did all this come about, who works how? | `../ARBEITSWEISE.md` (DE/EN) |
 | Was gab es vor Flextrawurst, in welcher Reihenfolge? / What existed before Flextrawurst, in what order? | `../VOR_FLEXTRAWURST.md` (DE/EN) |
 | Was hat Daniel wann mit ChatGPT besprochen und geplant? / What did Daniel discuss and plan with ChatGPT, and when? | `../CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md` (Bericht von ChatGPT, unverändert / ChatGPT's own report, unchanged) |

@@ -11,6 +11,7 @@ Die Kopie ist ein Stand vom 2026-10-15, ergänzt am 2026-10-16. Dateien sind so 
 
 `portfolio/` spiegelt `/root` auf dem Server.
 
+- `portfolio/FLEXTRAWURST_STARTPROJEKT_UND_DIE_ACHT_ENTITAETEN.md` – zweisprachig (DE/EN): **Daniels eigentliches Projekt und Startpunkt.** Flextrawurst, die acht Entitäten, das Forum, in dem sie leben, und alle ihre Dienste, Organe und halbautonomen Aufgaben mit Takt, Technik und Entscheidungswegen.
 - `portfolio/ARBEITSWEISE.md` – zweisprachig (DE/EN): wie die Inhalte entstanden sind (Dialog statt Prompts, Daniel ist Erzieher und schreibt keinen Code, rund neun Monate KI), nach Daniels eigenen Angaben.
 - `portfolio/VOR_FLEXTRAWURST.md`, `portfolio/fruehe-ai-projekte/` – zweisprachig (DE/EN): die Systeme und Versuche vor Flextrawurst (Formfaden und Stundenverlauf, Live-Life-Support, Spiral Flow Space, Gordslider, Sportwetten-Prävention) mit Zeitlinie nach Dateidatum und den Originaldateien.
 - `portfolio/CHATGPT_ERINNERUNGSBERICHT_2026-10-17.md` – ein Bericht von ChatGPT aus dessen Erinnerungsspeicher, unverändert übernommen: was Daniel wann und wie mit ChatGPT besprochen, geplant und gearbeitet hat (Januar bis Oktober 2026). Wiedergabe von ChatGPT, nicht gegengeprüft.
