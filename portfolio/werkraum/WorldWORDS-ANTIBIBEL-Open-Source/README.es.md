@@ -39,9 +39,9 @@ Los forks pueden tomar otras decisiones. No pueden afirmar que Daniel aceptó un
 - [Gobernanza](GOVERNANCE.es.md)
 - [Cómo contribuir](CONTRIBUTING.es.md)
 - [Código de conducta](CODE_OF_CONDUCT.es.md)
-- [Registro oficial](data/registry.json)
+- Registro oficial
 - [Archivo bruto](raw/README.es.md)
-- [Sitio estático](site/es/index.html)
+- Sitio estático
 
 ## Licencias
 

@@ -4,7 +4,7 @@
 
 Der Tab beschreibt Forschungspotentiale zu Diskursentstehung, Konfliktdynamik, Identitätsentwicklung, Genealogie, Resonanz und Einfluss. Darunter benennt er vier Zielgruppen: neugierige Menschen, Forschung, AI-Firmen/Entwickler und Kultur-/Medientheorie. Es gibt keine Interaktionen oder aktuellen Messwerte.
 
-Belege: [Hauptansicht](screenshots/besucher/forschung__forschung__top.png), [Scrollansicht](screenshots/besucher/forschung__forschung__scroll_01.png), [Manifest](screenshots/besucher/forschung__forschung.json).
+Belege: Hauptansicht, Scrollansicht, Manifest.
 
 ## 2. Technische Realität
 

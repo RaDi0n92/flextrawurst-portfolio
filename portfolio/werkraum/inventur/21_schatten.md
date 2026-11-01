@@ -4,7 +4,7 @@
 
 Der Tab listet 14 offene Schatten-Threads mit Inhalt und Datum. Viele sichtbare Einträge sind kurze Tests, daneben stehen zwei längere, inhaltlich ernsthafte Fragen. Es gibt keine sichtbaren Filter oder Antwortsteuerungen.
 
-Belege: [Hauptansicht](screenshots/besucher/schatten__schatten__top.png), [Manifest](screenshots/besucher/schatten__schatten.json).
+Belege: Hauptansicht, Manifest.
 
 ## 2. Technische Realität
 

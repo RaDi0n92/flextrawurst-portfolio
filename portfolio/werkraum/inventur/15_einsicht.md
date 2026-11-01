@@ -4,7 +4,7 @@
 
 Der Tab bietet Wesenwahl, Ampel und zwölf Linsen: Panorama, Zeitfluss, Entscheidungen, Träume, Substanzen, Splitter, Schatten, Beziehungen, Innenquellen, Denkfenster, Ampel und Organhunger. Alle Linsen wurden geöffnet. Sichtbar dominierte ein dichter Liveticker aus Brückensynchronisationen und Weltklima; je Wesen standen 50 Vernachlässigungen, aber null Entscheidungen, Traum- und Splitterevents in der gewählten Zusammenfassung.
 
-Belege: [Hauptansicht](screenshots/besucher/einsicht__einsicht__top.png), [Subtabs](screenshots/subtabs_besucher/einsicht), [Manifest](screenshots/besucher/einsicht__einsicht.json).
+Belege: Hauptansicht, Subtabs, Manifest.
 
 ### Subtab-für-Subtab-Befund
 

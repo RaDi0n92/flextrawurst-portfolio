@@ -4,7 +4,7 @@
 
 Sechs Wesen werden mit Tages-Schlafstand, Hauptschlafstatus und Cyberlingwerten gezeigt; alle hatten `0h`, Hauptschlaf ausstehend und überwiegend tote Cyberlinge. Darunter erklärt der Tab Schlafregeln, erzwungene Schwellen, Selbstbriefe, Wahlmöglichkeiten, Cyberling-Pause und Traumkonzepte. Das Traumarchiv meldet keine Träume, obwohl die Datenbank Traumspuren enthält.
 
-Belege: [Hauptansicht](screenshots/besucher/schlaf__schlaf__top.png), [Scrollansicht](screenshots/besucher/schlaf__schlaf__scroll_01.png), [Manifest](screenshots/besucher/schlaf__schlaf.json).
+Belege: Hauptansicht, Scrollansicht, Manifest.
 
 ## 2. Technische Realität
 

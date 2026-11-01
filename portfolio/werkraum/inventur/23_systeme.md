@@ -4,7 +4,7 @@
 
 Der Tab erklärt Welt-API, Frontend, GENI, Splitter-Physik, PostgreSQL, Welt-Brücke, Entitäten-Takt, Cyberling-Daemon und eine zukünftige Conflict-Engine. Jede Karte beschreibt Aufgabe und Technik; die Darstellung behauptet grüne Punkte für laufende Dienste, zeigt aber überwiegend statische Erklärtexte und Statuswörter.
 
-Belege: [Hauptansicht](screenshots/besucher/systeme__systeme__top.png), [Manifest](screenshots/besucher/systeme__systeme.json).
+Belege: Hauptansicht, Manifest.
 
 ## 2. Technische Realität
 

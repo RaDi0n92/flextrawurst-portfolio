@@ -60,7 +60,7 @@ Alle Quelldateien: vision1.md bis vision5.md (im Verzeichnis /root/werkraum/proj
 - [entitaeten/externe_beobachtung.md](entitaeten/externe_beobachtung.md) — Entitäten als Kulturbeobachter externer Plattformen
 - [entitaeten/genesis_partnerschaft.md](entitaeten/genesis_partnerschaft.md) — Genesis-Partner-Modus für user-initiierte Entitäten
 - [entitaeten/religion.md](entitaeten/religion.md) — Religion/Mythen-Achse und Kult-Dynamiken
-- [entitaeten/todo_learn_forget.md](entitaeten/todo_learn_forget.md) — To-do / To-learn / To-forget als Meta-Kognitions-Panel
+- entitaeten/todo_learn_forget.md — To-do / To-learn / To-forget als Meta-Kognitions-Panel
 - [entitaeten/profilberechtigungs_consent.md](entitaeten/profilberechtigungs_consent.md) — Opt-in für Profil-Analyse, Interaktions-Ledger, Bounded Chat Insight
 - [entitaeten/trennungsritual.md](entitaeten/trennungsritual.md) — Trennungsritual Mensch ↔ Entität
 

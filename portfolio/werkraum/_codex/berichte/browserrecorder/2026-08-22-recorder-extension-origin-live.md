@@ -16,7 +16,7 @@ Die Seite `http://127.0.0.1:8766/flextrawurst/flextrawurst_surface.html#uber` wu
 ## Sichtbare Belegkette
 
 - REC-GATE-001: PASS — contracts gate meldete ok=true mit 10 Markern und 10 Skills.
-- REC-EYE-001: PASS — Playwright headful auf DISPLAY=:1; zwei sichtbare Snapshot-Klicks; Screenshots liegen bei [after-extension-crawl.png](after-extension-crawl.png) und [after-extension-readback.png](after-extension-readback.png).
+- REC-EYE-001: PASS — Playwright headful auf DISPLAY=:1; zwei sichtbare Snapshot-Klicks; Screenshots liegen bei after-extension-crawl.png und after-extension-readback.png.
 - REC-BACKUP-001: PASS — Backup-Commits a68776d2f und feb6f6ee0 wurden vor der jeweiligen Änderung gesetzt.
 - REC-FETCH-001: PASS — sichtbarer Klick auf `Servermanifeste lesen`; UI zeigte `Servermanifest-Readback abgeschlossen · 1 Manifest(e) vom VPS gelesen · lokale IndexedDB ergänzt.`.
 - REC-SEC-001: PASS — Zugangsschlüssel wurde nur im temporären Chromium-Profil gesetzt; kein Schlüssel steht in diesem Bericht oder Screenshot-Text.

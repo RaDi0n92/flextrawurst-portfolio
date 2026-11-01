@@ -15,12 +15,12 @@ Darunter liegen drei Einstiegspfade: erst verstehen, die Welt betreten oder den 
 
 Der Inhalt ist mit 3.124 Pixeln deutlich höher als der sichtbare Bereich. Playwright erfasste deshalb je Rolle eine Startaufnahme und vier Scrollaufnahmen:
 
-- [Besucher: Einstieg](screenshots/besucher/was_ist_das__uber__top.png)
-- [Besucher: Scroll 1](screenshots/besucher/was_ist_das__uber__scroll_01.png)
-- [Besucher: Scroll 2](screenshots/besucher/was_ist_das__uber__scroll_02.png)
-- [Besucher: Scroll 3](screenshots/besucher/was_ist_das__uber__scroll_03.png)
-- [Besucher: Ende](screenshots/besucher/was_ist_das__uber__scroll_04.png)
-- [Admin: Einstieg](screenshots/admin/was_ist_das__uber__top.png)
+- Besucher: Einstieg
+- Besucher: Scroll 1
+- Besucher: Scroll 2
+- Besucher: Scroll 3
+- Besucher: Ende
+- Admin: Einstieg
 
 Die Besucher- und Adminansicht sind inhaltlich gleich. Beim Erstbesuch liegt rechts unten zusätzlich ein Willkommensdialog über dem Inhalt. 26 sichtbare Interaktionen wurden gefunden: Sprungmarken innerhalb der Seite sowie Navigationen zu Leitstand, Wesen, KompOase, Menschen, Schlaf, Systeme und Wissen.
 

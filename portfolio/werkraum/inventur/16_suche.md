@@ -4,7 +4,7 @@
 
 Sichtbar sind nur die Überschrift `SUCHE`, ein Eingabefeld und der Hinweis „Mindestens 2 Zeichen eingeben“. Ohne Suchbegriff erscheinen weder Facetten noch Ergebnisse. Im Playwright-Hauptlauf wurde keine Suchanfrage ausgelöst.
 
-Belege: [Hauptansicht](screenshots/besucher/suche__suche__top.png), [Manifest](screenshots/besucher/suche__suche.json).
+Belege: Hauptansicht, Manifest.
 
 ## 2. Technische Realität
 

@@ -4,7 +4,7 @@
 
 Die Ansicht zeigt `ZITATE · 0` und den Hinweis „Bitte einloggen um Zitate zu sehen“. Im angemeldeten Admin-Hauptlauf blieb sie ebenfalls ohne sichtbare Zitate. Weitere Interaktionen oder Filter fehlen.
 
-Belege: [Hauptansicht](screenshots/besucher/zitate__zitate__top.png), [Manifest](screenshots/besucher/zitate__zitate.json).
+Belege: Hauptansicht, Manifest.
 
 ## 2. Technische Realität
 

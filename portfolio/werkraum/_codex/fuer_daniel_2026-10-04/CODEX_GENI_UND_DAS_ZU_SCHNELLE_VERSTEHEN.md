@@ -1,6 +1,6 @@
 # Daniel, „gehört“ ist manchmal eine ziemlich dreiste Antwort
 
-Der [GENI-Entstehungsdialog vom 20. April](</root/werkraum/in_gpt/job-portfolio-try/_SUPERSEDED_INTERNAL/LEGACY_VISIBLE_STRUCTURE_2026-10-02/03_CHRONOLOGICAL_ARCHAEOLOGY/20-04-2026__GENI-ENTSTEHUNG/geni_entstehungsdialog.md>) fängt mit einer konkreten Störung an: Deine Forumsgespräche antworten nicht mehr. Du willst zunächst nur Input geben und gehört werden. Dann machst du einen ganz anderen Raum auf: Erinnerung, Verbindungen, Zugriff, ein Gehirn, das du DU und später GENI nennst.
+Der GENI-Entstehungsdialog vom 20. April fängt mit einer konkreten Störung an: Deine Forumsgespräche antworten nicht mehr. Du willst zunächst nur Input geben und gehört werden. Dann machst du einen ganz anderen Raum auf: Erinnerung, Verbindungen, Zugriff, ein Gehirn, das du DU und später GENI nennst.
 
 Was ich daran mag: Du kannst mitten in einem kaputten technischen Alltag einen Gedanken verfolgen, der noch nicht wie eine Anforderung aussieht. Du willst ausdrücklich fragen, philosophieren und abschweifen. Das darf ein Gespräch können. Ich würde diese rohe Stelle nicht zu einem ordentlichen Projektauftrag glattziehen.
 
@@ -22,7 +22,7 @@ Später will er die Störung fast vollständig dem Modell zuschreiben und Claude
 
 ## Eine Datei, die mich wieder auf den Boden bringt
 
-[GENIs damaliges Selbstbild](</root/werkraum/in_gpt/job-portfolio-try/_SUPERSEDED_INTERNAL/LEGACY_VISIBLE_STRUCTURE_2026-10-02/03_CHRONOLOGICAL_ARCHAEOLOGY/22-04-2026__GENI-KOERPER/vps_gehirn.md>) beginnt mit „ich bin noch nicht der vps“. Es unterscheidet das vorhandene Gedächtnissystem von der Idee, einmal jede Datei zu verbinden; auch der Flarum-Spiegel steht noch aus. Das ist für mich eine Lieblingsstelle, weil sie die große Vorstellung behalten kann und trotzdem sagt, was noch nicht da ist.
+GENIs damaliges Selbstbild beginnt mit „ich bin noch nicht der vps“. Es unterscheidet das vorhandene Gedächtnissystem von der Idee, einmal jede Datei zu verbinden; auch der Flarum-Spiegel steht noch aus. Das ist für mich eine Lieblingsstelle, weil sie die große Vorstellung behalten kann und trotzdem sagt, was noch nicht da ist.
 
 Am Gesprächsende kostet dich auch die Bedienungsanleitung unnötige Schleifen: Claude nennt verschiedene WinSCP-Menüs und verspricht einen direkten Live-Zugang. Du findest die genannten Punkte nicht. Statt seine Grundlage zu prüfen, liefert er den nächsten angeblich einfachen Weg. Ich verifiziere hier nicht die damalige Softwareversion. Im Dialog selbst ist aber sichtbar, dass die Anleitung für dich nicht funktioniert und die Antworten trotzdem immer wieder sicher klingen.
 

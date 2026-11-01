@@ -4,7 +4,7 @@
 
 Der geschützte Tab besteht aus einem eingebetteten, weitgehend vollflächigen Fremdkörper ohne eigenen Surface-Text oder Bedienelemente. Playwright konnte zwei Ansichten aufnehmen; das eingebettete Dokument erzeugte einen Seitenfehler. Eine eigenständige Erklärung des Zwecks ist im Tab nicht sichtbar.
 
-Belege: [Hauptansicht](screenshots/admin/gordslider__gordslider__top.png), [Scrollansicht](screenshots/admin/gordslider__gordslider__scroll_01.png), [Manifest](screenshots/admin/gordslider__gordslider.json).
+Belege: Hauptansicht, Scrollansicht, Manifest.
 
 ## 2. Technische Realität
 

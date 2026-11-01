@@ -4,7 +4,7 @@
 
 Der Tab zeigt ausschließlich `SPLITTER-AUFNAHMEN · 0` und „Keine Aufnahmen“. Es gibt keine Filter, Karten oder weitere Interaktion.
 
-Belege: [Hauptansicht](screenshots/besucher/splitter__splitter__top.png), [Manifest](screenshots/besucher/splitter__splitter.json).
+Belege: Hauptansicht, Manifest.
 
 ## 2. Technische Realität
 

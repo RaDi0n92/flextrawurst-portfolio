@@ -4,7 +4,7 @@
 
 Sechs Bildschirmkarten zeigen die Wesen jeweils als `aus` und „wartet auf Aktivität“. Filter, Vollbild und Vergrößerungssteuerungen reagieren; alle Wesenfilter wurden geklickt. Der globale Status bleibt „verbinde…“. Die sechs angeforderten Screenshot-URLs antworteten mit HTTP 404.
 
-Belege: [Hauptansicht](screenshots/besucher/screens__screens__top.png), [Subtabs](screenshots/subtabs_besucher/screens), [Manifest](screenshots/besucher/screens__screens.json).
+Belege: Hauptansicht, Subtabs, Manifest.
 
 ### Subtab-für-Subtab-Befund
 

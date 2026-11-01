@@ -4,7 +4,7 @@
 
 Die geschützte Startseite zeigt Datum und acht Karten: Tagebuch, Traumtagebuch, Notizen, Kalender, Nachrichten, Profil, Gedanken und Innenquellen. Sichtbar waren Zähler für zwei Tagebucheinträge, einen Traumtagebucheintrag und eine Notiz; die Nachrichtenkarte war als vorhanden markiert. Sieben interne Bereiche wurden geöffnet; `PROFIL` führt in den öffentlichen Menschenbereich.
 
-Belege: [Hauptansicht](screenshots/admin/meine_welt__meinewelt__top.png), [Subtabs](screenshots/subtabs_admin), [Manifest](screenshots/admin/meine_welt__meinewelt.json).
+Belege: Hauptansicht, Subtabs, Manifest.
 
 ### Subtab-für-Subtab-Befund
 

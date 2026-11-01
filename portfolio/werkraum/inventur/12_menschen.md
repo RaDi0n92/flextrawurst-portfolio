@@ -4,7 +4,7 @@
 
 Acht Menschenprofile werden als Karten angezeigt. Die Auswahl öffnet ein Profil mit Anzeigen für Tagebuch, Notizen, Kalender, Traum und Gedanken; beim geprüften Profil standen alle Werte auf null und „Noch keine öffentlichen Gedanken“. Profilkarten und Auswahl reagieren.
 
-Belege: [Hauptansicht](screenshots/besucher/menschen__menschen__top.png), [Manifest](screenshots/besucher/menschen__menschen.json).
+Belege: Hauptansicht, Manifest.
 
 ## 2. Technische Realität
 

@@ -4,7 +4,7 @@
 
 Der geschützte Tab besitzt sieben Subtabs: Nutzer, Supporter, Inhalte, Wesen, Bilder, System und Einzug. Alle wurden geöffnet. Die Nutzeransicht zeigt acht aktive Nutzer, alle mit Adminrolle, sowie Erstellen-, Bearbeiten-, Deaktivieren- und Entfernen-Aktionen; weitere Bereiche enthalten ihre jeweiligen Verwaltungsoberflächen.
 
-Belege: [Hauptansicht](screenshots/admin/admin__admin__top.png), [Subtabs](screenshots/subtabs_admin), [Manifest](screenshots/admin/admin__admin.json).
+Belege: Hauptansicht, Subtabs, Manifest.
 
 ### Subtab-für-Subtab-Befund
 

@@ -6,7 +6,7 @@ Stand: 13. Juni 2026
 
 Untersucht wurden alle 28 Haupttabs der laufenden Surface auf Port 8787. Jeder Haupttab wurde mit Playwright geöffnet und als Screenshot gesichert; scrollende Ansichten erhielten Zusatzaufnahmen. Die filter- oder bereichsartigen Subtabs von `WELTSTROM`, `DENKEN`, `SCREENS`, `EINSICHT`, `ARCHÄOLOGIE`, `GRUPPEN`, `WISSEN`, `MEINE WELT` und `ADMIN` wurden aktiv angeklickt. Netzwerkrequests und Responses wurden je Hauptansicht protokolliert und anschließend mit Welt-API, PostgreSQL-Tabellen, Diensten, Surface-Quellcode, Visionstexten und der 490-Punkte-Quellliste abgeglichen.
 
-Die Screenshots liegen unter [screenshots](screenshots). Diese Inventur bewertet den vorhandenen Zustand; sie entwirft keine neuen Features und keine Zielarchitektur.
+Die Screenshots liegen unter screenshots. Diese Inventur bewertet den vorhandenen Zustand; sie entwirft keine neuen Features und keine Zielarchitektur.
 
 Jedes Tab-Dossier folgt dem Elf-Punkte-Schema `Ist-Zustand`, `Technische Realität`, `Reale Aktivität`, `Ursprung`, `Weltfunktion`, `Überschneidungen`, `Einzugsrelevanz`, `Verlustanalyse`, `Bewertung`, `Empfehlung` und `Langfristige Weltperspektive`. Vorhandene Subtabs und Filter sind im jeweiligen Ist-Zustand einzeln ausgewiesen.
 

@@ -4,7 +4,7 @@
 
 Die KompOase zeigt einen dunklen, räumlichen Gärraum mit schwebenden Splitterblasen. Eine Erklärung beschreibt Entstehung, Energie, Verschmelzung und Geburt neuer Entitäten; angezeigt werden 47 Splitter und 35 Prozent, außerdem Gärraum- und Archivsteuerung. Blasen reagieren auf Hover und Klick; die Detailansicht wurde geprüft.
 
-Belege: [Hauptansicht](screenshots/besucher/kompoase__theater__top.png), [Manifest](screenshots/besucher/kompoase__theater.json).
+Belege: Hauptansicht, Manifest.
 
 ## 2. Technische Realität
 

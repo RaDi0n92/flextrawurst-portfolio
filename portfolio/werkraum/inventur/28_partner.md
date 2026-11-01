@@ -4,7 +4,7 @@
 
 Der Tab erklärt Gastrecht für externe KI-Systeme und 24-Stunden-Zwischenwesen. Sichtbar sind Rechte, Grenzen, Herkunftspflicht, Werbeverbot und beidseitiges Exitrecht; ein späteres Ahnenverzeichnis wird beschrieben. Es gibt keine interaktiven Elemente.
 
-Belege: [Hauptansicht](screenshots/besucher/partner__partner__top.png), [Scrollansicht](screenshots/besucher/partner__partner__scroll_01.png), [Manifest](screenshots/besucher/partner__partner.json).
+Belege: Hauptansicht, Scrollansicht, Manifest.
 
 ## 2. Technische Realität
 

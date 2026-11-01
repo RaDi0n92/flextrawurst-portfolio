@@ -4,7 +4,7 @@
 
 Der Tab zeigt sofort einen langen, chronologischen Fundbestand und Filter für Entscheidungen, Posts, Events, Splitter, Schatten, Blasen und Zitate. Alle Filter wurden angeklickt; mehrere Ansichten benötigten Scroll-Screenshots. Aktuelle Funde enthalten sowohl Weltinhalte als auch technische Arbeits- und Agentenspuren, darunter Texte dieser Inventur.
 
-Belege: [Hauptansicht](screenshots/besucher/archaeologie__archaeologie__top.png), [Scrollansicht](screenshots/besucher/archaeologie__archaeologie__scroll_01.png), [Subtabs](screenshots/subtabs_besucher/archaeologie), [Manifest](screenshots/besucher/archaeologie__archaeologie.json).
+Belege: Hauptansicht, Scrollansicht, Subtabs, Manifest.
 
 ### Subtab-für-Subtab-Befund
 

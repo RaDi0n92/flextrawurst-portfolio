@@ -9,12 +9,12 @@ Windows-Build und kein synthetischer UI-PASS.
 ## Tatsächlich ausgeführte Prüfungen
 
 - Gezielte unittest-Suite: 172 Tests; vollständige Ausgabe in
-  [PRAXIS_REPAIR_2026-10-02_TEST_RUN.txt](PRAXIS_REPAIR_2026-10-02_TEST_RUN.txt).
+  PRAXIS_REPAIR_2026-10-02_TEST_RUN.txt.
 - `python3 tests/pruefe_koerper.py`: Exit 0, vier Quellmuster sauber.
 - Beide `skill_pruefen.py`-Läufe: 0 Fehler, 0 Hinweise.
 - Beide `quick_validate.py`-Läufe: Skill is valid.
 - Claude-Paket: 25/25 SHA-256 MATCH, siehe
-  [Integritätsdaten](PRAXIS_REPAIR_2026-10-02_PACKET_INTEGRITY.json).
+  Integritätsdaten.
 - `graphify update .`: nicht verfügbar (command not found); kein Update behauptet.
 
 Die untrusted-Origin-Handshake-Fehlermeldung in der Testausgabe gehört zur

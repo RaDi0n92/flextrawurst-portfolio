@@ -39,9 +39,9 @@ Forks may make different choices. They may not claim that Daniel accepted a term
 - [Governance](GOVERNANCE.en.md)
 - [Contributing](CONTRIBUTING.en.md)
 - [Code of conduct](CODE_OF_CONDUCT.en.md)
-- [Official registry](data/registry.json)
+- Official registry
 - [Raw archive](raw/README.en.md)
-- [Static website](site/en/index.html)
+- Static website
 
 ## Licenses
 

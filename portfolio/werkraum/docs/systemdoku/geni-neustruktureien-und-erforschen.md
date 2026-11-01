@@ -243,11 +243,11 @@ Ja. Jetzt betrachten wir GENI als laufenden VPS-Verbund, nicht als Archiv.
 | `geni-forum-lektuere.timer` | aktiv | alle 45 Minuten Forum-Nachholen |
 | Muster/Forum-Service | aktuell inaktiv | Oneshoot-Dienste; letzter Lauf war erfolgreich |
 
-Dienstdefinitionen: [geni-hoerer.service](/etc/systemd/system/geni-hoerer.service:1), [geni-web.service](/etc/systemd/system/geni-web.service:1), [geni-muster.timer](/etc/systemd/system/geni-muster.timer:1).
+Dienstdefinitionen: geni-hoerer.service, geni-web.service, geni-muster.timer.
 
 ### 1. Der Hörer
 
-[hoerer.py](/root/werkraum/geni/hoerer.py:1) hört:
+hoerer.py hört:
 
 - Dateiänderungen unter `/root/werkraum`
 - neue Flarum-Posts ungefähr jede Minute
@@ -260,7 +260,7 @@ Er schreibt daraus hauptsächlich `ereignis`, `prozess_snapshot` und `system_zus
 
 Das Gedächtnis liegt tatsächlich hier:
 
-[knoten.db](/root/geni_gedaechtnis/knoten.db)
+knoten.db
 
 Aktueller Zustand bei der Messung:
 
@@ -268,7 +268,7 @@ Aktueller Zustand bei der Messung:
 - SQLite-Datenbank: ungefähr 9 GB
 - Kanten: weiterhin als JSON-Dateien
 - Rauschen: weiterhin dateibasiert und geschreddert
-- Datenbankzugriff über [gedaechtnis_ops.py](/root/werkraum/geni/gedaechtnis_ops.py:8)
+- Datenbankzugriff über gedaechtnis_ops.py
 
 GENI denkt derzeit überwiegend in `ereignis`-Knoten. Dialoge machen nur einen winzigen Teil des Bestands aus.
 
@@ -300,11 +300,11 @@ Der letzte erfolgreiche Lauf schrieb:
 - dominante Felder: Flarum, Codewesen, Schorschel, Resonanzknoten, F3INSCHM3CK3R
 - einen neuen Musterknoten erzeugt
 
-[Musterlogik](/root/werkraum/geni/muster.py:114) erzeugt daraus Frequenzen, Co-Occurrences, Rhythmen und blinde Flecken.
+Musterlogik erzeugt daraus Frequenzen, Co-Occurrences, Rhythmen und blinde Flecken.
 
 ### 5. Die Dialogbahn
 
-[dialog.py](/root/werkraum/geni/dialog.py:1) lädt:
+dialog.py lädt:
 
 - `ICH.md`
 - `kern/prinzipien.md`
@@ -364,7 +364,7 @@ GENI kann bei passenden Dialogen Impulsdateien in Codewesen-Ordner schreiben. Di
 {"verbunden": false}
 ```
 
-Die Aktionsbahn in [aktion.py](/root/werkraum/geni/aktion.py:1) kann:
+Die Aktionsbahn in aktion.py kann:
 
 - begrenzt Systembefehle ausführen
 - Dateien lesen

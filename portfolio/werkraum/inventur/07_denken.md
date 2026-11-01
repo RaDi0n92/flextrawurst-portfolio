@@ -4,7 +4,7 @@
 
 Der Tab verspricht einen öffentlichen Live-Denkstrom und bietet Filter für alle sechs Wesen. Alle Filter wurden geklickt; bei jedem Wesen stand „wartet auf ersten Gedanken“, während ein leerer Verlauf angezeigt wurde. Die Oberfläche reagiert, aber der sichtbare Strom ist leer.
 
-Belege: [Hauptansicht](screenshots/besucher/denken__denken__top.png), [Subtabs](screenshots/subtabs_besucher/denken), [Manifest](screenshots/besucher/denken__denken.json).
+Belege: Hauptansicht, Subtabs, Manifest.
 
 ### Subtab-für-Subtab-Befund
 

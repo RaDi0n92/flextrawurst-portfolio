@@ -25,7 +25,7 @@ Die nachfolgenden Stellen beziehen sich auf den Paketstand, sofern ausdrücklich
 
 ### P0 — „Ansage steht in der Raute“ ist nicht belegt
 
-[`PraxisLauf.ansage()`](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/praxis/lauf.py:255) startet die Lesezeit und wechselt zum nächsten Knoten, sobald `_raute()` wahr liefert. [`PraxisDienst._raute()`](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/client_vps/praxis_dienst.py:68) publiziert lediglich `raute_tippen`, bucht sofort eine `raute`-Spur und gibt `True` zurück. Der tatsächliche Desktop-Körper kann die Eingabe wegen `nur_terminal`, ausgeschalteten Händen, fehlendem Backend, Not-Aus, Beschäftigung oder späterem Schreibfehler ablehnen; siehe [Originallaufzeit](/root/werkraum/augen_haende_bridge/src/augen_haende_bridge/koerper/anwendung.py:477). Er meldet das der Harness nicht korreliert zurück. Der Test der Dienstmethode prüft nur den Publish-Pfad.
+`PraxisLauf.ansage()` startet die Lesezeit und wechselt zum nächsten Knoten, sobald `_raute()` wahr liefert. `PraxisDienst._raute()` publiziert lediglich `raute_tippen`, bucht sofort eine `raute`-Spur und gibt `True` zurück. Der tatsächliche Desktop-Körper kann die Eingabe wegen `nur_terminal`, ausgeschalteten Händen, fehlendem Backend, Not-Aus, Beschäftigung oder späterem Schreibfehler ablehnen; siehe Originallaufzeit. Er meldet das der Harness nicht korreliert zurück. Der Test der Dienstmethode prüft nur den Publish-Pfad.
 
 **Folge:** Regel 0 („Daniel sieht die Ansage vorher“) kann verletzt sein, während Harness und Ledger „Ansage steht“ behaupten. Das eigene Premortem benennt diese Lücke bereits zutreffend.
 
@@ -33,7 +33,7 @@ Die nachfolgenden Stellen beziehen sich auf den Paketstand, sofern ausdrücklich
 
 ### P1 — Eine Spurart kann einen anderen Vorgang „bestehen“ lassen
 
-[`getan()`](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/praxis/lauf.py:289) fordert nur mindestens ein Ereignis je `evidenz`-Art seit der Ansage. Die [Evidenzzählung](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/client_vps/praxis_dienst.py:41) prüft keine Zielbindung, Befehlsargumente, erwartete Wirkung oder zum Schritt gehörende Ereigniskette. Das genügt für einen Rhythmus, aber nicht als Nachweis der beschriebenen Aufgabe.
+`getan()` fordert nur mindestens ein Ereignis je `evidenz`-Art seit der Ansage. Die Evidenzzählung prüft keine Zielbindung, Befehlsargumente, erwartete Wirkung oder zum Schritt gehörende Ereigniskette. Das genügt für einen Rhythmus, aber nicht als Nachweis der beschriebenen Aufgabe.
 
 Konkrete Umgehungen aus dem [Szenario](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/praxis/szenario_menschlich.json):
 
@@ -43,38 +43,38 @@ Konkrete Umgehungen aus dem [Szenario](/vps_root/werkraum/_codex/von_claude_2026
 | 9 | Chatnachricht beim Empfänger | irgendeine `haende`-Spur; `nachricht` ist nicht Pflicht |
 | 20 | sinnvolle Zeigegeste und Reaktion des Partners | irgendein `weltdom`-Befehl |
 | 21 | unveränderter Moment beim Gegenüber | eine neue Kapsel |
-| 22 | Daniels Zustimmung und ausgelieferter Seed | Seed-Vorschlag; die Originallaufzeit unterscheidet [Vorschlag](/root/werkraum/augen_haende_bridge/client_vps/seed_dienst.py:68) und [Freigabe/Auslieferung](/root/werkraum/augen_haende_bridge/client_vps/seed_dienst.py:93) ausdrücklich |
+| 22 | Daniels Zustimmung und ausgelieferter Seed | Seed-Vorschlag; die Originallaufzeit unterscheidet Vorschlag und Freigabe/Auslieferung ausdrücklich |
 | 23 | Loop endet nach Budget 3 | ein gestarteter Loop |
 
 **Reparatur:** Szenarioschritte benötigen typisierte Erwartungsprädikate: Akteur, Ziel, Aktion samt wesentlichen Argumenten, Erfolg oder erwartete Ablehnung, erwartete Zustandsänderung und gegebenenfalls Urteil des Partners. `attempted`, `performed`, `observed` und `verified` müssen getrennte Zustände sein. Visuell schwer maschinenprüfbare Wirkung wird als menschlich zu prüfender Befund ausgewiesen; sie darf nicht durch einen generischen Event-Count als automatisch verifiziert erscheinen.
 
 ### P1 — „Neues Bild“ kann das alte Bild sein
 
-`see` liest in der [Originallaufzeit](/root/werkraum/augen_haende_bridge/client_vps/terminal_launcher.py:1088) `latest.json`. Jeder Aufruf auf einen vorhandenen Frame erzeugt eine frische `sehen`-Spur, auch wenn `seq` und Aufnahmezeit unverändert sind ([Zeilen 1127–1131](/root/werkraum/augen_haende_bridge/client_vps/terminal_launcher.py:1127)). Die Harness prüft anschließend nur Ereigniszeit und Agent. Das gilt auch für das Zuschauerbild. Nach einem Widerspruch verwendet `_seit_blick()` weiterhin den ursprünglichen Zeitpunkt des Handelns; eine neue Klärrunde kann so mit dem alten Blick bedient werden.
+`see` liest in der Originallaufzeit `latest.json`. Jeder Aufruf auf einen vorhandenen Frame erzeugt eine frische `sehen`-Spur, auch wenn `seq` und Aufnahmezeit unverändert sind (Zeilen 1127–1131). Die Harness prüft anschließend nur Ereigniszeit und Agent. Das gilt auch für das Zuschauerbild. Nach einem Widerspruch verwendet `_seit_blick()` weiterhin den ursprünglichen Zeitpunkt des Handelns; eine neue Klärrunde kann so mit dem alten Blick bedient werden.
 
 **Reparatur:** `sehen`-Spuren an Frame-ID/Sequenz, Aufnahmezeit, Terminal und gebundenes Ziel koppeln. Ein nachgelagerter Blick braucht eine nach der Handlung erfasste Aufnahme; jede neue Klärrunde einen neuen Aufnahmeversuch nach der Runde. Ein unverändertes Motiv ist ein legitimer Befund, ein unverändert wiederverwendeter Cache kein neuer Blick.
 
 ### P1 — Zurückgestellt und fehlgeschlagen wirken wie „alle Schritte durch“
 
-Der Dienst setzt [`menue_freigabe=False`](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/client_vps/praxis_dienst.py:28); im geprüften Laufpfad ist kein Umschalten erkennbar. Dadurch werden die sieben Menüschritte 11–17 [übersprungen](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/praxis/lauf.py:183). Trotzdem kann die Endkarte [„Alle Schritte sind durch“](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/praxis/lauf.py:202) sagen. Auch `fehler`, `anders` und `offen_streit` zählen in [`fertig`](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/praxis/lauf.py:383). Das Fortsetzen nach einem Fehler ist sinnvoll; die Abschlusssemantik ist zu stark.
+Der Dienst setzt `menue_freigabe=False`; im geprüften Laufpfad ist kein Umschalten erkennbar. Dadurch werden die sieben Menüschritte 11–17 übersprungen. Trotzdem kann die Endkarte „Alle Schritte sind durch“ sagen. Auch `fehler`, `anders` und `offen_streit` zählen in `fertig`. Das Fortsetzen nach einem Fehler ist sinnvoll; die Abschlusssemantik ist zu stark.
 
 **Reparatur:** Separat ausweisen: durchgeführt, bestanden, fehlgeschlagen, strittig, zurückgestellt, nicht getestet. Endstatus z. B. `COMPLETE`, `COMPLETE_WITH_FINDINGS`, `INCOMPLETE_WITH_DEFERRED`. Die Menüschritte brauchen entweder einen tatsächlich angeschlossenen, begrenzten Freigabepfad und Nachholmechanismus oder einen ausdrücklich reduzierten Testumfang. „23/23 getestet“ erst bei 23 tatsächlich durchgeführten Schritten.
 
 ### P1 — Protokollversagen kann unsichtbar bleiben
 
-[`_zeile()`](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/praxis/lauf.py:190) schluckt jeden Fehler beim persistenten Schreiben; der Zustand schreitet trotzdem fort. Der Dienst schluckt Schreibfehler der Markdown-Ansicht ebenfalls ([Zeilen 77–99](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/client_vps/praxis_dienst.py:77)). Das widerspricht dem Anspruch „nichts im Verborgenen“.
+`_zeile()` schluckt jeden Fehler beim persistenten Schreiben; der Zustand schreitet trotzdem fort. Der Dienst schluckt Schreibfehler der Markdown-Ansicht ebenfalls (Zeilen 77–99). Das widerspricht dem Anspruch „nichts im Verborgenen“.
 
 **Reparatur:** Eine minimale strukturierte Spur ist für Fortschritt verpflichtend, mit sichtbarem Fehler bei Schreibversagen. Markdown ist abgeleitete, regenerierbare Ansicht. Für einen belastbaren Ledger vor Schrittwechsel schreiben und bei Bedarf flush/fsync; Doppelschreibungen über `event_id` idempotent behandeln.
 
 ### P1 — Das Szenario kann seine eigene Absicherung still verlieren
 
-[`lade_szenario()`](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/praxis/lauf.py:74) akzeptiert `evidenz=[]` und jeden String in `braucht`. Zur Laufzeit wird nur `menue_freigabe` interpretiert. Ein zukünftiges `braucht: "owner_approval"` sähe geschützt aus, wäre es aber nicht. Textfelder wie `ziel` sind nicht an eine tatsächliche Ziel-ID gebunden.
+`lade_szenario()` akzeptiert `evidenz=[]` und jeden String in `braucht`. Zur Laufzeit wird nur `menue_freigabe` interpretiert. Ein zukünftiges `braucht: "owner_approval"` sähe geschützt aus, wäre es aber nicht. Textfelder wie `ziel` sind nicht an eine tatsächliche Ziel-ID gebunden.
 
 **Reparatur:** `braucht` als geschlossene Capability-Enum, Pflicht-Evidenz oder explizites `human_review_required` für Handlungsschritte; typisierte Zielreferenz. Ungelöste oder unbekannte Anforderungen machen das Szenario ungültig, bevor der Lauf startet.
 
 ### P2 — Neustart, Wiederholung und Graphstatus sind noch kein belastbarer Laufzustand
 
-Die sieben Zustände je Schritt sind als Gesprächs- und Handlungsrhythmus nachvollziehbar. Der generische Graph stellt zwar Capability- und Proof-Felder bereit ([Originallaufzeit](/root/werkraum/augen_haende_bridge/src/augen_haende_bridge/harness.py:680)), die hier erzeugten Knoten tragen aber keine solche Bindung; die Beweisprüfung sitzt separat in `PraxisLauf`. Planänderung setzt die aktuelle Knoten-ID sogar direkt ([Zeile 283](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/02_harness_code/praxis/lauf.py:283)). Laufobjekte liegen nur in `PraxisDienst.laeufe`; ein Starter-Neustart verliert sie. Das Premortem kennt diese Schwäche.
+Die sieben Zustände je Schritt sind als Gesprächs- und Handlungsrhythmus nachvollziehbar. Der generische Graph stellt zwar Capability- und Proof-Felder bereit (Originallaufzeit), die hier erzeugten Knoten tragen aber keine solche Bindung; die Beweisprüfung sitzt separat in `PraxisLauf`. Planänderung setzt die aktuelle Knoten-ID sogar direkt (Zeile 283). Laufobjekte liegen nur in `PraxisDienst.laeufe`; ein Starter-Neustart verliert sie. Das Premortem kennt diese Schwäche.
 
 **Reparatur:** Keine zweite Architektur nur um des Graphen willen. Entweder die Proofs tatsächlich als Graph-Gates modellieren oder Graph und `PraxisLauf` mit einem einzigen Zustandsinvariant und einem wiederherstellbaren Checkpoint zusammenführen. Wiederaufnahme muss Schritt, Versuch, Ansagequittung, Bildsequenzen, Urteile und Ledger-Position rekonstruieren können; `--ab=N` allein ist keine Wiederaufnahme eines belegten Laufs.
 
@@ -84,7 +84,7 @@ Die sieben Zustände je Schritt sind als Gesprächs- und Handlungsrhythmus nachv
 
 **Behalten:** den sechsphasigen Rhythmus, sichtbare Vorabansage, Planänderung vor abweichendem Handeln, Bridge-Hände statt verdecktem Dateizugriff, eigener Zuschauerblick, ehrliche Fehler und Daniel-Vorrang. Das sind die nicht offensichtlichen Regeln, die das Verhalten wirklich ändern.
 
-**Kürzen oder verschieben:** Die Frontmatter-Beschreibung ist für Discovery zu breit und wiederholt fast den Ablauf. Der Trigger „Terminal in der Bridge und ein Test steht an“ könnte auch andere Prüfungen einfangen. Die Tabelle mit Auswegen und der lange Warum-Block können in eine bedarfsgerecht verlinkte Referenz; im Einstieg reichen die entscheidenden Invarianten. [`SKILL.md:20–26`](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/01_skills/bridge-praxistest/SKILL.md:20) benutzt `<skill>` als Platzhalter, sagt aber missverständlich, `bridge.sh agenten` zeige den Namen: Der Befehl listet Agenten, nicht den Ordnerpfad. Vor `test start` fehlt ein kurzer Vorflug: bin ich in einem Bridge-Terminal, ist der Partner da, habe ich Hände/Bild/Ziel und ist die Raute quittierbar?
+**Kürzen oder verschieben:** Die Frontmatter-Beschreibung ist für Discovery zu breit und wiederholt fast den Ablauf. Der Trigger „Terminal in der Bridge und ein Test steht an“ könnte auch andere Prüfungen einfangen. Die Tabelle mit Auswegen und der lange Warum-Block können in eine bedarfsgerecht verlinkte Referenz; im Einstieg reichen die entscheidenden Invarianten. `SKILL.md:20–26` benutzt `<skill>` als Platzhalter, sagt aber missverständlich, `bridge.sh agenten` zeige den Namen: Der Befehl listet Agenten, nicht den Ordnerpfad. Vor `test start` fehlt ein kurzer Vorflug: bin ich in einem Bridge-Terminal, ist der Partner da, habe ich Hände/Bild/Ziel und ist die Raute quittierbar?
 
 **Möglicher neuer Einstieg, sinngemäß:**
 
@@ -103,9 +103,9 @@ Die detaillierten Befehle, Beispielansagen und Oberflächenkunde gehören weiter
 
 ### `skill-schreiben`
 
-Er ist bereits deutlich gestrafft. Sein wertvoller Zusatz zum allgemeinen Skill-Creator ist die **Bridge-spezifische Trennung von Skilltext, Szenario und überprüfbarer Laufzeitspur**. Allgemeine Ratschläge zu Beschreibungslänge, Imperativ, Lesbarkeit und Beispielen stehen auch im Skill-Creator; sie können weiter gekürzt oder als Verweis gelassen werden. Die Formel [„Was ein Agent nicht vergessen darf, steht … in einem Knoten“](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/01_skills/skill-schreiben/SKILL.md:24) ist als Ziel gut, derzeit aber zu kategorisch: Hier enthalten die Knoten keine spezifischen Proofs, und manche Anforderungen stehen nur als Freitext oder Eventart im Szenario. Besser: „Wiederholbare Reihenfolge und maschinenprüfbare Pflichten gehören in ein Szenario **mit passenden Guards**; Urteile und Ausnahmen bleiben explizit.“
+Er ist bereits deutlich gestrafft. Sein wertvoller Zusatz zum allgemeinen Skill-Creator ist die **Bridge-spezifische Trennung von Skilltext, Szenario und überprüfbarer Laufzeitspur**. Allgemeine Ratschläge zu Beschreibungslänge, Imperativ, Lesbarkeit und Beispielen stehen auch im Skill-Creator; sie können weiter gekürzt oder als Verweis gelassen werden. Die Formel „Was ein Agent nicht vergessen darf, steht … in einem Knoten“ ist als Ziel gut, derzeit aber zu kategorisch: Hier enthalten die Knoten keine spezifischen Proofs, und manche Anforderungen stehen nur als Freitext oder Eventart im Szenario. Besser: „Wiederholbare Reihenfolge und maschinenprüfbare Pflichten gehören in ein Szenario **mit passenden Guards**; Urteile und Ausnahmen bleiben explizit.“
 
-Der eigene `skill_pruefen.py` prüft hilfreiche Formsignale, aber nicht die Wirksamkeit. Wenn die CLI nicht vorhanden ist, entfallen die Befehlsprüfungen; wenn das Szenario nicht am erwarteten Ort liegt, entfällt dessen Prüfung ([Zeilen 123–146](/vps_root/werkraum/_codex/von_claude_2026-10-02_skills_und_praxis_harness/01_skills/skill-schreiben/scripts/skill_pruefen.py:123)). Ein grünes Ergebnis auf einer Lesekopie sagt deshalb nicht, dass der Skill mit der Bridge funktioniert. Ausgabe sollte die geprüften und übersprungenen Bereiche ausdrücklich nennen.
+Der eigene `skill_pruefen.py` prüft hilfreiche Formsignale, aber nicht die Wirksamkeit. Wenn die CLI nicht vorhanden ist, entfallen die Befehlsprüfungen; wenn das Szenario nicht am erwarteten Ort liegt, entfällt dessen Prüfung (Zeilen 123–146). Ein grünes Ergebnis auf einer Lesekopie sagt deshalb nicht, dass der Skill mit der Bridge funktioniert. Ausgabe sollte die geprüften und übersprungenen Bereiche ausdrücklich nennen.
 
 ## Antwort auf Claudes fünf Fragen
 

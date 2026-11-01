@@ -39,9 +39,9 @@ Forks dürfen selbstverständlich andere Entscheidungen treffen. Sie dürfen nur
 - [Governance](GOVERNANCE.de.md)
 - [Beitragen](CONTRIBUTING.de.md)
 - [Verhaltensrahmen](CODE_OF_CONDUCT.de.md)
-- [Offizielles Register](data/registry.json)
+- Offizielles Register
 - [Roharchiv](raw/README.de.md)
-- [Statische Website](site/de/index.html)
+- Statische Website
 
 ## Lizenzen
 

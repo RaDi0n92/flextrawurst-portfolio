@@ -4,7 +4,7 @@
 
 Der Leitstand zeigt gleichzeitig Raumliste, Systemschichten, sechs wartende Flarum-Wesen, eine schematische Weltkarte und einen Detailinspektor. Räume und Körper sind anklickbar; der Inspektor benennt Status, Zweck und Realität. Sichtbar dominieren `GEPLANT`, `SPÄTER`, `GESPERRT` und `vor-Einzug`; als `LIVE` erscheinen Werkraum, Systemkammer, GENI und dak+gord.
 
-Belege: [Hauptansicht](screenshots/besucher/leitstand__leitstand__top.png), [Playwright-Manifest](screenshots/besucher/leitstand__leitstand.json).
+Belege: Hauptansicht, Playwright-Manifest.
 
 ## 2. Technische Realität
 

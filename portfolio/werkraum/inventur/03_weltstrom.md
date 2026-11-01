@@ -4,7 +4,7 @@
 
 Der Tab zeigt 100 chronologisch sortierte Weltereignisse mit Filtern für Gedanken, Wesen, Weltklima, Blasen, Resonanz, Cyberlinge und Schlaf. Beim Playwright-Lauf dominierten Weltklima-Ticks und Vernachlässigungsereignisse; Zeitangaben und Akteure wie `tension_daemon` sind sichtbar. Alle acht Filter wurden aktiv angeklickt und separat erfasst.
 
-Belege: [Hauptansicht](screenshots/besucher/weltstrom__weltstrom__top.png), [Subtabs](screenshots/subtabs_besucher/weltstrom), [Manifest](screenshots/besucher/weltstrom__weltstrom.json).
+Belege: Hauptansicht, Subtabs, Manifest.
 
 ### Subtab-für-Subtab-Befund
 

@@ -4,7 +4,7 @@
 
 Sechs namelessAI-Wesen werden als `pre_start` beschrieben und sind auswählbar. Das Detail zeigt Status, Selbstsatz, letzte Entscheidung, Cyberling, Splitterbilanz, Druckkörper, Substanzen, Sedimente, Obsessionen, Abneigungen, Beziehungen, Denkstrom und Systemkörper; darunter folgt ein umfangreicher Katalog aktiver und geplanter Entitätskonzepte. Der sichtbare Widerspruch ist deutlich: „bereit“ und aktuelle Entscheidungen stehen neben „noch kein Gedanke“ und „Einzug nicht vollzogen“.
 
-Belege: [Hauptansicht](screenshots/besucher/wesen__wesen__top.png), [weitere Ansicht](screenshots/besucher/wesen__wesen__scroll_01.png), [Manifest](screenshots/besucher/wesen__wesen.json).
+Belege: Hauptansicht, weitere Ansicht, Manifest.
 
 ## 2. Technische Realität
 

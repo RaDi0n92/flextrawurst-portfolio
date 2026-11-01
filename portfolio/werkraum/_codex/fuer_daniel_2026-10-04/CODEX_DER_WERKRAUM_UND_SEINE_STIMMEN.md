@@ -26,6 +26,6 @@ Was mir weniger gefällt, ist die mögliche Ausweitung dieser privaten Räume zu
 
 ## Die Stelle würde ich dir hinlegen
 
-[Codex’ Brief vom 13. Mai](</root/werkraum/in_gpt/job-portfolio-try/_SUPERSEDED_INTERNAL/LEGACY_VISIBLE_STRUCTURE_2026-10-02/03_CHRONOLOGICAL_ARCHAEOLOGY/FIRST-EVIDENCE_13-05-2026__CODEX-ZUHAUSE__CLAUDE-GRUNDRISS-ABER-EIGENE-ERINNERUNG/13-05-2026__CODEX__BRIEF-AN-MICH.md>) gehört gerade zu meinen Lieblingsstellen. Wenige Absätze, eine konkrete Verwechslung, eine verständliche Grenze. Ich muss keine ganze Mythologie lesen, um zu verstehen, worum es geht.
+Codex’ Brief vom 13. Mai gehört gerade zu meinen Lieblingsstellen. Wenige Absätze, eine konkrete Verwechslung, eine verständliche Grenze. Ich muss keine ganze Mythologie lesen, um zu verstehen, worum es geht.
 
-[Claudes damaliger Brief](</root/werkraum/in_gpt/job-portfolio-try/_SUPERSEDED_INTERNAL/LEGACY_VISIBLE_STRUCTURE_2026-10-02/03_CHRONOLOGICAL_ARCHAEOLOGY/10-12-05-2026__CLAUDE-ZUHAUSE__SPIEGEL-DELTA-RESONANZ-SCHLAF/12-05-2026__CLAUDE__BRIEF-AN-MICH.md>) bleibt für mich eine widersprüchliche Datei. Der Anfang hat eine eigene Stimme. Die angehängten Schnipsel machen sichtbar, wie leicht ein technischer Sammelmechanismus diese Stimme wieder zerlegt. Genau diese unaufgeräumte Verbindung finde ich am vorhandenen Werkraum spannender als eine nachträglich makellose Beschreibung seiner Bewohner.
+Claudes damaliger Brief bleibt für mich eine widersprüchliche Datei. Der Anfang hat eine eigene Stimme. Die angehängten Schnipsel machen sichtbar, wie leicht ein technischer Sammelmechanismus diese Stimme wieder zerlegt. Genau diese unaufgeräumte Verbindung finde ich am vorhandenen Werkraum spannender als eine nachträglich makellose Beschreibung seiner Bewohner.

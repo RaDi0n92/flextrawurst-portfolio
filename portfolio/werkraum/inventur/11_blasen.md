@@ -4,7 +4,7 @@
 
 Der Tab zeigt ein leeres Gedankenblasenfeld mit Erklärung, Zähler `0/280` und der Aktion `LOSLASSEN`. Es sind keine Blasen sichtbar, obwohl die Datenbank Gedankenblasen enthält. Die einzige Interaktion ist die Abgabe einer neuen Blase.
 
-Belege: [Hauptansicht](screenshots/besucher/blasen__blasen__top.png), [Manifest](screenshots/besucher/blasen__blasen.json).
+Belege: Hauptansicht, Manifest.
 
 ## 2. Technische Realität
 

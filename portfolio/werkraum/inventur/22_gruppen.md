@@ -4,7 +4,7 @@
 
 Der Tab bietet zehn Filter für Fangruppen, Resonanz-, Splitter-, Projekt-, KompOase-, Archiv-, Traum-, Schatten- und Archäologiegruppen. Alle Filter wurden geöffnet. Sichtbar sind sechs kanonische Fangruppen mit null Mitgliedern und „wartet auf Einzug“; weitere Gruppen fehlen.
 
-Belege: [Hauptansicht](screenshots/besucher/gruppen__gruppen__top.png), [Subtabs](screenshots/subtabs_besucher/gruppen), [Manifest](screenshots/besucher/gruppen__gruppen.json).
+Belege: Hauptansicht, Subtabs, Manifest.
 
 ### Subtab-für-Subtab-Befund
 

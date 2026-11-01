@@ -4,7 +4,7 @@
 
 Sieben Lebenskapseln zeigen Hunger, Durst, Energie, Stimmung, Gesundheit, Todeszahl und Wiedergeburtszeit. Sechs namelessAI-Cyberlinge sind tot oder kritisch und weisen jeweils rund 340 bis 353 Tode auf; `theater_01` ist vollständig gesund. Die Ansicht ist informativ, aber ohne sichtbare Pflegeaktionen.
 
-Belege: [Hauptansicht](screenshots/besucher/cyberlinge__cyberlinge__top.png), [Manifest](screenshots/besucher/cyberlinge__cyberlinge.json).
+Belege: Hauptansicht, Manifest.
 
 ## 2. Technische Realität
 

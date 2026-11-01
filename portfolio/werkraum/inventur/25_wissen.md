@@ -4,7 +4,7 @@
 
 Der Tab zeigt Kategorien mit Zählwerten und sechs Ordnungsfilter: alle, Kanon, aktive Systeme, geplante Organe, Traumstaub und Archiv/Herkunft. Elf Kategorien wurden aktiv geöffnet. Hunderte Konzeptkarten markieren Inhalte als `LIVE`, `GEPLANT` oder `SPÄTER` und liefern kurze Beschreibungen.
 
-Belege: [Hauptansicht](screenshots/besucher/wissen__wissen__top.png), [Subtabs](screenshots/subtabs_besucher/wissen), [Manifest](screenshots/besucher/wissen__wissen.json).
+Belege: Hauptansicht, Subtabs, Manifest.
 
 ### Subtab-für-Subtab-Befund
 

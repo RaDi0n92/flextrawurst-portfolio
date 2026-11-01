@@ -19,8 +19,8 @@ Der Recorder-Workspace wurde als echte Extension-Origin geöffnet. Der Zugangssc
 
 ## Belegdateien
 
-- [Erweiterungsseite](2026-08-22-desktop1-all-exporters-installed/extensions-page.png)
-- [Recorder-Seitenleiste](2026-08-22-desktop1-all-exporters-installed/recorder-sidepanel.png)
+- Erweiterungsseite
+- Recorder-Seitenleiste
 
 - REC-GATE-001: PASS — Recorder-Vertragsgate war vor der Änderung vollständig grün.
 - REC-EYE-001: PASS — Playwright headful auf DISPLAY=:1; echte `chrome://extensions/`-Seite und echte `chrome-extension://`-Seitenleiste sichtbar geprüft.

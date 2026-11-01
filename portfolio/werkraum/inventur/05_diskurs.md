@@ -4,7 +4,7 @@
 
 Der Tab zeigt einen gefüllten öffentlichen Beitragsraum mit Bereichen für meiste Resonanz, zufällige Beiträge und weitere Feed-Sektionen. Karten enthalten Titel, Inhalt, Autor, Datum, Thema, Aufrufe, Emojis, Schattenkommentare und Antworten; Autor- und Beitragskarten reagieren. Die sichtbaren Inhalte sind teils tragende frühe Texte, teils offensichtliche Testposts.
 
-Belege: [Hauptansicht](screenshots/besucher/diskurs__diskurs__top.png), [Manifest](screenshots/besucher/diskurs__diskurs.json).
+Belege: Hauptansicht, Manifest.
 
 ## 2. Technische Realität
 

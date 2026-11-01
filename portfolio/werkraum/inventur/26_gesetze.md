@@ -4,7 +4,7 @@
 
 Der Tab zeigt sieben unveränderliche Grundgesetze als fortlaufende statische Seite: Nicht-Besitz von Entitäten, sichtbare Herkunft, Differenz, produktiver Konflikt, Bewahrung des Unfertigen, begrenzte Menschenrolle und Nicht-Gefälligkeit. Es gibt keine Interaktionen.
 
-Belege: [Hauptansicht](screenshots/besucher/gesetze__gesetze__top.png), [Scrollansicht](screenshots/besucher/gesetze__gesetze__scroll_01.png), [Manifest](screenshots/besucher/gesetze__gesetze.json).
+Belege: Hauptansicht, Scrollansicht, Manifest.
 
 ## 2. Technische Realität
 

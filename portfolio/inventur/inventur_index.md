@@ -160,8 +160,8 @@ Warum hat entity_kern Entscheidungen aber keine Gedanken? DENKEN zeigt 6 leere P
 
 ## Einzelne Tab-Analysen
 
-- [01_leitstand.md](01_leitstand.md)
-- [02_was_ist_das.md](02_was_ist_das.md)
+- 01_leitstand.md
+- 02_was_ist_das.md
 - [03_weltstrom.md](03_weltstrom.md)
 - [04_raume.md](04_raume.md)
 - [05_diskurs.md](05_diskurs.md)
